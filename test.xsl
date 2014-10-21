@@ -3,6 +3,11 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
   <xsl:template match="/">
-
+    <HTML>
+      <BODY>
+        Test
+        <xsl:apply-templates/>
+      </BODY>
+    </HTML>
   </xsl:template>
 </xsl:stylesheet>
