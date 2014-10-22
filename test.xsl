@@ -12,7 +12,7 @@
             <BODY>
                 <xsl:apply-templates/>
                 <FOOTER>
-                    <DIV>Attention, ce site est auto-h&eacute;berg&eacute;, il peut donc se retrouver indisponible lors d'orages par exemple.</DIV>
+                    <DIV><xsl:text>Attention, ce site est auto-h&eacute;berg&eacute;, il peut donc se retrouver indisponible lors d'orages par exemple.<xsl:text></DIV>
                 </FOOTER>
             </BODY>
         </HTML>
