@@ -14,7 +14,9 @@
                 <LINK rel="icon" type="image/png" href="img/banniere_LE_crush.png" />
             </HEAD>
             <BODY>
-                <DIV id="menu"><xsl:copy-of select="document('menu.xml')" /></DIV>
+                <DIV id="menu"><xsl:for-each select="document('menu.xml')/menu">
+                        <xsl:apply-imports/>
+                    </xsl:for-each></DIV>
                 <DIV id="content-zone">
                     <DIV id="content"><xsl:apply-templates/></DIV>
                 </DIV>
@@ -24,4 +26,5 @@
             </BODY>
         </HTML>
     </xsl:template>
+
 </xsl:stylesheet>
