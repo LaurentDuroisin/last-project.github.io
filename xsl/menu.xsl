@@ -3,6 +3,6 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" />
     <xsl:template match="/">
-        <xsl:copy-of select="document('../menu.xml')
+        <xsl:copy-of select="document('../menu.xml') />
     </xsl:template>
 </xsl:stylesheet>
