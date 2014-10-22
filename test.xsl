@@ -11,6 +11,9 @@
             </HEAD>
             <BODY>
                 <xsl:apply-templates/>
+                <FOOTER>
+                    <DIV>Attention, ce site est auto-h&eacute;berg&eacute;, il peut donc se retrouver indisponible lors d'orages par exemple.</DIV>
+                </FOOTER>
             </BODY>
         </HTML>
     </xsl:template>
