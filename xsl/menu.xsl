@@ -5,4 +5,10 @@
     <xsl:template match="/">
         <xsl:copy-of select="document('../menu.xml')" />
     </xsl:template>
+    
+    <xsl:template match="//menu/item">
+        <p>
+            Test
+        </p>
+    </xsl:template>
 </xsl:stylesheet>
