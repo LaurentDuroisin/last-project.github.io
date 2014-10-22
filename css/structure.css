@@ -19,3 +19,27 @@ footer > div {
     padding-right : 15px;
     text-align : center;
 }
+
+#menu
+{
+    z-index : 10;
+    position : fixed;
+    width : 100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content-zone {
+    min-height : 600px;
+    margin-left : auto;
+    margin-right : auto;
+    overflow : hidden;
+    background-color : white;
+    border-radius : 10px 10px 10px 10px;
+}
+
+#content
+{
+    padding : 15px;
+}
