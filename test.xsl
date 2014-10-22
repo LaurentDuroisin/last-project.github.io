@@ -10,7 +10,10 @@
                 <LINK rel="icon" type="image/png" href="img/banniere_LE_crush.png" />
             </HEAD>
             <BODY>
-                <xsl:apply-templates/>
+                <DIV id="menu"></DIV>
+                <DIV id="content-zone">
+                    <DIV id="content"><xsl:apply-templates/></DIV>
+                </DIV>
                 <FOOTER>
                     <DIV><xsl:text>Attention, ce site est auto-hébérgé, il peut donc se retrouver indisponible lors d'orages par exemple.</xsl:text></DIV>
                 </FOOTER>
