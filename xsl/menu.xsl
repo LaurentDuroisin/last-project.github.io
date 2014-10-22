@@ -3,9 +3,7 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" />
     <xsl:template match="/">
-        <xsl:for-each select="document('../menu.xml')">
-            <xsl:apply-templates />
-        </xsl:for-each>
+        <xsl:copy-of select="document('../menu.xml')" />
     </xsl:template>
     
     <xsl:template match="//menu/item">
