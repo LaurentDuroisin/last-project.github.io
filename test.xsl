@@ -14,7 +14,7 @@
                 <LINK rel="icon" type="image/png" href="img/banniere_LE_crush.png" />
             </HEAD>
             <BODY>
-                <DIV id="menu"></DIV>
+                <DIV id="menu"><xsl:call-template name="menu"/></DIV>
                 <DIV id="content-zone">
                     <DIV id="content"><xsl:apply-templates/></DIV>
                 </DIV>
