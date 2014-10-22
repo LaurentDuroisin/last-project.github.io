@@ -15,7 +15,7 @@
             </HEAD>
             <BODY>
                 <DIV id="menu"><xsl:for-each select="document('menu.xml')/menu">
-                        
+                        <xsl:apply-templates/>
                     </xsl:for-each></DIV>
                 <DIV id="content-zone">
                     <DIV id="content"><xsl:apply-templates/></DIV>
