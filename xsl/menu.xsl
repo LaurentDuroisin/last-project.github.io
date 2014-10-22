@@ -2,7 +2,7 @@
 <xsl:stylesheet version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" />
-    <xsl:template match="/">
+    <xsl:template match="/" mode="menu">
         <xsl:for-each select="document('../menu.xml')">
             <xsl:apply-templates />
         </xsl:for-each>
