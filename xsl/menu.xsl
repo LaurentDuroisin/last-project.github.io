@@ -8,7 +8,7 @@
         </xsl:for-each>
     </xsl:template>
     
-    <xsl:template match="//item">
+    <xsl:template match="document('../menu.xml')/menu/item">
         <p>
             Test
         </p>
