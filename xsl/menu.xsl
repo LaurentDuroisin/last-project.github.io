@@ -11,7 +11,7 @@
         </xsl:for-each>
     </xsl:template>
     
-    <xsl:template match="$menu">
+    <xsl:template match="${menu}">
          <u>tt</u>
     </xsl:template>
     
