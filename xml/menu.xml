@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item dest="index.xml">Accueil</item>
+        <item dest="">Projets</item>
+        <item dest="">Liens</item>
+        <item dest="">Prix</item>
+        <item dest="">A propos</item>
+    </menu>
+</module>

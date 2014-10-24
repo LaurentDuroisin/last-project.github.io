@@ -4,15 +4,13 @@
     <xsl:output method="html" />
     
     <xsl:template name="menu">
-        <xsl:for-each select="document('../menu.xml')">
+        <xsl:for-each select="document('../xml/menu.xml')">
             <xsl:apply-templates />
         </xsl:for-each>
     </xsl:template>
     
     
     <xsl:template match="/module/menu/item">
-        <p>
-            Test
-        </p>
+        <div onclick="javascript:window.location = '{current()/@dest}'"><xsl:apply-templates/></div>
     </xsl:template>
 </xsl:stylesheet>
