@@ -3,10 +3,32 @@
 
 <module>
     <menu>
-        <item dest="index.xml">Accueil</item>
-        <item dest="">Projets</item>
-        <item dest="">Liens</item>
-        <item dest="">Prix</item>
-        <item dest="">A propos</item>
+        <item>
+            <fr>Sites</fr>
+            <item>
+                <fr>Last Team</fr>
+            </item>
+            <item>
+                <fr>Last Engine</fr>
+            </item>
+            <item>
+                <fr>Last Escape</fr>
+            </item>
+            <item>
+                <fr>Last DunGo</fr>
+            </item>
+            <item>
+                <fr>Last Dungeon</fr>
+                <item>
+                    <fr>Test</fr>
+                </item>
+            </item>
+            <item>
+                <fr>Autres</fr>
+                <item>
+                    <fr>ODFAEG</fr>
+                </item>
+            </item>
+        </item>
     </menu>
 </module>

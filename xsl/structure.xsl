@@ -17,9 +17,9 @@
             <BODY>
 
 
-                <DIV id="menu"><xsl:call-template name="menu"/></DIV>
+                <DIV id="menu-div"><xsl:call-template name="menu"/></DIV>
                 <DIV id="content-zone">
-                    <DIV id="content"><xsl:value-of select="base-uri"></xsl:value-of><xsl:apply-templates/></DIV>
+                    <DIV id="content"><xsl:apply-templates/></DIV>
                 </DIV>
                 <FOOTER>
                     <DIV><xsl:text>Attention, ce site est auto-hébérgé, il peut donc se retrouver indisponible lors d'orages par exemple.</xsl:text></DIV>

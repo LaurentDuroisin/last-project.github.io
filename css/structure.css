@@ -20,16 +20,73 @@ footer > div {
     text-align : center;
 }
 
-#menu
+#menu-div
 {
+    width:80%;
+    margin-left:10%;
+    background: red;
+    border-radius : 15px 15px 15px 15px;
     z-index : 10;
     position : fixed;
-    width : 100%;
-    display : flex;
-    justify-content: center;
-    align-items: center;
     top : 10px;
-    background-color : white;
+    text-align : center;
+    height : 40px;
+}
+
+.menu {
+    margin-top : 0px;
+    padding : 0px;
+}
+
+.menu li {
+    background-color : red;
+    list-style-type: none;
+    display : inline-block;
+    font-size:20px;
+    padding-left : 10px;
+    padding-right : 10px;
+    line-height:40px;
+    vertical-align : text-top;
+    margin : 0px;
+    text-align : left;
+}
+
+.menu li span {
+    width : 100%;
+    display : inline-block;
+}
+
+.menu li ul li {
+    display : block;
+    position : relative;
+    left : -10px;
+}
+
+.menu li ul li ul li {
+    display : block;
+    position : relative;
+    left : 10px;
+}
+
+.menu li:hover{
+    background-color: yellow;
+    cursor : pointer;
+}
+
+.menu li ul {
+    display : none;
+    position: absolute;
+    padding : 0px;
+    margin : 0px;
+}
+
+.menu li ul li:hover ul {
+    display : inline-block;
+}
+
+
+.menu li:hover > ul {
+    display : block;
 }
 
 #content-zone {
@@ -38,7 +95,6 @@ footer > div {
     width:60%;
     margin-left : auto;
     margin-right : auto;
-    overflow : hidden;
     background-color : white;
     border-radius : 10px 10px 10px 10px;
 }
