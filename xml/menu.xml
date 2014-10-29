@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="xsl/menu.xsl"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/menu.xsl"?>
 
 <module>
     <menu>
         <item>
-            <fr>Sites</fr>
-            <item>
-                <fr>Last Team</fr>
-            </item>
-            <item>
-                <fr>Last Engine</fr>
-            </item>
-            <item>
-                <fr>Last Escape</fr>
-            </item>
-            <item>
-                <fr>Last DunGo</fr>
-            </item>
-            <item>
-                <fr>Last Dungeon</fr>
-                <item>
-                    <fr>Test</fr>
-                </item>
-            </item>
-            <item>
-                <fr>Autres</fr>
-                <item>
-                    <fr>ODFAEG</fr>
-                </item>
-            </item>
+            <fr>Menu</fr>
+            <en>Menu</en>
         </item>
     </menu>
 </module>

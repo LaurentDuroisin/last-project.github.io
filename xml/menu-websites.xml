@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item dest="test.xml">
+            <fr>Sites</fr>
+            <en>Websites</en>
+            <item dest="http://google.fr" absolute="true" >
+                <fr>Last Team</fr>
+                <en>Last Team</en>
+            </item>
+            <item dest="test.xml">
+                <fr>Last Engine</fr>
+                <en>Last Engine</en>
+            </item>
+            <item dest="test.xml" absolute="false">
+                <fr>Last Escape</fr>
+                <en>Last Escape</en>
+            </item>
+            <item>
+                <fr>Last DunGo</fr>
+                <en>Last DunGo</en>
+            </item>
+            <item>
+                <fr>Last Dungeon</fr>
+                <en>Last Dungeon</en>
+            </item>
+            <item>
+                <fr>Autres</fr>
+                <en>Others</en>
+                <item>
+                    <fr>ODFAEG</fr>
+                    <en>ODFAEG</en>
+                </item>
+            </item>
+        </item>
+    </menu>
+</module>

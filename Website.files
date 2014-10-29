@@ -2,8 +2,10 @@ css/structure.css
 last-engine/index.html
 last-escape/index.html
 last-team/index.html
-xml/menu.xml
+xml/menu-websites.xml
 xsl/menu.xsl
 xsl/structure.xsl
 index.xml
 .gitignore
+test.xml
+xml/menu.xml

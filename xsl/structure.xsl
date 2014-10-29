@@ -7,7 +7,37 @@
 
     <xsl:output method="html" />
 
-    <xsl:template match="/">
+    <xsl:variable name="base">
+        <xsl:choose>
+            <xsl:when test="/page/@base">
+                <xsl:value-of select="/page/@base"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:value-of select="'.'" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="file"><xsl:value-of select="$base"/>/<xsl:value-of select="/page/src"/></xsl:variable>
+
+    <xsl:variable name="lang" >
+        <xsl:choose>
+            <xsl:when test="/page/lang">
+                <xsl:value-of select="/page/lang"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:value-of select="'en'" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+    <xsl:template match="/page">
+        <xsl:for-each select="document($file)">
+            <xsl:apply-templates />
+        </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template match="/root">
         <HTML>
             <HEAD>
                 <LINK rel="stylesheet" type="text/css" href="css/structure.css"/>
