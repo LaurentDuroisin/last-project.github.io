@@ -16,7 +16,7 @@
             </HEAD>
             <BODY>
 
-
+                <DIV id="hide-header"></DIV>
                 <DIV id="menu-div"><xsl:call-template name="menu"/></DIV>
                 <DIV id="content-zone">
                     <DIV id="content"><xsl:apply-templates/></DIV>

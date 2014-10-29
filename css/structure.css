@@ -33,6 +33,16 @@ footer > div {
     height : 40px;
 }
 
+#hide-header {
+    position : fixed;
+    z-index : 5;
+    background : blue;
+    height : 80px;
+    width : 100%;
+    top : 0px;
+    left : 0px;
+}
+
 .menu {
     margin-top : 0px;
     padding : 0px;
