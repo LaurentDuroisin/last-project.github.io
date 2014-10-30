@@ -23,3 +23,6 @@ fr/last-engine/index.xml
 fr/last-dungeon/index.xml
 fr/last-dungo/index.xml
 css/menu.css
+xml/footer.xml
+xsl/footer.xsl
+css/footer.css

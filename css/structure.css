@@ -13,13 +13,6 @@ footer {
     border-radius : 15px 15px 15px 15px;
 }
 
-footer > div {
-    padding : 5px;
-    padding-left : 15px;
-    padding-right : 15px;
-    text-align : center;
-}
-
 #menu-div
 {
     width:80%;

@@ -4,6 +4,8 @@
     xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
     <xsl:import href="menu.xsl"/>
+    <xsl:import href="footer.xsl"/>
+
 
     <xsl:output method="html" />
 
@@ -44,7 +46,7 @@
                     <DIV id="content"><xsl:apply-templates/></DIV>
                 </DIV>
                 <FOOTER>
-                    <DIV><xsl:text>Attention, ce site est auto-hébérgé, il peut donc se retrouver indisponible lors d'orages par exemple.</xsl:text></DIV>
+                    <xsl:call-template name="footer"/>
                 </FOOTER>
             </BODY>
         </HTML>
