@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
-
 <page>
-    <lang>en</lang>
-    <src>/last-team</src>
+    <menu></menu>
+    <content>Last dungo à venir</content>
 </page>
