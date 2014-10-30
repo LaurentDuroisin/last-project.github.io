@@ -65,7 +65,7 @@ footer > div {
 }
 
 .menu li {
-    background-color : red;
+    background-color : rgba(0,255,0,0.5);
     list-style-type: none;
     display : inline-block;
     font-size:20px;
