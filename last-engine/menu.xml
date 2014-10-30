@@ -4,8 +4,8 @@
 <module>
     <menu>
         <item>
-            <fr dest="last-engine">Accueil</fr>
-            <en dest="last-engine">Home</en>
+            <fr dest="/last-engine">Accueil</fr>
+            <en dest="/last-engine">Home</en>
         </item>
         <item>
             <fr>Tutoriels</fr>
