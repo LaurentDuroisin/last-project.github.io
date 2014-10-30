@@ -42,6 +42,7 @@
             </xsl:if>
         </xsl:variable>
         ?<xsl:value-of select="$suffix"/>?
+        e<xsl:value-of select="/page/src"/>e
         <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="subsubmenu"><xsl:apply-templates select="./item" /></ul>
         </li>
