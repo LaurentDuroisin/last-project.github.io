@@ -22,7 +22,7 @@
 
     <xsl:template match="/page/src">
         <xsl:for-each select="document(concat( $file, '/index.xml') )">
-            <xsl:apply-templates />
+            <xsl:apply-templates select="/page/content"/>
         </xsl:for-each>
     </xsl:template>
 
