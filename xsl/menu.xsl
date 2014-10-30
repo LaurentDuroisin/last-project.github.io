@@ -30,7 +30,7 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item">
-        <li class="item" onclick="javascript:window.location = '{current()/@dest}'"><xsl:value-of select="*[name()=$lang]"/>
+        <li class="item"><a href="{current()/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="submenu"><xsl:apply-templates select="./item" /></ul>
         </li>
     </xsl:template>
