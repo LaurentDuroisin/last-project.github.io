@@ -53,7 +53,7 @@
     </xsl:template>
 
     <xsl:template match="html">
-        ?<xsl:value-of select="current()" disable-output-escaping="yes" />?
+        ?<xsl:value-of select="." disable-output-escaping="yes" />?
     </xsl:template>
 
 </xsl:stylesheet>
