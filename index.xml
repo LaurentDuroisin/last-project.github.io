@@ -2,5 +2,5 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
     <menu>/xml/menu.xmlgc</menu>
-    <content><u>A venir</u></content>
+    <content><![CDATA[<u>A venir</u>]]></content>
 </page>
