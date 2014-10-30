@@ -10,6 +10,14 @@
         <item>
             <fr>Tutoriels</fr>
             <en>Tutorials</en>
+            <item>
+                <fr dest="/last-engine/tutorials/introduction">Présentation</fr>
+                <en dest="/last-engine/tutorials/introduction">Introduction</en>
+            </item>
+            <item>
+                <fr dest="/last-engine/tutorials/modules-system">Le système de modules</fr>
+                <en dest="/last-engine/tutorials/modules-system">Modules System</en>
+            </item>
         </item>
         <item>
             <fr>Contribuer</fr>
