@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
-    <menu>/xml/menu.xml</menu>
-    <content>A venir</content>
+    <menu>/xml/menu.xmlgc</menu>
+    <content><u>A venir</u></content>
 </page>
