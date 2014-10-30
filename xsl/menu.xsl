@@ -3,8 +3,6 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" />
 
-    <xsl:variable name="menu"><xsl:value-of select="/page/menu"/></xsl:variable>
-
     <xsl:variable name="page"><xsl:value-of select="/page/src"/></xsl:variable>
 
     <xsl:variable name="lang" >
@@ -19,6 +17,7 @@
     </xsl:variable>
 
     <xsl:template name="menu">
+        <xsl:variable name="menu"><xsl:value-of select="/page/menu"/></xsl:variable>
         <ul class="menu">
             <xsl:if test="$menu">
                 <xsl:for-each select="document($menu)">
