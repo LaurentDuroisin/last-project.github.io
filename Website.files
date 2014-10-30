@@ -28,3 +28,6 @@ xsl/footer.xsl
 css/footer.css
 last-team/menu.xml
 last-engine/menu.xml
+contact/index.xml
+fr/contact/index.xml
+en/contact/index.xml
