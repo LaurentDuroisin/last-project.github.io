@@ -39,7 +39,7 @@
         <xsl:variable name="suffix">
             <xsl:if test="*[name()=$lang]/@prefix  ='true'">
                 <xsl:value-of select="*[name()=$lang]/@prefix"/>
-            </xsl>
+            </xsl:if>
         </xsl:variable>
         ?<xsl:value-of select="$suffix"/>?
         <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
