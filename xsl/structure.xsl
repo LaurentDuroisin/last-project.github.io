@@ -27,6 +27,7 @@
     </xsl:template>
 
     <xsl:template match="/page/menu" />
+    <xsl:template match="/page/lang" />
 
     <xsl:template match="/page/content">
         <HTML>
