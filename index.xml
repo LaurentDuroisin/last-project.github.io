@@ -3,6 +3,6 @@
 <page>
     <menu>/xml/menu.xmlgc</menu>
     <content>
-        <html><u>data</u></html>
+        <html><u>data</u><![CDATA[<u>test</u>]]> </html>
     </content>
 </page>
