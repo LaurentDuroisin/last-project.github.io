@@ -20,7 +20,7 @@
         </xsl:choose>
     </xsl:variable>
 
-    <xsl:template match="/page">
+    <xsl:template match="/page/src">
         <xsl:for-each select="document(concat( $file, '/index.xml') )">
             <xsl:apply-templates />
         </xsl:for-each>
