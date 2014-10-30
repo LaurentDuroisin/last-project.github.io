@@ -3,6 +3,6 @@
 
 <page src="/last-team">
     <lang>fr</lang>
-    <src>/last-team/index.xml</src>
+    <src>/last-team</src>
     <menu>/xml/menu.xml</menu>
 </page>
