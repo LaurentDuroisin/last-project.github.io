@@ -17,7 +17,7 @@
     </xsl:variable>
 
     <xsl:template name="menu">
-        <ul class="menu">
+        <ul class="menu">??
             <xsl:if test="/page/menu">???
                 <xsl:for-each select="document($menu)">
                     <xsl:apply-templates />
