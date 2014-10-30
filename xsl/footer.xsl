@@ -7,7 +7,6 @@
         <style type='text/css'>
           <xsl:text><!--@IMPORT URL(/css/footer.css);--></xsl:text>
         </style>
-        <DIV><xsl:value-of select="document('/xml/menu-websites.xml')/module/footer/" /></DIV>
     </xsl:template>
 
 </xsl:stylesheet>
