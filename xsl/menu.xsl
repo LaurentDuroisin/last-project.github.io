@@ -32,7 +32,17 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item">
-        <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
+        <xsl:variable name="dest">
+            <xsl:choose>
+                <xsl:when test="*[name()=$lang]/@prefix  ='true'">
+                    <xsl:value-of select="concat(*[name()=$lang]/@dest, $page)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                     <xsl:value-of select="concat('/', $lang, *[name()=$lang]/@dest)" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <li class="item"><a href="{$dest}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="submenu"><xsl:apply-templates select="./item" /></ul>
         </li>
     </xsl:template>
@@ -44,7 +54,7 @@
                     <xsl:value-of select="concat(*[name()=$lang]/@dest, $page)"/>
                 </xsl:when>
                 <xsl:otherwise>
-                     <xsl:value-of select="concat('/', $lang, *[name()=$lang]/@dest)" /><!-- todo $lang -->
+                     <xsl:value-of select="concat('/', $lang, *[name()=$lang]/@dest)" />
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -54,7 +64,16 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item/item">
-
-        <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a></li>
+        <xsl:variable name="dest">
+            <xsl:choose>
+                <xsl:when test="*[name()=$lang]/@prefix  ='true'">
+                    <xsl:value-of select="concat(*[name()=$lang]/@dest, $page)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                     <xsl:value-of select="concat('/', $lang, *[name()=$lang]/@dest)" />
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <li class="item"><a href="{$dest}"><xsl:value-of select="*[name()=$lang]"/></a></li>
     </xsl:template>
 </xsl:stylesheet>
