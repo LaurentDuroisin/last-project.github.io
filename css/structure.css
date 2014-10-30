@@ -44,7 +44,6 @@ footer > div {
 }
 
 .menu a {
-    background-color : rgba(0,0,255,0.5);
     box-sizing: border-box;
     display : inline-block;
     text-decoration : none;
@@ -65,7 +64,7 @@ footer > div {
 }
 
 .menu li {
-    background-color : rgba(0,255,0,0.5);
+    background-color : red;
     list-style-type: none;
     display : inline-block;
     font-size:20px;
