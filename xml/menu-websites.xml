@@ -6,7 +6,7 @@
         <item dest="/">
             <fr>Sites</fr>
             <en>Websites</en>
-            <item dest="/last-team">
+            <item dest="/last-team/">
                 <fr>Last Team</fr>
                 <en>Last Team</en>
             </item>
