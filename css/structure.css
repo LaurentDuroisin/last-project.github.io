@@ -43,6 +43,11 @@ footer > div {
     left : 0px;
 }
 
+.menu a {
+    background-color : white;
+    text-decoration : none;
+}
+
 .menu {
     margin-top : 0px;
     padding : 0px;
