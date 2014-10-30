@@ -6,9 +6,9 @@ xsl/menu.xsl
 xsl/structure.xsl
 index.xml
 .gitignore
-test.xml
 xml/menu.xml
-test.php
 last-team/index.xml
 last-team/fr/index.xml
 last-team/en/index.xml
+fr/index.xml
+en/index.xml
