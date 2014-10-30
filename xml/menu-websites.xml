@@ -7,8 +7,8 @@
             <fr dest="/">Sites</fr>
             <en dest="/">Websites</en>
             <item>
-                <fr dest="/last-team/">Last Team</fr>
-                <en dest="/last-team/">Last Team</en>
+                <fr dest="/last-team">Last Team</fr>
+                <en dest="/last-team">Last Team</en>
             </item>
             <item>
                 <fr dest="/last-engine">Last Engine</fr>
