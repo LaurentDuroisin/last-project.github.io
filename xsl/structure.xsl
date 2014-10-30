@@ -7,18 +7,7 @@
 
     <xsl:output method="html" />
 
-    <xsl:variable name="base">
-        <xsl:choose>
-            <xsl:when test="/page/@domain">
-                <xsl:value-of select="/page/@domain"/>
-            </xsl:when>
-            <xsl:otherwise>
-                 <xsl:value-of select="'.'" />
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:variable>
-
-    <xsl:variable name="file"><xsl:value-of select="$base"/>/<xsl:value-of select="/page/src"/></xsl:variable>
+    <xsl:variable name="file"><xsl:value-of select="/page/src"/></xsl:variable>
 
     <xsl:variable name="lang" >
         <xsl:choose>
