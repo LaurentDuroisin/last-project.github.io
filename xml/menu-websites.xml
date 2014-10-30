@@ -36,8 +36,8 @@
             </item>
         </item>
         <item>
-            <fr>Contacts</fr>
-            <en>Contact us</en>
+            <fr dest="/contact">Contacts</fr>
+            <en dest="/contact">Contact us</en>
         </item>
         <item>
             <fr>Langues</fr>
