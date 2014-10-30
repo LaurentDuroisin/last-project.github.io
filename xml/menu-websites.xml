@@ -3,10 +3,10 @@
 
 <module>
     <menu>
-        <item dest="test.xml">
+        <item dest="/" absolute="true">
             <fr>Sites</fr>
             <en>Websites</en>
-            <item dest="http://google.fr" absolute="true" >
+            <item dest="/last-team" absolute="true" >
                 <fr>Last Team</fr>
                 <en>Last Team</en>
             </item>
