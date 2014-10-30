@@ -51,6 +51,7 @@ footer > div {
     height: 100%;
     padding-right : 10px;
     padding-left : 10px;
+    width : 100%;
 }
 
 .menu li ul li a {
