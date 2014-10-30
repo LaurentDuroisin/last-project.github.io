@@ -45,6 +45,7 @@ footer > div {
 
 .menu a {
     background-color : rgba(0,0,255,0.5);
+    box-sizing: border-box;
     display : inline-block;
     text-decoration : none;
     color : black;
