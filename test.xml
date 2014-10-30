@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="xsl/structure.xsl"?>
 
-<page domain="file:///home/neckara/Documents/LastProject.github.io">
+<page domain="http://lastproject.github.io">
     <lang>fr</lang>
     <src>index.xml</src>
     <menu>xml/menu.xml</menu>
