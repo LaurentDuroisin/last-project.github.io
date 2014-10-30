@@ -36,7 +36,7 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item">
-        <xsl:variable name="suffix" select="'!'">
+        <xsl:variable name="suffix">
                 <xsl:value-of select="'?'"/>
         </xsl:variable>
         ?<xsl:value-of select="$suffix"/>?
