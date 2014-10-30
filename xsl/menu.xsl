@@ -41,7 +41,7 @@
                 <xsl:value-of select="/page/src"/>
             </xsl:if>
         </xsl:variable>
-        <li class="item"><a href="{*[name()=$lang]/@dest$suffix}"><xsl:value-of select="*[name()=$lang]"/></a>
+        <li class="item"><a href="{*[name()=$lang]/@dest}{$suffix}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="subsubmenu"><xsl:apply-templates select="./item" /></ul>
         </li>
     </xsl:template>
