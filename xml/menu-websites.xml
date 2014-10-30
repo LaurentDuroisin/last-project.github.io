@@ -37,7 +37,7 @@
         </item>
         <item>
             <fr>Langues</fr>
-            <en>Langages</en>
+            <en>Languages</en>
             <item>
                 <fr dest="/fr" prefix="true">Français</fr>
                 <en dest="/fr" prefix="true">French</en>
@@ -46,6 +46,10 @@
                 <fr dest="/en" prefix="true">Anglais</fr>
                 <en dest="/en" prefix="true">English</en>
             </item>
+        </item>
+        <item>
+            <fr>Contacts</fr>
+            <en>Contact us</en>
         </item>
     </menu>
 </module>

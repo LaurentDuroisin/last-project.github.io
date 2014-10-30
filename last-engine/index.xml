@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
-    <menu></menu>
+    <menu>/last-engine/menu.xml</menu>
     <content>Last engine à venir</content>
 </page>

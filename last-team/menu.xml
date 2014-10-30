@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item>
+            <fr>Équipe</fr>
+            <en>Team</en>
+            <item>
+                <fr>Composition</fr>
+                <en>Make-up</en>
+            </item>
+            <item>
+                <fr>Rejoindre</fr>
+                <en>Join us</en>
+            </item>
+        </item>
+        <item>
+            <fr>Outils</fr>
+            <en>Tools</en>
+            <item>
+                <fr>Github</fr>
+                <en>Github</en>
+            </item>
+            <item>
+                <fr>IRC</fr>
+                <en>IRC</en>
+            </item>
+            <item>
+                <fr>Mumble</fr>
+                <en>Mumble</en>
+            </item>
+            <item>
+                <fr>SFTP</fr>
+                <en>SFTP</en>
+            </item>
+            <item>
+                <fr>Mails</fr>
+                <en>Mails</en>
+            </item>
+        </item>
+    </menu>
+</module>
