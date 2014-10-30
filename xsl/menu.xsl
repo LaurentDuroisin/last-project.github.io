@@ -36,13 +36,13 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item">
-        <li class="item" onclick="javascript:window.location = '{current()/@dest}'"><span><xsl:value-of select="*[name()=$lang]"/></span>
+        <li class="item"><a href="{current()/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="subsubmenu"><xsl:apply-templates select="./item" /></ul>
         </li>
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item/item">
 
-        <li class="item" onclick="javascript:window.location = '{current()/@dest}'"><xsl:value-of select="*[name()=$lang]"/></li>
+        <li class="item"><a href="{current()/@dest}"><xsl:value-of select="*[name()=$lang]"/></a></li>
     </xsl:template>
 </xsl:stylesheet>
