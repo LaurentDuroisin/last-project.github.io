@@ -84,13 +84,6 @@ footer > div {
 .menu li ul li {
     display : block;
     position : relative;
-    left : -10px;
-}
-
-.menu li ul li ul li {
-    display : block;
-    position : relative;
-    left : 10px;
 }
 
 .menu li:hover{
