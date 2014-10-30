@@ -39,12 +39,12 @@
             <fr>Langues</fr>
             <en>Langages</en>
             <item>
-                <fr>Français</fr>
-                <en>French</en>
+                <fr dest="/fr" prefix="true">Français</fr>
+                <en dest="/fr" prefix="true">French</en>
             </item>
             <item>
-                <fr>Anglais</fr>
-                <en>English</en>
+                <fr dest="/en" prefix="true">Anglais</fr>
+                <en dest="/en" prefix="true">English</en>
             </item>
         </item>
     </menu>
