@@ -9,8 +9,8 @@
 
     <xsl:variable name="base">
         <xsl:choose>
-            <xsl:when test="/page/@base">
-                <xsl:value-of select="/page/@base"/>
+            <xsl:when test="/page/@domain">
+                <xsl:value-of select="/page/@domain"/>
             </xsl:when>
             <xsl:otherwise>
                  <xsl:value-of select="'.'" />
@@ -40,7 +40,7 @@
     <xsl:template match="/root">
         <HTML>
             <HEAD>
-                <LINK rel="stylesheet" type="text/css" href="css/structure.css"/>
+                <LINK rel="stylesheet" type="text/css" href="file:///home/neckara/Documents/LastProject.github.io/css/structure.css"/>
                 <TITLE>Last Project</TITLE>
                 <LINK rel="icon" type="image/png" href="img/banniere_LE_crush.png" />
             </HEAD>

@@ -3,13 +3,37 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" />
 
-    <xsl:variable name="menu"><xsl:value-of select="/page/@base"/>/<xsl:value-of select="/page/menu"/></xsl:variable>
+    <xsl:variable name="base">
+        <xsl:choose>
+            <xsl:when test="/page/@domain">
+                <xsl:value-of select="/page/@domain"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:value-of select="'.'" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
+    <xsl:variable name="menu"><xsl:value-of select="$base"/>/<xsl:value-of select="/page/menu"/></xsl:variable>
+
+    <xsl:variable name="lang" >
+        <xsl:choose>
+            <xsl:when test="/page/lang">
+                <xsl:value-of select="'/page/lang'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:value-of select="'en'" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
 
     <xsl:template name="menu">
         <ul class="menu">
-            <xsl:for-each select="document($menu)">
-                <xsl:apply-templates />
-            </xsl:for-each>
+            <xsl:if test="/page/menu">
+                <xsl:for-each select="document($menu)">
+                    <xsl:apply-templates />
+                </xsl:for-each>
+            </xsl:if>
             <xsl:for-each select="document('../xml/menu-websites.xml')">
                 <xsl:apply-templates />
             </xsl:for-each>
@@ -17,7 +41,6 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item">
-
         <xsl:variable name='url-base'>
             <xsl:choose>
                 <xsl:when test="./@absolute = 'true'">
@@ -28,7 +51,6 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-
         <li class="item" onclick="javascript:window.location = '{$url-base}{current()/@dest}'"><xsl:value-of select="*[name()=$lang]"/>
             <ul class="submenu"><xsl:apply-templates select="./item" /></ul>
         </li>
@@ -45,7 +67,6 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-
         <li class="item" onclick="javascript:window.location = '{$url-base}{current()/@dest}'"><span><xsl:value-of select="*[name()=$lang]"/></span>
             <ul class="subsubmenu"><xsl:apply-templates select="./item" /></ul>
         </li>

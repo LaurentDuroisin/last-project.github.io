@@ -1,7 +1,6 @@
 css/structure.css
 last-engine/index.html
 last-escape/index.html
-last-team/index.html
 xml/menu-websites.xml
 xsl/menu.xsl
 xsl/structure.xsl
@@ -10,3 +9,6 @@ index.xml
 test.xml
 xml/menu.xml
 test.php
+last-team/index.xml
+last-team/fr/index.xml
+last-team/en/index.xml
