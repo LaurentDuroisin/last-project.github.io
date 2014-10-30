@@ -23,7 +23,7 @@
                     <xsl:apply-templates />
                 </xsl:for-each>
             </xsl:if>
-            <xsl:for-each select="document('../xml/menu-websites.xml')">
+            <xsl:for-each select="document('/xml/menu-websites.xml')">
                 <xsl:apply-templates />
             </xsl:for-each>
         </ul>
