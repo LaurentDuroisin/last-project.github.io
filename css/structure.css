@@ -44,6 +44,7 @@ footer > div {
 }
 
 .menu a {
+    background-color : white;
     text-align : center;
     display : inline-block;
     text-decoration : none;
