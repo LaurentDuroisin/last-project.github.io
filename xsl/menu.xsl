@@ -17,10 +17,8 @@
     </xsl:variable>
 
     <xsl:template name="menu">
+        <style type='text/css'><xsl:text>@IMPORT URL(/css/menu.css);</xsl:text></style>
         <xsl:variable name="menu"><xsl:value-of select="/page/menu"/></xsl:variable>
-        <style type='text/css'>
-          <xsl:text>@IMPORT URL(/css/menu.css);</xsl:text>
-        </style>
         <ul class="menu">
             <xsl:if test="$menu">
                 <xsl:for-each select="document($menu)">
