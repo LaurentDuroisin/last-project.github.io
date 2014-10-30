@@ -41,7 +41,7 @@
         <xsl:variable name="dest">
             <xsl:choose>
                 <xsl:when test="*[name()=$lang]/@prefix  ='true'">
-                    <xsl:value-of select="concat('ee', $page)"/>
+                    <xsl:value-of select="concat(*[name()=$lang]/@dest, $page)"/>
                 </xsl:when>
                 <xsl:otherwise>
                      <xsl:value-of select="*[name()=$lang]/@dest" /><!-- todo $lang -->
