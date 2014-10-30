@@ -35,5 +35,17 @@
                 </item>
             </item>
         </item>
+        <item>
+            <fr>Langues</fr>
+            <en>Langages</en>
+            <item>
+                <fr>Français</fr>
+                <en>French</en>
+            </item>
+            <item>
+                <fr>Anglais</fr>
+                <en>English</en>
+            </item>
+        </item>
     </menu>
 </module>
