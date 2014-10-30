@@ -36,6 +36,10 @@
             </item>
         </item>
         <item>
+            <fr>Contacts</fr>
+            <en>Contact us</en>
+        </item>
+        <item>
             <fr>Langues</fr>
             <en>Languages</en>
             <item>
@@ -46,10 +50,6 @@
                 <fr dest="/en" prefix="true">Anglais</fr>
                 <en dest="/en" prefix="true">English</en>
             </item>
-        </item>
-        <item>
-            <fr>Contacts</fr>
-            <en>Contact us</en>
         </item>
     </menu>
 </module>
