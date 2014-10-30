@@ -27,8 +27,8 @@
                 <en dest="/last-dungeon">Last Dungeon</en>
             </item>
             <item>
-                <fr dest="/others">Autres</fr>
-                <en dest="/others">Others</en>
+                <fr>Autres</fr>
+                <en>Others</en>
                 <item>
                     <fr dest="/odfaeg">ODFAEG</fr>
                     <en dest="/odfaeg">ODFAEG</en>

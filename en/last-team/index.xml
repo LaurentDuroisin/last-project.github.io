@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 
-<page src="/last-team">
-    <lang>fr</lang>
+<page>
+    <lang>en</lang>
     <src>/last-team</src>
-    <menu>/xml/menu.xml</menu>
 </page>

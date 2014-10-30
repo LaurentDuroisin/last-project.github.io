@@ -8,7 +8,7 @@ index.xml
 .gitignore
 xml/menu.xml
 last-team/index.xml
-last-team/fr/index.xml
-last-team/en/index.xml
 fr/index.xml
 en/index.xml
+fr/last-team/index.xml
+en/last-team/index.xml
