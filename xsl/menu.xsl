@@ -44,11 +44,7 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item/item">
-        <xsl:variable name="suffix">
-            <xsl:if test="*[name()=$lang]/@prefix = 'true'">
-                <xsl:value-of select="/page/src"/>
-            </xsl:if>
-        </xsl:variable>
-        <li class="item"><a href="{*[name()=$lang]/@dest}{$suffix}"><xsl:value-of select="*[name()=$lang]"/></a></li>
+
+        <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a></li>
     </xsl:template>
 </xsl:stylesheet>
