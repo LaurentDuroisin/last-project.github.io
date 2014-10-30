@@ -21,11 +21,11 @@
         <xsl:variable name="menu"><xsl:value-of select="/page/menu"/></xsl:variable>
         <ul class="menu">
             <xsl:if test="$menu">
-                <xsl:for-each select="document($menu)">
+                <xsl:for-each select="document($menu)/module/menu/item">
                     <xsl:apply-templates />
                 </xsl:for-each>
             </xsl:if>
-            <xsl:for-each select="document('/xml/menu-websites.xml')">
+            <xsl:for-each select="document('/xml/menu-websites.xml')/module/menu/item">
                 <xsl:apply-templates />
             </xsl:for-each>
         </ul>
