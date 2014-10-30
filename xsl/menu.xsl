@@ -30,19 +30,19 @@
     </xsl:template>
 
     <xsl:template match="/module/menu/item">
-        <li class="item"><a href="{current()/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
+        <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="submenu"><xsl:apply-templates select="./item" /></ul>
         </li>
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item">
-        <li class="item"><a href="{current()/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
+        <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a>
             <ul class="subsubmenu"><xsl:apply-templates select="./item" /></ul>
         </li>
     </xsl:template>
 
     <xsl:template match="/module/menu/item/item/item">
 
-        <li class="item"><a href="{current()/@dest}"><xsl:value-of select="*[name()=$lang]"/></a></li>
+        <li class="item"><a href="{*[name()=$lang]/@dest}"><xsl:value-of select="*[name()=$lang]"/></a></li>
     </xsl:template>
 </xsl:stylesheet>

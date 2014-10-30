@@ -3,35 +3,35 @@
 
 <module>
     <menu>
-        <item dest="/">
-            <fr>Sites</fr>
-            <en>Websites</en>
-            <item dest="/last-team/">
-                <fr>Last Team</fr>
-                <en>Last Team</en>
-            </item>
-            <item dest="test.xml">
-                <fr>Last Engine</fr>
-                <en>Last Engine</en>
-            </item>
-            <item dest="test.xml">
-                <fr>Last Escape</fr>
-                <en>Last Escape</en>
+        <item>
+            <fr dest="/">Sites</fr>
+            <en dest="/">Websites</en>
+            <item>
+                <fr dest="/last-team/">Last Team</fr>
+                <en dest="/last-team/">Last Team</en>
             </item>
             <item>
-                <fr>Last DunGo</fr>
-                <en>Last DunGo</en>
+                <fr dest="/last-engine">Last Engine</fr>
+                <en dest="/last-engine">Last Engine</en>
             </item>
             <item>
-                <fr>Last Dungeon</fr>
-                <en>Last Dungeon</en>
+                <fr dest="/last-escape">Last Escape</fr>
+                <en dest="/last-escape">Last Escape</en>
             </item>
             <item>
-                <fr>Autres</fr>
-                <en>Others</en>
+                <fr dest="/last-dungo">Last DunGo</fr>
+                <en dest="/last-dungo">Last DunGo</en>
+            </item>
+            <item>
+                <fr dest="/last-dungeon">Last Dungeon</fr>
+                <en dest="/last-dungeon">Last Dungeon</en>
+            </item>
+            <item>
+                <fr dest="/others">Autres</fr>
+                <en dest="/others">Others</en>
                 <item>
-                    <fr>ODFAEG</fr>
-                    <en>ODFAEG</en>
+                    <fr dest="/odfaeg">ODFAEG</fr>
+                    <en dest="/odfaeg">ODFAEG</en>
                 </item>
             </item>
         </item>
