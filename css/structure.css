@@ -44,6 +44,7 @@ footer > div {
 }
 
 .menu a {
+    background : rgba(0,255,0,0.5)
     text-align : center;
     display : inline-block;
     text-decoration : none;
