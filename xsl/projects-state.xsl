@@ -15,7 +15,7 @@
     </xsl:variable>
 
     <xsl:template name="module" mode="state">
-        <style type='text/css'><xsl:text>@IMPORT URL(/css/menu.css);</xsl:text></style>
+        <style type='text/css'><xsl:text>@IMPORT URL(/css/projects-state.css);</xsl:text></style>
         <ul class='state'>
             <xsl:for-each select="document('/xml/projects-state.xml')/module/state">
                 <xsl:apply-templates />
