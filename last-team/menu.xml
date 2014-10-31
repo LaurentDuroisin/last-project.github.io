@@ -4,6 +4,10 @@
 <module>
     <menu>
         <item>
+            <fr dest="/last-team">Accueil</fr>
+            <en dest="/last-team">Home</en>
+        </item>
+        <item>
             <fr>Équipe</fr>
             <en>Team</en>
             <item>
