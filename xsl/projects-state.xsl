@@ -13,7 +13,7 @@
         <ul>
             <xsl:apply-templates select="./project" />
         </ul>
-    <xsl:template>
+    </xsl:template>
 <!--
 
     <xsl:template match="/module/state/project">
@@ -23,7 +23,7 @@
                 <xsl:apply-templates/>
             </ul>
         </li>
-    <xsl:template>
+    </xsl:template>
 
     <xsl:template match="/module/state/project/step">
         <li>
@@ -32,7 +32,7 @@
                 <xsl:apply-templates/>
             </ul>
         </li>
-    <xsl:template>
+    </xsl:template>
 
     <xsl:template match="/module/state/project/step/task">
         <li>
@@ -41,7 +41,7 @@
                 <xsl:apply-templates/>
             </ul>
         </li>
-    <xsl:template>
+    </xsl:template>
 
     <xsl:template match="/module/state/project/step/task/item">
         <li>
@@ -50,6 +50,6 @@
                 <xsl:apply-templates/>
             </ul>
         </li>
-    <xsl:template>
+    </xsl:template>
 -->
 </xsl:stylesheet>
