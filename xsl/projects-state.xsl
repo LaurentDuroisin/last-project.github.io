@@ -40,10 +40,7 @@
 
     <xsl:template match="/module/state/project/step/task/item">
         <li>
-            <xsl:value-of select="current()"/>
-            <ul>
-                <xsl:apply-templates/>
-            </ul>
+            <xsl:apply-templates/> (<xsl:value-of select="current()/@done"/>)
         </li>
     </xsl:template>
 
