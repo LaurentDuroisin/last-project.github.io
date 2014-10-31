@@ -9,8 +9,8 @@
             <html>
                 <h1> Sommaire : </h1>
                 <ul id="sommaire">
-                         <li><a href='tutos/install.xml'>Installation de ODFAEG.</a></li>
-                         <li><a href='tutos/appli.xml'>Création d'une application ODFAEG.</a></li>
+                         <li><a href='tutos/install/'>Installation de ODFAEG.</a></li>
+                         <li><a href='tutos/appli/'>Création d'une application ODFAEG.</a></li>
                          <li><a href='#'>Gestion des ressources externes.</a></li>
                          <li><a href='#'>Le système de commande.</a></li>
                          <li><a href='#'>Les vues.</a></li>
