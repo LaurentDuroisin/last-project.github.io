@@ -42,7 +42,7 @@
 
     <xsl:template match="/module/state/project/step/task">
         <li title="{*[name()=$lang]}">
-            <xsl:value-of select="./@name"/> ( <xsl:value-of select="count(current()/item) div count(current()/item) * 100"/>% )
+            <xsl:value-of select="./@name"/> ( <xsl:value-of select="count(current()/item/*[@done = 'true']) div count(current()/item) * 100"/>% )
             <ul>
                 <xsl:apply-templates select="./item"/>
             </ul>
