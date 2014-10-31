@@ -8,13 +8,13 @@
             <xsl:apply-templates />
         </xsl:for-each>
     </xsl:template>
-<!--
+
     <xsl:template match="module/state">
-        <ul>??
+        <ul>
             <xsl:apply-templates select="./project" />
         </ul>
     <xsl:template>
-
+<!--
 
     <xsl:template match="/module/state/project">
         <li>
