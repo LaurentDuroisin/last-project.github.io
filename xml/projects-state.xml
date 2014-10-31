@@ -37,6 +37,10 @@
                     <item done="false">Forum layout</item>
                     <item done="false">Forum design</item>
                 </task>
+                <task name="News">
+                    <fr>Créer différents fils d'actualités pour l'avancement</fr>
+                    <en>Create different newsletters</en>
+                </task>
             </step>
         </project>
         <project name="Last Team" state="run">
