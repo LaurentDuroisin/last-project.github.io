@@ -3,7 +3,7 @@
 <page>
     <menu>/xml/menu.xml</menu>
     <title>Last Project</title>
-    <icon></icon>
+    <icon>/img/icon.png</icon>
     <banner></banner>
     <content>
         <html>
