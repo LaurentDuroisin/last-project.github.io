@@ -4,7 +4,7 @@
     <xsl:output method="html" />
 
     <xsl:template name="module" mode="state">
-        <xsl:for-each select="document('/xml/projects-state.xml')/module/state" />
+        <xsl:for-each select="document('/xml/projects-state.xml')/module/state">
             <xsl:apply-templates />
         </xsl:for-each>
     </xsl:template>
