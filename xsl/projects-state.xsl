@@ -13,9 +13,9 @@
 
     <xsl:template match="/module/state/project">
         <li>
-            <xsl:value-of select="./@name"/>
+            <xsl:value-of select="./@name"/> (<xsl:value-of select="./@state"/>)
             <ul>
-                <xsl:apply-templates/><xsl:text> (</xsl:text><xsl:value-of select="./@state"/><xsl:text>)</xsl:text>
+                <xsl:apply-templates/>
             </ul>
         </li>
     </xsl:template>
