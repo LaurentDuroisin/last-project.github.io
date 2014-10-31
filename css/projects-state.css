@@ -1,7 +1,7 @@
-.state li ul li {
+.state > li > ul {
     display : none;
 }
 
-.state li ul:hover li {
+.state > li:hover > ul {
     display : block;
 }
