@@ -10,7 +10,7 @@
                     <item done="true">Choose title</item>
                     <item done="true">Choose footer</item>
                     <item done="true">Choose lang in files</item>
-                    <item done="false">Add personnal CSS file</item>
+                    <item done="true">Add personnal CSS file</item>
                 </task>
                 <task name="Design">
                     <fr>Refondre le design du site</fr>
