@@ -5,6 +5,7 @@
 
     <xsl:import href="menu.xsl"/>
     <xsl:import href="footer.xsl"/>
+    <xsl:import href="projects-state.xsl"/>
 
 
     <xsl:output method="html" />
@@ -54,6 +55,15 @@
 
     <xsl:template match="html">
         <xsl:copy-of select="." disable-output-escaping="yes" />
+    </xsl:template>
+
+    <xsl:template match="import">
+        <xsl:variable name="file">
+            <xsl:value-of select="current()"/>
+        </xsl:variable>
+        <xsl:for-each select="document($file)">
+            <xsl:apply-templates />
+        </xsl:for-each>
     </xsl:template>
 
 </xsl:stylesheet>
