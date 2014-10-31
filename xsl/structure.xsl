@@ -64,4 +64,16 @@
         <xsl:call-template name="module" mode="$module-name" />
     </xsl:template>
 
+    <xsl:template match="fr">
+        <xsl:if test="$lang = 'fr'">
+            <xsl:apply-templates/>
+        </xsl:if>
+    </xsl:template>
+
+    <xsl:template match="en">
+        <xsl:if test="$lang = 'en'">
+            <xsl:apply-templates/>
+        </xsl:if>
+    </xsl:template>
+
 </xsl:stylesheet>
