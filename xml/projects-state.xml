@@ -1,0 +1,70 @@
+<module>
+    <state>
+        <project name="General" state="run">
+            <step name="Website">
+                <task name="Design">
+                    <fr>Refondre le design du site</fr>
+                    <en>Make a new design for the website</en>
+                    <item done="false">Page title</item>
+                    <item done="false">Page Icon</item>
+                    <item done="false">Backgound</item>
+                    <item done="false">Menu</item>
+                    <item done="false">Design</item>
+                </task>
+                <task name="Content">
+                    <fr>Ajouter le contenu au site</fr>
+                    <en>Add content to the Website</en>
+                    <item done="false">Contacts</item>
+                    <item done="false">Last Team</item>
+                    <item done="false">Last Engine</item>
+                    <item done="false">Last Escape</item>
+                    <item done="false">Last DunGo</item>
+                    <item done="false">Last Dungeon</item>
+                </task>
+                <task name="Administration">
+                    <fr>Tâches d'administrations</fr>
+                    <en>Administration task</en>
+                    <item done="false">Redirect ports</item>
+                    <item done="false">Redirect e-mail/url</item>
+                    <item done="false">Test server</item>
+                </task>
+            </step>
+        </project>
+        <project name="Last Team" state="run">
+            <step name="Website">
+                <task name="Content">
+                    <fr>Ajouter le contenu au site</fr>
+                    <en>Add content to the Website</en>
+                    <item done="false">Home page</item>
+                    <item done="false">Team make-up page</item>
+                    <item done="false">Tools pages</item>
+                    <item done="false">Join us page</item>
+                    <item done="false">Protocol page</item>
+                </task>
+            </step>
+        </project>
+        <project name="Last Engine" state="run">
+            <step name="v0.1 Module System">
+                <task name="Module System">
+                    <fr>Mise en place du système de modules</fr>
+                    <en>Module System</en>
+                    <item done="true">Errors handler</item>
+                    <item done="true">Module Info</item>
+                    <item done="true">Module System</item>
+                    <item done="false">Module Dependancies</item>
+                    <item done="false">Module Loader</item>
+                    <item done="false">Module Manager</item>
+                </task>
+                <task name="Website">
+                    <fr>Ajouter le contenu au site</fr>
+                    <en>Add content to the Website</en>
+                    <item done="false">Documentation</item>
+                    <item done="false">Tutorials</item>
+                </task>
+            </step>
+        </project>
+        <project name="Last Escape" state="paused" />
+        <project name="Last DunGo" state="paused" />
+        <project name="Last Dungeon" state="paused" />
+    </state>
+</module>
