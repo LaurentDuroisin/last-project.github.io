@@ -29,11 +29,20 @@ footer {
 #hide-header {
     position : fixed;
     z-index : 5;
-    background : green;
+    background : blue;
     height : 80px;
     width : 100%;
     top : 0px;
     left : 0px;
+}
+
+#banner {
+    position : fixed;
+    z-index : 6;
+    top : 0px;
+    left : 0px;
+    right : 0px;
+    margin : 0 auto;
 }
 
 #content-zone {
