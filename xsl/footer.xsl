@@ -29,7 +29,7 @@
         <style type='text/css'>
           <xsl:text>@IMPORT URL(/css/footer.css);</xsl:text>
         </style>
-        <DIV><xsl:value-of select="$footer-file"/><xsl:value-of select="document($footer-file)/module/footer/*[name()=$lang]" /></DIV>
+        <DIV><xsl:value-of select="document($footer-file)/module/footer/*[name()=$lang]" /></DIV>
     </xsl:template>
 
 </xsl:stylesheet>
