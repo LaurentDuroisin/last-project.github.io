@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
-    <menu>/xml/menu.xml</menu>
-    <footer>/xml/footer.xml</footer>
+    <menu>/autres/odfaeg/xml/menu.xml</menu>
+    <footer>/autres/odfaeg/xml/footer.xml</footer>
     <title>ODFAEG</title>
     <content>
         <fr>
