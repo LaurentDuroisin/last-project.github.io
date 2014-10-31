@@ -30,8 +30,8 @@
                 <fr>Autres</fr>
                 <en>Others</en>
                 <item>
-                    <fr dest="/odfaeg">ODFAEG</fr>
-                    <en dest="/odfaeg">ODFAEG</en>
+                    <fr dest="/autres/odfaeg">ODFAEG</fr>
+                    <en dest="/autres/odfaeg">ODFAEG</en>
                 </item>
             </item>
         </item>
