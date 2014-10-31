@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+<module>
+	<menu>
+		<item>
+			<fr dest="/"> Présentation </fr>
+		</item>
+		<item>
+			<fr dest="/"> CV           </fr>
+                </item>
+                        <fr dest="/"> Tutoriels    </fr>
+                <item>
+			<fr dest="/"> Contacts     </fr>
+                </item>
+	</menu>
+</module>
