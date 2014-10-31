@@ -62,6 +62,7 @@
             <xsl:value-of select="current()"/>
         </xsl:variable>
         <xsl:for-each select="document($file)">
+            <xsl:apply-templates />
             <!--?<xsl:apply-imports />?-->
         </xsl:for-each>
     </xsl:template>
