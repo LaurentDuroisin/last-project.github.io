@@ -29,7 +29,7 @@ footer {
 #hide-header {
     position : fixed;
     z-index : 5;
-    background : blue;
+    background : green;
     height : 80px;
     width : 100%;
     top : 0px;
