@@ -3,6 +3,6 @@
 <page>
     <menu>/xml/menu.xml</menu>
     <content>
-        <import>/xml/projects-state.xml</import>
+        <import-module>state</import-module>
     </content>
 </page>

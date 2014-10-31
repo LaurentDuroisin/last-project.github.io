@@ -57,13 +57,11 @@
         <xsl:copy-of select="." disable-output-escaping="yes" />
     </xsl:template>
 
-    <xsl:template match="import">
-        <xsl:variable name="file">
+    <xsl:template match="import-module">
+        <xsl:variable name="module-name">
             <xsl:value-of select="current()"/>
         </xsl:variable>
-        <xsl:for-each select="document($file)/module">
-            ?<xsl:apply-imports />?
-        </xsl:for-each>
+        <xsl:call-template name="$module-name" />
     </xsl:template>
 
 </xsl:stylesheet>
