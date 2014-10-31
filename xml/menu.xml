@@ -8,8 +8,8 @@
             <en dest="/">News</en>
         </item>
         <item>
-            <fr dest="/project-state">État des projets</fr>
-            <en dest="/project-state">Projects state</en>
+            <fr dest="/projects-state">État des projets</fr>
+            <en dest="/projects-state">Projects state</en>
             <item>
                 <fr>Last Team</fr>
                 <en>Last Team</en>
