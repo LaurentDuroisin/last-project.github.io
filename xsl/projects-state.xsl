@@ -4,13 +4,11 @@
     <xsl:output method="html" />
 
     <xsl:template name="module" mode="state">
-        oki
+        <xsl:for-each select="document('/xml/projects-state.xml')/module/state" />
+            <xsl:apply-templates />
+        <xsl:for-each>
     </xsl:template>
 <!--
-    <xsl:template name="state">
-        Test
-    </xsl:template>
-
     <xsl:template match="module/state">
         <ul>??
             <xsl:apply-templates select="./project" />
