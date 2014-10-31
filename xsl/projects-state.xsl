@@ -14,17 +14,17 @@
             ???<xsl:apply-templates />
         </ul>
     </xsl:template>
-<!--
 
     <xsl:template match="/module/state/project">
         <li>
+            ??
             <xsl:value-of select="./@name"/>
             <ul>
                 <xsl:apply-templates/>
             </ul>
         </li>
     </xsl:template>
-
+<!--
     <xsl:template match="/module/state/project/step">
         <li>
             <xsl:value-of select="./@name"/>
