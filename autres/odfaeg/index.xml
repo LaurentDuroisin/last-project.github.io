@@ -7,7 +7,7 @@
     <content>
         <fr>
             <html>
-                <h1> Sommaire : </hi>
+                <h1> Sommaire : </h1>
                 <ul id="sommaire">
                          <li><a href='tutos/install.xml'>Installation de ODFAEG.</a></li>
                          <li><a href='tutos/appli.xml'>Création d'une application ODFAEG.</a></li>
