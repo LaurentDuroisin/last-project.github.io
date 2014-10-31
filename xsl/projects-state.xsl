@@ -33,14 +33,14 @@
         <li>
             <xsl:value-of select="./@name"/>
             <ul>
-                <xsl:apply-templates/>
+                <xsl:apply-templates select="./item"/>
             </ul>
         </li>
     </xsl:template>
 
     <xsl:template match="/module/state/project/step/task/item">
         <li>
-            <xsl:apply-templates/> (<xsl:value-of select="current()/@done"/>)
+            <xsl:apply-templates/> (<xsl:value-of select="./@done"/>)
         </li>
     </xsl:template>
 
