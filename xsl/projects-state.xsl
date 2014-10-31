@@ -15,7 +15,7 @@
         <li>
             <xsl:value-of select="./@name"/>
             <ul>
-                <xsl:apply-templates/>
+                <xsl:apply-templates/> ( <xsl:value-of select="./@state"/> )
             </ul>
         </li>
     </xsl:template>
