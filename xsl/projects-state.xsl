@@ -9,7 +9,7 @@
         </xsl:for-each>
     </xsl:template>
 
-    <xsl:template match="module/state">
+    <xsl:template match="module/state" mode="state">
         <ul>
             <xsl:apply-templates />
         </ul>
