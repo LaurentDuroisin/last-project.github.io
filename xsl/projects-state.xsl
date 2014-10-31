@@ -15,7 +15,8 @@
     </xsl:variable>
 
     <xsl:template name="module" mode="state">
-        <ul>
+        <style type='text/css'><xsl:text>@IMPORT URL(/css/menu.css);</xsl:text></style>
+        <ul class='state'>
             <xsl:for-each select="document('/xml/projects-state.xml')/module/state">
                 <xsl:apply-templates />
             </xsl:for-each>
@@ -33,7 +34,7 @@
 
     <xsl:template match="/module/state/project/step">
         <li>
-            <xsl:value-of select="./@name"/>(<xsl:value-of select="count(current()/task/item[@done = 'true']) div count(current()/task/item) * 100"/>%)
+            <xsl:value-of select="./@name"/> (<xsl:value-of select="count(current()/task/item[@done = 'true']) div count(current()/task/item) * 100"/>%)
             <ul>
                 <xsl:apply-templates/>
             </ul>
