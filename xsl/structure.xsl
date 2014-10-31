@@ -61,7 +61,7 @@
         <xsl:variable name="module-name">
             <xsl:value-of select="current()"/>
         </xsl:variable>
-        <xsl:call-template name="$module-name" />
+        <xsl:value-of select="$module-name" />
     </xsl:template>
 
 </xsl:stylesheet>
