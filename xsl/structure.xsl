@@ -51,7 +51,7 @@
 
                 <DIV id="hide-header"></DIV>
                 <xsl:if test="/page/banner">
-                    <img id="banner" src="{/page/banner}" alt="banner"/>
+                    <div id="banner-div"><img id="banner" src="{/page/banner}" alt="banner"/></div>
                 </xsl:if>
                 <DIV id="menu-div"><xsl:call-template name="menu"/></DIV>
                 <DIV id="content-zone">
