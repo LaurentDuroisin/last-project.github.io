@@ -2,5 +2,6 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
     <menu>/last-team/menu.xml</menu>
+    <title>Last Team</title>
     <content>Last team à venir</content>
 </page>

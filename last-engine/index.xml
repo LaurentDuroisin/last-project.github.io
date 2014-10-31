@@ -2,5 +2,6 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
     <menu>/last-engine/menu.xml</menu>
+    <title>Last Engine</title>
     <content>Last engine à venir</content>
 </page>

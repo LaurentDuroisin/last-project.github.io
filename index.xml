@@ -2,6 +2,7 @@
 <?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
 <page>
     <menu>/xml/menu.xml</menu>
+    <title>Last Project</title>
     <icon></icon>
     <banner></banner>
     <content>
