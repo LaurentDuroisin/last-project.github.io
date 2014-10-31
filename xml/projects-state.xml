@@ -8,8 +8,9 @@
                     <item done="true">Choose icon</item>
                     <item done="false">Choose banner</item>
                     <item done="true">Choose title</item>
-                    <item done="false">Choose footer</item>
+                    <item done="true">Choose footer</item>
                     <item done="true">Choose lang in files</item>
+                    <item done="false">Add personnal CSS file</item>
                 </task>
                 <task name="Design">
                     <fr>Refondre le design du site</fr>

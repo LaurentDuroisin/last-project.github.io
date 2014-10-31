@@ -34,11 +34,16 @@
     <xsl:template match="/page/title" />
     <xsl:template match="/page/icon" />
     <xsl:template match="/page/footer" />
+    <xsl:template match="/page/banner" />
+    <xsl:template match="/page/css"/>
 
     <xsl:template match="/page/content">
         <HTML>
             <HEAD>
                 <LINK rel="stylesheet" type="text/css" href="/css/structure.css"/>
+                <xsl:for-each select="/page/css">
+                    <LINK rel="stylesheet" type="text/css" href="{current()}"/>
+                </xsl:for-each>
                 <TITLE><xsl:value-of select="/page/title"/></TITLE>
                 <LINK rel="icon" type="image/png" href="{/page/icon}" />
             </HEAD>

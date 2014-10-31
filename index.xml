@@ -5,7 +5,7 @@
     <title>Last Project</title>
     <icon>/img/icon.png</icon>
     <footer>/xml/footer.xml</footer>
-    <banner></banner>
+    <banner>/test.png</banner>
     <content>
         <html>
             <center><a class="twitter-timeline" href="https://twitter.com/TheNeckara" data-widget-id="449917142222118912">Tweets de @TheNeckara</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></center>
