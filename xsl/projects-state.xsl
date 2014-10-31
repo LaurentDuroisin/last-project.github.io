@@ -11,7 +11,7 @@
 
     <xsl:template match="module/state">
         <ul>
-            <xsl:apply-templates select="./project" />
+            <xsl:apply-templates />
         </ul>
     </xsl:template>
 <!--
