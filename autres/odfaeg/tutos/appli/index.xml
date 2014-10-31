@@ -7,7 +7,7 @@
     <content>
         <fr>
                 <html>
-                      <u>Chapitre II : Création d'une application ODFAEG-LIKE.</u>
+                      <h1>Chapitre II : Création d'une application ODFAEG-LIKE.</h1>
 
 Définition de l'application :
 
@@ -37,7 +37,7 @@ onDisplay(odfaeg::RenderWindow *window)
 
 Cette méthode est à redéfinir si vous devez dessiner des choses directement sur la fenêtre de rendu.
 
-onUpdate(sf::Event& event)
+onUpdate(sf::Event&amp; event)
 
 Dans cette méthode vous pouvez mettre à jour la frame suivante. (Celle-ci sera mise à jour en même temps que le dessin de la frame courante à l'aide d'un thread.)
 
