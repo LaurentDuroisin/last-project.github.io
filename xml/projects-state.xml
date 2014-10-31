@@ -5,7 +5,7 @@
                 <task name="Fonctionnalities">
                     <fr>Fonctionnalités à ajouter</fr>
                     <en>Fonctionnalities to add</en>
-                    <item done="false">Choose icon</item>
+                    <item done="true">Choose icon</item>
                     <item done="false">Choose banner</item>
                     <item done="true">Choose title</item>
                     <item done="false">Choose footer</item>

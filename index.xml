@@ -4,6 +4,7 @@
     <menu>/xml/menu.xml</menu>
     <title>Last Project</title>
     <icon>/img/icon.png</icon>
+    <footer>/xml/footer.xml</footer>
     <banner></banner>
     <content>
         <html>

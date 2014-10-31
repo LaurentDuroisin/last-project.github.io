@@ -14,12 +14,23 @@
         </xsl:choose>
     </xsl:variable>
 
+    <xsl:variable name="footer-file" >
+        <xsl:choose>
+            <xsl:when test="/page/footer">
+                <xsl:value-of select="'/page/footer'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <xsl:value-of select="'/xml/footer.xml'" />
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+
 
     <xsl:template name="footer">
         <style type='text/css'>
           <xsl:text>@IMPORT URL(/css/footer.css);</xsl:text>
         </style>
-        <DIV><xsl:value-of select="document('/xml/footer.xml')/module/footer/*[name()=$lang]" /></DIV>
+        <DIV><xsl:value-of select="document($footer-file)/module/footer/*[name()=$lang]" /></DIV>
     </xsl:template>
 
 </xsl:stylesheet>

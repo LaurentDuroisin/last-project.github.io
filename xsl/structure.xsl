@@ -33,6 +33,7 @@
     <xsl:template match="/page/lang" />
     <xsl:template match="/page/title" />
     <xsl:template match="/page/icon" />
+    <xsl:template match="/page/footer" />
 
     <xsl:template match="/page/content">
         <HTML>
