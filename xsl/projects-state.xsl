@@ -4,6 +4,7 @@
     <xsl:output method="html" />
 
     <xsl:template name="module" mode="state">
+        oki
     </xsl:template>
 <!--
     <xsl:template name="state">
