@@ -7,7 +7,7 @@
                     <en>Fonctionnalities to add</en>
                     <item done="false">Choose icon</item>
                     <item done="false">Choose banner</item>
-                    <item done="false">Choose title</item>
+                    <item done="true">Choose title</item>
                     <item done="false">Choose footer</item>
                     <item done="true">Choose lang in files</item>
                 </task>

@@ -32,13 +32,14 @@
     <xsl:template match="/page/menu" />
     <xsl:template match="/page/lang" />
     <xsl:template match="/page/title" />
+    <xsl:template match="/page/icon" />
 
     <xsl:template match="/page/content">
         <HTML>
             <HEAD>
                 <LINK rel="stylesheet" type="text/css" href="/css/structure.css"/>
                 <TITLE><xsl:value-of select="/page/title"/></TITLE>
-                <LINK rel="icon" type="image/png" href="img/banniere_LE_crush.png" />
+                <LINK rel="icon" type="image/png" href="{/page/icon}" />
             </HEAD>
             <BODY>
 
