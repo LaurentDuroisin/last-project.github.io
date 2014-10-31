@@ -41,10 +41,7 @@
     </xsl:template>
 
     <xsl:template match="/module/state/project/step/task">
-        <xsl:variable name="$title">
-            <xsl:value-of select="*[name()=$lang]"/>
-        </xsl:variable>
-        <li title="$title">
+        <li title="{*[name()=$lang]}">
             <xsl:value-of select="./@name"/>
             <ul>
                 <xsl:apply-templates select="./item"/>
