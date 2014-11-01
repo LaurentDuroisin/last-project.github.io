@@ -35,8 +35,19 @@
             <fr>Outils</fr>
             <en>Tools</en>
             <item>
+                <fr>Youtube</fr>
+                <en>Youtube</en>
+            </item>
+            <item>
                 <fr>Github</fr>
                 <en>Github</en>
+            </item>
+            <item>
+                <fr>Documentation<fr>
+                <en>Documentation</en>
+            <item>
+                <fr>Forum</fr>
+                <en>Forum</en>
             </item>
             <item>
                 <fr>IRC</fr>
@@ -51,12 +62,12 @@
                 <en>Twitter</en>
             </item>
             <item>
-                <fr>SFTP</fr>
-                <en>SFTP</en>
-            </item>
-            <item>
                 <fr>Mails</fr>
                 <en>Mails</en>
+            </item>
+            <item>
+                <fr>SFTP</fr>
+                <en>SFTP</en>
             </item>
         </item>
     </menu>
