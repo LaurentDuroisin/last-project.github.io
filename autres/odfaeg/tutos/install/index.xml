@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
+<page>
+    <menu>/autres/odfaeg/xml/menu.xml</menu>
+    <footer>/autres/odfaeg/xml/footer.xml</footer>
+    <title>ODFAEG</title>
+    <content>
+        <fr>
+                <html>
+                        <h1>Chapitre I : Installation de ODFAEG.</h1>
+
+                <h2>Prérequis : </h2>
+
+                <p>Avant d'installer ODFAEG il vous faudra installer 2 autres petites <br/> librairies, un compilateur c++  qui supporte le nouveau standard c++14 (gcc version 4.9.x)<br/> ainsi que cmake, rassurer vous, c'est très rapide à installer : <br/></p>
+
+                <h2>Installation des outils de compilation.</h2>
+
+                <p>Sous linux il suffit d'ouvrir un terminal, de se connecter en mode super<br/> utilisateur et de taper cette commande apt-get install gcc-4.9 g++-4..9 cmake-gui pour <br/> les plateformes 64 bits ou bien  apt-get install gcc-4.9-multilib g++-4.9-multilib<br/> cmake-gui et passer le flag -m32 lors de la compilation pour les plateformes 32 bits.<br/></p>
+
+                <i>Il vous faudra peut être aussi installer la version 4.8 de gcc également si<br/> il vous avez des erreurs de linkage avec certains fonctions de la STL.<br/></i>
+
+                <p>Sous windows vous devez aller sur ce site : http://tdm-gcc.tdragon.net/ et<br/> télécharger un compilateur tdm-gcc 32 bits pour les plateformes 32 bits ou 64 bits<br/> pour les plateformes 64 bits.<br/>
+                Ensuite, installer cmake-gui : http://www.cmake.org/cmake/resources/software.html <br/></p>
+
+                <h2>Installation de la librairie SFML.</h2>
+
+                <p>Pour installer SFML tout est expliqué sur le site web du développeur<br/> principal : <a href="http://en.sfml-dev.org">Site de la SFML.</a><br/>
+                Pas besoin donc d'en dire plus.<br/></p>
+
+                <p>ODFAEG utilise SFML pour faire des applications portable et utiliser<br/> l'encapsulation qu'offre SFML sur toute les bibliothèques codée en C qui sont utilisée par<br/> les différents modules de ODFAEG.<br/></p>
+
+                <h2>Installation de openSSL.</h2>
+
+                <p>Fortement recommandée si vous voulez faire des applications sécurisée qui<br/> communique en réseau, cette librairie est utilisé par ODFAEG pour chiffrer les informations qui transite sur un réseau.<br/></p>
+
+                <p>Sur linux il suffit de taper la commande apt-get install libssl-dev.<br/>
+
+                Sous windows la meilleur méthode est de télécharger MSYS : <a href="http://>sourceforge.net/projects/mingw/files/">MSYS</a><br/>
+
+                Ensuite télécharger les sources de openssl : <a href="https://www.openssl.org/">OPENSSL</a><br/>
+
+                Installer ensuite perl : <a href="http://www.perl.org/get.html">PERL</a></p>
+
+                <p>Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
+
+                perl Configure mingw <br/>
+
+                Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/> remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/> plateformes 64 bits.(Sinon ça ne compile pas) <br/>
+
+                Taper ensuite les commandes suivante : make et make install pour installer<br/> la librairie. </br></p>
+
+                <h2>Installation de la librairie ODFAEG : </h2>
+
+                <p>Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> installer ODFAEG, son installation est similaire à l'installation de SFML, ODFAEG ne<br/> fournis pas de librairie pré-compilée, vous devez donc télécharger le code source  ouvrir<br/> Cmake et la compiler.<br/></p>
+
+                <p>Cliquer sur browse source et spécifier l'endroit ou vous avez télécharger ODFAEG.<br/>
+
+                Cliquer ensuite sur browse build et créer un nouveau dossier dans le répertoire ODFAEG, appeller le par exemple ODFAEG-build.<br/>
+
+                <p>Cliquez ensuite sur le bouton Configure choissez l'option Specify native<br/> compiler et indiquer l'endroit ou se trouve vos compilateur c et c++. (C:/TDM-GCC-32/bin<br/> ou bien C:/TDM-GCC-64/bin sous windows ou bien /usr/bin sous linux.)<br/>
+
+                Là, il vous affiche une série d'option Cmake include préfix correspond à<br/> l'endroit ou vous voulez installer ODFAEG.<br/>
+
+                Attention : pour les plateformes 32 bits spécifier la valeur i386 pour<br/> CMAKE_ARCHITECTURE,  sinon, spécifier la valeur i686 pour les plateformes 64 bits.<br/>
+
+                Si ça ne compile pas, décocher l'option Build shared lib. (Il se peut que <br/> le mode dynamique ne soit pas encore supporté)<br/></p>
+
+                <p>Lorsque tout est bon cliqué à nouveau sur configure et ensuite sur generate.<br/>
+
+                Ouvrez un terminal et aller dans le dossier ODFAEG-build (là ou se trouve le Makefile de ODFAEG)<br/>
+                Sous windows taper les commandes mingw32-make et mingw-make install pour installé la librairies.<br/>
+                Sous linux taper les commandes make et make install.<br/>
+
+                Et voilà ODFAEG est installé.<br/></p>
+
+                <p>Il ne vous reste plus qu'à créer un projet dans votre EDI préféré et de<br/> créer un nouveau projet, n'oublier pas de lier les différentes bibliothèque de<br/> ODFAEG à votre projet (qui se trouve dans le dossier lib de ODFAEG) et de préciser<br/> l'endroit ou se trouvent les fichiers d'en tête de ODFAEG, de SFML et d'openssl. (Dans les<br/> dossier include de ODFAEG et de SFML et de openssl)<br/>
+                Il vous faudra aussi lier les librairies suivantes à votre projet : <br/></p>
+		<ul>
+                <li>GLEW en static.</li>
+                <li>SFML en dynamic.</li>
+                <li>Opengl.</li>
+                <li>Openssl et gdi32 si vous être sous windows. (ou bien libssl et libcrypto si vous être sous linux)</li>
+		</ul>
+
+                <p>N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la<br/> librairie en mode static.<br/>
+
+                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG,<br/> une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/></p>
+                </html>
+        </fr>
+    </content>
+</page>

@@ -3,12 +3,20 @@
 <module>
 	<menu>
 		<item>
-			<fr dest="/"> Présentation </fr>
+                        <fr dest="/autres/odfaeg/presentation"> Présentation </fr>
 		</item>
 		<item>
 			<fr dest="/"> CV           </fr>
                 </item>
-                        <fr dest="/"> Tutoriels    </fr>
+                <item>
+                        <fr dest="/autres/odfaeg"> Tutoriels    </fr>
+                        <item>
+                            <fr dest="/autres/odfaeg/tutos/install">Installation de ODFAEG</fr>
+                        </item>
+                        <item>
+                            <fr dest="/autres/odfaeg/tutos/appli">Création d'une application ODFAEG</fr>
+                        </item>
+                </item>
                 <item>
 			<fr dest="/"> Contacts     </fr>
                 </item>

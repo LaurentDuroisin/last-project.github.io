@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
-<footer>
-License
-</footer>
+<?xml-stylesheet type="text/xsl" href="/xsl/footer.xsl"?>
+<module>
+    <footer>
+        <fr>License</fr>
+        <en>Licence</en>
+    </footer>
+</module>

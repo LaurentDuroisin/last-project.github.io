@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
+<page>
+    <menu>/autres/odfaeg/xml/menu.xml</menu>
+    <footer>/autres/odfaeg/xml/footer.xml</footer>
+    <title>ODFAEG</title>
+    <content>
+        <fr>
+                <html>
+                        <h1>Chapitre XI : La gestion des collisions.</h1>
+
+               		La méthode simple : 
+
+La méthode simple consiste à récupérer la cellule de la grille du monde à un endroit, et de faire en sorte que le joueur ne puisse pas passer sur cette case comme ceci :
+
+World::getGridCellAt(Vec3f(x, y, 0)) 
+
+Le z vaut toujours zéro ici car pour nos entités 2D nos cellules n'ont pas de profondeur.
+
+Une méthode plus précise :
+
+Faire les collisions sur les cases de la grille peut ne pas être très précis, odfaeg permet également d'associer à chaque entité une hiérarchie de volumes englobants, c'est à dire que tout comme les entités, les volumes englobant peuvent contenir des volumes englobants enfants, le test de collision se fera alors sur les volumes englobant enfant si le volume englobant parent est en collision avec un autre entité du monde.
+Voici un exemple de code qui ajoute un volume de collision à une entité, par défaut les entités n'ont pas de volume de collision.
+
+ odfaeg::BoundingVolume *bb = new odfaeg::BoundingBox(decor->getGlobalBounds().getPosition().x, decor->getGlobalBounds().getPosition().y + decor->getGlobalBounds().getSize().y * 0.4f, 0,
+            decor->getGlobalBounds().getSize().x, decor->getGlobalBounds().getSize().y * 0.25f, 0);
+            decor->setCollisionVolume(bb);
+odfaeg possède actuellement 5 types de volumes englobant pouvant s'imbriquer les uns dans les autres :
+BoundingBox : une boîte alignée avec les axes x, y et z.
+OrientedBoundingBox : une boîte orientée.
+BoundingSphere : une sphere.
+BoundingEllipsoid : une éllipsoïde.
+BoundingPolygon : un polygône convexe.
+
+Tester les collisions : 
+
+afin de tester la collision, il suffit d'appeler la fonction collide de la classe World en lui passant l' entité sur laquelle on veut tester la collision :
+
+if (World::collide(caracter)) {
+        World::moveEntity(caracter, -caracter->getDir().x * t, -caracter->getDir().y * t);
+        getView().move(-caracter->getDir().x * t, -caracter->getDir().y * t, 0);
+}
+
+Ici, si l'entité est en collision avec une case ou une autre entité dans le monde, on annule le déplacement de l'entité.
+
+Le système de particules : 
+
+Celui-ci reprendra celui de la thor library donc il suffit de lire les tutoriels de la librairie thor :
+
+http://www.bromeon.ch/libraries/thor/v2.0/tutorial-particles.html
+
+Vous trouverez en annexe un exemple de code source qui résume tout ce qu'on a vu jusqu'ici et qui montre déjà ce que le framework propose de faire, mais ce n'est que le commancement car je suis encore assez loin comparé à d'autres projets déjà existant.
+
+
+                </html>
+        </fr>
+    </content>
+</page>

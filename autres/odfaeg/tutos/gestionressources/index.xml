@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
+<page>
+    <menu>/autres/odfaeg/xml/menu.xml</menu>
+    <footer>/autres/odfaeg/xml/footer.xml</footer>
+    <title>ODFAEG</title>
+    <content>
+        <fr>
+                <html>
+                        <h1>Chapitre III : le système de gestion des ressources externes</h1>
+
+               		Charger et récupérer des ressource externes :
+
+Pour charger des ressources externes, odfaeg utilise 2 classes : 
+
+ResourceManager : permet de charger toutes des ressources d'un seul et même type.
+
+Resource cache : permet de charger des ressources de type différents :
+
+Essayons par exemple de charger un tileset contenant toute des textures d'herbe, pour cela, il faut d'abord créer un gestionnaire de texture comme ceci :
+
+odfaeg::ResourceManager<odfaeg::Texture> tm ;
+
+Le 1er paramètre est le type des ressources externe et le second, le type de l'identifiant pour la ressource. (par défaut il vaut std::string)
+
+odfaeg possède également quelques classes prédéfinie pour les classes de sfml chargeant des ressources : TextureManager, SoundManager, FontManager, ShaderManager.
+Celle-ci ne prennent qu'un seul paramètre template qui vaut std::string par défault.
+Voici comment instancier un gestionnaire de ressources de type odfaeg::Texture par exemple :
+TextureManager<> tm ;
+
+L'identifiant est comme un alias qui pointe vers une ressource, ici par exemple je vais créer une énumération qui référencera les différentes ressources dans l'application :
+Il existe aussi des classes particulières pour les gestionnaires de ressources pour les types de ressources 
+
+enum TEXTURES {
+        GRASS
+};
+
+Pour charger la ressource il suffit d'appeler la fonction fromFile du gestionnaitre de ressource si on veut la changer à partir d'un fichier :
+
+tm->fromFile("tilesets/herbe.png", GRASS);
+
+Le 1er paramètre est l'emplacement de la ressource par rapport à l'application, le second paramètre est l'alias qui pointe vers la ressource. (On n'est pas obligé de le précisé, dans ce cas la ressource ne sera accessible que par son 1er paramètre c'est à dire sont chemin, mais c'est déconseillé de procédé comme ça.)
+
+On peut ajouter les gestionnaires de ressources dans un cache, ceci est pratique si vous devez charger des ressources externes de différent types.
+La classe resource cache prend un paramètre template : le type de l'identifiant qui référencera le gestionnaire de ressource. (Par défault le type est std::string)
+
+ResourceCache<> cache ;
+cache.addResourceManager(tm, "TextureManager");
+Cette fonction prend en paramètre le gestionnaire de ressources à stocker dans le cache ainsi que le nom du ressource manager.
+
+Ensuite vous pouvez récupérer le gestionnaire de ressource comme suit :
+
+TextureManager<> tm = cache.resourceManager<odfaeg::Texture, TEXTURES>("TextureManager");
+
+En précisant le type de gestionnaire de ressources à récupérer dans le cache et le type de l'identifiant utilisé dans le gestionnaire de ressources..
+
+Pour récupérer la ressource il suffit ensuite d'écrire ceci :
+
+tm.getResourceByAlias(GRASS) ;
+
+On peut récupérer la ressource de deux façons : soit par son alias ou bien par son chemin.
+
+
+Charger des ressources avec son propre chargeur de ressource.
+
+Supposons maintenant que nous voulons charger des ressources externes mais que le gestionnaire d'odfaeg ne possède pas de fonction pour charger ce type de ressource, pour cela il faut d'abord créer un chargeur personnalisé (par exemple un chargeur de fichier .3ds) et ensuite il faut passer la fonction qui charge la ressource au gestionnaire de ressources en créant un foncteur comme ceci :
+
+std::function<bool(Object3DS,std::string> loadFunc(&MyLoader::fromFile) ;
+
+Ensuite nous devons passez cette fonction à la fonction load du resource manager :
+
+ResourceManager<Object3DS, OBJECTS3DS> om ;
+
+om.load(loadFunc, « resource location ») ;
+
+Voila, le chargeur de ressource externe de odfaeg n'est pas compliqué et possède pas mal de fonction utilitaire comme par exemple récupérer tout les chemins vers les ressources d'un même type qui ont été chargée.
+
+La destruction des ressources : 
+
+La destruction des ressource ce fait automatiquement à la destruction du cache, lors de l'arrêt du programme, cependant, on peut le faire explicitement en appelant les fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.
+
+                </html>
+        </fr>
+    </content>
+</page>
