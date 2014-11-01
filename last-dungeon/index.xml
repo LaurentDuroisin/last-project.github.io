@@ -3,5 +3,31 @@
 <page>
     <menu></menu>
     <title>Last Dungeon</title>
-    <content>Last dungeon à venir</content>
+    <content>
+        <html>
+        <h1>Last Dungeon</h1>
+            <h2>Présentation</h2>
+            Last Dungeon est un jeu prennant place dans l'univers de... Last Dungeon.<br/>
+            <br/>
+            Last Dungeon est un projet de RPG en ligne qui n'a pas pour ambition de devenir massivement multijoueur.<br/>
+            Vous pourrez soit jouer en ligne dans un monde persistant, soit créer, tester et échanger vos propres "donjons".<br/>
+            Nous pensons aussi ajouter un système de guilde très complet qui ne sera pas réduit à un simple "channel de discutions" comme on peut le voir dans d'autres jeux.<br/>
+            <br/>
+            Malheureusement, ce type de projet est plus que complexe à réaliser. Pour pallier cela nous allons devoir :
+            <ul>
+            <li>Réaliser et terminer d'autres projets afin d'éprouver le moteur de jeu et gagner en expérience</li>
+            <li>Implémenter progressivement certaines fonctionnalités quitte à en oublier une bonne partie</li>
+            <li>Mettre en avant la création et le partage de donjons plutôt que l'aventure principale.</li>
+            </ul>
+            Plus de détails à venir en temps voulu.
+            <h2>Scénario</h2>
+            Votre navire s'échoue sur un continent inconnu après une tempête. Malheureusement ces terres ne sont pas aussi hospitalières qu'elles n'y paraissent.
+            Vous devrez alors récupérer d'anciens artéfacts dans des donjons pour survrivre et progresser à l'intérieur des terres.<br>
+            <br/>
+            Le reste du scénario sera à découvrir par vous-même.
+            <h2>Etat du projet</h2>
+            En pause.<br/>
+            Pour le moment, nous préférons nous concentrer sur les autres projets afin d'éprouver le moteur qui permettra la réalisation de ce projet.
+        </html>
+    </content>
 </page>
