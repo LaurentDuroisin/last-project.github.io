@@ -11,6 +11,7 @@
                     <item done="true">Choose footer</item>
                     <item done="true">Choose lang in files</item>
                     <item done="true">Add personnal CSS file</item>
+                    <item done="false">Add icons in the menu</item>
                 </task>
                 <task name="Design">
                     <fr>Refondre le design du site</fr>
@@ -24,6 +25,8 @@
                 <task name="Content">
                     <fr>Ajouter le contenu au site</fr>
                     <en>Add content to the Website</en>
+                    <item done="false">Old content</item>
+                    <item done="false">404 page</item>
                     <item done="false">Contacts</item>
                     <item done="false">Last Team</item>
                     <item done="false">Last Engine</item>
