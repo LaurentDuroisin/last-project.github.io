@@ -3,5 +3,34 @@
 <page>
     <menu></menu>
     <title>Last DunGo</title>
-    <content>Last dungo à venir</content>
+    <content>
+        <html>
+            <h1>Last DunGo</h2>
+            <CENTER><img src="/img/banniere_LDG_crush.png" style="max-width:100%"></img></CENTER>
+            <h2>Présentation</h2>
+            Last DunGo est un jeu assimilable au jeu de Go prennant place dans l'univers de Last Dungeon.<br/>
+            <br/>
+            Vous incarnez ???, un homme amnésique guidés par deux poulpes (?), Polype et Poliapa. Ces derniers vous raconteront une petite histoire au fur et à mesure de vos avancés.<br/>
+            <br/>
+            Le jeu de Go est un jeu se jouant en posant des pions (pierres) sur un plateau (goban). Le but étant d'entourer entièrement les pierres adverses pour les manger et ainsi gagner des points.
+            <br/>
+            Last DunGo diffère d'un jeu de Go normale de par plusieurs points :
+            <ul>
+            <li>La présence de plateau en 3D (ex. cube)</li>
+            <li>La possibilité de jouer jusqu'à 4 par plateaux</li>
+            <li>Les graphismes revisités et innovants</li>
+            <li>La présence d'un mode scénario vous permettant d'apprendre à jouer tout en suivant une petite histoire</li>
+            <li>et bien d'autre...</li>
+            </ul>
+            <h2>Objectifs</h2>
+            Eprouver Last Engine pour :
+            <ul>
+            <li>le module network</li>
+            <li>le module 3D</li>
+            </ul>
+            <h2>Etat du projet</h2>
+            En pause, une version "jouable" est disponible pas pas distribuée.<br/>
+            Nous préférons nous concenter sur Last Escape avant de continuer ce projet.<br/>
+        </html>
+    </content>
 </page>
