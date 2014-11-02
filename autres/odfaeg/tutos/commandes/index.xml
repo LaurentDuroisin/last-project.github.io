@@ -102,9 +102,9 @@ int main (int argv, char* argc[]) {
         std::cout << std::endl;
  
         A a;
-        odfaeg::FastDelegate<void> f4(&A::foo,&a,14);
+        odfaeg::FastDelegate<void> f4(&amp;A::foo,&amp;,14);
         f4();
-        f4.setParams(&a,15);
+        f4.setParams(&amp;,15);
         f4();
         std::cout << std::endl;
         odfaeg::FastDelegate<void> f5 = f1;
@@ -114,8 +114,8 @@ int main (int argv, char* argc[]) {
         std::cout << std::endl;
  
         C c;
-        B* b = &c;
-        odfaeg::FastDelegate<void> f6(&C::foo,&c);
+        B* b = &amp;;
+        odfaeg::FastDelegate<void> f6(&amp;::foo,&amp;);
         f6();
         f6.setParams(b);
         f6();
@@ -133,7 +133,7 @@ int main (int argv, char* argc[]) {
         f8();
         std::cout << std::endl;
         int pi = 1;
-    odfaeg::FastDelegate<void> f9(foo, &pi);
+    odfaeg::FastDelegate<void> f9(foo, &amp;pi);
         f9();
         std::cout << std::endl;
         pi=2;
@@ -144,7 +144,7 @@ int main (int argv, char* argc[]) {
         f10.setParams(19);
         std::cout << f10();
         std::cout << std::endl;
-        void(*fu)(int&) = &foo;
+        void(*fu)(int&) = &amp;foo;
         int vi=1;
         odfaeg::FastDelegate<void> f11(fu, std::ref(vi));
         f11();
@@ -160,7 +160,7 @@ void f (int i, int j, int l) {
     std::cout<<"i : "<<i<<" j : "<<j<<" l : "<<l<<std::endl;
 }
 int main (int argv, char* argc[]) {
-	odfaeg::FastDelegate<void> fd(&f, 1, 2, odfaeg::ph<0,int>()) ;
+	odfaeg::FastDelegate<void> fd(&amp;f, 1, 2, odfaeg::ph<0,int>()) ;
 	fd.bind(3);
 	fd() ;
 }
