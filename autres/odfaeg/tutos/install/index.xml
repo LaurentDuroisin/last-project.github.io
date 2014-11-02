@@ -8,8 +8,6 @@
         <fr>
                 <html>
                         <h1>Chapitre I : Installation de ODFAEG.</h1>
-
-<<<<<<< HEAD
                 <h2>Prérequis : </h2>
 
                 <p>Avant d'installer ODFAEG il vous faudra installer 2 autres petites <br/> librairies, un compilateur c++  qui supporte le nouveau standard c++14 (gcc version 4.9.x)<br/> ainsi que cmake, rassurer vous, c'est très rapide à installer : <br/></p>
@@ -86,7 +84,7 @@
                 <p>N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la<br/> librairie en mode static.<br/>
 
                 Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG,<br/> une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/></p>
-=======
+
                 <u>Prérequis : </u>
 
                 Avant d'installer ODFAEG il vous faudra installer 2 autres petites librairies, un compilateur c++  qui supporte le nouveau standard c++14 (gcc version 4.9.x) ainsi que cmake, rassurer vous, c'est très rapide à installer :
@@ -163,7 +161,6 @@
                 N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la librairie en mode static.
 
                 Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG, une fois que tout ceci est bon vous pouvez passé au chapitre suivant.
->>>>>>> 5acf994b8c015d464f6760fc0246dc72fd1e3d08
                 </html>
         </fr>
     </content>

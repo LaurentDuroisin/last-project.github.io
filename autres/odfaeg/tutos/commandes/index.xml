@@ -40,7 +40,7 @@ struct A {
         void foo(int i)
         { std::cout << i; }
         template <typename A>
-        void serialize (A & ar) {
+        void serialize (A &amp; ar) {
         ar(var);
         }
         int var;
