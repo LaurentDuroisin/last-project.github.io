@@ -17,11 +17,11 @@ Pour le moment odfaeg gère 2 types d'archives : une pour l'écriture (OTextArc
 Mais plus tard il est fort possible que j'incorpore d'autres types d'archive comme par <br/> exemple les archives binaires ou bien les archives au format xml. <br/>
 
 Il faut donc créer un objet de ce type en lui passant un flux, par exemple, un fichier : <br/></p>
+Ensuite pour sérialiser il suffit d'appeler l'opérateur () sur l'archive en lui passant l'objet, ici par exemple nous allons sérialiser un objet de type std::string :
 
 <pre>
 ofstream ofs("thefile");
 OTextArchive oa (ofs);
-Ensuite pour sérialiser il suffit d'appeler l'opérateur () sur l'archive en lui passant l'objet, ici par exemple nous allons sérialiser un objet de type std::string :
 
 std::string text="blablabla";
     std::string text2;
@@ -51,7 +51,7 @@ struct A {
         void foo(int i)
         { std::cout << i; }
         template <typename A>
-        void serialize (A & ar) {
+        void serialize (A &amp; ar) {
         ar(var);
         }
         int var;
@@ -82,7 +82,7 @@ struct B : public Registered<B> {
         std::cout<<c<<std::endl;
         }
         template <typename A>
-        void vtserialize (A & ar) {
+        void vtserialize (A &amp; ar) {
         ar(c);
         }
         virtual ~B();
@@ -106,7 +106,7 @@ struct C : B {
         std::cout<<c<<std::endl;
     }
     template <typename A>
-        void vtserialize (A & ar) {
+        void vtserialize (A &amp; ar) {
         B::vtserialize(ar);
         ar(c);
         }
@@ -135,7 +135,7 @@ struct B : public odfaeg::Registered<Base> {
     std::cout<<c<<std::endl;
     }
     template <typename A>
-    void vtserialize (A & ar) {
+    void vtserialize (A &amp; ar) {
     ar(c);
     }
     virtual ~B();
