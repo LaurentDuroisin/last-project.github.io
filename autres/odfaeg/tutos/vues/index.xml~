@@ -32,9 +32,9 @@ Les composants possèdent également une vue, par défaut, c'est la même vue qu
 getView().move(0, 300, 0);<br/>
 
 Ceci déplace la vue de 300 unités vers le bas ou vers le haut. (Cela dépend de <br/> l'orientation de l'axe y.) <br/>
-Pour faire une rotation, il suffit d'appeler la méthode rotate et de passer l'angle et pour <br/> zoomer, il suffit d'appeler la fonction zoom et de passer l'échelle. <br/></p>
+Pour faire une rotation, il suffit d'appeler la méthode rotate et de passer l'angle et pour <br/> zoomer, il suffit d'appeler la fonction zoom et de passer l'échelle. <br/>
 
-<p>Par défault la vue est othographique. (en 2D donc) <br/>
+Par défault la vue est othographique. (en 2D donc) <br/>
 Avec comme znear, une valeur un peut plus petite que 0 et comme z far une valeur un peu <br/> plus grande que la hauteur de la fenêtre, par conséquent tout ce qui est visible doit <br/> avoir un z compris entre 0 et la hauteur de la fenêtre sinon l'entité ne sera pas <br/> affichée. (Il suffit juste de mettre comme composante z le centre de l'entité 2D et de <br/> déplacer aussi la vue en z avec la même valeur que pour y lorsqu'on se déplace dans le <br/> monde. (avec le clavier ou bien avec la souris par exemple) <br/></p>
 
 <p>On peut changer la vue et la passer en perspective (en vue 3D) mais ce ne sera pas <br/> l'objet de se chapitre, nous verrons cela dans le tutoriel consacré à la 3D. <br/>

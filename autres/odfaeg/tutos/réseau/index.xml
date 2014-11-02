@@ -9,47 +9,50 @@
                 <html>
                         <h1>Chapitre XIII : le réseau</h1>
 
-               Le serveur : 
+               <h2>Le serveur : </h2>
 
-Pour créer une application serveur, il suffit juste de faire une classe qui hérite de la classe application comme vu dans le chapitre II, et on peut redéfinir les méthodes onExec, onInit et onLoad.
+<p>Pour créer une application serveur, il suffit juste de faire une classe qui hérite de la <br/> classe application comme vu dans le chapitre II, et on peut redéfinir les méthodes <br/> onExec, onInit et onLoad. <br/>
 
-OnLoad permet de charger les ressources utilisées par le serveur (en principe un serveur ne charge pas de resource vu que c'est le client qui affiche tout mais il peut par exemple charger les données d'une map dans un fichier ou bien des données sur les joueurs dans une bases de données)
+OnLoad permet de charger les ressources utilisées par le serveur (en principe un serveur ne <br/> charge pas de resource vu que c'est le client qui affiche tout mais il peut par <br/> exemple charger les données d'une map dans un fichier ou bien des données sur les joueurs <br/> dans une bases de données) <br/>
 
-Pour le moment ODFAEG ne permet pas la communication avec un SGDB sans l'utilisation d'une librairie externe mais ça sera à venir dans une version future. (La dernière version très probablement)
+Pour le moment ODFAEG ne permet pas la communication avec un SGDB sans l'utilisation d'une <br/> librairie externe mais ça sera à venir dans une version future. (La dernière version  <br/> très probablement) <br/></p>
 
-Pour pouvoir établir la comunication entre le serveur et le client il faut créer un serveur et le faire écouter sur un port, ceci est possible grace à la classe Network, le moteur réseau de ODFAEG gère 2 protocoles pour la communication : le protocole TCP et le protocole UDP.
+<p>Pour pouvoir établir la comunication entre le serveur et le client il faut créer un <br/> serveur et le faire écouter sur un port, ceci est possible grace à la classe Network, le <br/> moteur réseau de ODFAEG gère 2 protocoles pour la communication : le protocole TCP et <br/> le protocole UDP. <br/>
 
-Pour lancer le serveur et le faire écouter sur un port tcp et udp, il suffit d'appeler la méthode suivante de la classe Network :
+Pour lancer le serveur et le faire écouter sur un port tcp et udp, il suffit d'appeler la <br/> méthode suivante de la classe Network : <br/>
 
-Network::startSrv(portTCP, portUDP) ;
+Network::startSrv(portTCP, portUDP) ; <br/>
 
-Cette fonction démarre le serveur et puis rend la main ce qui nous permet de passer à la méthode exec dans le main :
+Cette fonction démarre le serveur et puis rend la main ce qui nous permet de passer à la <br/> méthode exec dans le main : <br/></p>
 
+<pre>
 Application app ;
 Network::startSrv(portTCP, portUDP) ;
 return app.exec() ;
+</pre>
 
-Récupérer une requête envoyée par un client :
+<h2>Récupérer une requête envoyée par un client : </h2>
 
-Pour récupérer une requête envoyée par un client, il suffit d'appeler la méthode getLastRequest de la classe network, cette méthode peut prendre en paramètre un object de type user, la classe user contient des informations qui identifie le client sur le réseau, on peut donc récupérer les informations sur le client qui a envoyé la requête et renvoyer une réponse au client en appelant les méthode sendTCPPacket et sendUDPPacket de la classe client.
+<p>Pour récupérer une requête envoyée par un client, il suffit d'appeler la méthode<br/> getLastRequest de la classe network, cette méthode peut prendre en paramètre un object de<br/> type user, la classe user contient des informations qui identifie le client sur le<br/> réseau, on peut donc récupérer les informations sur le client qui a envoyé la <br/> requête et renvoyer une réponse au client en appelant les méthode sendTCPPacket et <br/> sendUDPPacket de la classe client. <br/></p>
 
-La classe user peut être redéfinie si nous avons besoin de stocker d'autre informations comme par   exemple un mot de passe et un nom d'utilisateur si il doit y avoir un système d'authentification.
+<p>La classe user peut être redéfinie si nous avons besoin de stocker d'autre informations <br/> comme par   exemple un mot de passe et un nom d'utilisateur si il doit y avoir un <br/> système d'authentification. <br/></p>
 
-La classe Network possède aussi une méthode sendTcpPacket et sendUdpPacket, dans ce cas, le packet sera envoyé a tout les utilisateurs connecté sur le réseau.
-On peut aussi récupérer le ping d'une utilisateur.
-En mode TCP, on peut envoyer deux types de packets, des bêtes paquets de type sf::packet ou bien, des packets chiffrés de type odfaeg::SymEncPacket si le client utilise une connection SSL. (pour le savoir il suffit d'appeler la méthode isUsingSecuredConnection de la classe user.
-Attention : en mode udp les packets ne sont pas chiffrés.
-Le client : 
+<p>La classe Network possède aussi une méthode sendTcpPacket et sendUdpPacket, dans ce cas, <br/> le packet sera envoyé a tout les utilisateurs connecté sur le réseau. <br/>
+On peut aussi récupérer le ping d'une utilisateur. <br/>
+En mode TCP, on peut envoyer deux types de packets, des bêtes paquets de type sf::packet ou <br/> bien, des packets chiffrés de type odfaeg::SymEncPacket si le client utilise une <br/> connection SSL. (pour le savoir il suffit d'appeler la méthode isUsingSecuredConnection de <be/> la classe user. <br/>
+Attention : en mode udp les packets ne sont pas chiffrés. <br/>
 
-Pour connecter un client à un serveur, il suffit d'appeler en plus cette méthode dans le main  en lui passant le port TCP du serveur, le port UDP du serveur, et l'adresse ip du serveur.
+<h2>Le client : </h2>
 
-Network::startCli(portTCP, portUDP, ipAddress) 
+<p>Pour connecter un client à un serveur, il suffit d'appeler en plus cette méthode dans le <br/> main  en lui passant le port TCP du serveur, le port UDP du serveur, et l'adresse ip <br/> du serveur. <br/>
 
-Pour récupérer les réponses reçus par le serveur il suffit d'appeler la méthode getLastResponse de la classe Network. (ou bien getResponse(« Tag »)) pour récupérer une réponse précise précédée par un tag au choix.
+Network::startCli(portTCP, portUDP, ipAddress)  <br/></p>
 
-Nous pouvons aussi appeler la méthode waitForLastResponse avec un timeout.
+<p>Pour récupérer les réponses reçus par le serveur il suffit d'appeler la méthode <br/> getLastResponse de la classe Network. (ou bien getResponse(« Tag »)) pour récupérer une <br/> réponse précise précédée par un tag au choix. <br/>
 
-Par défault le client utilise une connection chiffrée en mode TCP mais si l'on ne veut pas utiliser de connection chiffrée on peut passer false en 4ème paramètre à la méthode startCli.
+Nous pouvons aussi appeler la méthode waitForLastResponse avec un timeout. <br/>
+
+Par défault le client utilise une connection chiffrée en mode TCP mais si l'on ne veut pas <br/> utiliser de connection chiffrée on peut passer false en 4ème paramètre à la méthode <br/> startCli. <br/>
                 </html>
         </fr>
     </content>

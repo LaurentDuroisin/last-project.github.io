@@ -77,7 +77,7 @@ eu = new EntitiesUpdater();
  au->setInterval(seconds(0.01f));
 </pre>
 
-<p>Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/> il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/> par exemple comment tracer une scene dans la méthode onRender : <br/></p>
+<p>Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/> il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/> par exemple comment tracer une scene dans la méthode onRender : <br/>
 <pre>
 odfaeg::World::drawOnComponents("E_BIGTILE", 0); 
         odfaeg::World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
@@ -98,8 +98,7 @@ if (caracter->isMoving()) {
                 getView().move(d.x, d.y, d.y);
                 odfaeg::World::update();
 </pre>
-<p>Il ne faut pas oublier d'appeler la méthode World::update() pour mettre à jour la frame <br/> courante si l'on se déplace dans le monde. 
-Et voilà, ceci clôture ce chapitre.<br/></p>
+Il ne faut pas oublier d'appeler la méthode World::update() pour mettre à jour la frame <br/> courante si l'on se déplace dans le monde. <br/>
                 </html>
         </fr>
     </content>

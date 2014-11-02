@@ -50,7 +50,7 @@ Ici, si l'entité est en collision avec une case ou une autre entité dans le mo
 
 <p>Celui-ci reprendra celui de la thor library donc il suffit de lire les tutoriels de la <br/> librairie thor : <br/>
 
-<a href="http://www.bromeon.ch/libraries/thor/v2.0/tutorial-particles.html">THOR</a>
+<a href:"http://www.bromeon.ch/libraries/thor/v2.0/tutorial-particles.html">THOR</a>
 
 <p>Vous trouverez en annexe un exemple de code source qui résume tout ce qu'on a vu<br/> jusqu'ici et qui montre déjà ce que le framework propose de faire, mais ce n'est que le<br/> commancement car je suis encore assez loin comparé à d'autres projets déjà existant.<br/></p>
                 </html>

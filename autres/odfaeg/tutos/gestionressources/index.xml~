@@ -86,7 +86,7 @@ Voila, le chargeur de ressource externe de odfaeg n'est pas compliqué et possè
 
 <h2>La destruction des ressources : </h2>
 
-<p>La destruction des ressource ce fait automatiquement à la destruction du cache, lors de <br/> l'arrêt du programme, cependant, on peut le faire explicitement en appelant les <br/> fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.<br/></p>
+La destruction des ressource ce fait automatiquement à la destruction du cache, lors de l'arrêt du programme, cependant, on peut le faire explicitement en appelant les fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.
 
                 </html>
         </fr>

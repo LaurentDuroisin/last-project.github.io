@@ -84,12 +84,11 @@ le deuxième paramètre est la tile du mur et le dernier, la lumière utilisée 
    
 On lui passe une tile, et la lumière pour générer l'ombre.<br/></p>
 
-<p>
-Les animations : <br/>
+Les animations :
 
-Il suffit de créer plusieurs entités (de n'importe quel type) quis ervirons alors de frames <br/> pour l'animation et de les ajouter à l'animation avec la méthode addEntity, une <br/> animation prend en paramètre le framerate de l'animation. <br/>
-Anim* fire = new Anim(0.1f); <br/>
-</p>
+Il suffit de créer plusieurs entités (de n'importe quel type) quis ervirons alors de frames pour l'animation et de les ajouter à l'animation avec la méthode addEntity, une animation prend en paramètre le framerate de l'animation. 
+Anim* fire = new Anim(0.1f);
+
                 </html>
         </fr>
     </content>

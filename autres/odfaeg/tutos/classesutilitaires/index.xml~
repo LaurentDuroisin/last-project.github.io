@@ -41,12 +41,8 @@ for (unsigned int i = 0; i < vector.size(); i++) {
      odfaeg::apply_visitor(attaquer, vector[i]);
 }
 </pre>
-
-<p>
-Une autre méthode : <br/>
-odfaeg possède une autre méthode mettant permettant de faire cela à l'aide d'une interface <br/> pour les diffent type d'entités, et d'appliquer un multiple dispatch dessus comme <br/> ceci : <br/>
-
-<pre>
+Une autre méthode : 
+odfaeg possède une autre méthode mettant permettant de faire cela à l'aide d'une interface pour les diffent type d'entités, et d'appliquer un multiple dispatch dessus comme ceci :
 
 struct chat;
 struct chien;
@@ -82,7 +78,6 @@ attaquer().apply(a1,a1);
 attaquer().apply(a1,a2);
 attaquer().apply(a2,a1);
 attaquer().apply(a2,a2);
-</pre>
 
                 </html>
         </fr>

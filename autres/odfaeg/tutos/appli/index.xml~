@@ -97,7 +97,6 @@ Les classes de rendu graphique 2D d'odfaeg sont les même que celle de sfml à l
 A la différence de SFML, les objets SFML-LIKE de odfaeg peuvent posséder des points en 3D <br/> pour rendre des entité en 2.5D. (C'est à dire des plans par exemple.) <br/>
 
 Voilà maintenant vous savez créer des applications odfaeg toutes simple. <br/>
-</p>
 
                 </html>
         </fr>

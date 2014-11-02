@@ -234,7 +234,7 @@ Le type de fonction et les paramètres du trigger et du slot doivent être les m
 
 <p>
 La création d'une commande avec un trigger se fait de la même manière que la création de la <br/> commande avec une action à l'exception prêt que c'est le trigger qu'on envoie et non <br/> plus l'action car ici la commande n'est pas liée à un ou plusieurs événements SFML <br/> mais directement à une fonction)  : <br/>
-Command mouseInsideCommand(FastDelegate<bool>(&amp;MyAppli::mouseInside,this,Vector2f(-1, -1)), <br/> FastDelegate<void>(&amp;MyAppli::onMouseInside, this, Vector2f(-1,-1))); <br/></p>
+Command mouseInsideCommand(FastDelegate<bool>(&MyAppli::mouseInside,this,Vector2f(-1, -1)), <br/> FastDelegate<void>(&MyAppli::onMouseInside, this, Vector2f(-1,-1))); <br/></p>
 
 <p>InputSystem::getListener().connect(« mouseInsideCommand »,mouseInsideCommand); <br>
 On met -1, -1 pour la valeur de la position de la souris car on ne la connais pas encore,<br/> ceci évite d'afficher le message au lancement de l'application lorsque la <br/> fenêtre n'est pas encore affichée. <br/></p>

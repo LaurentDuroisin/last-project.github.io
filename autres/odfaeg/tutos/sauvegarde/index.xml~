@@ -9,16 +9,15 @@
                 <html>
                         <h1>Chapitre XII : Le système de sauvegarde de odfaeg.</h1>
 
-               		<h2>La sauvegarde d'entités simple : </h2>
+               		La sauvegarde d'entités simple : 
 
 
-<p>Pour sérialiser des données il faut deux choses. (une archive qui contiendra le flux <br/> dans lequel on mettra les données, ainsi que le flux bien sur) <br/>
-Pour le moment odfaeg gère 2 types d'archives : une pour l'écriture (OTextArchive) et une <br/> pour la lecture. (ITextArchive) <br/>
-Mais plus tard il est fort possible que j'incorpore d'autres types d'archive comme par <br/> exemple les archives binaires ou bien les archives au format xml. <br/>
+Pour sérialiser des données il faut deux choses. (une archive qui contiendra le flux dans lequel on mettra les données, ainsi que le flux bien sur)
+Pour le moment odfaeg gère 2 types d'archives : une pour l'écriture (OTextArchive) et une pour la lecture. (ITextArchive)
+Mais plus tard il est fort possible que j'incorpore d'autres types d'archive comme par exemple les archives binaires ou bien les archives au format xml.
 
-Il faut donc créer un objet de ce type en lui passant un flux, par exemple, un fichier : <br/></p>
+Il faut donc créer un objet de ce type en lui passant un flux, par exemple, un fichier :
 
-<pre>
 ofstream ofs("thefile");
 OTextArchive oa (ofs);
 Ensuite pour sérialiser il suffit d'appeler l'opérateur () sur l'archive en lui passant l'objet, ici par exemple nous allons sérialiser un objet de type std::string :
@@ -57,21 +56,19 @@ struct A {
         int var;
 };
 
-</pre>
-<p>
-Car c'est cette méthode que odfaeg va rechercher pour sérialiser l'objet dans l'archive, le br/> code pour sérialiser l'objet dans le main est le même que pour les objets de types <br/> std::string. <br/>
 
-Cette manière de faire est simple mais ne fonctionnera pas dans le cadre des objets <br/> polymorphique, en effet, quel donnée de l'objet faut t'il sérialiser, les données de la <br/> classe de base seulement, ou celles de la classe dérivée seulement, ou bien les deux ? <br/>
+Car c'est cette méthode que odfaeg va rechercher pour sérialiser l'objet dans l'archive, le code pour sérialiser l'objet dans le main est le même que pour les objets de types std::string.
 
-Par défaut odfaeg ne sérialize que les données de la classe de base.<br/></p>
+Cette manière de faire est simple mais ne fonctionnera pas dans le cadre des objets polymorphique, en effet, quel donnée de l'objet faut t'il sérialiser, les données de la classe de base seulement, ou celles de la classe dérivée seulement, ou bien les deux ?
 
-<p>Pour lui dire de sérialiser les données de la classe dérivée, il faut redéfinir une <br/> autre méthode : la méthode vtserialize. <br/>
+Par défaut odfaeg ne sérialize que les données de la classe de base.
 
-Pour serializer un objet odfaeg utilise une classe dont il faut hériter dans la classe de <br/> base comme ceci : <br/></p>
+Pour lui dire de sérialiser les données de la classe dérivée, il faut redéfinir une autre méthode : la méthode vtserialize.
 
-<p>La classe de base doit au moins avoir une méthode virtuelle pour pouvoir être considérée <br/> comme une classe polymorphique, car, odfaeg fait le test à l'exécution avec typeid, <br/> et l'héritage doit être pulibque! (Sinon ça ne fonctionnera pas) <br/>
+Pour serializer un objet odfaeg utilise une classe dont il faut hériter dans la classe de base comme ceci :
 
-<pre>
+La classe de base doit au moins avoir une méthode virtuelle pour pouvoir être considérée comme une classe polymorphique, car, odfaeg fait le test à l'exécution avec typeid, et l'héritage doit être pulibque! (Sinon ça ne fonctionnera pas)
+
 struct B : public Registered<B> {
     B() {
         c = "serialize base";
@@ -90,12 +87,11 @@ struct B : public Registered<B> {
 };
  
 B::~B(){}
-</pre>
-<p>Registered n'est rien d'autre qu'un objet qui va savoir comment sérialiser l'objet <br/> polymorphique, on doit lui passer en paramètre template la classe de Base.
-<br/>
-Ensuite il ne faut pas oublié de redéfinir la méthode virtuelle temlplate vtserialize dans <br/> la classe dérivée. <br/></p>
+Registered n'est rien d'autre qu'un objet qui va savoir comment sérialiser l'objet polymorphique, on doit lui passer en paramètre template la classe de Base.
 
-<pre>
+Ensuite il ne faut pas oublié de redéfinir la méthode virtuelle temlplate vtserialize dans la classe dérivée.
+
+
 struct C : B {
     C () {
         c = "serialize derived";
@@ -174,7 +170,7 @@ int main() {    
     ia(b2);
     b2->print();
 }
-</pre>
+
                 </html>
         </fr>
     </content>
