@@ -144,7 +144,7 @@ int main (int argv, char* argc[]) {
         f10.setParams(19);
         std::cout << f10();
         std::cout << std::endl;
-        void(*fu)(int&) = &amp;foo;
+        void(*fu)(int&amp;) = &amp;foo;
         int vi=1;
         odfaeg::FastDelegate<void> f11(fu, std::ref(vi));
         f11();
