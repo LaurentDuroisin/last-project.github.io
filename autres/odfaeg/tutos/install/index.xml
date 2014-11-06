@@ -12,7 +12,7 @@
 
                 <p>Avant d'installer ODFAEG il vous faudra installer 2 autres petites <br/> librairies, un compilateur c++  qui supporte le nouveau standard c++14 (gcc version 4.9.x)<br/> ainsi que cmake, rassurer vous, c'est très rapide à installer : <br/></p>
 
-                <h2>Installation des outils de compilation.</h2>
+                <!--<h2>Installation des outils de compilation.</h2>
 
                 <p>Sous linux il suffit d'ouvrir un terminal, de se connecter en mode super<br/> utilisateur et de taper cette commande apt-get install gcc-4.9 g++-4..9 cmake-gui pour <br/> les plateformes 64 bits ou bien  apt-get install gcc-4.9-multilib g++-4.9-multilib<br/> cmake-gui et passer le flag -m32 lors de la compilation pour les plateformes 32 bits.<br/></p>
 
@@ -172,7 +172,7 @@
 		</ul>
                 N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la librairie en mode static.<br/>
                 <br/>
-                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG, une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/>
+                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG, une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/>-->
                 </html>
         </fr>
     </content>
