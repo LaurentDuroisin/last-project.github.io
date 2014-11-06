@@ -19,7 +19,7 @@ Si votre application est une application graphique, vous devez appeler le constr
 sf::VideoMode, std::string (titre de la fenêtre) <br/>
 MyAppli(sf::VideoMode wm, std::string title) : Application (wm, title)<br/></p>
 
-<p>Ensuite vous pouvez redéfinir les méthodes suivantes : <br/>
+<!--<p>Ensuite vous pouvez redéfinir les méthodes suivantes : <br/>
 
 onLoad() <br/>
 <br/>
@@ -95,7 +95,7 @@ qu'elles se trouvent dans le namepsace odfaeg et non dans le namespace sf. <br/>
 A la différence de SFML, les objets SFML-LIKE de odfaeg peuvent posséder des points en 3D<br/>
 pour rendre des entité en 2.5D. (C'est à dire des plans par exemple.) <br/>
 
-Voilà maintenant vous savez créer des applications odfaeg toutes simple. <br/>
+Voilà maintenant vous savez créer des applications odfaeg toutes simple. <br/>-->
                 </html>
         </fr>
     </content>
