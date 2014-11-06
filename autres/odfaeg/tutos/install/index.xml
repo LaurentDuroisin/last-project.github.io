@@ -55,27 +55,38 @@
                 qui transite sur un réseau.<br/>
                 </p>
 
-                <!--<p>Sur linux il suffit de taper la commande apt-get install libssl-dev.<br/>
+                <p>
+                Sur linux il suffit de taper la commande apt-get install libssl-dev.<br/>
 
-                Sous windows la meilleur méthode est de télécharger MSYS : <a href="http://>sourceforge.net/projects/mingw/files/">MSYS</a><br/>
+                Sous windows la meilleur méthode est de télécharger MSYS : <br/>
+                <a href="http://>sourceforge.net/projects/mingw/files/">MSYS</a><br/>
 
                 Ensuite télécharger les sources de openssl : <a href="https://www.openssl.org/">OPENSSL</a><br/>
 
-                Installer ensuite perl : <a href="http://www.perl.org/get.html">PERL</a></p>
+                Installer ensuite perl : <a href="http://www.perl.org/get.html">PERL</a><br/>
+                </p>
 
-                <p>Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
+                <p>
+                Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
 
                 perl Configure mingw <br/>
 
-                Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/> remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/> plateformes 64 bits.(Sinon ça ne compile pas) <br/>
+                Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/> remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/>
+                plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 
-                Taper ensuite les commandes suivante : make et make install pour installer<br/> la librairie. </br></p>
+                Taper ensuite les commandes suivante : make et make install pour installer<br/> la librairie. </br>
+                </p>
 
                 <h2>Installation de la librairie ODFAEG : </h2>
 
-                <p>Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> installer ODFAEG, son installation est similaire à l'installation de SFML, ODFAEG ne<br/> fournis pas de librairie pré-compilée, vous devez donc télécharger le code source  ouvrir<br/> Cmake et la compiler.<br/></p>
+                <p>
+                Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> 
+                installer ODFAEG, son installation est similaire à l'installation de SFML, ODFAEG ne<br/>
+                fournis pas de librairie pré-compilée, vous devez donc télécharger le code source  ouvrir<br/>
+                Cmake et la compiler.<br/>
+                </p>
 
-                <p>Cliquer sur browse source et spécifier l'endroit ou vous avez télécharger ODFAEG.<br/>
+                <!--<p>Cliquer sur browse source et spécifier l'endroit ou vous avez télécharger ODFAEG.<br/>
 
                 Cliquer ensuite sur browse build et créer un nouveau dossier dans le répertoire ODFAEG, appeller le par exemple ODFAEG-build.<br/>
 
