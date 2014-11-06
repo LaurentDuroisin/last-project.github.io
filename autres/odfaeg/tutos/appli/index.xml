@@ -11,7 +11,7 @@
 
 <h2>Définition de l'application : </h2>
 
-<p></p>Pour créer une application « odfaeg-like » il faut hériter de la classe odfaeg::application.<br/>
+<p>Pour créer une application « odfaeg-like » il faut hériter de la classe odfaeg::application.<br/>
 (Créer donc une nouvelle classe et faîtes la hériter de odfaeg::application.)<br/>
 
 Si votre application est une application graphique, vous devez appeler le constructeur de la classe parent<br/>
