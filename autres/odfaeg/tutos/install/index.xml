@@ -76,12 +76,14 @@
                 plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 		<br/>
                 Taper ensuite les commandes suivante : <br/>
-                <!--make pour compiler la librairie et ensuite make-install pour l'installer. </br>-->
+                <!--La page ne s'affiche plus après cette ligne ci! -->
+                make pour compiler la librairie et ensuite make-install pour l'installer. </br>
                 </p>
+                
 
-                <h2>Installation de la librairie ODFAEG : </h2>
+                <!--<h2>Installation de la librairie ODFAEG : </h2>
 
-                <!--<p>
+                <p>
                 Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> 
                 installer ODFAEG, son installation est similaire à l'installation de SFML, ODFAEG ne<br/>
                 fournis pas de librairie pré-compilée, vous devez donc télécharger le code source  ouvrir<br/>
