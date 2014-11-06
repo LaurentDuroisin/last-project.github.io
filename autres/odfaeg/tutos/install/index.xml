@@ -66,18 +66,19 @@
                 Installer ensuite perl : <a href="http://www.perl.org/get.html">PERL</a><br/>
                 </p>
 
-                <p>
+                <!--<p>
                 Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
 
                 perl Configure mingw <br/>
 
-                Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/> remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/>
+                Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/>
+                remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/>
                 plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 
                 Taper ensuite les commandes suivante : make et make install pour installer la librairie. </br>
                 </p>
 
-                <!--<h2>Installation de la librairie ODFAEG : </h2>
+                <h2>Installation de la librairie ODFAEG : </h2>
 
                 <p>
                 Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> 
