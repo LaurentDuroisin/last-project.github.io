@@ -69,7 +69,7 @@
                 <p>
                 Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
 
-                perl Configure mingw <br/>
+                perl Configure mingw <br/></p>
 
                 <!--Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/>
                 remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/>
