@@ -66,7 +66,7 @@
                 Installer ensuite perl : <a href="http://www.perl.org/get.html">PERL</a><br/>
                 </p>
 
-                <!--<p>
+                <p>
                 Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
 
                 perl Configure mingw <br/>
@@ -78,7 +78,7 @@
                 Taper ensuite les commandes suivante : make et make install pour installer la librairie. </br>
                 </p>
 
-                <h2>Installation de la librairie ODFAEG : </h2>
+                <!--<h2>Installation de la librairie ODFAEG : </h2>
 
                 <p>
                 Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> 
