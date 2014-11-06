@@ -73,10 +73,10 @@
 
                 Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et <br/>
                 remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/>
+                plateformes 64 bits.(Sinon ça ne compile pas) <br/>
                 </p>
-                <!--plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 
-                Taper ensuite les commandes suivante : make et make install pour installer la librairie. </br>
+                <!--Taper ensuite les commandes suivante : make et make install pour installer la librairie. </br>
                 </p>
 
                 <h2>Installation de la librairie ODFAEG : </h2>
