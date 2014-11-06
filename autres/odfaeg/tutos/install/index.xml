@@ -34,18 +34,28 @@
                 Ensuite, installer cmake-gui : <a href="http://www.cmake.org/cmake/resources/software.html">Ici</a> <br/>
                 </p>
 
-                <!--<h2>Installation de la librairie SFML.</h2>
+                <h2>Installation de la librairie SFML.</h2>
 
-                <p>Pour installer SFML tout est expliqué sur le site web du développeur<br/> principal : <a href="http://en.sfml-dev.org">Site de la SFML.</a><br/>
-                Pas besoin donc d'en dire plus.<br/></p>
+                <p>
+                Pour installer SFML tout est expliqué sur le site web du développeur
+                <br/> principal : <a href="http://en.sfml-dev.org">Site de la SFML.</a><br/>
+                Pas besoin donc d'en dire plus.<br/>
+                </p>
 
-                <p>ODFAEG utilise SFML pour faire des applications portable et utiliser<br/> l'encapsulation qu'offre SFML sur toute les bibliothèques codée en C qui sont utilisée par<br/> les différents modules de ODFAEG.<br/></p>
+                <p>
+                ODFAEG utilise SFML pour faire des applications portable et utiliser
+                <br/> l'encapsulation qu'offre SFML sur toute les bibliothèques codée en C qui sont utilisée par<br/>
+                les différents modules de ODFAEG.<br/></p>
 
                 <h2>Installation de openSSL.</h2>
 
-                <p>Fortement recommandée si vous voulez faire des applications sécurisée qui<br/> communique en réseau, cette librairie est utilisé par ODFAEG pour chiffrer les informations qui transite sur un réseau.<br/></p>
+                <p>
+                Fortement recommandée si vous voulez faire des applications sécurisée qui<br/>
+                communique en réseau, cette librairie est utilisé par ODFAEG pour chiffrer les informations<br/>
+                qui transite sur un réseau.<br/>
+                </p>
 
-                <p>Sur linux il suffit de taper la commande apt-get install libssl-dev.<br/>
+                <!--<p>Sur linux il suffit de taper la commande apt-get install libssl-dev.<br/>
 
                 Sous windows la meilleur méthode est de télécharger MSYS : <a href="http://>sourceforge.net/projects/mingw/files/">MSYS</a><br/>
 
