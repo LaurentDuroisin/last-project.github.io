@@ -16,11 +16,14 @@
                 ainsi que cmake, rassurer vous, c'est très rapide à installer : <br/>
                 </p>
 
-                <!--<h2>Installation des outils de compilation.</h2>
+                <h2>Installation des outils de compilation.</h2>
 
-                <p>Sous linux il suffit d'ouvrir un terminal, de se connecter en mode super<br/> utilisateur et de taper cette commande apt-get install gcc-4.9 g++-4..9 cmake-gui pour <br/> les plateformes 64 bits ou bien  apt-get install gcc-4.9-multilib g++-4.9-multilib<br/> cmake-gui et passer le flag -m32 lors de la compilation pour les plateformes 32 bits.<br/></p>
+                <p>Sous linux il suffit d'ouvrir un terminal, de se connecter en mode super
+                <br/> utilisateur et de taper cette commande apt-get install gcc-4.9 g++-4..9 cmake-gui pour <br/> 
+                les plateformes 64 bits ou bien  apt-get install gcc-4.9-multilib g++-4.9-multilib<br/> 
+                cmake-gui et passer le flag -m32 lors de la compilation pour les plateformes 32 bits.<br/></p>
 
-                <i>Il vous faudra peut être aussi installer la version 4.8 de gcc également si<br/> il vous avez des erreurs de linkage avec certains fonctions de la STL.<br/></i>
+                <!--<i>Il vous faudra peut être aussi installer la version 4.8 de gcc également si<br/> il vous avez des erreurs de linkage avec certains fonctions de la STL.<br/></i>
 
                 <p>Sous windows vous devez aller sur ce site : http://tdm-gcc.tdragon.net/ et<br/> télécharger un compilateur tdm-gcc 32 bits pour les plateformes 32 bits ou 64 bits<br/> pour les plateformes 64 bits.<br/>
                 Ensuite, installer cmake-gui : http://www.cmake.org/cmake/resources/software.html <br/></p>
