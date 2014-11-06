@@ -75,8 +75,7 @@
                 remplacer mingw par TDM-GCC-32 pour les plateformes 32 bits et TDM-GCC-64 pour les <br/>
                 plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 		<br/>
-                Taper ensuite les commandes suivante : <br/>
-                make pour compiler la librairie et ensuite make-install pour l'installer. </br>
+                Taper ensuite les commandes suivante : make pour compiler la librairie et ensuite make-install pour l'installer. </br>
                 </p>
 
                 <!--<h2>Installation de la librairie ODFAEG : </h2>
