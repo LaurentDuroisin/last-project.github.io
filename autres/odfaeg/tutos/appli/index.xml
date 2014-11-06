@@ -9,81 +9,93 @@
                 <html>
                       <h1>Chapitre II : Création d'une application ODFAEG-LIKE.</h1>
 
-Définition de l'application :
+<h2>Définition de l'application : </h2>
 
-Pour créer une application « odfaeg-like » il faut hériter de la classe odfaeg::application. (Créer donc une nouvelle classe et faîtes la hériter de odfaeg::application.)
+<p></p>Pour créer une application « odfaeg-like » il faut hériter de la classe odfaeg::application.<br/>
+(Créer donc une nouvelle classe et faîtes la hériter de odfaeg::application.)<br/>
 
-Si votre application est une application graphique, vous devez appeler le constructeur de la classe parent (celui de la classe odfaeg::Application) en lui passant les paramètres suivants :
-sf::VideoMode, std::string (titre de la fenêtre)
-MyAppli(sf::VideoMode wm, std::string title) : Application (wm, title)
+Si votre application est une application graphique, vous devez appeler le constructeur de la classe parent<br/>
+(celui de la classe odfaeg::Application) en lui passant les paramètres suivants :
+sf::VideoMode, std::string (titre de la fenêtre) <br/>
+MyAppli(sf::VideoMode wm, std::string title) : Application (wm, title)<br/></p>
 
-Ensuite vous pouvez redéfinir les méthodes suivantes :
+<p>Ensuite vous pouvez redéfinir les méthodes suivantes : <br/>
 
-onLoad()
+onLoad() <br/>
+<br/>
+Méthode à redéfinir si vous avez des ressources externes à charger. <br/>
+<br/>
+onInit()<br/>
+<br/>
+C'est dans cette méthode que vous créerez et initialiserai tout ce qui doit être initialiser.<br/>
+(Les commandes, les entités graphiques, la définition des collisions, etc...)<br/>
+<br/>
+onRender(odfaeg::FastRenderComponentManager *frcm) <br/>
+<br/>
+Dans cette méthode vous pouvez définir ce qui devra être dessiné sur la frame courante en le dessinant sur un composant de rendu ODFAEG.<br/>
+<br/>(Le composant de rendu se chargera de rendre vos dessins de la manière la plus optimale suivant les fonctionnalités supportées par votre carte graphique)<br/>
+<br/>
+Si cette méthode n'est pas redéfinie, ou bien que l'application n'est pas une application graphique, rien n'est dessiné.<br/>
+<br/>
+onDisplay(odfaeg::RenderWindow *window)<br/>
+<br/>
+Cette méthode est à redéfinir si vous devez dessiner des choses directement sur la fenêtre de rendu.<br/>
+<br/>
+onUpdate(sf::Event&amp; event)<br/>
+<br/>
+Dans cette méthode vous pouvez mettre à jour la frame suivante.<br/>
+(Celle-ci sera mise à jour en même temps que le dessin de la frame courante à l'aide d'un thread.)<br/>
+<br/>
+Ce qui rend le processus de rendu plus rapide.<br/>
+(Si l'application n'est pas une application graphique ou si cette méthode n'est pas redéfinie, rien n'est remis à jour) <br/>
+Cette méthode prend un paramètre : le dernière événement SFML généré par l'application.<br/>
+<br/>
+OnExec()<br/>
+<br/>
+Cette méthode est à redéfinir si votre application ne possède pas de fenêtre, c'est le cas par exemple des applications <br/>
+serveur, mais elle peut aussi être redéfinie si votre application doit effectuer des traitement en fin de boucle.<br/></p>
 
-Méthode à redéfinir si vous avez des ressources externes à charger.
-
-onInit()
-
-C'est dans cette méthode que vous créerez et initialiserai tout ce qui doit être initialiser. (Les commandes, les entités graphiques, la définition des collisions, etc...)
-
-onRender(odfaeg::FastRenderComponentManager *frcm)
-
-Dans cette méthode vous pouvez définir ce qui devra être dessiné sur la frame courante en le dessinant sur un composant de rendu ODFAEG. (Le composant de rendu se chargera de rendre vos dessins de la manière la plus optimale suivant les fonctionnalités supportées par votre carte graphique)
-
-Si cette méthode n'est pas redéfinie, ou bien que l'application n'est pas une application graphique, rien n'est dessiné.
-
-onDisplay(odfaeg::RenderWindow *window)
-
-Cette méthode est à redéfinir si vous devez dessiner des choses directement sur la fenêtre de rendu.
-
-onUpdate(sf::Event&amp; event)
-
-Dans cette méthode vous pouvez mettre à jour la frame suivante. (Celle-ci sera mise à jour en même temps que le dessin de la frame courante à l'aide d'un thread.)
-
-Ce qui rend le processus de rendu plus rapide. (Si l'application n'est pas une application graphique ou si cette méthode n'est pas redéfinie, rien n'est remis à jour)
-Cette méthode prend un paramètre : le dernière événement SFML généré par l'application.
-
-OnExec()
-
-Cette méthode est à redéfinir si votre application ne possède pas de fenêtre, c'est le cas par exemple des applications serveur, mais elle peut aussi être redéfinie si votre application doit effectuer des traitement en fin de boucle.
-
-Création de l'application :
-
-Pour créer une application il suffit d'appeler le constructeur en lui passant les bons paramètres suivant le type d'application  dans le fonction main :
-
-MyAppli app(sf::VideoMode(800, 600), "Test odfaeg");
-
-Le constructeur de la classe odfaeg::application peut prendre des paramètres supplémentaires comme par exemple :
-
-un booléen qui indique si l'on veut activer le depthtest d'opengl ou non. (par défaut ce boonéen vaut true)
-
-sf::Style : le style de la fenêtre.
-
-sf::ContextSettings : permet de spécifier des options de rendu opengl plus détaillées.
-
-Enfin, pour lancer l'application il suffit d'appeler la méthode exec() de la classe application, celle-ci renvoie un booléen qui indique si l'application a réussi à s'exécuté correctement ou si une erreur s'est produite :
-
+<h2>Création de l'application : </h2>
+<p>
+<br/>
+Pour créer une application il suffit d'appeler le constructeur en lui passant les bons paramètres suivant le type d'application  dans le fonction main : <br/>
+<br/>
+MyAppli app(sf::VideoMode(800, 600), "Test odfaeg");<br/>
+<br/>
+Le constructeur de la classe odfaeg::application peut prendre des paramètres supplémentaires comme par exemple : <br/>
+<br/>
+un booléen qui indique si l'on veut activer le depthtest d'opengl ou non. (par défaut ce boonéen vaut true) <br/>
+<br/>
+sf::Style : le style de la fenêtre. <br/>
+<br/>
+sf::ContextSettings : permet de spécifier des options de rendu opengl plus détaillées.<br/>
+<br/>
+Enfin, pour lancer l'application il suffit d'appeler la méthode exec() de la classe application, <br/>
+celle-ci renvoie un booléen qui indique si l'application a réussi à s'exécuté correctement ou si une erreur s'est produite : <br/>
+<br/>
 return app.exec() ;
+<br/>
+</p>
+<h2>Arrêt de l'application : </h2>
 
-Arrêt de l'application :
+<p>Pour arrêter l'application, il suffit d'appelé la méthode stop dans votre classe qui hérite de application<br/>
+, par exemple, ici, nous voulons arrêter l'application lorsque l'utilisateur ferme la fenêtre : <br/>
+<br/>
+Nous devons donc rajouter ce code-ci dans la méthode onUpdate : <br/>
+<br/>
+if (event.type == sf::Event::Closed) { <br/>
+<br/>
+            stop(); <br/>
+} <br/>
+<br/>
+Les classes de rendu graphique 2D d'odfaeg sont les même que celle de sfml à l'exception prêt <br/>
+qu'elles se trouvent dans le namepsace odfaeg et non dans le namespace sf. <br/>
+(Par exemple odfaeg::ConvexShape pour les formes convexe)<br/></p>
+<br/>
+A la différence de SFML, les objets SFML-LIKE de odfaeg peuvent posséder des points en 3D<br/>
+pour rendre des entité en 2.5D. (C'est à dire des plans par exemple.) <br/>
 
-Pour arrêter l'application, il suffit d'appelé la méthode stop dans votre classe qui hérite de application, par exemple, ici, nous voulons arrêter l'application lorsque l'utilisateur ferme la fenêtre :
-
-Nous devons donc rajouter ce code-ci dans la méthode onUpdate :
-
-if (event.type == sf::Event::Closed) {
-
-            stop();
-}
-
-
-Les classes de rendu graphique 2D d'odfaeg sont les même que celle de sfml à l'exception prêt qu'elles se trouvent dans le namepsace odfaeg et non dans le namespace sf. (Par exemple odfaeg::ConvexShape pour les formes convexe)
-
-A la différence de SFML, les objets SFML-LIKE de odfaeg peuvent posséder des points en 3D pour rendre des entité en 2.5D. (C'est à dire des plans par exemple.)
-
-Voilà maintenant vous savez créer des applications odfaeg toutes simple.
-
+Voilà maintenant vous savez créer des applications odfaeg toutes simple. <br/>
                 </html>
         </fr>
     </content>
