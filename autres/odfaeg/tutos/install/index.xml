@@ -28,10 +28,10 @@
                 <i>Il vous faudra peut être aussi installer la version 4.8 de gcc également si<br/> il vous avez des erreurs de linkage avec certains fonctions de la STL.<br/></i>
 
                 <p>
-                Sous windows vous devez aller sur ce site : http://tdm-gcc.tdragon.net/ et<br/> 
+                Sous windows vous devez aller sur ce site : <a href="http://tdm-gcc.tdragon.net/">Ici</a> et<br/> 
                 télécharger un compilateur tdm-gcc 32 bits pour les plateformes 32 bits ou 64 bits<br/> 
                 pour les plateformes 64 bits.<br/>
-                Ensuite, installer cmake-gui : http://www.cmake.org/cmake/resources/software.html <br/>
+                Ensuite, installer cmake-gui : <a href="http://www.cmake.org/cmake/resources/software.html">Ici</a> <br/>
                 </p>
 
                 <!--<h2>Installation de la librairie SFML.</h2>
