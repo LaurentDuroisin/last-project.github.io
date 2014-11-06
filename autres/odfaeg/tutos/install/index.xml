@@ -76,10 +76,11 @@
                 plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 		<br/>
                 Taper ensuite les commandes suivante : <br/>
-                make et make install pour installer la librairie. </br>
                 </p>
+                <!--make et make install pour installer la librairie. </br>
+                
 
-                <!--<h2>Installation de la librairie ODFAEG : </h2>
+                <h2>Installation de la librairie ODFAEG : </h2>
 
                 <p>
                 Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> 
