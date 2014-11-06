@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item>
+            <fr dest="/">Sites</fr>
+            <en dest="/">Websites</en>
+            <item>
+                <fr dest="/last-team">Last Team</fr>
+                <en dest="/last-team">Last Team</en>
+            </item>
+            <item>
+                <fr dest="/last-engine">Last Engine</fr>
+                <en dest="/last-engine">Last Engine</en>
+            </item>
+            <item>
+                <fr dest="/last-escape">Last Escape</fr>
+                <en dest="/last-escape">Last Escape</en>
+            </item>
+            <item>
+                <fr dest="/last-dungo">Last DunGo</fr>
+                <en dest="/last-dungo">Last DunGo</en>
+            </item>
+            <item>
+                <fr dest="/last-dungeon">Last Dungeon</fr>
+                <en dest="/last-dungeon">Last Dungeon</en>
+            </item>
+            <item>
+                <fr>Autres</fr>
+                <en>Others</en>
+                <item>
+                    <fr dest="/autres/odfaeg">ODFAEG</fr>
+                    <en dest="/autres/odfaeg">ODFAEG</en>
+                </item>
+            </item>
+        </item>
+        <item>
+            <fr dest="/contact">Contacts</fr>
+            <en dest="/contact">Contact us</en>
+        </item>
+        <item>
+            <fr>Langues</fr>
+            <en>Languages</en>
+            <item>
+                <fr dest="/fr" prefix="true">Français</fr>
+                <en dest="/fr" prefix="true">French</en>
+            </item>
+            <item>
+                <fr dest="/en" prefix="true">Anglais</fr>
+                <en dest="/en" prefix="true">English</en>
+            </item>
+        </item>
+    </menu>
+</module>

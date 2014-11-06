@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item>
+            <fr dest="/last-team">Accueil</fr>
+            <en dest="/last-team">Home</en>
+        </item>
+        <item>
+            <fr>Équipe</fr>
+            <en>Team</en>
+            <item>
+                <fr>Composition</fr>
+                <en>Make-up</en>
+                <item>
+                    <fr>Apoyander</fr>
+                    <en>Apoyander</en>
+                </item>
+                <item>
+                    <fr>Neckara</fr>
+                    <en>Neckara</en>
+                </item>
+                <item>
+                    <fr>Lolilolight</fr>
+                    <en>Lolilolight</en>
+                </item>
+            </item>
+            <item>
+                <fr>Rejoindre</fr>
+                <en>Join us</en>
+            </item>
+        </item>
+        <item>
+            <fr>Outils</fr>
+            <en>Tools</en>
+            <item>
+                <fr>Youtube</fr>
+                <en>Youtube</en>
+            </item>
+            <item>
+                <fr>Github</fr>
+                <en>Github</en>
+            </item>
+            <item>
+                <fr>Documentation</fr>
+                <en>Documentation</en>
+            </item>
+            <item>
+                <fr>Forum</fr>
+                <en>Forum</en>
+            </item>
+            <item>
+                <fr>IRC</fr>
+                <en>IRC</en>
+            </item>
+            <item>
+                <fr>Mumble</fr>
+                <en>Mumble</en>
+            </item>
+            <item>
+                <fr>Twitter</fr>
+                <en>Twitter</en>
+            </item>
+            <item>
+                <fr>Mails</fr>
+                <en>Mails</en>
+            </item>
+            <item>
+                <fr>SFTP</fr>
+                <en>SFTP</en>
+            </item>
+        </item>
+    </menu>
+</module>

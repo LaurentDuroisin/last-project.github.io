@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item>
+            <fr dest="/last-engine">Accueil</fr>
+            <en dest="/last-engine">Home</en>
+        </item>
+        <item>
+            <fr>Tutoriels</fr>
+            <en>Tutorials</en>
+            <item>
+                <fr dest="/last-engine/tutorials/introduction">Présentation</fr>
+                <en dest="/last-engine/tutorials/introduction">Introduction</en>
+            </item>
+            <item>
+                <fr dest="/last-engine/tutorials/modules-system">Le système de modules</fr>
+                <en dest="/last-engine/tutorials/modules-system">Modules System</en>
+            </item>
+        </item>
+        <item>
+            <fr>Contribuer</fr>
+            <en>Contribute</en>
+        </item>
+    </menu>
+</module>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/structure.xsl"?>
+<page>
+    <menu>/last-escape/menu.xml</menu>
+    <title>Last Escape</title>
+    <content>
+        <html>
+            <h1>Last Escape</h1>
+            <h2>Présentation</h2>
+            Last Escape est un jeu prennant place dans l'univers de Last Dungeon.<br/>
+            <br/>
+            Vous incarnez Pica, une fillette dans un univers 2D avec une impression de 3D.
+            Vous devriez ramasser des objets brillants tout en fuyant les monstres et en évitant les obstacles.<br/>
+            <br/>
+            Le jeu se veut "nerveux", les déplacement seront rapides et demanderont réflexes et agilité pour éviter les obstacles.
+            A noter que vous ne pourrez pas combattre les mobs et que vous perdrez s'ils vous touchent. Si vous heurtez un obstacle, vous tomberez et vous devrez vous relever.
+            <h2>Objectifs</h2>
+            <ul>
+            <li>Eprouver Last Engine en testant les graphismes 2D, les sons, le système de module, d'événements, etc.</li>
+            <li>Offrir quelque chose de concret et distribuable très rapidement</li>
+            </ul>
+            <h2>Psychologie du personnage</h2>
+            Vivant depuis toujours, seule, dans un univers hostile, Pica a su s'adapter et fuir ses prédateurs grâce à sa vitesse.
+            N'ayant jamais vécu en société, elle a une façon de penser qui lui est propre qui certains pourraient qualifier de "simple".
+            Pourtant elle a souvent des éclairs de génie pour ce qui est de s'échapper ou de voler quelques objets brillants, peut-être une forme d'insctinct ou de chance ?<br/>
+            <br/>
+            En grande rivalité avec les Pies, Pica est attiré par tout ce qui brille et adore traîner dans un très vieux campement abandonné au bord de l'océan où elle cache son butin.<br/>
+            <br/>
+            Malheureusement, à force de jouer avec des artéfacts brillants, elle les actives parfois et ces derniers ne sont pas toujours sans dangers...
+            <h2>Gameplay</h2>
+            Le Gameplay est prévu pour être joué aussi bien sur clavier que sur manette de jeu.<br/>
+            <br/>
+            Votre but sera de ramasser les objets brillants de la cartes sans vous faire attrapper par les prédacteurs. Une fois les objets ramassés, vous devrez vous diriger vers la "sortie".
+            <h3>Actions principales</h3>
+            Elles sont au nombres de 4 et correspondront aux touches X,Y,A,B des manettes.
+            <h4>Se baisser</h4>
+            Permet d'éviter les ennemis aériens et les obstacles "haut".
+            <h4>Sauter</h4>
+            Permet d'éviter les obstacles "bas".
+            <h4>Plonger</h4>
+            Permet de passer au travers d'obstacles "médian".
+            <h4>Ramasser un objet/utiliser un objet</h4>
+            Pica peut ramasser des objets et les utiliser une unique fois. Pica ne peut porter qu'un seul objet à la fois.<br/>
+            <br/>
+            Lorsque Pica ramasse un objet, elle se penche.
+            <h3>Actions secondaires</h3>
+            Les actions secondaires sont au nombres de 2 sur manettes (touches L et R) et 3 sur clavier.
+            <h4>Action spéciale</h4>
+            A proximité de zones spéciales, Pica pourra effectuer des actions spéciales dépendant de la zone.
+            <h4>Siffler</h4>
+            Génère du bruit permettant d'attirer les prédateurs.
+            <h4>Changer de vitesse</h4>
+            Sur clavier, il n'est pas possible de changer la vitesse de déplacement contrairement à une manette de jeu. Sur clavier une touche sera donc dédié au changement de la vitesse.<br/>
+            <br/>
+            <ul>
+            <li>marche, Pica se déplace à vitesse normale.</li>
+            <li>fuite, Pica court très vite pour sauver sa peau, les changements de directions deviennent plus difficiles, un virage trop serré peut
+            faire tomber Pica. Fuir permet aussi de sauter plus loin.</li>
+            </ul>
+            <h2>Prédateurs</h2>
+            <h3>Pies</h3>
+            Attirées, tout comme Pica, par les objets brillants, elles fonceront sur Pica pour tenter de lui voler ses objets brillants.<br/>
+            <br/>
+            Au contact, elles font tomber Pica et fuyent vers un endroit précis de la carte déposer leur butin.
+            <h3>Loups</h3>
+            Affamés, dès qu'ils voyent Pica ils lui courrent après. Ils sont légèrement plus rapide que Pica et doté d'une très bonne ouïe.
+            Lorsque Pica n'est pas dans leur champ de vision, ils accourreront au point d'origine de tout bruit. Si Pica les sèmes lors de sa fuite,
+            ils continueront à courrir et à chercher Pica.
+            En revanche, ils ne peuvent pas passer les ovbstacles "médiants".
+            <h3>Loups endormis</h3>
+            Fatigués et immobiles, ils dorment paisiblement. Attention à ne pas les réveiller en faisant trop de bruit ou en s'approchant de trop près...
+            <h3>Mini-artéfact activé</h3>
+            Pica ! On t'as déjà dit d'arrêter de jouer avec ça !
+            <h3>Grand artéfact activé</h3>
+            Oh et puis zut.
+            <h2>Obstacles</h2>
+            <h3>Branches</h3>
+            Hautes, basses ou médiannes, Pica devra se baisser, sauter ou plonger pour les éviter.
+            <h3>Branches instables</h3>
+            Branches prêtes à tomber. Elles peuvent bloquer un chemin si Pica les fait tomber, très pratique pour fuir les prédacteurs.
+            <h3>Buisson épineux</h3>
+            Qui s'y frottent, s'y pique. Pica perdra monentanément de la vitesse à leur contact sous l'effet de la douleur.
+            <h3>Buisson</h3>
+            Parfaite cachette pour Pica. Cachez-vous et sortez de votre cachette avec la touche d'action spéciale.
+            <h3>Buisson dense</h3>
+            Impossible de le traverser ou se cacher dedans.
+            <h3>Rivière/Océan/Gouffre</h3>
+            Pica ne sait pas très bien nager et encore moins voler... Ne tombez pas.
+            <h2>Objets</h2>
+            <h3>Cailloux</h3>
+            Peuvent être ramassé par Pica. Lorsqu'ils sont lancés, ils produise un son à l'endroit de son premier impact.
+            <h3>Artéfacts</h3>
+            Objet brillant, Pica le ramasse grâce à sa touche d'action spéciale. Ces derniers peuvent s'activer en fin de carte si Pica joue un peu trop avec.
+        </html>
+    </content>
+</page>

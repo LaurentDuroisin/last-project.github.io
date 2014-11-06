@@ -1,0 +1,60 @@
+body {
+    background-color : blue;
+}
+
+footer {
+    width:60%;
+    margin-right:auto;
+    margin-left:auto;
+    font-size:.8em;
+    background: white;
+    border:1px solid #696;
+    margin-top : 30px;
+    border-radius : 15px 15px 15px 15px;
+}
+
+#menu-div
+{
+    width:80%;
+    margin-left:10%;
+    background: red;
+    border-radius : 15px 15px 15px 15px;
+    z-index : 10;
+    position : fixed;
+    top : 10px;
+    text-align : center;
+    height : 40px;
+}
+
+#hide-header {
+    position : fixed;
+    z-index : 5;
+    background : blue;
+    height : 120px;
+    width : 100%;
+    top : 0px;
+    left : 0px;
+}
+
+#banner-div {
+    position : fixed;
+    z-index : 6;
+    top : 0px;
+    width : 100%;
+    text-align : center;
+}
+
+#content-zone {
+    margin-top : 120px;
+    min-height : 600px;
+    width:60%;
+    margin-left : auto;
+    margin-right : auto;
+    background-color : white;
+    border-radius : 10px 10px 10px 10px;
+}
+
+#content
+{
+    padding : 15px;
+}

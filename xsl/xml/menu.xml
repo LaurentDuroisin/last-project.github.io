@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+
+<module>
+    <menu>
+        <item>
+            <fr dest="/">Actualités</fr>
+            <en dest="/">News</en>
+        </item>
+        <item>
+            <fr dest="/projects-state">État des projets</fr>
+            <en dest="/projects-state">Projects state</en>
+            <item>
+                <fr>Last Team</fr>
+                <en>Last Team</en>
+            </item>
+            <item>
+                <fr>Last Engine</fr>
+                <en>Last Engine</en>
+            </item>
+            <item>
+                <fr>Last Escape</fr>
+                <en>Last Escape</en>
+            </item>
+        </item>
+        <item>
+            <fr>Contribuer</fr>
+            <en>Contribute</en>
+            <item>
+                <fr>Last Team</fr>
+                <en>Last Team</en>
+            </item>
+            <item>
+                <fr>Last Engine</fr>
+                <en>Last Engine</en>
+            </item>
+            <item>
+                <fr>Last Escape</fr>
+                <en>Last Escape</en>
+            </item>
+        </item>
+    </menu>
+</module>
