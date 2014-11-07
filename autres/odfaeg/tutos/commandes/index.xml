@@ -186,7 +186,7 @@ int main (int argv, char* argc[]) {
 Maintenant que l'on sait comment créer des delegate, on va pouvoir créer des commandes <br/> 
 que l'on connectera ensuite au listener à l'aide d'un identifiant. <br/>
 
-ODFAEG permet de créer des commandes de 2 façons : <br/>
+ODFAEG permet de créer des commandes de 2 façons : <br/>
 
 La première façon est de définir un ou plusieurs événements SFML qui déclencheront la <br/> commande. <br/>
 </p>
@@ -212,16 +212,25 @@ Action combined (a1 || a2 || a3 || a4);
 Cette action doit ensuite être mappée à une commande, ceci se fait à l'aide de la classe <br/> Command, la commande n'est rien d'autre qu'une action liées à un pointeur de fonction <br/> (appelé un slot) ainsi que des paramètres qui seront envoyé à ce slot, pour créer un <br/> slot avec odfaeg ils suffit de créer un object de type FastDelegate<void> en lui <br/> passant en paramètre  un pointeur sur la fonction qu’appellera la commande lorsqu'elle sera <br/> déclenchée ainsi que la valeur des paramètres de la commande (ici je met Unknow car <br/> on ne connaît pas encore la touche qui a été pressée et le temps écoulé depuis le <br/> début de l'application) <br/>
 
 L'avantage majeur de la classe FastDelegate est qu'elle peut stocker n'importe quelle type <br/> de fonction. <br/>
+<pre>
+Command moveCommand(combined, FastDelegate&lt;void&gt;(&amp;MyAppli::keyHeldDown, this,
+sf::Keyboard::Key::Unknown, realTime.restart())); <br/>
 
-Command moveCommand(combined, FastDelegate<void>(&amp;MyAppli::keyHeldDown, this, <br/> sf::Keyboard::Key::Unknown, realTime.restart())); <br/>
-
-Nous lions donc notre action et notre slot à notre commande, voilà, nous avons créer la <br/> commande. <br/>
+Nous lions donc notre action et notre slot à notre commande, voilà, nous avons créer la <br/>
+commande. <br/>
 
 <h2>Connecter des commandes   : </h2>
 
-<p>Une fois que la commande est créée nous devons la connecter au gestionnaire d'événement <br/> (au listener), le gestionnaire d'événement n'est rien d'autre qu'un thread qui <br/> exécute les commandes qu'on lui fournis de manière synchrone ou assynchrone en fonction des <br/> événements SFML généré par l'application. <br/></p>
+<p>
+Une fois que la commande est créée nous devons la connecter au gestionnaire d'événement <br/> 
+(au listener), le gestionnaire d'événement n'est rien d'autre qu'un thread qui <br/> 
+exécute les commandes qu'on lui fournis de manière synchrone ou assynchrone en fonction des <br/> 
+événements SFML généré par l'application. <br/>
+</p>
 
-<p>Pour connecter une commande il faut récupérer l'interpréteur de commande du gestionnaire <br/> d'événements, ceci se fait à l'aide de la méthode getListener()  de la classe <br/> InputSystem : <br/>
+<p>Pour connecter une commande il faut récupérer l'interpréteur de commande du gestionnaire <br/> 
+d'événements, ceci se fait à l'aide de la méthode getListener()  de la classe <br/> 
+InputSystem : <br/>
 
 InputSystem::getListener().connect("MoveConnexion", moveCommand); <br/>
 
