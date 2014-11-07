@@ -63,7 +63,7 @@ var = 10;
 }
         void foo(int i)
         { std::cout &lt;&lt; i; }
-        template <typename A>
+        template &lt;typename A&gt;
         void serialize (A &amp; ar) {
         ar(var);
         }
