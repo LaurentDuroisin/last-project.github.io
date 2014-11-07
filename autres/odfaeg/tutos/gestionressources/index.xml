@@ -23,7 +23,7 @@ Essayons par exemple de charger un tileset contenant toute des textures d'herbe,
 
 odfaeg::ResourceManager&lt;odfaeg::Texture&gt; tm; <br/>
 </p>
-<!--<p>
+<p>
 Le 1er paramètre est le type des ressources externe et le second, le type de l'identifiant <br/> pour la ressource. (par défaut il vaut std::string) <br/>
 
 odfaeg possède également quelques classes prédéfinie pour les classes de sfml chargeant des<br> ressources : TextureManager, SoundManager, FontManager, ShaderManager.<br/>
@@ -89,7 +89,7 @@ Voila, le chargeur de ressource externe de odfaeg n'est pas compliqué et possè
 
 <h2>La destruction des ressources : </h2>
 
-<p>La destruction des ressource ce fait automatiquement à la destruction du cache, lors de <br/> l'arrêt du programme, cependant, on peut le faire explicitement en appelant les <br/> fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.<br/></p>-->
+<p>La destruction des ressource ce fait automatiquement à la destruction du cache, lors de <br/> l'arrêt du programme, cependant, on peut le faire explicitement en appelant les <br/> fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.<br/></p>
 
                 </html>
         </fr>
