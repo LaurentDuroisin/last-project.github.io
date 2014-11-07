@@ -47,10 +47,10 @@ callback, les fonctions peuvent être soit des fonctions libres, des fonctions m
 bien des fonctions anonymes, le passage par référence doit se faire via std::ref <br/> 
 comme avec les std::function : <br/>
 <pre>
-#include<iostream>
-#include<string>
-#include <fstream>
-#include <functional>
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+#include &lt;fstream&gt;
+#include &lt;functional&gt;
 #include "odfaeg/Core/fastDelegate.h"
 #include "odfaeg/Core/serialization.impl"
 using namespace std::literals;
