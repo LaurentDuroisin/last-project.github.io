@@ -76,12 +76,11 @@
                 plateformes 64 bits.(Sinon ça ne compile pas) <br/>
 		<br/>
                 Taper ensuite les commandes suivante : <br/>
-                <!--La page ne s'affiche plus après cette ligne ci! -->
                 make pour compiler la librairie et ensuite make-install pour l'installer. <br/>
                 </p>
                 
 
-                <!--<h2>Installation de la librairie ODFAEG : </h2>
+                <h2>Installation de la librairie ODFAEG : </h2>
 
                 <p>
                 Une fois ces quelques outils d'installés, il ne vous reste plus qu'à<br/> 
@@ -94,11 +93,15 @@
 
                 Cliquer ensuite sur browse build et créer un nouveau dossier dans le répertoire ODFAEG, appeller le par exemple ODFAEG-build.<br/>
 
-                <p>Cliquez ensuite sur le bouton Configure choissez l'option Specify native<br/> compiler et indiquer l'endroit ou se trouve vos compilateur c et c++. (C:/TDM-GCC-32/bin<br/> ou bien C:/TDM-GCC-64/bin sous windows ou bien /usr/bin sous linux.)<br/>
+                <p>Cliquez ensuite sur le bouton Configure choissez l'option Specify native<br/>
+                compiler et indiquer l'endroit ou se trouve vos compilateur c et c++. (C:/TDM-GCC-32/bin<br/>
+                ou bien C:/TDM-GCC-64/bin sous windows ou bien /usr/bin sous linux.)<br/>
 
-                Là, il vous affiche une série d'option Cmake include préfix correspond à<br/> l'endroit ou vous voulez installer ODFAEG.<br/>
+                Là, il vous affiche une série d'option Cmake include préfix correspond à
+                <br/> l'endroit ou vous voulez installer ODFAEG.<br/>
 
-                Attention : pour les plateformes 32 bits spécifier la valeur i386 pour<br/> CMAKE_ARCHITECTURE,  sinon, spécifier la valeur i686 pour les plateformes 64 bits.<br/>
+                Attention : pour les plateformes 32 bits spécifier la valeur i386 pour
+                <br/> CMAKE_ARCHITECTURE,  sinon, spécifier la valeur i686 pour les plateformes 64 bits.<br/>
 
                 Si ça ne compile pas, décocher l'option Build shared lib. (Il se peut que <br/> le mode dynamique ne soit pas encore supporté)<br/></p>
 
@@ -210,7 +213,7 @@
 		</ul>
                 N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la librairie en mode static.<br/>
                 <br/>
-                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG, une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/>-->
+                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG, une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/>
                 </html>
         </fr>
     </content>
