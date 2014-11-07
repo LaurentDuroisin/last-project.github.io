@@ -17,7 +17,7 @@
 <li><a href='tutos/entites/'>Les entités 2D et 2.5D.</a></li>
 <li><a href='tutos/entitysystem/'>L'entity système et les composants.</a></li>
 <li><a href='tutos/states/'>Les states.</a></li>
-<li><a href='tutos/classeutilitaires/'>Les classes utilitaires.</a></li>
+<li><a href='tutos/classesutilitaires/'>Les classes utilitaires.</a></li>
 <li><a href='tutos/entitespersos/'>Créer des entités personnalisées.</a></li>
 <li><a href='tutos/collisions/'>Gestion des collisions, de la physique et des particules.</a></li>
 <li><a href='tutos/sauvegarde/'>Le système de sauvegarde</a></li>
