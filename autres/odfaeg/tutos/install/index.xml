@@ -89,32 +89,40 @@
                 Cmake et la compiler.<br/>
                 </p>
 
-                <p>Cliquer sur browse source et spécifier l'endroit ou vous avez télécharger ODFAEG.<br/>
+                <p>
+                Cliquer sur browse source et spécifier l'endroit ou vous avez télécharger ODFAEG.<br/>
 
                 Cliquer ensuite sur browse build et créer un nouveau dossier dans le répertoire ODFAEG, appeller le par exemple ODFAEG-build.<br/>
 
-                <p>Cliquez ensuite sur le bouton Configure choissez l'option Specify native<br/>
+                Cliquez ensuite sur le bouton Configure choissez l'option Specify native<br/>
                 compiler et indiquer l'endroit ou se trouve vos compilateur c et c++. (C:/TDM-GCC-32/bin<br/>
                 ou bien C:/TDM-GCC-64/bin sous windows ou bien /usr/bin sous linux.)<br/>
+                </p>
 
+                <p>
                 Là, il vous affiche une série d'option Cmake include préfix correspond à
                 <br/> l'endroit ou vous voulez installer ODFAEG.<br/>
 
                 Attention : pour les plateformes 32 bits spécifier la valeur i386 pour
                 <br/> CMAKE_ARCHITECTURE,  sinon, spécifier la valeur i686 pour les plateformes 64 bits.<br/>
 
-                Si ça ne compile pas, décocher l'option Build shared lib. (Il se peut que <br/> le mode dynamique ne soit pas encore supporté)<br/></p>
+                Si ça ne compile pas, décocher l'option Build shared lib. (Il se peut que <br/>
+                le mode dynamique ne soit pas encore supporté)<br/>
+                </p>
 
-                <p>Lorsque tout est bon cliqué à nouveau sur configure et ensuite sur generate.<br/>
+                <p>
+                Lorsque tout est bon cliqué à nouveau sur configure et ensuite sur generate.<br/>
 
                 Ouvrez un terminal et aller dans le dossier ODFAEG-build (là ou se trouve le Makefile de ODFAEG)<br/>
                 Sous windows taper les commandes mingw32-make et mingw-make install pour installé la librairies.<br/>
                 Sous linux taper les commandes make et make install.<br/>
 
-                Et voilà ODFAEG est installé.<br/></p>
+                Et voilà ODFAEG est installé.<br/>
+                </p>
 
                 <p>Il ne vous reste plus qu'à créer un projet dans votre EDI préféré et de<br/> créer un nouveau projet, n'oublier pas de lier les différentes bibliothèque de<br/> ODFAEG à votre projet (qui se trouve dans le dossier lib de ODFAEG) et de préciser<br/> l'endroit ou se trouvent les fichiers d'en tête de ODFAEG, de SFML et d'openssl. (Dans les<br/> dossier include de ODFAEG et de SFML et de openssl)<br/>
-                Il vous faudra aussi lier les librairies suivantes à votre projet : <br/></p>
+                Il vous faudra aussi lier les librairies suivantes à votre projet : <br/>
+                </p>
 		<ul>
                 <li>GLEW en static.</li>
                 <li>SFML en dynamic.</li>
@@ -122,98 +130,13 @@
                 <li>Openssl et gdi32 si vous être sous windows. (ou bien libssl et libcrypto si vous être sous linux)</li>
 		</ul>
 
-                <p>N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la<br/> librairie en mode static.<br/>
+                <p>
+                N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la<br/> librairie en mode static.<br/>
 
-                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG,<br/> une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/></p>
-
-                <u>Prérequis : </u>
-
-                Avant d'installer ODFAEG il vous faudra installer 2 autres petites librairies, un compilateur c++  qui supporte le nouveau standard c++14 (gcc version 4.9.x) ainsi que cmake, rassurer vous, c'est très rapide à installer : <br/>
-
-                <u>Installation des outils de compilation.</u>
-
-                Sous linux il suffit d'ouvrir un terminal, de se connecter en mode super utilisateur et de taper cette commande apt-get install gcc-4.9 g++-4..9 cmake-gui <br/>
-                pour les plateformes 64 bits ou bien  apt-get install gcc-4.9-multilib g++-4.9-multilib cmake-gui et passer le flag -m32 lors de la compilation pour les plateformes 32 bits.<br/>
-
-                Il vous faudra peut être aussi installer la version 4.8 de gcc également si il vous avez des erreurs de linkage avec certains fonctions de la STL.<br/>
-
-                Sous windows vous devez aller sur ce site : http://tdm-gcc.tdragon.net/ et télécharger un compilateur tdm-gcc 32 bits pour les plateformes <br/>
-                32 bits ou 64 bits pour les plateformes 64 bits.<br/>
-                Ensuite, installer cmake-gui : <a href="http://www.cmake.org/cmake/resources/software.html">Ici</a>
-
-                <u>Installation de la librairie SFML.</u>
-
-                Pour installer SFML tout est expliqué sur le site web du développeur principal : <a href="http://en.sfml-dev.org">Site de la SFML.</a>
-
-                Pas besoin donc d'en dire plus. <br/>
-
-                ODFAEG utilise SFML pour faire des applications portable et utiliser l'encapsulation qu'offre SFML sur toute les bibliothèques codée en C qui sont utilisée par les différents modules de ODFAEG.<br/>
-
-                <u>Installation de openSSL.</u>
-
-                Fortement recommandée si vous voulez faire des applications sécurisée qui communique en réseau, cette librairie est utilisé par ODFAEG <br/>
-                pour chiffrer les informations qui transite sur un réseau.<br/>
-
-                Sur linux il suffit de taper la commande apt-get install libssl-dev. <br/>
-
-                Sous windows la meilleur méthode est de télécharger MSYS : <a href="http://sourceforge.net/projects/mingw/files/">Ici</a>
-
-                Ensuite télécharger les sources de openssl : <a href="https://www.openssl.org/">Ici</a>
-
-                Installer ensuite perl : <a href="http://www.perl.org/get.html">Ici</a>
-
-                Lancer MSYS, aller dans le répertoire de openssl et ensuite, taper la commande suivante : <br/>
-
-                perl Configure mingw <br/>
-
-                Aller ensuite dans le fichier MakeFile, chercher la ligne PLATFORM et remplacer mingw par TDM-GCC-32 <br/>
-                pour les plateformes 32 bits et TDM-GCC-64 pour les plateformes 64 bits.(Sinon ça ne compile pas) <br/>
-
-                Taper ensuite les commandes suivante : make et make install pour installer la librairie. <br/>
-
-                <h2>Installation de la librairie ODFAEG : </h2>
-
-                Une fois ces quelques outils d'installés, il ne vous reste plus qu'à installer ODFAEG,<br/>
-                son installation est similaire à l'installation de SFML, ODFAEG ne fournis pas de librairie pré-compilée<br/>
-                , vous devez donc télécharger le code source  ouvrir Cmake et la compiler. <br/>
-
-                Cliquer sur browse source et spécifier l'endroit ou vous avez télécharger ODFAEG. <br/>
-
-                Cliquer ensuite sur browse build et créer un nouveau dossier dans le répertoire ODFAEG, appeller le par exemple ODFAEG-build. <br/>
-
-                Cliquez ensuite sur le bouton Configure choissez l'option Specify native compiler<br/>
-                et indiquer l'endroit ou se trouve vos compilateur c et c++. (C:/TDM-GCC-32/bin ou bien C:/TDM-GCC-64/bin sous windows ou bien /usr/bin sous linux.)<br/>
-
-                Là, il vous affiche une série d'option Cmake include préfix correspond à l'endroit ou vous voulez installer ODFAEG.
-
-                Attention : pour les plateformes 32 bits spécifier la valeur i386 pour CMAKE_ARCHITECTURE, <br/>
-                sinon, spécifier la valeur i686 pour les plateformes 64 bits. <br/>
-
-                Si ça ne compile pas, décocher l'option Build shared lib. (Il se peut que le mode dynamique ne soit pas encore supporté) <br/>
-
-                Lorsque tout est bon cliqué à nouveau sur configure et ensuite sur generate. <br/>
-
-                Ouvrez un terminal et aller dans le dossier ODFAEG-build (là ou se trouve le Makefile de ODFAEG) <br/>
-                Sous windows taper les commandes mingw32-make et mingw-make install pour installé la librairies. <br/>
-                Sous linux taper les commandes make et make install. <br/>
-
-                Et voilà ODFAEG est installé. <br/>
-
-                Il ne vous reste plus qu'à créer un projet dans votre EDI préféré et de créer un nouveau projet, <br/>
-                n'oublier pas de lier les différentes bibliothèque de ODFAEG à votre projet <br/>
-                (qui se trouve dans le dossier lib de ODFAEG) et de préciser l'endroit ou se trouvent les fichiers d'en tête <br/>
-                de ODFAEG, de SFML et d'openssl. (Dans les dossier include de ODFAEG et de SFML et de openssl) <br/>
-                Il vous faudra aussi lier les librairies suivantes à votre projet : <br/>
-                <br/>
-                <ul>
-                <li>-GLEW en static.</li>
-                <li>-SFML en dynamic.</li>
-                <li>-Opengl.</li>
-                <li>-Openssl et gdi32 si vous être sous windows. (ou bien libssl et libcrypto si vous être sous linux)</li>
-		</ul>
-                N'oublier pas de définir la macro ODFAEG_STATIC si vous avez compilé la librairie en mode static.<br/>
-                <br/>
-                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG, une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/>
+                Voilà normalement vous devez pouvoir compiler un projet utilisant ODFAEG,<br/> 
+                une fois que tout ceci est bon vous pouvez passé au chapitre suivant.<br/>
+                </p>
+              
                 </html>
         </fr>
     </content>
