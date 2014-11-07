@@ -29,7 +29,7 @@ Le 1er paramètre est le type des ressources externe et le second, le type de l'
 odfaeg possède également quelques classes prédéfinie pour les classes de sfml chargeant des<br> ressources : TextureManager, SoundManager, FontManager, ShaderManager.<br/>
 Celle-ci ne prennent qu'un seul paramètre template qui vaut std::string par défault.<br/>
 Voici comment instancier un gestionnaire de ressources de type odfaeg::Texture par exemple : <br/>
-TextureManager&lt;gt; tm; <br></p>
+TextureManager&lt;&gt; tm; <br></p>
 <p>
 L'identifiant est comme un alias qui pointe vers une ressource, ici par exemple je vais<br/> créer une énumération qui référencera les différentes ressources dans l'application : <br/>
 Il existe aussi des classes particulières pour les gestionnaires de ressources pour les <br/> types de ressources  <br/>
