@@ -133,7 +133,8 @@ eu = new EntitiesUpdater();
 </pre>
 
 <p>
-Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/> il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/> par exemple comment tracer une scene dans la méthode onRender : <br/></p>
+Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> 
+computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/> il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/> par exemple comment tracer une scene dans la méthode onRender : <br/></p>
 <pre>
 odfaeg::World::drawOnComponents("E_BIGTILE", 0); 
         odfaeg::World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
@@ -146,9 +147,11 @@ Et voici un exemple de code qui met une entité à jour :
 <pre>
 if (caracter->isMoving()) {
             if (caracter->isMovingFromKeyboard()) {
-                odfaeg::World::moveEntity(caracter, caracter->getDir().x * t * caracter->getSpeed(), caracter->getDir().y * t * caracter->getSpeed(),caracter->getDir().y * t * caracter->getSpeed());
+                odfaeg::World::moveEntity(caracter, caracter->getDir().x * t * caracter->getSpeed(), 
+                caracter->getDir().y * t * caracter->getSpeed(),caracter->getDir().y * t * caracter->getSpeed());
                 if (odfaeg::World::collide(caracter)) {
-                    odfaeg::World::moveEntity(caracter, -caracter->getDir().x * t * caracter->getSpeed(), -caracter->getDir().y * t * caracter->getSpeed(),-caracter->getDir().y * t * caracter->getSpeed());
+                    odfaeg::World::moveEntity(caracter, -caracter->getDir().x * t * caracter->getSpeed(), 
+                    -caracter->getDir().y * t * caracter->getSpeed(),-caracter->getDir().y * t * caracter->getSpeed());
                 }
                 odfaeg::Vec3f d = caracter->getCenter() - getView().getPosition();
                 getView().move(d.x, d.y, d.y);
