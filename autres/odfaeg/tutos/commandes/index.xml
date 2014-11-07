@@ -17,6 +17,7 @@ type différents, des paramètres afin d'appeler ces fonctions plus tard, car, l
 un autre thread avec odfaeg que celui ou les arguments sont <br/> 
 passé à la fonction de callback. <br/>
 </p>
+
 <p>
 La seule contrainte est le type de retour de la fonctions de callback, qu'il faut <br/> 
 mentionner à la classe. <br/>
@@ -25,6 +26,7 @@ travail à un autre foncteur) <br/>
 Cette classe prend en paramètre le type de retour de la fonction de callback, et en <br/> 
 arguments, un pointeur sur une fonction ainsi que les arguments de la fonctions de callback. <br/>
 </p>
+
 <p>
 Pour ne pas devoir recréer le même delegate pour appeler plusieurs fois la même fonction de <br/> 
 callback, la classe FastDelegate possède les fonctions setParam et bind pour les <br/> 
@@ -168,8 +170,11 @@ f1.setParams(5, 6);
         std::cout&lt;&lt;std::endl;
         return 0;
 }
-Et avec des placeholders :
-
+</pre>
+<br/>
+Et avec des placeholders :
+<br/>
+<pre>
 void f (int i, int j, int l) {
      std::cout&lt;&lt;"i : "&lt;&lt;i&lt;&lt;" j : "&lt;&lt;j&lt;&lt;" l : "&lt;&lt;l&lt;&lt;std::endl;
 }
@@ -215,9 +220,11 @@ L'avantage majeur de la classe FastDelegate est qu'elle peut stocker n'importe q
 <pre>
 Command moveCommand(combined, FastDelegate&lt;void&gt;(&amp;MyAppli::keyHeldDown, this,
 sf::Keyboard::Key::Unknown, realTime.restart())); <br/>
+</pre>
 
 Nous lions donc notre action et notre slot à notre commande, voilà, nous avons créer la <br/>
 commande. <br/>
+</p>
 
 <h2>Connecter des commandes   : </h2>
 
