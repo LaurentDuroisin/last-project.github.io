@@ -242,7 +242,7 @@ C'est alors la fonction et non plus l'action qui va décider de l'exécution de 
         return false;
     }
     void onMouseInside (sf::Vector2f mousePos) {
-        std::cout<<"Mouse inside : "<<mousePos.x<<" "<<mousePos.y<<std::endl;
+        std::cout&lt;&lt;"Mouse inside : "&lt;&lt;mousePos.x&lt;&lt;" "&lt;&lt;mousePos.y&lt;&lt;std::endl;
     }
 </pre>
 <p>
