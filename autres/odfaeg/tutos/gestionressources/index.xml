@@ -29,7 +29,7 @@ Le 1er paramètre est le type des ressources externe et le second, le type de l'
 odfaeg possède également quelques classes prédéfinie pour les classes de sfml chargeant des<br> ressources : TextureManager, SoundManager, FontManager, ShaderManager.<br/>
 Celle-ci ne prennent qu'un seul paramètre template qui vaut std::string par défault.<br/>
 Voici comment instancier un gestionnaire de ressources de type odfaeg::Texture par exemple : <br/>
-TextureManager<> tm; <br></p>
+TextureManager&lt;gt; tm; <br></p>
 <p>
 L'identifiant est comme un alias qui pointe vers une ressource, ici par exemple je vais<br/> créer une énumération qui référencera les différentes ressources dans l'application : <br/>
 Il existe aussi des classes particulières pour les gestionnaires de ressources pour les <br/> types de ressources  <br/>
@@ -52,14 +52,14 @@ Le 1er paramètre est l'emplacement de la ressource par rapport à l'application
 <p>
 On peut ajouter les gestionnaires de ressources dans un cache, ceci est pratique si vous <br/> devez charger des ressources externes de différent types. <br/>
 La classe resource cache prend un paramètre template : le type de l'identifiant qui <br/> référencera le gestionnaire de ressource. (Par défault le type est std::string) <br/>
-ResourceCache<> cache ; <br/>
+ResourceCache&lt;&gt; cache ; <br/>
 cache.addResourceManager(tm, "TextureManager"); <br/>
 Cette fonction prend en paramètre le gestionnaire de ressources à stocker dans le cache  <br/> ainsi que le nom du ressource manager. <br/></p>
 
 <p>
 Ensuite vous pouvez récupérer le gestionnaire de ressource comme suit : <br/>
 
-TextureManager<> tm = cache.resourceManager<odfaeg::Texture, TEXTURES>("TextureManager"); <br/>
+TextureManager&lt;&gt; tm = cache.resourceManager&lt;odfaeg::Texture, TEXTURES&gt;("TextureManager"); <br/>
 
 En précisant le type de gestionnaire de ressources à récupérer dans le cache et le type de <br/> l'identifiant utilisé dans le gestionnaire de ressources. <br/>
 
@@ -74,12 +74,12 @@ On peut récupérer la ressource de deux façons : soit par son alias ou bien p
 
 <p>Supposons maintenant que nous voulons charger des ressources externes mais que le <br/> gestionnaire d'odfaeg ne possède pas de fonction pour charger ce type de ressource, pour <br/> cela il faut d'abord créer un chargeur personnalisé (par exemple un chargeur de <br/> fichier .3ds) et ensuite il faut passer la fonction qui charge la ressource au gestionnaire <br/> de ressources en créant un foncteur comme ceci : <br/>
 
-std::function<bool(Object3DS,std::string> loadFunc(&MyLoader::fromFile); <br/>
+std::function&lt;bool(Object3DS,std::string&gt; loadFunc(&MyLoader::fromFile); <br/>
 
 Ensuite nous devons passez cette fonction à la fonction load du resource manager : <br/>
 
 <pre>
-ResourceManager<Object3DS, OBJECTS3DS> om ;
+ResourceManager&lt;Object3DS, OBJECTS3DSgt; om ;
 om.load(loadFunc, « resource location ») ;
 </pre>
 
