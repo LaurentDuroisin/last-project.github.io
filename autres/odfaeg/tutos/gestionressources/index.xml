@@ -75,7 +75,7 @@ On peut récupérer la ressource de deux façons : soit par son alias ou bien p
 
 <p>Supposons maintenant que nous voulons charger des ressources externes mais que le <br/> gestionnaire d'odfaeg ne possède pas de fonction pour charger ce type de ressource, pour <br/> cela il faut d'abord créer un chargeur personnalisé (par exemple un chargeur de <br/> fichier .3ds) et ensuite il faut passer la fonction qui charge la ressource au gestionnaire <br/> de ressources en créant un foncteur comme ceci : <br/>
 
-std::function&lt;bool(Object3DS,std::string&gt; loadFunc(&MyLoader::fromFile); <br/>
+std::function&lt;bool(Object3DS,std::string&gt; loadFunc(&amp;MyLoader::fromFile); <br/>
 
 Ensuite nous devons passez cette fonction à la fonction load du resource manager : <br/>
 
