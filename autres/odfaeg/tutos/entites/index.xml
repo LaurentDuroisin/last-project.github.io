@@ -91,7 +91,8 @@ textures. <br/>
 <p>Pour les mur : <br/>
 
 <pre>
-Tile *t = new Tile(walls[3]->getFaces()[0]->getMaterial().getTexture(), Vec2f(0, 130), Vec2f(walls[3]->getSize().x, walls[3]->getSize().y), walls[3]->getFaces()[0]->getMaterial().getTexRect());
+Tile *t = new Tile(walls[3]->getFaces()[0]->getMaterial().getTexture(), Vec2f(0, 130),<br/>
+Vec2f(walls[3]->getSize().x, walls[3]->getSize().y), walls[3]->getFaces()[0]->getMaterial().getTexRect());
         w = new Wall(3, t,AmbientLight::getAmbientLight());
 </pre>
 On lui passe un type  qui correspond à ceci : <br/>
@@ -113,7 +114,8 @@ l'ombre du mur. <br/>
 <p>Pour les décors : <br/>
 
 <pre>
- Decor* decor = new Decor(new Tile(tm.getResourceByAlias(HOUSE), Vec2f(0, 200), Vec2f(250, 300), IntRect(0, 0, 250, 300)), AmbientLight::getAmbientLight());  
+ Decor* decor = new Decor(new Tile(tm.getResourceByAlias(HOUSE), Vec2f(0, 200), Vec2f(250, 300),<br/>
+ IntRect(0, 0, 250, 300)), AmbientLight::getAmbientLight());  
 </pre>     
    
 On lui passe une tile, et la lumière pour générer l'ombre.<br/>
