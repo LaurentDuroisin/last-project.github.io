@@ -11,36 +11,54 @@
 
               <h2>Créer un state : </h2>
 
-<p>Avant de créer un state il faut redéfinir 2 fonctions qui applique et annule le state,<br/> pour cela il faut hériter de la classe StateExecutor et redéfinir les 2 <br/> méthodes suivantes : <br/>
+<p>
+Avant de créer un state il faut redéfinir 2 fonctions qui applique et annule le state,<br/> 
+pour cela il faut hériter de la classe StateExecutor et redéfinir les 2 <br/> méthodes suivantes : <br/>
 
 doState(State) et undoState(State), celles-ci prenne en paramètre le state courant. <br/>
 
-Pour créer un state il suffit de lui passer un nom et un pointeur sur un objet d'un type <br/> dérivé de StateExecutor. <br/></p>
+Pour créer un state il suffit de lui passer un nom et un pointeur sur un objet d'un type <br/>
+dérivé de StateExecutor. <br/></p>
 
-<p>Nous pouvons par la suite, ajouter des paramètres à notre state, et les récupérer dans <br/> notre méthode de notre classe dérivée de StateExecuror : <br/>
+<p>Nous pouvons par la suite, ajouter des paramètres à notre state, et les récupérer dans <br/> 
+notre méthode de notre classe dérivée de StateExecuror: <br/>
 
-MyState state(« The state », &amp;myStateExecutor) ; <br/>
+MyState state(« The state », &amp;myStateExecutor); <br/>
 
-state.addParameter(« ParamName », paramValue) ; <br/>
+state.addParameter(«ParamName», paramValue); <br/>
 
 La valeur peut être de n'importe quel type il faudra donc préciser son type lors de la <br/> récupération : <br/>
 
-ParamType value = state.getParameter(« ParamName ») .getValue<ParamType>; <br/></p>
+ParamType value = state.getParameter(«ParamName»).getValue&lt;ParamType&gt; <br/>
+</p>
 
-<p>Nous pouvons associer plusieurs states à un groupe grâce à la classe StateGroup.<br/>
+<p>
+Nous pouvons associer plusieurs states à un groupe grâce à la classe StateGroup.<br/>
 
-Nous pouvons aussi ajouté des groupes de states dans une pile avec la classe StateStack <br/> afin d'appliquer les derniers states qui  ont été annulés ou bien d'annuler les derniers <br/> states qui ont été appliqué. <br/>
+Nous pouvons aussi ajouté des groupes de states dans une pile avec la classe StateStack <br/>
+afin d'appliquer les derniers states qui  ont été annulés ou bien d'annuler les derniers <br/>
+states qui ont été appliqué. <br/>
 
-Ceci est surtout utile dans les applications si par exemple vous souhaiter faire un éditeur <br/> de map pour votre jeux. <br/>
+Ceci est surtout utile dans les applications si par exemple vous souhaiter faire un éditeur <br/>
+de map pour votre jeux. <br/>
 
 Mais nous n'en somme pas encore là donc je rentrerai dans les détails en temps voulu. <br/>
 
-Chaque entité odfaeg possède un state qui peut prendre un ou plusieurs paramètres <br/> personnalisé, ce qui évite de devoir faire trop d'héritage lors de la création d'entités <br/> personnalisées. <br/></p>
+Chaque entité odfaeg possède un state qui peut prendre un ou plusieurs paramètres <br/>
+personnalisé, ce qui évite de devoir faire trop d'héritage lors de la création d'entités <br/>
+personnalisées. <br/></p>
 
-<p>Les fonctions pour ajouter des nouveau attributs à nos entités s'appellent addAttribute<br/> et getAttribute, removeAttribute et changeAttribute et fonctionnent de la <br/> même façon que addParameter, getParameter, removeParameter et changeParameter. <br/></p>
+<p>
+Les fonctions pour ajouter des nouveau attributs à nos entités s'appellent addAttribute<br/>
+et getAttribute, removeAttribute et changeAttribute et fonctionnent de la <br/>
+même façon que addParameter, getParameter, removeParameter et changeParameter. <br/>
+</p>
 
-<p>Pour modifier appliquer ou annuler un state d'une entité il suffit d'appelé les méthodes <br/> interract et uninterract de la classe entity en lui passant un pointeur vers le state <br/> executor qui va modifier le state de l'entité. <br/>
-
+<p>
+Pour modifier appliquer ou annuler un state d'une entité il suffit d'appelé les méthodes <br/>
+interract et uninterract de la classe entity en lui passant un pointeur vers le state <br/>
+executor qui va modifier le state de l'entité. <br/>
+</p>
                 </html>
         </fr>
     </content>
