@@ -7,72 +7,114 @@
     <content>
         <fr>
                 <html>
-                        <h1>Chaptire IX : Les classes utilitaires de odfaeg. </h1>
+                        <h1>Chaptire IX : Les classes utilitaires de odfaeg.</h1>
 
-             <h2>Les variants : </h2>
+             <h2>Les variants : </h2>
 
-<p>Tout comme boost, odfaeg possède quelque classe utilitaires qui sont utilisées lors du <br/> codage du gameplay et l'application de comportements différents suivant les <br/> différents type d'entités. (A la diffence prêt qu'elles utilisent le nouveau standart <br/> c++14.) <br/>
+<p>
+Tout comme boost, odfaeg possède quelque classe utilitaires qui sont utilisées lors du <br/> 
+codage du gameplay et l'application de comportements différents suivant les <br/>
+différents type d'entités. (A la diffence prêt qu'elles utilisent le nouveau standart <br/> c++14.) <br/>
 
-Voici un exemple de code utilisant un variant qui permet d'appliquer deux comportement <br/> différent pour une classe A et B. <br/> </p>
+Voici un exemple de code utilisant un variant qui permet d'appliquer deux comportement <br/>
+différent pour une classe A et B. <br/>
+</p>
 
+<p>
 <pre>
 class Chien {
 };
- 
+
 class Chat {
 };
- 
-struct Attaquer : public odfaeg::Visitor<> {
-       void operator()(Chat&amp; chat) {
-            std::cout<<"griffe!"<<std::endl;
-       }
-       void operator()(Chien& chien) {
-            std::cout<<"mort!"<<std::endl;
-       }     
+
+struct Attaquer : public odfaeg::Visitor&lt;&lt; {
+      void operator()(Chat&amp; chat) {
+            std::cout<<"griffe!"<<std::endl;
+      }
+      void operator()(Chien& chien) {
+            std::cout<<"mort!"<<std::endl;
+      } 
 };
-Et dans le main il suffit juste de faire ceci :
-Chat chat;
-Chien chien;
-std::vector<odfaeg::Variant<Chien, Chat>> vector;
-vector.push_back(odfaeg::Variant<Chien, Chat>(chat));
-vector.push_back(odfaeg::Variant<Chien, Chat>(chien));
-Attaquer attaquer;
-for (unsigned int i = 0; i < vector.size(); i++) {
-     odfaeg::apply_visitor(attaquer, vector[i]);
+</pre>
+Et dans le main il suffit juste de faire ceci : <br/>
+<pre>
+int main() {
+    Chat chat;
+    Chien chien;
+    std::vector&lt;odfaeg::Variant&lt;Chien, Chat&gt;&gt; vector;
+    vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chat));
+    vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chien));
+    Attaquer attaquer;
+    for (unsigned int i = 0; i < vector.size(); i++) {
+         odfaeg::apply_visitor(attaquer, vector[i]);
+    }
 }
 </pre>
+</pre>
+</p>
+
+<h2>Utiliser un n-ary visitor : </h2>
+<p>
+Le code source n'est pas fort bien différent à part qu'il faut appeler la méthode apply_nary_visitor au lieu de <br/>
+apply_visitor.<br/>
+<pre>
+struct chat
+{ };
+struct chien
+{ };
+struct attaquer
+        : odfaeg::Visitor&lt;&gt;
+{
+        void operator()(const chat&amp;, const chat&amp;) const
+        { std::cout &lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
+        void operator()(const chat&amp;, const chien&amp;) const
+        { std::cout &lt;&lt;"griffe - mord  "&lt;&lt;std::endl;}
+        void operator()(const chien&amp;, const chat&amp;) const
+        { std::cout &lt;&lt;"mord - griffe"&lt;&lt;std::endl;}
+        void operator()(const chien&amp;, const chien&amp;) const
+        { std::cout &lt;&lt;"mord - mord  "&lt;&lt;std::endl;}
+};
+int main() {
+    Chat chat;
+    Chien chien;
+    odfaeg::Variant&lt;Chien, Chat&gt;&gt var1(chat);
+    odfaeg::Variant&lt;Chien, Chat&gt;&gt var2(chien);
+    odfaeg::apply_nary_visitor(var1, var2);
+}
+</pre>
+</p>
 
 <p>
-Une autre méthode : <br/>
-odfaeg possède une autre méthode mettant permettant de faire cela à l'aide d'une interface <br/> pour les diffent type d'entités, et d'appliquer un multiple dispatch dessus comme <br/> ceci : <br/>
+Une autre méthode : <br/>
+odfaeg possède une autre méthode permettant de faire cela à l'aide d'une interface <br/>
+pour les diffent type d'entités, et d'appliquer un multiple dispatch dessus comme <br/> 
+ceci : <br/>
 
 <pre>
 
 struct chat;
 struct chien;
- 
 struct animal
-        : odfaeg::accept_visitor<animal,chat,chien>
+        : odfaeg::accept_visitor&lt;animal,chat,chien&gt;
 { };
- 
 struct chat
-        : odfaeg::acceptable<animal,chat>
+        : odfaeg::acceptable&lt;animal,chat&gt;
 { };
- 
 struct chien
-        : odfaeg::acceptable<animal,chien>
+        : odfaeg::acceptable&lt;animal,chien&gt;
 { };
 struct attaquer
-        : odfaeg::dispatchable<attaquer,animal>
+        : odfaeg::dispatchable&lt;attaquer,animal&gt;
 {
         void operator()(const chat&amp;, const chat&amp;) const
-        { std::cout <<  "griffe - griffe" << std::endl;}
+        { std::cout&lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
         void operator()(const chat&amp;, const chien&amp;) const
-        { std::cout <<  "griffe - mord  " << std::endl;}
+        { std::cout&lt;&lt;"griffe - mord  "&lt;&lt;std::endl;}
         void operator()(const chien&amp;, const chat&amp;) const
-        { std::cout <<  "mord - griffe" << std::endl;}
+        { std::cout&lt;&lt;"mord - griffe"&lt;&lt;std::endl;}
         void operator()(const chien&amp;, const chien&amp;) const
-        { std::cout << "mord - mord  " << std::endl;}
+        { std::cout&lt;&lt;"mord - mord  "&lt;&lt;std::endl;}
 };
 chat c1;
 chien c2; 
@@ -83,6 +125,7 @@ attaquer().apply(a1,a2);
 attaquer().apply(a2,a1);
 attaquer().apply(a2,a2);
 </pre>
+</p>
 
                 </html>
         </fr>
