@@ -66,7 +66,7 @@ enfants afin de créer des animations squelettique <br/>
 <p>
 Et chaque entité de l'animation correspond à une frame de l'animation. <br/>
 
-odfaeg::Shadow, elles sont générées automatiquement par le framework donc pas besoin de </br> 
+odfaeg::Shadow, elles sont générées automatiquement par le framework donc pas besoin de <br/> 
 s'en soucier. <br/>
 
 odfaeg::PonctualLight : une lumière poncutelle. <br/>
