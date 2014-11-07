@@ -114,13 +114,13 @@ fonction utilitaire comme par exemple récupérer tout les chemins vers les ress
 d'un même type qui ont été chargée. <br/>
 </p>
 
-<!--<h2>La destruction des ressources : </h2>
+<h2>La destruction des ressources : </h2>
 
 <p>
-La destruction des ressource ce fait automatiquement à la destruction du cache, lors de <br/>
+La destruction des ressources ce fait automatiquement à la destruction du cache, lors de <br/>
 l'arrêt du programme, cependant, on peut le faire explicitement en appelant les <br/> 
 fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.<br/>
-</p>-->
+</p>
 
                 </html>
         </fr>
