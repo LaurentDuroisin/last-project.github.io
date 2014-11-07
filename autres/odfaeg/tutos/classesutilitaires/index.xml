@@ -14,13 +14,14 @@
 <p>
 Tout comme boost, odfaeg possède quelque classe utilitaires qui sont utilisées lors du <br/> 
 codage du gameplay et l'application de comportements différents suivant les <br/>
-différents type d'entités. (A la diffence prêt qu'elles utilisent le nouveau standart <br/> c++14.) <br/>
+différents type d'entités. (A la diffence prêt qu'elles utilisent le nouveau standart <br/>
+c++14.) <br/>
 
 Voici un exemple de code utilisant un variant qui permet d'appliquer deux comportement <br/>
 différent pour une classe A et B. <br/>
 </p>
 
-<p>
+<!--<p>
 <pre>
 class Chien {
 };
@@ -53,7 +54,7 @@ int main() {
 </pre>
 </p>
 
-<!--<h2>Utiliser un n-ary visitor : </h2>
+<h2>Utiliser un n-ary visitor : </h2>
 <p>
 Le code source n'est pas fort bien différent à part qu'il faut appeler la méthode apply_nary_visitor au lieu de <br/>
 apply_visitor.<br/>
