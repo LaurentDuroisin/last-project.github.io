@@ -53,7 +53,7 @@ int main() {
 </pre>
 </p>
 
-<h2>Utiliser un n-ary visitor : </h2>
+<!--<h2>Utiliser un n-ary visitor : </h2>
 <p>
 Le code source n'est pas fort bien différent à part qu'il faut appeler la méthode apply_nary_visitor au lieu de <br/>
 apply_visitor.<br/>
@@ -126,7 +126,7 @@ int main() {
     attaquer().apply(a2,a2);
 }
 </pre>
-</p>
+</p>-->
 
                 </html>
         </fr>
