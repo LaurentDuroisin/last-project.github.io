@@ -77,7 +77,7 @@
 		<br/>
                 Taper ensuite les commandes suivante : <br/>
                 <!--La page ne s'affiche plus après cette ligne ci! -->
-                make pour compiler la librairie et ensuite make-install pour l'installer. </br>
+                make pour compiler la librairie et ensuite make-install pour l'installer. <br/>
                 </p>
                 
 
