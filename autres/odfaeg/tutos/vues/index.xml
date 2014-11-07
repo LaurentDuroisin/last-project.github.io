@@ -21,7 +21,9 @@ fenêtre. <br/>
 
 <p>
 Odfaeg n'impose pas d'orientation pour les axes et on peut changer l'orientations des axes<br/> 
-comme on le désire, contrairement à SFML, les vues on pour origine le centre de <br/> la fenêtre et non pas le coin supérieur gauche de la fenêtre et le sens des axes est <br/> vers la droite pour l'axe x, vers le haut pour l'axe y et vers vous pour l'axe z.<br/>
+comme on le désire, contrairement à SFML, les vues on pour origine le centre de <br/> 
+la fenêtre et non pas le coin supérieur gauche de la fenêtre et le sens des axes est <br/> 
+vers la droite pour l'axe x, vers le haut pour l'axe y et vers vous pour l'axe z.<br/>
 On peut changer facilement l'orientation des axes avec la méthode setScale comme ceci : <br/>
 
 <pre>
