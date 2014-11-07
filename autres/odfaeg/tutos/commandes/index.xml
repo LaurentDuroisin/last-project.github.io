@@ -89,7 +89,7 @@ struct C,: B {
  void foo();
  void print () {
  B::print();
-std::cout&lt;&ltc&lt;&ltstd::endl;
+std::cout&lt;&lt;c&lt;&ltstd::endl;
 } 
 std::string c;
 };
