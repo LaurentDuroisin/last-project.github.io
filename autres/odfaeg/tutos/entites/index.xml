@@ -61,12 +61,14 @@ Une animation peut contenir d'autres animations et ainsi interagir avec des anim
 enfants afin de créer des animations squelettique <br/>
 </p>
 
-<p>Et chaque entité de l'animation correspond à une frame de l'animation. <br/>
+<p>
+Et chaque entité de l'animation correspond à une frame de l'animation. <br/>
 
 odfaeg::Shadow, elles sont générées automatiquement par le framework donc pas besoin de </br> 
 s'en soucier. <br/>
 
 odfaeg::PonctualLight : une lumière poncutelle. <br/>
+</p>
 
 <h2>Créer des entités.</h2>
 
