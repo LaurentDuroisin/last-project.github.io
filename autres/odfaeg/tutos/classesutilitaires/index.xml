@@ -28,7 +28,7 @@ class Chien {
 class Chat {
 };
 
-struct Attaquer : public odfaeg::Visitor&lt;&lt; {
+struct Attaquer : public odfaeg::Visitor&lt;&lt; {
       void operator()(Chat&amp; chat) {
             std::cout&lt;&lt;"griffe!"&lt;&lt;std::endl;
       }
@@ -46,7 +46,7 @@ int main() {
     vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chat));
     vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chien));
     Attaquer attaquer;
-    for (unsigned int i = 0; i < vector.size(); i++) {
+    for (unsigned int i = 0; i &lt; vector.size(); i++) {
          odfaeg::apply_visitor(attaquer, vector[i]);
     }
 }
