@@ -115,14 +115,16 @@ struct attaquer
         void operator()(const chien&amp;, const chien&amp;) const
         { std::cout&lt;&lt;"mord - mord  "&lt;&lt;std::endl;}
 };
-chat c1;
-chien c2; 
-animal&amp; a1 =c1;
-animal&amp; a2 =c2; 
-attaquer().apply(a1,a1);
-attaquer().apply(a1,a2);
-attaquer().apply(a2,a1);
-attaquer().apply(a2,a2);
+int main() {
+    chat c1;
+    chien c2; 
+    animal&amp; a1 =c1;
+    animal&amp; a2 =c2; 
+    attaquer().apply(a1,a1);
+    attaquer().apply(a1,a2);
+    attaquer().apply(a2,a1);
+    attaquer().apply(a2,a2);
+}
 </pre>
 </p>
 
