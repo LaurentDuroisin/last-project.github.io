@@ -77,8 +77,8 @@ struct attaquer
 int main() {
     Chat chat;
     Chien chien;
-    odfaeg::Variant&lt;Chien, Chat&gt;&gt var1(chat);
-    odfaeg::Variant&lt;Chien, Chat&gt;&gt var2(chien);
+    odfaeg::Variant&lt;Chien, Chat&gt;&gt; var1(chat);
+    odfaeg::Variant&lt;Chien, Chat&gt;&gt; var2(chien);
     odfaeg::apply_nary_visitor(var1, var2);
 }
 </pre>
