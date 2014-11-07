@@ -7,68 +7,123 @@
     <content>
         <fr>
                 <html>
-                        <h1>Chapitre VII : Le système de gestion d'entités 2D et 2.5D et les composants :  </h1>
+                        <h1>Chapitre VII : Le système de gestion d'entités 2D et 2.5D et les composants : </h1>
 
-                <h2>Stocker des entités dans le gestionnaire : </h2>
+                <h2>Stocker des entités dans le gestionnaire : </h2>
 
-<p>Pour stocker des entités dans le gestionnaire il suffit de créer un objet de type map, <br/> les gestionnaires d'entités contiennent une grille et les entités sont stockées dans <br/> les cellules de cette grille, la grille s'agrandis et se rétréci en fonction de la <br/> taille de la map, les cellules de la grille peuvent être définie à l'aide d'une <br/> matrice de changement de base ainsi que d'une largeur, d'une hauteur et d'une profondeur <br/> pour la 3D.<br/></p>
+<p>
+Pour stocker des entités dans le gestionnaire il suffit de créer un objet de type map, <br/>
+les gestionnaires d'entités contiennent une grille et les entités sont stockées dans <br/>
+les cellules de cette grille, la grille s'agrandis et se rétréci en fonction de la <br/>
+taille de la map, les cellules de la grille peuvent être définie à l'aide d'une <br/>
+matrice de changement de base ainsi que d'une largeur, d'une hauteur et d'une profondeur <br/> 
+pour la 3D.<br/>
+</p>
 
-<p>La matrice de changement de base est utile si les entités ont été rendues dans un autre<br/> repère (avec un autre logiciel) que celui utilisé par l'application. (C'est le <br/> cas par exemple pour les jeux en 3D isométrique, les objects sont rendus dans un <br/> repère en 3D sur une image en 2D et l'application rend ses images dans un repère en 2D) <br/> 
-On peut aussi utiliser cette matrice si l'on veut stocker les entités dans un autre repère <br/> que celui utilisé par opengl. <br/></p>
+<p>
+La matrice de changement de base est utile si les entités ont été rendues dans un autre<br/> 
+repère (avec un autre logiciel) que celui utilisé par l'application. (C'est le <br/> 
+cas par exemple pour les jeux en 3D isométrique, les objects sont rendus dans un <br/>
+repère en 3D sur une image en 2D et l'application rend ses images dans un repère en 2D) <br/> 
+On peut aussi utiliser cette matrice si l'on veut stocker les entités dans un autre repère <br/> 
+que celui utilisé par opengl. <br/>
+</p>
 
-<p>Le gestionnaire d'entité va alors changé de repère lors de la création des cellules de <br/> la grille suivant la matrice de changement de base.<br/>
+<p>
+Le gestionnaire d'entité va alors changé de repère lors de la création des cellules de <br/> 
+la grille suivant la matrice de changement de base.<br/>
 
-Les entités seront donc placée dans une grille qui est contenue dans un repère en 3D <br/> isométrique par exemple. (tandit que les entités seront dessinées dans un repère en 2D) <br/>
+Les entités seront donc placée dans une grille qui est contenue dans un repère en 2D <br/> 
+isométrique par exemple. (tandit que les entités seront dessinées dans un repère en 2D) <br/>
 
-Par défaut la grille contient la matrice de changement de base en 3D iso mais on peut la <br/> changer en créant une instance de BaseChangementMatrix et en la passant au <br/> gestionnaire d'entité. <br/>
-La scène peut être rendu sur un ou plusieurs composants de rendu, ces composants <br/> choisissent la meilleur option de rendu suivant les fonctionnalités supportée par votre <br/> carte graphique. (Shaders, etc...) <br/></p>
+Par défaut la grille contient la matrice de changement de base en 3D iso mais on peut la <br/>
+changer en créant une instance de BaseChangementMatrix et en la passant au <br/>
+gestionnaire d'entité. <br/>
+La scène peut être rendu sur un ou plusieurs composants de rendu, ces composants <br/>
+choisissent la meilleur option de rendu suivant les fonctionnalités supportée par votre <br/>
+carte graphique. (Shaders, etc...) <br/>
+</p>
 
-<p>Pour créer un gestionnaire d'entité il suffit d'appeler cette fonction : <br/>
+<p>
+Pour créer un gestionnaire d'entité il suffit d'appeler cette fonction : <br/>
 
 theMap = new Map(&amp;getRenderComponentManager(), "Map test", 100, 50, 0); <br/>
 
 En lui passant le gestionnaire de composant de rendu utilisé par l'application. <br/>
 
-Le gestionnaire de composant contiendra et dessinera tout composants utilisé par <br/> l'application (composants de rendu de la scene, guis (menus, ...), shadowMap, LightMap, <br/> etc....) <br/>
-On passe ensuite le nom de la map, ainsi que la largeur, la hauteur et la profondeur des <br/> cellules de la grille. <br/></p>
+Le gestionnaire de composant contiendra et dessinera tout composants utilisé par <br/>
+l'application (composants de rendu de la scene, guis (menus, ...), shadowMap, LightMap, <br/>
+etc....) <br/>
+On passe ensuite le nom de la map, ainsi que la largeur, la hauteur et la profondeur des <br/>
+cellules de la grille. <br/>
+</p>
 
-<p>Il n'est pas possible d'utiliser un quadtree ou un bsp-tree simplement avec odfaeg (à <br/> moins de créer son propre gestionnaire d'entité en héritant de la classe <br/> g2d ::EntityManager pour la simple et bonne raison que odfaeg veut rester dans la <br/> simplicité et une grille est plus facile à gérer dans le cadre du pathfinding et afin de <br/> permettre la création d'une map de n'importe quelle taille sans devoir tout régénérer. <br/></p>
+<p>
+Il n'est pas possible d'utiliser un quadtree ou un bsp-tree simplement avec odfaeg (à 
+<br/> moins de créer son propre gestionnaire d'entité en héritant de la classe <br/> 
+g2d ::EntityManager pour la simple et bonne raison que odfaeg veut rester dans la <br/> 
+simplicité et une grille est plus facile à gérer dans le cadre du pathfinding et afin de <br/> 
+permettre la création d'une map de n'importe quelle taille sans devoir tout régénérer. <br/>
+</p>
 
-<p>Un quadtree nécessite de connaitre la taille de la map à l'avance et un bsp-tree <br/> nécessite d'être construit à l'avance avec un éditeur de map. <br/>
+<p>Un quadtree nécessite de connaitre la taille de la map à l'avance et un bsp-tree <br/> 
+nécessite d'être construit à l'avance avec un éditeur de map. <br/>
 
-Il a fallut donc trouvé une alternative et la meilleur que j'ai pu trouvée c'est celle-ci : <br/>
+Il a fallut donc trouvé une alternative et la meilleur que j'ai pu trouvée c'est celle-ci : <br/>
+</p>
 
-<p>Utiliser plusieurs gestionnaires d'entités avec divers tailles pour les cellules de la <br/> grille si les objects sont vraiment très proche les uns des autres, ou bien si le <br/> monde est très grand, et stocker ses gestionnaires d'entités dans une classe "world" ui constitue tout le monde du jeux. <br/>
+<p>
+Utiliser plusieurs gestionnaires d'entités avec divers tailles pour les cellules de la <br/>
+grille si les objects sont vraiment très proche les uns des autres, ou bien si le <br/>
+monde est très grand, et stocker ses gestionnaires d'entités dans une classe "world" ui constitue tout le monde du jeux. <br/>
+</p>
 
-<p>La classe qui permet de stocker ses gestionnaires d'entités s'appelle world et on peut <br/> ajouté et récupérer des gestionnaires d'entité comme ceci (il ne faut pas non plus <br/> oublier de définir avec quel gestionnaire d'entité on veut travaillé grâce à la méthode setCurrentEntityManager) <p>
-
+<p>La classe qui permet de stocker ses gestionnaires d'entités s'appelle world et on peut <br/>
+ajouté et récupérer des gestionnaires d'entité comme ceci (il ne faut pas non plus <br/>
+oublier de définir avec quel gestionnaire d'entité on veut travaillé grâce à la méthode setCurrentEntityManager)<br/>
 <pre>
 World::addEntityManager(theMap);
 World::setCurrentEntityManager("Map test");
 </pre>
+</p>
 
-<p>Le monde à l'avantage de pouvoir stocker des gestionnaires d'entités pour les entités en <br/> 2D et 2.5D mais aussi plus tard pour les entités en 3D. <br/>
+<p>
+Le monde à l'avantage de pouvoir stocker des gestionnaires d'entités pour les entités en <br/> 
+2D et 2.5D mais aussi plus tard pour les entités en 3D. <br/>
 
-Ensuite pour ajouté une entité dans le monde il suffit d'appeler la méthode addEntity de la <br/> classe World : <br/>
-World::addEntity(myEntity) ; <br/>
+Ensuite pour ajouté une entité dans le monde il suffit d'appeler la méthode addEntity de la <br/> 
+classe World : <br/>
+World::addEntity(myEntity); <br/>
+</p>
 
 <h2>Dessiner des entités : </h2>
 
-<p>Pour dessiner des entités ODFAEG il suffit d'appelé la méthode drawOnComponents de la <br/> classe world : en lui passant le type d'entité que l'on veut dessiner, comme ceci : <br/>
+<p>
+Pour dessiner des entités ODFAEG il suffit d'appelé la méthode drawOnComponents de la <br/> 
+classe world : en lui passant le type d'entité que l'on veut dessiner, comme ceci : <br/>
 
 <pre>
 World::drawOnComponents("E_TILE", 0);// draw everything here...
 World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
 </pre>
+</p>
 
-<p>Le 1er paramètre est le type d'entité à dessiner sur le composant, le second paramètre <br/> est la position en z du composant sur lequel on veut dessiner la scène. <br/>
+<p>
+Le 1er paramètre est le type d'entité à dessiner sur le composant, le second paramètre <br/>
+est la position en z du composant sur lequel on veut dessiner la scène. <br/>
 
 0 = le composant du fond. <br/>
 1 = le composant du dessus. <br/>
+</p>
 
 <h2>Remettre à jour les entités : </h2>
 
-<p>Pour remettre à jour les entités odfaeg possède 2 classes, une classe EntityUpdater qui <br/> remet à jour les entités présente de la vue passée à la fenêtre de rendu, et <br/> AnimUpdater pour remettre à jour la frame courante des animations, il suffit de créer ces <br/> deux objets et de les ajouter à notre monde pour remettre à jour la frame couante<br/>setInterval permet de définir la fréquence avec laquelle le thread va remettre à jour la <br/> frame courante des différentes animations.) <br/>
+<p>Pour remettre à jour les entités odfaeg possède 2 classes, une classe EntityUpdater qui <br/>
+remet à jour les entités présente de la vue passée à la fenêtre de rendu, et <br/>
+AnimUpdater pour remettre à jour la frame courante des animations, il suffit de créer ces <br/>
+deux objets et de les ajouter à notre monde pour remettre à jour la frame couante<br/>
+setInterval permet de définir la fréquence avec laquelle le thread va remettre à jour la <br/>
+frame courante des différentes animations.) <br/>
 
 <pre>
 eu = new EntitiesUpdater();       
@@ -77,16 +132,17 @@ eu = new EntitiesUpdater();
  au->setInterval(seconds(0.01f));
 </pre>
 
-<p>Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/> il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/> par exemple comment tracer une scene dans la méthode onRender : <br/></p>
+<p>
+Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/> il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/> par exemple comment tracer une scene dans la méthode onRender : <br/></p>
 <pre>
 odfaeg::World::drawOnComponents("E_BIGTILE", 0); 
         odfaeg::World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
 odfaeg::RenderStates states(sf::BlendMode(sf::BlendMultiply));
-odfaeg::g2d::Entity&amp; shadowMap = odfaeg::World::getShadowMap<odfaeg::g2d::Entity>();
+odfaeg::g2d::Entity&amp; shadowMap = odfaeg::World::getShadowMap&lt;odfaeg::g2d::Entity&gt;();
 odfaeg::World::drawOnComponents(shadowMap, 0, states);
 </pre>
 
-Et voici un exemple de code qui met à jour les entités à jour :
+Et voici un exemple de code qui met une entité à jour :
 <pre>
 if (caracter->isMoving()) {
             if (caracter->isMovingFromKeyboard()) {
@@ -98,8 +154,11 @@ if (caracter->isMoving()) {
                 getView().move(d.x, d.y, d.y);
                 odfaeg::World::update();
 </pre>
-<p>Il ne faut pas oublier d'appeler la méthode World::update() pour mettre à jour la frame <br/> courante si l'on se déplace dans le monde. 
-Et voilà, ceci clôture ce chapitre.<br/></p>
+</p>
+<p>Il ne faut pas oublier d'appeler la méthode World::update() pour mettre à jour la frame <br/>
+courante si l'on se déplace dans le monde. 
+Et voilà, ceci clôture ce chapitre.<br/>
+</p>
                 </html>
         </fr>
     </content>
