@@ -89,7 +89,7 @@ On peut récupérer la ressource de deux façons : soit par son alias ou bien p
 </p>
 
 
-<!--<h2> Charger des ressources avec son propre chargeur de ressource. </h2>
+<h2> Charger des ressources avec son propre chargeur de ressource. </h2>
 
 <p>
 Supposons maintenant que nous voulons charger des ressources externes mais que le <br/> 
@@ -114,7 +114,7 @@ fonction utilitaire comme par exemple récupérer tout les chemins vers les ress
 d'un même type qui ont été chargée. <br/>
 </p>
 
-<h2>La destruction des ressources : </h2>
+<!--<h2>La destruction des ressources : </h2>
 
 <p>
 La destruction des ressource ce fait automatiquement à la destruction du cache, lors de <br/>
