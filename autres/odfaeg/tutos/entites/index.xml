@@ -11,7 +11,8 @@
 
                		<h2>Les entités de haut niveau de ODFAEG : </h2>
 
-<p>Les entités SFML-LIKE sont utile dans les petites jeux, mais restent fort limitées dans<br/> 
+<p>
+Les entités SFML-LIKE sont utile dans les petites jeux, mais restent fort limitées dans<br/> 
 les gros jeux ou il y a beaucoup d'entités graphique de type différent.<br/>
 
 ODFAEG permet donc de créer ses propres entités qui sont des entités plus évoluée que les<br/> 
@@ -26,8 +27,8 @@ d'éviter de devoir faire trop d'héritage) <br/>
 <p>
 Les faces peuvent contenir un ou plusieurs tableau de sommets utilisant le même matériel et <br/> 
 le même type de primitive.<br/>
-Les matériaux peuvent avoir une ou plusieurs textures (multi-texturing), ainsi qu'une <br/> couleur. 
-<br/>
+Les matériaux peuvent avoir une ou plusieurs textures (multi-texturing), ainsi qu'une <br/> 
+couleur. <br/>
 </p>
 
 <p>
@@ -46,16 +47,17 @@ d'entité de même type, voici les différents groupe d'entité 2D et 2.5D de OD
 odfaeg::Tile : similaire à un sprite à la SFML-Like mais hérite de la classe Entity du <br/> 
 framework. <br/>
 
-Odfaeg::BigTile : un ensemble de tiles qui forment une grand tile. <br/>
+Odfaeg::BigTile : un ensemble de tiles qui forment une grand tile. <br/>
 
-odfaeg::Wall : un mur. (Contient une tile et quelques informations supplémentaires pour la <br/> 
+odfaeg::Wall : un mur. (Contient une tile et quelques informations supplémentaires pour la <br/> 
 projection des ombres et les collisions avec la lumière, et un type (un int) qui sert <br/> 
 à générer des cartes de façon aléatoire.) <br/>
 </p>
 
-<p>odfaeg::Decor : tout modèle statique. (même chose que ci-dessus excepté le type) <br/>
+<p>
+odfaeg::Decor : tout modèle statique. (même chose que ci-dessus excepté le type) <br/>
 
-odfaeg ::Animation : toutes entité qui évolue en fonction du temps, cette classe peut <br/> 
+odfaeg ::Animation : toutes entité qui évolue en fonction du temps, cette classe peut <br/> 
 contenir plusieurs entités mais une seule ne peut être affichée en même temps. <br/>
 Une animation peut contenir d'autres animations et ainsi interagir avec des animations <br/> 
 enfants afin de créer des animations squelettique <br/>
@@ -67,7 +69,7 @@ Et chaque entité de l'animation correspond à une frame de l'animation. <br/>
 odfaeg::Shadow, elles sont générées automatiquement par le framework donc pas besoin de </br> 
 s'en soucier. <br/>
 
-odfaeg::PonctualLight : une lumière poncutelle. <br/>
+odfaeg::PonctualLight : une lumière poncutelle. <br/>
 </p>
 
 <h2>Créer des entités.</h2>
@@ -77,11 +79,13 @@ Pour créer des entités, rien de bien compliqué, il suffit d'appeler les const
 suivants : <br/>
 </p>
 
-<p>Pour les tiles : <br/>
+<p>
+Pour les tiles : <br/>
 
 Tile(tm.getResourceByAlias(GRASS), Vec2f(0, 0), Vec2f(120, 60),IntRect(0, 0, 100, 50))<br/>
 
-On lui passe un pointeur vers une texture, une position, une taille et les coordonnées de<br/> textures. <br/>
+On lui passe un pointeur vers une texture, une position, une taille et les coordonnées de<br/> 
+textures. <br/>
 </p>
 
 <p>Pour les mur : <br/>
@@ -116,7 +120,7 @@ On lui passe une tile, et la lumière pour générer l'ombre.<br/>
 </p>
 
 <p>
-Les animations : <br/>
+Les animations : <br/>
 
 Il suffit de créer plusieurs entités (de n'importe quel type) qui servirons alors de frames <br/> 
 pour l'animation et de les ajouter à l'animation avec la méthode addEntity, une <br/> 
