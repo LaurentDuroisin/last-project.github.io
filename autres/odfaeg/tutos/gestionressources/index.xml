@@ -53,7 +53,7 @@ Le 1er paramètre est l'emplacement de la ressource par rapport à l'application
 <p>
 On peut ajouter les gestionnaires de ressources dans un cache, ceci est pratique si vous <br/> devez charger des ressources externes de différent types. <br/>
 La classe resource cache prend un paramètre template : le type de l'identifiant qui <br/> référencera le gestionnaire de ressource. (Par défault le type est std::string) <br/>
-ResourceCache&lt;&gt; cache ; <br/>
+ResourceCache&lt;&gt; cache; <br/>
 cache.addResourceManager(tm, "TextureManager"); <br/>
 Cette fonction prend en paramètre le gestionnaire de ressources à stocker dans le cache  <br/> ainsi que le nom du ressource manager. <br/></p>
 
@@ -80,8 +80,8 @@ std::function&lt;bool(Object3DS,std::string&gt; loadFunc(&amp;MyLoader::fromFile
 Ensuite nous devons passez cette fonction à la fonction load du resource manager : <br/>
 
 <pre>
-ResourceManager&lt;Object3DS, OBJECTS3DSgt; om ;
-om.load(loadFunc, « resource location ») ;
+ResourceManager&lt;Object3DS, OBJECTS3DS&gt; om;
+om.load(loadFunc, «resource location»);
 </pre>
 
 <p>
