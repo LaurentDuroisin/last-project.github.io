@@ -21,7 +21,7 @@ Resource cache : permet de charger des ressources de type différents : <br/>
 Essayons par exemple de charger un tileset contenant toute des textures d'herbe, pour cela, 
 <br/> il faut d'abord créer un gestionnaire de texture comme ceci : <br/>
 
-odfaeg::ResourceManager<odfaeg::Texture> tm&45; <br/>
+odfaeg::ResourceManager<odfaeg::Texture> tm; <br/>
 </p>
 <!--<p>
 Le 1er paramètre est le type des ressources externe et le second, le type de l'identifiant <br/> pour la ressource. (par défaut il vaut std::string) <br/>
