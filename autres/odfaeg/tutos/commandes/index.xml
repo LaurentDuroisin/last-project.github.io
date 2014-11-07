@@ -250,13 +250,16 @@ Nous avons 2 méthodes, une qui vérifie si la souris est dans le rectangle et u
 
 Créer un trigger s'effectue de la même manière que la création d'un slot, à l'exception <br/> près que le type du trigger est FastDelegate<bool>. <br/>
 
-Le type de fonction et les paramètres du trigger et du slot doivent être les mêmes ! <br/></p>
+Le type de fonction et les paramètres du trigger et du slot doivent être les mêmes! <br/></p>
 
 <p>
 La création d'une commande avec un trigger se fait de la même manière que la création de la <br/> commande avec une action à l'exception prêt que c'est le trigger qu'on envoie et non <br/> plus l'action car ici la commande n'est pas liée à un ou plusieurs événements SFML <br/> mais directement à une fonction)  : <br/>
-Command mouseInsideCommand(FastDelegate<bool>(&amp;MyAppli::mouseInside,this,Vector2f(-1, -1)), <br/> FastDelegate<void>(&amp;MyAppli::onMouseInside, this, Vector2f(-1,-1))); <br/></p>
+<pre>
+Command mouseInsideCommand(FastDelegate&lt;bool&gt;(&amp;MyAppli::mouseInside,this,Vector2f(-1, -1)),
+FastDelegate&lt;void&gt;(&amp;MyAppli::onMouseInside, this, Vector2f(-1,-1))); </pre>
+</p>
 
-<p>InputSystem::getListener().connect(« mouseInsideCommand »,mouseInsideCommand); <br>
+<p>InputSystem::getListener().connect(«mouseInsideCommand»,mouseInsideCommand); <br>
 On met -1, -1 pour la valeur de la position de la souris car on ne la connais pas encore,<br/> ceci évite d'afficher le message au lancement de l'application lorsque la <br/> fenêtre n'est pas encore affichée. <br/></p>
 
 <p><br>Il existe une dernière et troisième méthode qui permet de passer un trigger, une <br/> action et un slot à une Commande, la commande sera alors exécutée si le trigger ainsi que <br/> l'action  sont déclenchés. <br/>
