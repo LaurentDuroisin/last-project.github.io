@@ -203,7 +203,7 @@
                 n'oublier pas de lier les différentes bibliothèque de ODFAEG à votre projet <br/>
                 (qui se trouve dans le dossier lib de ODFAEG) et de préciser l'endroit ou se trouvent les fichiers d'en tête <br/>
                 de ODFAEG, de SFML et d'openssl. (Dans les dossier include de ODFAEG et de SFML et de openssl) <br/>
-                Il vous faudra aussi lier les librairies suivantes à votre projet : <br/
+                Il vous faudra aussi lier les librairies suivantes à votre projet : <br/>
                 <br/>
                 <ul>
                 <li>-GLEW en static.</li>
