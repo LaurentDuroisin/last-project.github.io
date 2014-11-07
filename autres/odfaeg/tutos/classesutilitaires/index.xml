@@ -30,10 +30,10 @@ class Chat {
 
 struct Attaquer : public odfaeg::Visitor&lt;&lt; {
       void operator()(Chat&amp; chat) {
-            std::cout<<"griffe!"<<std::endl;
+            std::cout&lt;&lt;"griffe!"&lt;&ltstd::endl;
       }
       void operator()(Chien& chien) {
-            std::cout<<"mort!"<<std::endl;
+            std::cout&lt;&lt;"mort!"&lt;&lt;std::endl;
       } 
 };
 </pre>
@@ -50,7 +50,6 @@ int main() {
          odfaeg::apply_visitor(attaquer, vector[i]);
     }
 }
-</pre>
 </pre>
 </p>
 
