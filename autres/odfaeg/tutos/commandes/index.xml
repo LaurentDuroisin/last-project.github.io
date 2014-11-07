@@ -228,21 +228,25 @@ exécute les commandes qu'on lui fournis de manière synchrone ou assynchrone en
 événements SFML généré par l'application. <br/>
 </p>
 
-<p>Pour connecter une commande il faut récupérer l'interpréteur de commande du gestionnaire <br/> 
+<p>
+Pour connecter une commande il faut récupérer l'interpréteur de commande du gestionnaire <br/> 
 d'événements, ceci se fait à l'aide de la méthode getListener()  de la classe <br/> 
 InputSystem : <br/>
 
 InputSystem::getListener().connect("MoveConnexion", moveCommand); <br/>
 
 On fournis donc le nom de la connection ainsi que la commande. <br/>
+</p>
 
 <h2>Définir un trigger personnalisé pour une command : </h2>
 
-<p>Ce système est bien mais ne convient pas pour tout les cas, imaginez que vous devez <br/> 
+<p>
+Ce système est bien mais ne convient pas pour tout les cas, imaginez que vous devez <br/> 
 déclenché une commande lorsque la souris est dans un rectangle, le principal soucis est que <br/> 
 vous devez définir une action pour chaque pixel contenu dans le rectangle, ce qui <br/> 
 n'est pas du tout pratique. <br/> 
 </p>
+
 <p>
 ODFAEG permet  de créer une commande avec une fonction spéciale. (appelée un trigger) <br/>
 C'est alors la fonction et non plus l'action qui va décider de l'exécution de la commande, <br/> 
@@ -270,20 +274,22 @@ affiche un message en indiquant la position de la souris. <br/>
 Créer un trigger s'effectue de la même manière que la création d'un slot, à l'exception <br/>
 près que le type du trigger est FastDelegate&lt;bool&gt;. <br/>
 
-Le type de fonction et les paramètres du trigger et du slot doivent être les mêmes! <br/></p>
+Le type de fonction et les paramètres du trigger et du slot doivent être les mêmes! <br/>
+</p>
 
 <p>
 La création d'une commande avec un trigger se fait de la même manière que la création de la <br/> 
 commande avec une action à l'exception prêt que c'est le trigger qu'on envoie et non <br/> 
 plus l'action car ici la commande n'est pas liée à un ou plusieurs événements SFML <br/> 
-mais directement à une fonction)  : <br/>
+mais directement à une fonction) : <br/>
 <pre>
 Command mouseInsideCommand(FastDelegate&lt;bool&gt;(&amp;MyAppli::mouseInside,this,Vector2f(-1, -1)),
 FastDelegate&lt;void&gt;(&amp;MyAppli::onMouseInside, this, Vector2f(-1,-1))); 
 </pre>
 </p>
 
-<p>InputSystem::getListener().connect(«mouseInsideCommand»,mouseInsideCommand); <br/>
+<p>
+InputSystem::getListener().connect(«mouseInsideCommand»,mouseInsideCommand); <br/>
 On met -1, -1 pour la valeur de la position de la souris car on ne la connais pas encore,<br/> 
 ceci évite d'afficher le message au lancement de l'application lorsque la <br/> 
 fenêtre n'est pas encore affichée. <br/>
