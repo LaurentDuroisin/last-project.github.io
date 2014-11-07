@@ -21,7 +21,7 @@ Voici un exemple de code utilisant un variant qui permet d'appliquer deux compor
 différent pour une classe A et B. <br/>
 </p>
 
-<!--<p>
+<p>
 <pre>
 class Chien {
 };
@@ -127,8 +127,7 @@ int main() {
     attaquer().apply(a2,a2);
 }
 </pre>
-</p>-->
-
+</p>
                 </html>
         </fr>
     </content>
