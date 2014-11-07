@@ -11,34 +11,57 @@
 
                <h2>Orientation des axes et origine des vues.</h2>
 
-<p>Les vues de odfaeg sont différentes des vues SFML, car elle n'imposent pas d'orientation <br/> particulière pour les axes, contrairement à SFML qui impose que l'axe y pointe vers <br/> le bas, c'est à dire que le coin en haut à gauche de la fenêtre a toujours pour <br/> coordonnée 0,0 et le coin en bas à droite à pour coordonnée la largeur et la hauteur de la <br/> fenêtre. <br/></p>
 <p>
-Odfaeg n'impose pas d'orientation pour les axes et on peut changer l'orientations des axes<br/> comme on le désire, contrairement à SFML, les vues on pour origine le centre de <br/> la fenêtre et non pas le coin supérieur gauche de la fenêtre et le sens des axes est <br/> vers la droite pour l'axe x, vers le haut pour l'axe y et vers vous pour l'axe z.<br/>
-On peut changer facilement l'orientation des axes avec la méthode setScale comme ceci : <br/>
+Les vues de odfaeg sont différentes des vues SFML, car elle n'imposent pas d'orientation <br/> 
+particulière pour les axes, contrairement à SFML qui impose que l'axe y pointe vers <br/> 
+le bas, c'est à dire que le coin en haut à gauche de la fenêtre a toujours pour <br/> 
+coordonnée 0,0 et le coin en bas à droite à pour coordonnée la largeur et la hauteur de la <br/> 
+fenêtre. <br/>
+</p>
+
+<p>
+Odfaeg n'impose pas d'orientation pour les axes et on peut changer l'orientations des axes<br/> 
+comme on le désire, contrairement à SFML, les vues on pour origine le centre de <br/> la fenêtre et non pas le coin supérieur gauche de la fenêtre et le sens des axes est <br/> vers la droite pour l'axe x, vers le haut pour l'axe y et vers vous pour l'axe z.<br/>
+On peut changer facilement l'orientation des axes avec la méthode setScale comme ceci : <br/>
 
 <pre>
 getView().setScale(1, -1, 1);
 getView() permet de récupérer la vue de la fenêtre de rendu dans le l'application.
 </pre>
+</p>
 
 <p>
-Dans ce cas là l'axe des y pointera vers le bas comme pour SFML ! <br/>
+Dans ce cas là l'axe des y pointera vers le bas comme pour SFML! <br/>
 Pour changer l'origine il suffit de faire une translation de la vue avant de tout dessiner.<br/>
 
-Les composants possèdent également une vue, par défaut, c'est la même vue que celle de la <br/> fenêtre de rendu de l'application. <br/></p>
+Les composants possèdent également une vue, par défaut, c'est la même vue que celle de la <br/> 
+fenêtre de rendu de l'application. <br/>
+</p>
 
-<p>Pour déplacer la vue il suffit d'appeler la méthode move : <br/>
+<p>
+Pour déplacer la vue il suffit d'appeler la méthode move : <br/>
 
 getView().move(0, 300, 0);<br/>
 
 Ceci déplace la vue de 300 unités vers le bas ou vers le haut. (Cela dépend de <br/> l'orientation de l'axe y.) <br/>
-Pour faire une rotation, il suffit d'appeler la méthode rotate et de passer l'angle et pour <br/> zoomer, il suffit d'appeler la fonction zoom et de passer l'échelle. <br/></p>
+Pour faire une rotation, il suffit d'appeler la méthode rotate et de passer l'angle et pour <br/>
+zoomer, il suffit d'appeler la fonction zoom et de passer l'échelle. <br/>
+</p>
 
 <p>Par défault la vue est othographique. (en 2D donc) <br/>
-Avec comme znear, une valeur un peut plus petite que 0 et comme z far une valeur un peu <br/> plus grande que la hauteur de la fenêtre, par conséquent tout ce qui est visible doit <br/> avoir un z compris entre 0 et la hauteur de la fenêtre sinon l'entité ne sera pas <br/> affichée. (Il suffit juste de mettre comme composante z le centre de l'entité 2D et de <br/> déplacer aussi la vue en z avec la même valeur que pour y lorsqu'on se déplace dans le <br/> monde. (avec le clavier ou bien avec la souris par exemple) <br/></p>
+Avec comme znear, une valeur un peut plus petite que 0 et comme z far une valeur un peu <br/> 
+plus grande que la hauteur de la fenêtre, par conséquent tout ce qui est visible doit <br/> 
+avoir un z compris entre 0 et la hauteur de la fenêtre sinon l'entité ne sera pas <br/> 
+affichée. (Il suffit juste de mettre comme composante z le centre de l'entité 2D et de <br/> 
+déplacer aussi la vue en z avec la même valeur que pour y lorsqu'on se déplace dans le <br/> 
+monde. (avec le clavier ou bien avec la souris par exemple) <br/>
+</p>
 
-<p>On peut changer la vue et la passer en perspective (en vue 3D) mais ce ne sera pas <br/> l'objet de se chapitre, nous verrons cela dans le tutoriel consacré à la 3D. <br/>
-On peut également changer le viewport de la vue avec la méthode setViewport. <br/></p>
+<p>
+On peut changer la vue et la passer en perspective (en vue 3D) mais ce ne sera pas <br/> 
+l'objet de se chapitre, nous verrons cela dans le tutoriel consacré à la 3D. <br/>
+On peut également changer le viewport de la vue avec la méthode setViewport. <br/>
+</p>
 
                 </html>
         </fr>
