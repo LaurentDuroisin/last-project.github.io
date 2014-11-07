@@ -68,11 +68,11 @@ struct Attaquer
         void operator()(const chat&amp;, const chat&amp;) const
         { std::cout &lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
         void operator()(const chat&amp;, const chien&amp;) const
-        { std::cout &lt;&lt;"griffe - mord  "&lt;&lt;std::endl;}
+        { std::cout &lt;&lt;"griffe - mord"&lt;&lt;std::endl;}
         void operator()(const chien&amp;, const chat&amp;) const
         { std::cout &lt;&lt;"mord - griffe"&lt;&lt;std::endl;}
         void operator()(const chien&amp;, const chien&amp;) const
-        { std::cout &lt;&lt;"mord - mord  "&lt;&lt;std::endl;}
+        { std::cout &lt;&lt;"mord - mord"&lt;&lt;std::endl;}
 };
 int main() {
     Chat chat;
@@ -109,11 +109,11 @@ struct attaquer
         void operator()(const chat&amp;, const chat&amp;) const
         { std::cout&lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
         void operator()(const chat&amp;, const chien&amp;) const
-        { std::cout&lt;&lt;"griffe - mord  "&lt;&lt;std::endl;}
+        { std::cout&lt;&lt;"griffe - mord"&lt;&lt;std::endl;}
         void operator()(const chien&amp;, const chat&amp;) const
         { std::cout&lt;&lt;"mord - griffe"&lt;&lt;std::endl;}
         void operator()(const chien&amp;, const chien&amp;) const
-        { std::cout&lt;&lt;"mord - mord  "&lt;&lt;std::endl;}
+        { std::cout&lt;&lt;"mord - mord"&lt;&lt;std::endl;}
 };
 int main() {
     chat c1;
