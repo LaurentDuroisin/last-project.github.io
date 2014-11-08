@@ -93,8 +93,8 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
         float attackSpeed, regenHpSpeed;
         bool moving, alive;
         odfaeg::Vec2f dir;
-        std::vector<odfaeg::Vec2f> path;
-        std::vector<odfaeg::g2d::Anim*> anims;
+        std::vector&lt;odfaeg::Vec2f&gt; path;
+        std::vector&lt;odfaeg::g2d::Anim*&gt; anims;
         int currentAnimIndex;
         int life, maxLife, xp, xpReqForNextLevel, regenHpAmount;
         bool attacking, fightingMode;
