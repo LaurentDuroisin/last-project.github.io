@@ -101,7 +101,7 @@ La classe de base doit au moins avoir une méthode virtuelle pour pouvoir être 
 comme une classe polymorphique, car, odfaeg fait le test à l'exécution avec typeid, <br/> 
 et l'héritage doit être pulibque! (Sinon ça ne fonctionnera pas) <br/>
 <pre>
-struct B : public Registered<B> {
+struct B : public Registered&lt;B&gt; {
     B() {
        c = "serialize base";
     }
