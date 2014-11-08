@@ -169,7 +169,7 @@ Le second paramètre est le type de la classe de base dont hérite la classe Dé
 Et le dernier paramètre est le type de la classe dérivée à exporter, ce qui donne le code final suivant : <br/>
 
 <pre>
-struct B : public odfaeg::Registered<Base> {
+struct B : public odfaeg::Registered&lt;B&gt; {
     B() {
         c = "serialize base";
     }
@@ -208,7 +208,7 @@ void C::foo(){ std::cout&lt;&lt;2; }
 int main() {    
     EXPORT_CLASS_GUID(BC, B, C)
     C c;
-    B* b = &c;
+    B* b = &amp;c;
     B* b2;
     std::ofstream ofs("FichierDeSerialisation");
     odfaeg::OTextArchive oa(ofs);
