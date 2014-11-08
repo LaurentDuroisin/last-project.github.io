@@ -11,12 +11,17 @@
 
                <h2>Création d'un personnage animé : </h2>
 
-<p>Ici nous allons créer un personnage animé à l'aide de tileset contenant les diverses <br/> animation de notre personnages dans les directions suivantes : (nord, nord ouest, nord <br/> est, sud, sud ouest, sud est) <br/></p>
+<p>Ici nous allons créer un personnage animé à l'aide de tileset contenant les diverses <br/> 
+animation de notre personnages dans les directions suivantes : (nord, nord ouest, nord <br/>
+est, sud, sud ouest, sud est) <br/></p>
 
-<p>Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  (pour plus tard lorsque on créera le jeux) : <br/><p/>
+<p>Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> 
+animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  
+(pour plus tard lorsque on créera le jeux) : <br/>
+<p/>
 
 <pre>
-#include <vector>
+#include &lt;vector&gt;
 #ifndef CARACTER
 #define CARACTER
 #include "odfaeg/Math/vec2f.h"
@@ -26,8 +31,9 @@
 
 class Caracter : public odfaeg::g2d::AnimatedEntity {
     public :
-        Caracter (std::string factionName, std::string pseudo, std::string sex, std::string currentMapName, std::string hairColor,
-                  std::string eyesColor, std::string skinColor, std::string faceType, std::string classs, int level);
+        Caracter (std::string factionName, std::string pseudo, std::string sex, 
+        	 std::string currentMapName, std::string hairColor, std::string eyesColor,
+        	 std::string skinColor, std::string faceType, std::string classs, int level);
         bool isMovable() const {
             return true;
         }
@@ -226,7 +232,7 @@ void Caracter::setFightingMode(bool b) {
 bool Caracter::operator== (Entity &amp;other) {
     if (getType() != other.getType())
         return false;
-    Caracter&amp; caracter = static_cast<Caracter&amp;>(other);
+    Caracter&amp; caracter = static_cast&lt;Caracter&amp;&gt;(other);
     if (anims.size() != caracter.anims.size())
         return false;
     for (unsigned int i = 0; i < anims.size(); i++) {
