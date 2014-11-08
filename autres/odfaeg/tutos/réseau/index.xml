@@ -9,7 +9,7 @@
                 <html>
                         <h1>Chapitre XIII : le réseau</h1>
 
-               <h2>Le serveur : </h2>
+               <h2>Le serveur : </h2>
 
 <p>
 Pour créer une application serveur, il suffit juste de faire une classe qui hérite de la <br/> 
@@ -73,6 +73,7 @@ bien, des packets chiffrés de type odfaeg::SymEncPacket si le client utilise un
 connection SSL. (pour le savoir il suffit d'appeler la méthode isUsingSecuredConnection de <br/>
 la classe user. <br/>
 Attention : en mode udp les packets ne sont pas chiffrés. <br/>
+</p>
 
 <h2>Le client : </h2>
 
