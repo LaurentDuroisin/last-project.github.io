@@ -13,9 +13,11 @@
 
 <p>Ici nous allons créer un personnage animé à l'aide de tileset contenant les diverses <br/> 
 animation de notre personnages dans les directions suivantes : (nord, nord ouest, nord <br/>
-est, sud, sud ouest, sud est) <br/></p>
+est, sud, sud ouest, sud est) <br/>
+</p>
 
-<p>Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> 
+<p>
+Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> 
 animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  
 (pour plus tard lorsque on créera le jeux) : <br/>
 <pre>
@@ -122,7 +124,8 @@ Les states et le ultiple dispatch sont donc deux bons moyen d'éviter le bordel 
 devient plus compliqué. <br/>
 </p>
 
-<p>Bref examinons le fichier .cpp 
+<p>
+Bref examinons le fichier .cpp 
 <pre>
 #include "caracter.h"
 #include &lt;iostream&gt;
@@ -365,13 +368,28 @@ Caracter::~Caracter() {
 
 }
 </pre>
+</p>
 
 <p>
-Les choses importante à remarqué ici est la redéfinition de la méthode onDraw ou l'on <br/> dessine l'entité courante de l'animation courante du personnages, on change aussi <br/> l'animation courante en fonction de la direction du personnage. <br/>
-Nous avons aussi les méthodes addChild et setParent lorsque nous ajoutons une animation <br/> pour notre personnage. <br/>
-Ceci à pour conséquence que lorsqu'on dessinera notre personnage il appelera la méthode <br/> onDraw des entités enfants et les méthodes onMove, onRotate et onScale ce qui aura pour <br/> conséquence de dessiner aussi les entités enfants de l'entité (c'est à dire l'entité  <br/> courante de l'animation courante ici) lorsqu'on dessinera l'entité toutes les entités <br/> enfants seront transformées par rapport à la transformation de l'entité parent. <br/> (c'est à dire toutes les frames des animations du personnages) <br/></p>
+Les choses importante à remarqué ici est la redéfinition de la méthode onDraw ou l'on <br/>
+dessine l'entité courante de l'animation courante du personnages, on change aussi <br/> 
+l'animation courante en fonction de la direction du personnage. <br/>
+Nous avons aussi les méthodes addChild et setParent lorsque nous ajoutons une animation <br/>
+pour notre personnage. <br/>
+Ceci à pour conséquence que lorsqu'on dessinera notre personnage il appelera la méthode <br/> 
+onDraw des entités enfants et les méthodes onMove, onRotate et onScale ce qui aura pour <br/> 
+conséquence de dessiner aussi les entités enfants de l'entité (c'est à dire l'entité  <br/> 
+courante de l'animation courante ici) lorsqu'on dessinera l'entité toutes les entités <br/> 
+enfants seront transformées par rapport à la transformation de l'entité parent. <br/> 
+(c'est à dire toutes les frames des animations du personnages) <br/>
+</p>
 
-<p>Si vous devez remettre des données à jour lorsque le personnage bouge ou bien si vous <br/> voulez modifier la transformation vous pouvez redéfinir la méthode onMove en <br/> n'oubliant pas d'appelé la méthode move de la classe de base Entity en lui passant la <br/> transformation si vous voulez que les transformations se combinent avec celles des entités <br/> parent : <br/>
+<p>
+Si vous devez remettre des données à jour lorsque le personnage bouge ou bien si vous <br/>
+voulez modifier la transformation vous pouvez redéfinir la méthode onMove en <br/>
+n'oubliant pas d'appelé la méthode move de la classe de base Entity en lui passant la <br/>
+transformation si vous voulez que les transformations se combinent avec celles des entités <br/>
+parent : <br/>
 
 <pre>
 void Caracter::onMove(Vec3f t) {
@@ -379,29 +397,44 @@ void Caracter::onMove(Vec3f t) {
            //Mise à jour des autres informations. (La physique par exemple)
 }
 </pre>
+</p>
 
 <p>
-Ici nous avons un vector en 3D, il faut savoir que pour les entités ODFAEG en 2.5D la <br/> position en z de l'entité est égale à sa position en y, sa transformation en y sera donc la <br/> même que celle en z. <br/></p>
+Ici nous avons un vector en 3D, il faut savoir que pour les entités ODFAEG en 2.5D la <br/>
+position en z de l'entité est égale à sa position en y, sa transformation en y sera donc la <br/>
+même que celle en z. <br/>
+</p>
 
-<p>Si vous ne voulez pas que la translation se combine, vous pouvez laisser cette méthode vide. <br/>
+<p>
+Si vous ne voulez pas que la translation se combine, vous pouvez laisser cette méthode vide. <br/>
 
-Vous pouvez effectuer la même chose pour la rotation et le changement d'échelle en <br/> redéfinissant les méthodes onRotate et onScale. <br/>
+Vous pouvez effectuer la même chose pour la rotation et le changement d'échelle en <br/>
+redéfinissant les méthodes onRotate et onScale. <br/>
 
-ODFAEG possède 5 classes de bases dont peuvent hériter toutes vos entités personnalisées : <br/></p>
+ODFAEG possède 5 classes de bases dont peuvent hériter toutes vos entités personnalisées : <br/>
+</p>
 
-<p>Entity pour les entités de base qui n'ont pas d'ombre ni d'intersections avec la lumière. <br/> (Par exemple les tiles) <br/>
+<p>
+Entity pour les entités de base qui n'ont pas d'ombre ni d'intersections avec la lumière. <br/>
+(Par exemple les tiles) <br/>
 
-Model : pour les entités qui possèdent une ombre et qui peuvent avoir des intersections <br/> avec la lumière et une ombre : (Par exemple les murs et les décors) <br/>
+Model : pour les entités qui possèdent une ombre et qui peuvent avoir des intersections <br/> 
+avec la lumière et une ombre : (Par exemple les murs et les décors) <br/>
 
 AnimatedEntity : pour toutes les entités animées. <br/>
 
 Shadow : pour toutes les entités qui sont des ombres. <br/>
 
-Light : pour toutes les entités qui sont des lumières. <br/></p>
+Light : pour toutes les entités qui sont des lumières. <br/>
+</p>
 
-<p>Et enfin pour transformer une entité, nous devons appeler la méthode move de la classe <br/> World, ceci aura pour effet de mettre à jour également l'entité dans la grille en fonction <br/> de son rectangle englobant : <br/>
+<p>
+Et enfin pour transformer une entité, nous devons appeler la méthode move de la classe <br/> 
+World, ceci aura pour effet de mettre à jour également l'entité dans la grille en fonction <br/> 
+de son rectangle englobant : <br/>
 
-World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/> </p>
+World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/>
+</p>
                 </html>
         </fr>
     </content>
