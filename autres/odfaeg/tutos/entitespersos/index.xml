@@ -322,7 +322,7 @@ Vec2f Caracter::getPosition () {
 void Caracter::setPath(vector&lt;Vec2f&gt; path) {
     this->path = path;
 }
-vector&tl;Vec2f&gt; Caracter::getPath() {
+vector&lt;Vec2f&gt; Caracter::getPath() {
     return path;
 }
 void Caracter::addAnimation (Anim *anim) {
