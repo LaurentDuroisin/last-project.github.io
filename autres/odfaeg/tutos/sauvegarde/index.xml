@@ -67,7 +67,7 @@ struct A {
     }
         void foo(int i)
         { std::cout&lt;&lt;i; }
-        template <typename A>
+        template &lt;typename A&gt;
         void serialize (A &amp; ar) {
            ar(var);
         }
@@ -110,7 +110,7 @@ struct B : public Registered<B> {
     virtual void print() {
       std::cout<<c<<std::endl;
     }
-    template <typename A>
+    template &lt;typename A&gt;
     void vtserialize (A &amp; ar) {
        ar(c);
     }
@@ -139,7 +139,7 @@ struct C : B {
         B::print();
         std::cout<<c<<std::endl;
     }
-    template <typename A>
+    template &lt;typename A&gt;
         void vtserialize (A &amp; ar) {
            B::vtserialize(ar);
            ar(c);
@@ -178,7 +178,7 @@ struct B : public odfaeg::Registered<Base> {
     virtual void print() {
     std::cout&lt;&lt;c&lt;&lt;std::endl;
     }
-    template <typename A>
+    template &lt;typename A&gt;
     void vtserialize (A &amp; ar) {
     ar(c);
     }
@@ -197,7 +197,7 @@ struct C : B {
         B::print();
         std::cout&lt;&lt;c&lt;&lt;std::endl;
     }
-    template <typename A>
+    template &lt;typename A&gt;
         void vtserialize (A * ar) {
         B::vtserialize(ar);
         ar(c);
