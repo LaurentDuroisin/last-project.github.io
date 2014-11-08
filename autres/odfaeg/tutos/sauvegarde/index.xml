@@ -52,6 +52,7 @@ std::ifstream ifs("FichierDeSerialisation");
 }
 std::cout&lt;&lt;text2&lt;&lt;std::endl;
 ifs.close();
+</pre>
 </p>
 
 <p>
@@ -59,7 +60,7 @@ Pour sérialiser vos objets personnels, il suffit de redéfinir la méthode seri
 de passer à l'archive toutes les variables de la classe.<br/>
 
 
-
+<pre>
 struct A {
     A() {
         var = 10;
