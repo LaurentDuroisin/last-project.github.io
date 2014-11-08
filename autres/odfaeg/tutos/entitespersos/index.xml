@@ -18,8 +18,6 @@ est, sud, sud ouest, sud est) <br/></p>
 <p>Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> 
 animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  
 (pour plus tard lorsque on créera le jeux) : <br/>
-<p/>
-
 <pre>
 #include &lt;vector&gt;
 #ifndef CARACTER
@@ -108,15 +106,26 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
 };
 #endif
 </pre>
+</p>
 
-<p>Si les attributs sont communs pour tout les types de personnages de notre jeux, alors, <br/> nous ne sommes pas obligé d'utiliser les states, le cas contraire il est fort <br/> recommandé d'utilisé des states afin d'évité de devoir faire trop d'héritage et <br/> d'interfaces si on a pleins de type de personnages (ou d'armes) différentes et que en plus <br/> on définis des règles pour chaque type de personnage. <br/></p>
+<p>
+Si les attributs sont communs pour tout les types de personnages de notre jeux, alors, <br/>
+nous ne sommes pas obligé d'utiliser les states, le cas contraire il est fort <br/>
+recommandé d'utilisé des states et du multiple-dispatch afin d'éviter de devoir faire <br/>
+trop d'héritage et d'interfaces si on a pleins de type de personnages <br/>
+(ou d'armes) différentes et que en plus on définit des règles/des comportements différents <br/>
+pour chaque type de personnage ou armes. <br/>
+</p>
 
-<p>Les states sont donc un bon moyen d'éviter le bordel lorsque le gameplay de votre jeux <br/> devient plus compliqué. <br/>
+<p>
+Les states et le ultiple dispatch sont donc deux bons moyen d'éviter le bordel lorsque le gameplay de votre jeux <br/>
+devient plus compliqué. <br/>
+</p>
 
 <p>Bref examinons le fichier .cpp 
 <pre>
 #include "caracter.h"
-#include <iostream>
+#include &lt;iostream&gt;
 using namespace std;
 
 using namespace odfaeg;
@@ -170,7 +179,7 @@ void Caracter::setXpReqForNextLevel(int xpReqForNextLevel) {
 }
 void Caracter::up (int xp) {
     this->xp += xp;
-    if (this->xp >= xpReqForNextLevel) {
+    if (this->xp &gt;= xpReqForNextLevel) {
         level++;
         this->xp = this->xp - xpReqForNextLevel;
         xpReqForNextLevel *= 2;
@@ -235,7 +244,7 @@ bool Caracter::operator== (Entity &amp;other) {
     Caracter&amp; caracter = static_cast&lt;Caracter&amp;&gt;(other);
     if (anims.size() != caracter.anims.size())
         return false;
-    for (unsigned int i = 0; i < anims.size(); i++) {
+    for (unsigned int i = 0; i &lt; anims.size(); i++) {
         if (anims[i] != caracter.anims[i])
             return false;
     }
@@ -261,25 +270,25 @@ void Caracter::setDir (Vec2f dir) {
     float angleRadians = const_cast&lt;Vec2f&amp;&gt;(Vec2f::yAxis).getAngleBetween(dir);
     int angle = Math::toDegrees(angleRadians);
     //Sud
-    if (angle >= -10 &amp;&amp; angle <= 10)
+    if (angle &gt;= -10 &amp;&amp; angle &lt;= 10)
         currentAnimIndex = 0;
     //Sud ouest
-    else if (angle > -80 &amp;&amp; angle < -10)
+    else if (angle &gt; -80 &amp;&amp; angle &lt; -10)
         currentAnimIndex = 3;
     //Ouest
-    else if (angle >= -100 &amp;&amp; angle <= -80)
+    else if (angle &gt;= -100 &amp;&amp; angle &lt;= -80)
         currentAnimIndex = 6;
     //Nord ouest
-    else if (angle > -170 &amp;&amp; angle < -100)
+    else if (angle &gt; -170 &amp;&amp; angle &lt; -100)
         currentAnimIndex = 1;
     //Nors est
-    else if (angle > 100 &amp;&amp; angle < 170)
+    else if (angle &gt; 100 &amp;&amp; angle &lt; 170)
         currentAnimIndex = 7;
     //Est
-    else if (angle >= 80 &amp;&amp; angle <= 100)
+    else if (angle &gt;= 80 &amp;&amp; angle &lt;= 100)
         currentAnimIndex = 2;
     //Sud est
-    else if (angle > 10 &amp;&amp; angle < 80)
+    else if (angle &gt; 10 &amp;&amp; angle &lt; 80)
         currentAnimIndex = 5;
     else
         currentAnimIndex = 4;
@@ -322,7 +331,7 @@ void Caracter::addAnimation (Anim *anim) {
     anims.push_back(anim);
 }
 Anim* Caracter::getAnimation(unsigned int index) {
-    if (index >= 0 &amp;&amp; index < anims.size())
+    if (index &gt;= 0 &amp;&amp; index &lt; anims.size())
         return anims[index];
     return NULL;
 }
