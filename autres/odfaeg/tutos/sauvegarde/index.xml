@@ -106,9 +106,9 @@ struct B : public Registered<B> {
        c = "serialize base";
     }
     virtual void foo()
-    { std::cout << 1; }
+    { std::cout&lt;&lt;1; }
     virtual void print() {
-      std::cout<<c<<std::endl;
+      std::cout&lt;&lt;c&lt;&lt;std::endl;
     }
     template &lt;typename A&gt;
     void vtserialize (A &amp; ar) {
@@ -137,7 +137,7 @@ struct C : B {
     void foo();
     void print () {
         B::print();
-        std::cout<<c<<std::endl;
+        std::cout&lt;&lt;c&lt;&lt;std::endl;
     }
     template &lt;typename A&gt;
         void vtserialize (A &amp; ar) {
