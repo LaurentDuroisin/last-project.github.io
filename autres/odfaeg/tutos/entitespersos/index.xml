@@ -7,9 +7,9 @@
     <content>
         <fr>
                 <html>
-                        <h1>Chapitre X : création d'entités personnalisées. </h1>
+                        <h1>Chapitre X : création d'entités personnalisées. </h1>
 
-               <h2>Création d'un personnage animé : </h2>
+               <h2>Création d'un personnage animé : </h2>
 
 <p>Ici nous allons créer un personnage animé à l'aide de tileset contenant les diverses <br/> animation de notre personnages dans les directions suivantes : (nord, nord ouest, nord <br/> est, sud, sud ouest, sud est) <br/></p>
 
@@ -21,8 +21,8 @@
 #define CARACTER
 #include "odfaeg/Math/vec2f.h"
 #include "odfaeg/Graphics/2D/anim.h"
-#include <string>
-#include <SFML/Graphics.hpp>
+#include &lt;string&gt;
+#include &lt;SFML/Graphics.hpp&gt;
 
 class Caracter : public odfaeg::g2d::AnimatedEntity {
     public :
@@ -42,8 +42,8 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
         bool isMoving ();
         void setDir(odfaeg::Vec2f dir);
         odfaeg::Vec2f getDir();
-        void setPath(std::vector<odfaeg::Vec2f> path);
-        std::vector<odfaeg::Vec2f> getPath();
+        void setPath(std::vector&lt;odfaeg::Vec2f&gt; path);
+        std::vector&lt;odfaeg::Vec2f&gt; getPath();
         int getSpeed();
         void setSpeed(int speed);
         odfaeg::g2d::Anim* getAnimation(unsigned int index);
@@ -252,7 +252,7 @@ sf::Time Caracter::getTimeOfLastAttack() {
 void Caracter::setDir (Vec2f dir) {
 
     anims[currentAnimIndex]->setCurrentTile(0);
-    float angleRadians = const_cast<Vec2f&amp;>(Vec2f::yAxis).getAngleBetween(dir);
+    float angleRadians = const_cast&lt;Vec2f&amp;&gt;(Vec2f::yAxis).getAngleBetween(dir);
     int angle = Math::toDegrees(angleRadians);
     //Sud
     if (angle >= -10 &amp;&amp; angle <= 10)
@@ -304,10 +304,10 @@ Vec2f Caracter::getPosition () {
     return Vec2f(anims[currentAnimIndex]->getPosition().x, anims[currentAnimIndex]->getPosition().y);
 }
 
-void Caracter::setPath(vector<Vec2f> path) {
+void Caracter::setPath(vector&lt;Vec2f&gt; path) {
     this->path = path;
 }
-vector<Vec2f> Caracter::getPath() {
+vector&tl;Vec2f&gt; Caracter::getPath() {
     return path;
 }
 void Caracter::addAnimation (Anim *anim) {
