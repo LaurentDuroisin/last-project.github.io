@@ -45,13 +45,14 @@ footer {
 }
 
 #content-zone {
-    margin-top : 120px;
+    margin-top : 140px;
     min-height : 600px;
     width:60%;
     margin-left : auto;
     margin-right : auto;
     background-color : #330000;
     border-radius : 10px 10px 10px 10px;
+    color : #333333;
 }
 
 #content
