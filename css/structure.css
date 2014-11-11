@@ -52,7 +52,8 @@ footer {
     margin-right : auto;
     background-color : #330000;
     border-radius : 10px 10px 10px 10px;
-    color : #333333;
+    color : #999999;
+    text-weight : bold;
 }
 
 #content
