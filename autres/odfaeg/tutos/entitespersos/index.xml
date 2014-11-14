@@ -7,27 +7,33 @@
     <content>
         <fr>
                 <html>
-                        <h1>Chapitre X : création d'entités personnalisées. </h1>
+                        <h1>Chapitre X : création d'entités personnalisées. </h1>
 
-               <h2>Création d'un personnage animé : </h2>
+               <h2>Création d'un personnage animé : </h2>
 
-<p>Ici nous allons créer un personnage animé à l'aide de tileset contenant les diverses <br/> animation de notre personnages dans les directions suivantes : (nord, nord ouest, nord <br/> est, sud, sud ouest, sud est) <br/></p>
+<p>Ici nous allons créer un personnage animé à l'aide de tileset contenant les diverses <br/> 
+animation de notre personnages dans les directions suivantes : (nord, nord ouest, nord <br/>
+est, sud, sud ouest, sud est) <br/>
+</p>
 
-<p>Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  (pour plus tard lorsque on créera le jeux) : <br/><p/>
-
+<p>
+Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> 
+animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  
+(pour plus tard lorsque on créera le jeux) : <br/>
 <pre>
-#include <vector>
+#include &lt;vector&gt;
 #ifndef CARACTER
 #define CARACTER
 #include "odfaeg/Math/vec2f.h"
 #include "odfaeg/Graphics/2D/anim.h"
-#include <string>
-#include <SFML/Graphics.hpp>
+#include &lt;string&gt;
+#include &lt;SFML/Graphics.hpp&gt;
 
 class Caracter : public odfaeg::g2d::AnimatedEntity {
     public :
-        Caracter (std::string factionName, std::string pseudo, std::string sex, std::string currentMapName, std::string hairColor,
-                  std::string eyesColor, std::string skinColor, std::string faceType, std::string classs, int level);
+        Caracter (std::string factionName, std::string pseudo, std::string sex, 
+        	 std::string currentMapName, std::string hairColor, std::string eyesColor,
+        	 std::string skinColor, std::string faceType, std::string classs, int level);
         bool isMovable() const {
             return true;
         }
@@ -42,8 +48,8 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
         bool isMoving ();
         void setDir(odfaeg::Vec2f dir);
         odfaeg::Vec2f getDir();
-        void setPath(std::vector<odfaeg::Vec2f> path);
-        std::vector<odfaeg::Vec2f> getPath();
+        void setPath(std::vector&lt;odfaeg::Vec2f&gt; path);
+        std::vector&lt;odfaeg::Vec2f&gt; getPath();
         int getSpeed();
         void setSpeed(int speed);
         odfaeg::g2d::Anim* getAnimation(unsigned int index);
@@ -93,8 +99,8 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
         float attackSpeed, regenHpSpeed;
         bool moving, alive;
         odfaeg::Vec2f dir;
-        std::vector<odfaeg::Vec2f> path;
-        std::vector<odfaeg::g2d::Anim*> anims;
+        std::vector&lt;odfaeg::Vec2f&gt; path;
+        std::vector&lt;odfaeg::g2d::Anim*&gt; anims;
         int currentAnimIndex;
         int life, maxLife, xp, xpReqForNextLevel, regenHpAmount;
         bool attacking, fightingMode;
@@ -102,15 +108,27 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
 };
 #endif
 </pre>
+</p>
 
-<p>Si les attributs sont communs pour tout les types de personnages de notre jeux, alors, <br/> nous ne sommes pas obligé d'utiliser les states, le cas contraire il est fort <br/> recommandé d'utilisé des states afin d'évité de devoir faire trop d'héritage et <br/> d'interfaces si on a pleins de type de personnages (ou d'armes) différentes et que en plus <br/> on définis des règles pour chaque type de personnage. <br/></p>
+<p>
+Si les attributs sont communs pour tout les types de personnages de notre jeux, alors, <br/>
+nous ne sommes pas obligé d'utiliser les states, le cas contraire il est fort <br/>
+recommandé d'utilisé des states et du multiple-dispatch afin d'éviter de devoir faire <br/>
+trop d'héritage et d'interfaces si on a pleins de type de personnages <br/>
+(ou d'armes) différentes et que en plus on définit des règles/des comportements différents <br/>
+pour chaque type de personnage ou armes. <br/>
+</p>
 
-<p>Les states sont donc un bon moyen d'éviter le bordel lorsque le gameplay de votre jeux <br/> devient plus compliqué. <br/>
+<p>
+Les states et le ultiple dispatch sont donc deux bons moyen d'éviter le bordel lorsque le gameplay de votre jeux <br/>
+devient plus compliqué. <br/>
+</p>
 
-<p>Bref examinons le fichier .cpp 
+<p>
+Bref examinons le fichier .cpp 
 <pre>
 #include "caracter.h"
-#include <iostream>
+#include &lt;iostream&gt;
 using namespace std;
 
 using namespace odfaeg;
@@ -164,7 +182,7 @@ void Caracter::setXpReqForNextLevel(int xpReqForNextLevel) {
 }
 void Caracter::up (int xp) {
     this->xp += xp;
-    if (this->xp >= xpReqForNextLevel) {
+    if (this->xp &gt;= xpReqForNextLevel) {
         level++;
         this->xp = this->xp - xpReqForNextLevel;
         xpReqForNextLevel *= 2;
@@ -226,10 +244,10 @@ void Caracter::setFightingMode(bool b) {
 bool Caracter::operator== (Entity &amp;other) {
     if (getType() != other.getType())
         return false;
-    Caracter&amp; caracter = static_cast<Caracter&amp;>(other);
+    Caracter&amp; caracter = static_cast&lt;Caracter&amp;&gt;(other);
     if (anims.size() != caracter.anims.size())
         return false;
-    for (unsigned int i = 0; i < anims.size(); i++) {
+    for (unsigned int i = 0; i &lt; anims.size(); i++) {
         if (anims[i] != caracter.anims[i])
             return false;
     }
@@ -252,28 +270,28 @@ sf::Time Caracter::getTimeOfLastAttack() {
 void Caracter::setDir (Vec2f dir) {
 
     anims[currentAnimIndex]->setCurrentTile(0);
-    float angleRadians = const_cast<Vec2f&amp;>(Vec2f::yAxis).getAngleBetween(dir);
+    float angleRadians = const_cast&lt;Vec2f&amp;&gt;(Vec2f::yAxis).getAngleBetween(dir);
     int angle = Math::toDegrees(angleRadians);
     //Sud
-    if (angle >= -10 &amp;&amp; angle <= 10)
+    if (angle &gt;= -10 &amp;&amp; angle &lt;= 10)
         currentAnimIndex = 0;
     //Sud ouest
-    else if (angle > -80 &amp;&amp; angle < -10)
+    else if (angle &gt; -80 &amp;&amp; angle &lt; -10)
         currentAnimIndex = 3;
     //Ouest
-    else if (angle >= -100 &amp;&amp; angle <= -80)
+    else if (angle &gt;= -100 &amp;&amp; angle &lt;= -80)
         currentAnimIndex = 6;
     //Nord ouest
-    else if (angle > -170 &amp;&amp; angle < -100)
+    else if (angle &gt; -170 &amp;&amp; angle &lt; -100)
         currentAnimIndex = 1;
     //Nors est
-    else if (angle > 100 &amp;&amp; angle < 170)
+    else if (angle &gt; 100 &amp;&amp; angle &lt; 170)
         currentAnimIndex = 7;
     //Est
-    else if (angle >= 80 &amp;&amp; angle <= 100)
+    else if (angle &gt;= 80 &amp;&amp; angle &lt;= 100)
         currentAnimIndex = 2;
     //Sud est
-    else if (angle > 10 &amp;&amp; angle < 80)
+    else if (angle &gt; 10 &amp;&amp; angle &lt; 80)
         currentAnimIndex = 5;
     else
         currentAnimIndex = 4;
@@ -304,10 +322,10 @@ Vec2f Caracter::getPosition () {
     return Vec2f(anims[currentAnimIndex]->getPosition().x, anims[currentAnimIndex]->getPosition().y);
 }
 
-void Caracter::setPath(vector<Vec2f> path) {
+void Caracter::setPath(vector&lt;Vec2f&gt; path) {
     this->path = path;
 }
-vector<Vec2f> Caracter::getPath() {
+vector&lt;Vec2f&gt; Caracter::getPath() {
     return path;
 }
 void Caracter::addAnimation (Anim *anim) {
@@ -316,7 +334,7 @@ void Caracter::addAnimation (Anim *anim) {
     anims.push_back(anim);
 }
 Anim* Caracter::getAnimation(unsigned int index) {
-    if (index >= 0 &amp;&amp; index < anims.size())
+    if (index &gt;= 0 &amp;&amp; index &lt; anims.size())
         return anims[index];
     return NULL;
 }
@@ -350,13 +368,28 @@ Caracter::~Caracter() {
 
 }
 </pre>
+</p>
 
 <p>
-Les choses importante à remarqué ici est la redéfinition de la méthode onDraw ou l'on <br/> dessine l'entité courante de l'animation courante du personnages, on change aussi <br/> l'animation courante en fonction de la direction du personnage. <br/>
-Nous avons aussi les méthodes addChild et setParent lorsque nous ajoutons une animation <br/> pour notre personnage. <br/>
-Ceci à pour conséquence que lorsqu'on dessinera notre personnage il appelera la méthode <br/> onDraw des entités enfants et les méthodes onMove, onRotate et onScale ce qui aura pour <br/> conséquence de dessiner aussi les entités enfants de l'entité (c'est à dire l'entité  <br/> courante de l'animation courante ici) lorsqu'on dessinera l'entité toutes les entités <br/> enfants seront transformées par rapport à la transformation de l'entité parent. <br/> (c'est à dire toutes les frames des animations du personnages) <br/></p>
+Les choses importante à remarqué ici est la redéfinition de la méthode onDraw ou l'on <br/>
+dessine l'entité courante de l'animation courante du personnages, on change aussi <br/> 
+l'animation courante en fonction de la direction du personnage. <br/>
+Nous avons aussi les méthodes addChild et setParent lorsque nous ajoutons une animation <br/>
+pour notre personnage. <br/>
+Ceci à pour conséquence que lorsqu'on dessinera notre personnage il appelera la méthode <br/> 
+onDraw des entités enfants et les méthodes onMove, onRotate et onScale ce qui aura pour <br/> 
+conséquence de dessiner aussi les entités enfants de l'entité (c'est à dire l'entité  <br/> 
+courante de l'animation courante ici) lorsqu'on dessinera l'entité toutes les entités <br/> 
+enfants seront transformées par rapport à la transformation de l'entité parent. <br/> 
+(c'est à dire toutes les frames des animations du personnages) <br/>
+</p>
 
-<p>Si vous devez remettre des données à jour lorsque le personnage bouge ou bien si vous <br/> voulez modifier la transformation vous pouvez redéfinir la méthode onMove en <br/> n'oubliant pas d'appelé la méthode move de la classe de base Entity en lui passant la <br/> transformation si vous voulez que les transformations se combinent avec celles des entités <br/> parent : <br/>
+<p>
+Si vous devez remettre des données à jour lorsque le personnage bouge ou bien si vous <br/>
+voulez modifier la transformation vous pouvez redéfinir la méthode onMove en <br/>
+n'oubliant pas d'appelé la méthode move de la classe de base Entity en lui passant la <br/>
+transformation si vous voulez que les transformations se combinent avec celles des entités <br/>
+parent : <br/>
 
 <pre>
 void Caracter::onMove(Vec3f t) {
@@ -364,29 +397,44 @@ void Caracter::onMove(Vec3f t) {
            //Mise à jour des autres informations. (La physique par exemple)
 }
 </pre>
+</p>
 
 <p>
-Ici nous avons un vector en 3D, il faut savoir que pour les entités ODFAEG en 2.5D la <br/> position en z de l'entité est égale à sa position en y, sa transformation en y sera donc la <br/> même que celle en z. <br/></p>
+Ici nous avons un vector en 3D, il faut savoir que pour les entités ODFAEG en 2.5D la <br/>
+position en z de l'entité est égale à sa position en y, sa transformation en y sera donc la <br/>
+même que celle en z. <br/>
+</p>
 
-<p>Si vous ne voulez pas que la translation se combine, vous pouvez laisser cette méthode vide. <br/>
+<p>
+Si vous ne voulez pas que la translation se combine, vous pouvez laisser cette méthode vide. <br/>
 
-Vous pouvez effectuer la même chose pour la rotation et le changement d'échelle en <br/> redéfinissant les méthodes onRotate et onScale. <br/>
+Vous pouvez effectuer la même chose pour la rotation et le changement d'échelle en <br/>
+redéfinissant les méthodes onRotate et onScale. <br/>
 
-ODFAEG possède 5 classes de bases dont peuvent hériter toutes vos entités personnalisées : <br/></p>
+ODFAEG possède 5 classes de bases dont peuvent hériter toutes vos entités personnalisées : <br/>
+</p>
 
-<p>Entity pour les entités de base qui n'ont pas d'ombre ni d'intersections avec la lumière. <br/> (Par exemple les tiles) <br/>
+<p>
+Entity pour les entités de base qui n'ont pas d'ombre ni d'intersections avec la lumière. <br/>
+(Par exemple les tiles) <br/>
 
-Model : pour les entités qui possèdent une ombre et qui peuvent avoir des intersections <br/> avec la lumière et une ombre : (Par exemple les murs et les décors) <br/>
+Model : pour les entités qui possèdent une ombre et qui peuvent avoir des intersections <br/> 
+avec la lumière et une ombre : (Par exemple les murs et les décors) <br/>
 
 AnimatedEntity : pour toutes les entités animées. <br/>
 
 Shadow : pour toutes les entités qui sont des ombres. <br/>
 
-Light : pour toutes les entités qui sont des lumières. <br/></p>
+Light : pour toutes les entités qui sont des lumières. <br/>
+</p>
 
-<p>Et enfin pour transformer une entité, nous devons appeler la méthode move de la classe <br/> World, ceci aura pour effet de mettre à jour également l'entité dans la grille en fonction <br/> de son rectangle englobant : <br/>
+<p>
+Et enfin pour transformer une entité, nous devons appeler la méthode move de la classe <br/> 
+World, ceci aura pour effet de mettre à jour également l'entité dans la grille en fonction <br/> 
+de son rectangle englobant : <br/>
 
-World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/> </p>
+World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/>
+</p>
                 </html>
         </fr>
     </content>

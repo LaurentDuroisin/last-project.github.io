@@ -12,129 +12,173 @@
                		<h2>La sauvegarde d'entités simple : </h2>
 
 
-<p>Pour sérialiser des données il faut deux choses. (une archive qui contiendra le flux <br/> dans lequel on mettra les données, ainsi que le flux bien sur) <br/>
-Pour le moment odfaeg gère 2 types d'archives : une pour l'écriture (OTextArchive) et une <br/> pour la lecture. (ITextArchive) <br/>
-Mais plus tard il est fort possible que j'incorpore d'autres types d'archive comme par <br/> exemple les archives binaires ou bien les archives au format xml. <br/>
+<p>
+Pour sérialiser des données il faut deux choses. (une archive qui contiendra le flux <br/>
+dans lequel on mettra les données, ainsi que le flux bien sur) <br/>
+Pour le moment odfaeg gère 2 types d'archives : une pour l'écriture (OTextArchive) et une <br/>
+pour la lecture. (ITextArchive) <br/>
+Mais plus tard il est fort possible que j'incorpore d'autres types d'archive comme par <br/>
+exemple les archives binaires ou bien les archives au format xml. <br/>
 
-Il faut donc créer un objet de ce type en lui passant un flux, par exemple, un fichier : <br/></p>
-Ensuite pour sérialiser il suffit d'appeler l'opérateur () sur l'archive en lui passant l'objet, ici par exemple nous allons sérialiser un objet de type std::string :
+Il faut donc créer un objet de ce type en lui passant un flux, par exemple, un fichier : <br/>
+</p>
+
+<p>
+Ensuite pour sérialiser il suffit d'appeler l'opérateur () sur l'archive en lui passant l'objet, <br/>
+ici par exemple nous allons sérialiser un objet de type std::string :
 
 <pre>
 ofstream ofs("thefile");
 OTextArchive oa (ofs);
 
 std::string text="blablabla";
-    std::string text2;
-    std::ofstream ofs("FichierDeSerialisation");
-    {
-        odfaeg::OTextArchive oa(text);
-        oa(text);
-    }
-    ofs.close();
-Pour la lecture le code est similaire à part que l'on utilise les classe ifstream et ITextArchive :
+    std::string text2;
+    std::ofstream ofs("FichierDeSerialisation");
+    {
+        odfaeg::OTextArchive oa(text);
+        oa(text);
+    }
+    ofs.close();
+    
+</pre>
 
+Pour la lecture le code est similaire à part que l'on utilise les classe ifstream et ITextArchive :
+
+<pre>
 std::ifstream ifs("FichierDeSerialisation");
 {
-    odfaeg::ITextArchive ia(ifs);
-    ia(text2);        
+    odfaeg::ITextArchive ia(ifs);
+    ia(text2); 
 }
-std::cout<<text2<<std::endl;
+std::cout&lt;&lt;text2&lt;&lt;std::endl;
 ifs.close();
-Pour sérialiser vos objets personnels, il suffit de redéfinir la méthode serialize dans la classe et de passer à l'archive toutes les variables de la classe.
+</pre>
+</p>
+
+<p>
+Pour sérialiser vos objets personnels, il suffit de redéfinir la méthode serialize dans la classe et <br/>
+de passer à l'archive toutes les variables de la classe.<br/>
 
 
-
+<pre>
 struct A {
-    A() {
-        var = 10;
-    }
+    A() {
+        var = 10;
+    }
         void foo(int i)
-        { std::cout << i; }
-        template <typename A>
+        { std::cout&lt;&lt;i; }
+        template &lt;typename A&gt;
         void serialize (A &amp; ar) {
-        ar(var);
+           ar(var);
         }
         int var;
 };
 
 </pre>
+</p>
+
 <p>
-Car c'est cette méthode que odfaeg va rechercher pour sérialiser l'objet dans l'archive, le br/> code pour sérialiser l'objet dans le main est le même que pour les objets de types <br/> std::string. <br/>
+Car c'est cette méthode que odfaeg va rechercher pour sérialiser l'objet dans l'archive, le br/> 
+code pour sérialiser l'objet dans le main est le même que pour les objets de types std::string. <br/>
 
-Cette manière de faire est simple mais ne fonctionnera pas dans le cadre des objets <br/> polymorphique, en effet, quel donnée de l'objet faut t'il sérialiser, les données de la <br/> classe de base seulement, ou celles de la classe dérivée seulement, ou bien les deux ? <br/>
+Cette manière de faire est simple mais ne fonctionnera pas dans le cadre des objets <br/>
+polymorphique, en effet, quel donnée de l'objet faut t'il sérialiser, les données de la <br/> 
+classe de base seulement, ou celles de la classe dérivée seulement, ou bien les deux ? <br/>
 
-Par défaut odfaeg ne sérialize que les données de la classe de base.<br/></p>
+Par défaut odfaeg ne sérialize que les données de la classe de base.<br/>
+</p>
 
-<p>Pour lui dire de sérialiser les données de la classe dérivée, il faut redéfinir une <br/> autre méthode : la méthode vtserialize. <br/>
+<p>
+Pour lui dire de sérialiser les données de la classe dérivée, il faut redéfinir une <br/> 
+autre méthode : la méthode vtserialize. <br/>
 
-Pour serializer un objet odfaeg utilise une classe dont il faut hériter dans la classe de <br/> base comme ceci : <br/></p>
+Pour serializer un objet odfaeg utilise une classe dont il faut hériter dans la classe de <br/>
+base comme ceci : <br/>
+</p>
 
-<p>La classe de base doit au moins avoir une méthode virtuelle pour pouvoir être considérée <br/> comme une classe polymorphique, car, odfaeg fait le test à l'exécution avec typeid, <br/> et l'héritage doit être pulibque! (Sinon ça ne fonctionnera pas) <br/>
-
+<p>
+La classe de base doit au moins avoir une méthode virtuelle pour pouvoir être considérée <br/> 
+comme une classe polymorphique, car, odfaeg fait le test à l'exécution avec typeid, <br/> 
+et l'héritage doit être pulibque! (Sinon ça ne fonctionnera pas) <br/>
 <pre>
-struct B : public Registered<B> {
-    B() {
-        c = "serialize base";
-    }
-        virtual void foo()
-        { std::cout << 1; }
-        virtual void print() {
-        std::cout<<c<<std::endl;
-        }
-        template <typename A>
-        void vtserialize (A &amp; ar) {
-        ar(c);
-        }
-        virtual ~B();
-        std::string c;  
+struct B : public Registered&lt;B&gt; {
+    B() {
+       c = "serialize base";
+    }
+    virtual void foo()
+    { std::cout&lt;&lt;1; }
+    virtual void print() {
+      std::cout&lt;&lt;c&lt;&lt;std::endl;
+    }
+    template &lt;typename A&gt;
+    void vtserialize (A &amp; ar) {
+       ar(c);
+    }
+    virtual ~B();
+    std::string c;  
 };
- 
 B::~B(){}
 </pre>
-<p>Registered n'est rien d'autre qu'un objet qui va savoir comment sérialiser l'objet <br/> polymorphique, on doit lui passer en paramètre template la classe de Base.
-<br/>
-Ensuite il ne faut pas oublié de redéfinir la méthode virtuelle temlplate vtserialize dans <br/> la classe dérivée. <br/></p>
+</p>
 
+<p>
+Registered n'est rien d'autre qu'un objet qui va savoir comment sérialiser l'objet <br/> 
+polymorphique, on doit lui passer en paramètre template la classe de Base.<br/>
+Ensuite il ne faut pas oublié de redéfinir la méthode virtuelle temlplate vtserialize dans <br/>
+la classe dérivée. <br/>
+</p>
+
+<p>
 <pre>
-struct C : B {
-    C () {
-        c = "serialize derived";
-    }
-    void foo();
-    void print () {
-        B::print();
-        std::cout<<c<<std::endl;
-    }
-    template <typename A>
+struct C : B {
+    C () {
+        c = "serialize derived";
+    }
+    void foo();
+    void print () {
+        B::print();
+        std::cout&lt;&lt;c&lt;&lt;std::endl;
+    }
+    template &lt;typename A&gt;
         void vtserialize (A &amp; ar) {
-        B::vtserialize(ar);
-        ar(c);
+           B::vtserialize(ar);
+           ar(c);
         }
         std::string c;
 };
- 
-void C::foo(){ std::cout << 2; }
-Mais ce n'est pas tout, odfaeg sait comment sérialiser les objets polymorphiques, c'est grâce à la classe Registred héritée par la classe de base qu'il sait qu'il doit aussi sérialiser les attributs de la classe dérivée.
 
-Mais il ne sait pas quelle fonction de la classe dérivé il doit appeler pour sérialiser les données ni quel allocator utiliser pour allouer les pointeurs sur les types de base pour les objets des classes dérivées, pour lui dire, il faut appeler  la macro EXPORT_CLASS_GUID dans la fonction main et lui passer 3 paramètres!
+void C::foo(){ std::cout &lt;&lt; 2; }
+</pre>
+</p>
+<p>
+Mais ce n'est pas tout, odfaeg sait comment sérialiser les objets polymorphiques, c'est grâce à la classe<br/>
+Registred héritée par la classe de base qu'il sait qu'il doit aussi sérialiser les attributs de la classe dérivée.<br/>
 
-Le 1er paramètre est un id qui doit être unique pour chaque exportation, car on peut très bien avoir plusieurs classes dérivées pour une classe de base, ou bien même avoir des classes dérivées qui héritent de plusieurs classe de base! (héritage multiple)
+Mais il ne sait pas quelle fonction de la classe dérivé il doit appeler pour sérialiser les données <br/>
+ni quel allocator utiliser pour allouer les pointeurs sur les types de base pour les objets des classes dérivées<br/>
+, pour lui dire, il faut appeler  la macro EXPORT_CLASS_GUID dans la fonction main et lui passer 3 paramètres! <br/>
+</p>
 
-Le second paramètre est le type de la classe de base dont hérite la classe Dérivée. 
+<p>
+Le 1er paramètre est un id qui doit être unique pour chaque exportation, car on peut très bien avoir plusieurs <br/>
+classes dérivées pour une classe de base, ou bien même avoir des classes dérivées qui héritent <br/>
+de plusieurs classe de base! (héritage multiple) <br/>
 
-Et le dernier paramètre est le type de la classe dérivée à exporter, ce qui donne le code final suivant :
+Le second paramètre est le type de la classe de base dont hérite la classe Dérivée. <br/>
 
+Et le dernier paramètre est le type de la classe dérivée à exporter, ce qui donne le code final suivant : <br/>
 
-struct B : public odfaeg::Registered<Base> {
-    B() {
-        c = "serialize base";
-    }
-    virtual void foo()
-    { std::cout << 1; }
+<pre>
+struct B : public odfaeg::Registered&lt;B&gt; {
+    B() {
+        c = "serialize base";
+    }
+    virtual void foo()
+    { std::coutlt;&lt;1; }
     virtual void print() {
-    std::cout<<c<<std::endl;
+    std::cout&lt;&lt;c&lt;&lt;std::endl;
     }
-    template <typename A>
+    template &lt;typename A&gt;
     void vtserialize (A &amp; ar) {
     ar(c);
     }
@@ -151,20 +195,20 @@ struct C : B {
     void foo();
     void print () {
         B::print();
-        std::cout<<c<<std::endl;
+        std::cout&lt;&lt;c&lt;&lt;std::endl;
     }
-    template <typename A>
+    template &lt;typename A&gt;
         void vtserialize (A * ar) {
         B::vtserialize(ar);
         ar(c);
         }
         std::string c;
 };
-void C::foo(){ std::cout << 2; }
+void C::foo(){ std::cout&lt;&lt;2; }
 int main() {    
     EXPORT_CLASS_GUID(BC, B, C)
     C c;
-    B* b = &c;
+    B* b = &amp;c;
     B* b2;
     std::ofstream ofs("FichierDeSerialisation");
     odfaeg::OTextArchive oa(ofs);
@@ -175,6 +219,7 @@ int main() {    
     b2->print();
 }
 </pre>
+</p>
                 </html>
         </fr>
     </content>

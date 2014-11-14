@@ -1,0 +1,105 @@
+body {
+<<<<<<< HEAD
+    background-color : #333333;
+=======
+background-color : #333333;
+>>>>>>> e26876dcc27eaab5020e1b29317757964626b729
+}
+footer {
+<<<<<<< HEAD
+    width:60%;
+    margin-right:auto;
+    margin-left:auto;
+    font-size:.8em;
+    background: #933333;
+    border:1px solid #333333;
+    margin-top : 30px;
+    border-radius : 15px 15px 15px 15px;
+=======
+width:60%;
+margin-right:auto;
+margin-left:auto;
+font-size:.8em;
+background: #933333;
+border:1px solid #333333;
+margin-top : 30px;
+border-radius : 15px 15px 15px 15px;
+>>>>>>> e26876dcc27eaab5020e1b29317757964626b729
+}
+#menu-div
+{
+<<<<<<< HEAD
+    width:80%;
+    margin-left:10%;
+    background: #933333;
+    border-radius : 15px 15px 15px 15px;
+    z-index : 10;
+    position : fixed;
+    top : 10px;
+    text-align : center;
+    height : 40px;
+=======
+width:80%;
+margin-left:10%;
+background: #933333;
+border-radius : 15px 15px 15px 15px;
+z-index : 10;
+position : fixed;
+top : 10px;
+text-align : center;
+height : 40px;
+>>>>>>> e26876dcc27eaab5020e1b29317757964626b729
+}
+#hide-header {
+<<<<<<< HEAD
+    position : fixed;
+    z-index : 5;
+    background : #330000;
+    height : 120px;
+    width : 100%;
+    top : 0px;
+    left : 0px;
+=======
+position : fixed;
+z-index : 5;
+background : #330000;
+height : 120px;
+width : 100%;
+top : 0px;
+left : 0px;
+>>>>>>> e26876dcc27eaab5020e1b29317757964626b729
+}
+#banner-div {
+position : fixed;
+z-index : 6;
+top : 0px;
+width : 100%;
+text-align : center;
+}
+#content-zone {
+<<<<<<< HEAD
+    margin-top : 140px;
+    min-height : 600px;
+    width:60%;
+    margin-left : auto;
+    margin-right : auto;
+    background-color : #330000;
+    border-radius : 10px 10px 10px 10px;
+    color : #999999;
+    text-weight : bold;
+=======
+margin-top : 140px;
+min-height : 600px;
+width:60%;
+margin-left : auto;
+margin-right : auto;
+background-color : #330000;
+border-radius : 10px 10px 10px 10px;
+color : #999999;
+text-weight : bold;
+>>>>>>> e26876dcc27eaab5020e1b29317757964626b729
+}
+#content
+{
+padding : 15px;
+}
