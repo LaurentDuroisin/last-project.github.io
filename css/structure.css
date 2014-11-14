@@ -1,5 +1,5 @@
 body {
-    background-color : blue;
+    background-color : #333333;
 }
 
 footer {
@@ -7,8 +7,8 @@ footer {
     margin-right:auto;
     margin-left:auto;
     font-size:.8em;
-    background: white;
-    border:1px solid #696;
+    background: #933333;
+    border:1px solid #333333;
     margin-top : 30px;
     border-radius : 15px 15px 15px 15px;
 }
@@ -17,7 +17,7 @@ footer {
 {
     width:80%;
     margin-left:10%;
-    background: red;
+    background: #933333;
     border-radius : 15px 15px 15px 15px;
     z-index : 10;
     position : fixed;
@@ -29,7 +29,7 @@ footer {
 #hide-header {
     position : fixed;
     z-index : 5;
-    background : blue;
+    background : #330000;
     height : 120px;
     width : 100%;
     top : 0px;
@@ -45,13 +45,15 @@ footer {
 }
 
 #content-zone {
-    margin-top : 120px;
+    margin-top : 140px;
     min-height : 600px;
     width:60%;
     margin-left : auto;
     margin-right : auto;
-    background-color : white;
+    background-color : #330000;
     border-radius : 10px 10px 10px 10px;
+    color : #999999;
+    text-weight : bold;
 }
 
 #content
