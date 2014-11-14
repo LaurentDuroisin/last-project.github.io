@@ -1,60 +1,56 @@
 body {
-    background-color : blue;
+background-color : #333333;
 }
-
 footer {
-    width:60%;
-    margin-right:auto;
-    margin-left:auto;
-    font-size:.8em;
-    background: white;
-    border:1px solid #696;
-    margin-top : 30px;
-    border-radius : 15px 15px 15px 15px;
+width:60%;
+margin-right:auto;
+margin-left:auto;
+font-size:.8em;
+background: #933333;
+border:1px solid #333333;
+margin-top : 30px;
+border-radius : 15px 15px 15px 15px;
 }
-
 #menu-div
 {
-    width:80%;
-    margin-left:10%;
-    background: red;
-    border-radius : 15px 15px 15px 15px;
-    z-index : 10;
-    position : fixed;
-    top : 10px;
-    text-align : center;
-    height : 40px;
+width:80%;
+margin-left:10%;
+background: #933333;
+border-radius : 15px 15px 15px 15px;
+z-index : 10;
+position : fixed;
+top : 10px;
+text-align : center;
+height : 40px;
 }
-
 #hide-header {
-    position : fixed;
-    z-index : 5;
-    background : blue;
-    height : 120px;
-    width : 100%;
-    top : 0px;
-    left : 0px;
+position : fixed;
+z-index : 5;
+background : #330000;
+height : 120px;
+width : 100%;
+top : 0px;
+left : 0px;
 }
-
 #banner-div {
-    position : fixed;
-    z-index : 6;
-    top : 0px;
-    width : 100%;
-    text-align : center;
+position : fixed;
+z-index : 6;
+top : 0px;
+width : 100%;
+text-align : center;
 }
-
 #content-zone {
-    margin-top : 120px;
-    min-height : 600px;
-    width:60%;
-    margin-left : auto;
-    margin-right : auto;
-    background-color : white;
-    border-radius : 10px 10px 10px 10px;
+margin-top : 140px;
+min-height : 600px;
+width:60%;
+margin-left : auto;
+margin-right : auto;
+background-color : #330000;
+border-radius : 10px 10px 10px 10px;
+color : #999999;
+text-weight : bold;
 }
-
 #content
 {
-    padding : 15px;
+padding : 15px;
 }
