@@ -14,33 +14,31 @@
 <p>
 odfaeg possède une classe spéciale pour pouvoir stocker des pointeurs de fonctions de <br/> 
 type différents, des paramètres afin d'appeler ces fonctions plus tard, car, les commandes sont appelée dans <br/>
-un autre thread avec odfaeg que celui ou les arguments sont <br/> 
-passé à la fonction de callback. <br/>
+un context spécial avec odfaeg, et chaque composant de type gui possède sont propre contexte. <br/>
 </p>
 
 <p>
 La seule contrainte est le type de retour de la fonctions de callback, qu'il faut <br/> 
 mentionner à la classe. <br/>
 Cette classe particulière porte le nom de odfaeg::FastDelegate. (Car elle va déléguer le <br/> 
-travail à un autre foncteur) <br/>
-Cette classe prend en paramètre le type de retour de la fonction de callback, et en <br/> 
+travail à un autre foncteur qui lui va exécuter l'événement (ou bien la commande ou encore l'action)) <br/>
+Cette classe prend en paramètre template le type de retour de la fonction de callback, et en <br/> 
 arguments, un pointeur sur une fonction ainsi que les arguments de la fonctions de callback. <br/>
 </p>
 
 <p>
 Pour ne pas devoir recréer le même delegate pour appeler plusieurs fois la même fonction de <br/> 
 callback, la classe FastDelegate possède les fonctions setParam et bind pour les <br/> 
-placeholders qui permettent de changer les paramètres de la fonction de callback avant de <br/> 
-la rappeler. <br/>
+placeholders. <br/>
 </p>
 
 <p>
 La classe FastDelegate est très similaire à std::function et à std::bind, mais, à <br/> 
 l'exception près que l'ont peut stocker tous les pointeurs de fonction retournant le même <br/> 
-type dans un tableau si celle-ci on un nombre variable d'arguments ou bien des <br/> 
+type dans un tableau si celles-ci on un nombre variable d'arguments ou bien des <br/> 
 arguments de type différents, et c'est ce que fais la classe listener de odfaeg, cette <br/> 
-classe permet de connecter des événements à des fonctions de callback et se charge <br/> 
-d'appeler la bonne fonction de callback en fonction de l'événement généré. <br/>
+classe est un contexte d'événements associés à une gui et permet de connecter des événements à des fonctions de callback <br/>
+appelées par la gui et se charge d'appeler la bonne fonction de callback en fonction de l'événement système généré par SFML. <br/>
 </p>
 
 <p>
@@ -189,12 +187,12 @@ int main (int argv, char* argc[]) {
 <h2>Créer des commandes : </h2>
 
 <p>
-Maintenant que l'on sait comment créer des delegate, on va pouvoir créer des commandes <br/> 
+Maintenant que l'on sait comment créer des delegates, on va pouvoir créer des commandes <br/> 
 que l'on connectera ensuite au listener à l'aide d'un identifiant. <br/>
 
-ODFAEG permet de créer des commandes de 2 façons : <br/>
+la classe commande possède 3 constructeurs différents : <br/>
 
-La première façon est de définir un ou plusieurs événements SFML qui déclencheront la <br/> commande. <br/>
+Le 1er permet de définir un ou plusieurs événements SFML qui déclencheront la <br/> commande. <br/>
 </p>
 
 <p>
@@ -216,9 +214,9 @@ Action combined (a1 || a2 || a3 || a4);
 
 <p>
 Cette action doit ensuite être mappée à une commande, ceci se fait à l'aide de la classe <br/> 
-Command, la commande n'est rien d'autre qu'une action liées à un pointeur de fonction <br/> 
-(appelé un slot) ainsi que des paramètres qui seront envoyé à ce slot, pour créer un <br/> 
-slot avec odfaeg ils suffit de créer un object de type FastDelegate&lt;void&gt; en lui <br/> 
+Command, la commande n'est rien d'autre qu'une action liées à une fonction de callback <br/> 
+(appelée un slot) ainsi que des paramètres qui seront envoyés à ce slot, pour créer un <br/> 
+slot avec odfaeg il suffit de créer un object de type FastDelegate&lt;void&gt; en lui <br/> 
 passant en paramètre  un pointeur sur la fonction qu’appellera la commande lorsqu'elle sera <br/> 
 déclenchée ainsi que la valeur des paramètres de la commande (ici je met Unknow car <br/> 
 on ne connaît pas encore la touche qui a été pressée et le temps écoulé depuis le <br/> 
@@ -238,23 +236,22 @@ commande. <br/>
 <h2>Connecter des commandes   : </h2>
 
 <p>
-Une fois que la commande est créée nous devons la connecter au gestionnaire d'événement <br/> 
-(au listener), le gestionnaire d'événement n'est rien d'autre qu'un thread qui <br/> 
+Une fois que la commande est créée nous devons la connecter au contexte de gestion d'événement <br/> 
+(au listener), le context de gestion d'événements n'est rien d'autre qu'une classe qui <br/> 
 exécute les commandes qu'on lui fournis de manière synchrone ou assynchrone en fonction des <br/> 
 événements SFML généré par l'application. <br/>
 </p>
 
 <p>
-Pour connecter une commande il faut récupérer l'interpréteur de commande du gestionnaire <br/> 
-d'événements, ceci se fait à l'aide de la méthode getListener()  de la classe <br/> 
-InputSystem : <br/>
+Pour connecter une commande il faut récupérer le contexte de gestion d'événements, ceci se fait à l'aide de la méthode getListener()  de la classe <br/> 
+application.<br/>
 
-InputSystem::getListener().connect("MoveConnexion", moveCommand); <br/>
+getListener().connect("MoveConnexion", moveCommand); <br/>
 
 On fournis donc le nom de la connection ainsi que la commande. <br/>
 </p>
 
-<h2>Définir un trigger personnalisé pour une command : </h2>
+<h2>Définir un trigger personnalisé pour une commande : </h2>
 
 <p>
 Ce système est bien mais ne convient pas pour tout les cas, imaginez que vous devez <br/> 
@@ -264,10 +261,10 @@ n'est pas du tout pratique. <br/>
 </p>
 
 <p>
-ODFAEG permet  de créer une commande avec une fonction spéciale. (appelée un trigger) <br/>
+ODFAEG permet  de créer une commande avec une fonction spéciale. (appelée un signal) <br/>
 C'est alors la fonction et non plus l'action qui va décider de l'exécution de la commande, <br/> 
 voici un exemple, créons une fonction qui affiche quelque chose à l'écran lorsque la <br/> 
-souris est dans le rectangle 0, 0, 100, 100 de la fenêtre de l'application : <br/>
+souris est dans le rectangle 0, 0, 100, 100 de la fenêtre de rendu de l'application : <br/>
 <pre>
  bool mouseInside (sf::Vector2f mousePos) {
 
@@ -287,15 +284,14 @@ souris est dans le rectangle 0, 0, 100, 100 de la fenêtre de l'application : <
 Nous avons 2 méthodes, une qui vérifie si la souris est dans le rectangle et une autre qui <br/> 
 affiche un message en indiquant la position de la souris. <br/>
 
-Créer un trigger s'effectue de la même manière que la création d'un slot, à l'exception <br/>
-près que le type du trigger est FastDelegate&lt;bool&gt;. <br/>
+Créer un signal s'effectue de la même manière que la création d'un slot, à l'exception <br/>
+près que le type du signal est FastDelegate&lt;bool&gt;. <br/>
 
-Le type de fonction et les paramètres du trigger et du slot doivent être les mêmes! <br/>
 </p>
 
 <p>
-La création d'une commande avec un trigger se fait de la même manière que la création de la <br/> 
-commande avec une action à l'exception prêt que c'est le trigger qu'on envoie et non <br/> 
+La création d'une commande avec un signal se fait de la même manière que la création de la <br/> 
+commande avec une action à l'exception prêt que c'est le signal qu'on envoie et non <br/> 
 plus l'action car ici la commande n'est pas liée à un ou plusieurs événements SFML <br/> 
 mais directement à une fonction) : <br/>
 <pre>
@@ -305,18 +301,20 @@ FastDelegate&lt;void&gt;(&amp;MyAppli::onMouseInside, this, Vector2f(-1,-1)));
 </p>
 
 <p>
-InputSystem::getListener().connect(«mouseInsideCommand»,mouseInsideCommand); <br/>
+getListener().connect(«mouseInsideCommand»,mouseInsideCommand); <br/>
 On met -1, -1 pour la valeur de la position de la souris car on ne la connais pas encore,<br/> 
 ceci évite d'afficher le message au lancement de l'application lorsque la <br/> 
 fenêtre n'est pas encore affichée. <br/>
 </p>
 
 <p>
-Il existe une dernière et troisième méthode qui permet de passer un trigger, une <br/> 
-action et un slot à une Commande, la commande sera alors exécutée si le trigger ainsi que <br/> 
+Il existe un dernier constructeur qui permet de passer un trigger, une <br/> 
+action et un slot à une Commande, la commande sera alors exécutée si le signal ainsi que <br/> 
 l'action  sont déclenchés. <br/>
+On peut changer les paramètres du signal et du slot la commande à tout moment grâce aux méthode setSlotParams, setSigParams,<br/>
+bindSlotParams et bindSigParams.
+Voilà. :)
 </p>
-
                 </html>
         </fr>
     </content>
