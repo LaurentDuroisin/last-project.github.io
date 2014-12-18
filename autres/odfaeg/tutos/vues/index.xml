@@ -34,13 +34,12 @@ de Kayl sur <a href="http://openclassrooms.com/courses/creez-des-programmes-en-3
 <br/>
 </p>
 
-Les composants tout comme la fenêtre de rendu possèdent également une vue, par défaut, c'est la même vue que celle de la <br/> 
+<p></p>Les composants tout comme la fenêtre de rendu possèdent également une vue, par défaut, c'est la même vue que celle de la <br/> 
 fenêtre de rendu de l'application. <br/>
 </p>
-<p>
 
 <h2>Jouer avec la vue.</h2>
-
+<p>>
 Pour déplacer la vue il suffit d'appeler la méthode move : <br/>
 
 getView().move(0, 300, 300);<br/>
@@ -51,6 +50,7 @@ qui ont un y négatif. (ODFAEG se sert aussi de l'axe z pour déterminé si une 
 Généralement la hauteur des entités est le centre de l'entité sur l'axe des y.
 En 3D, le 1er paramètre déplace la vue latéralement, le second en profondeur, et le troisième en hauteur.<br/>
 </p>
+<p>
 Pour effectuer une rotation de la vue en 2D, il suffit d'appeler la méthode rotate : <br/>
 getView().rotate(0, 20, 0); <br/>
 Ceci va effectuer une rotation de 20 degrés autout de l'axe y, c'est à dire l'axe vers lequel pointe le haut de la vue. <br/>
@@ -66,6 +66,7 @@ view.setScale(scaleX, scaleY, scaleZ); <br/>
 Et pour changer le viewport c'est à dire la zone sur la fenêtre ou sur le composant de rendu occupé par la vue, il suffit<br/>
 d'appeler la méthode setViewport comme pour SFML.<br/>
 Voila c'est tout en ce qui concerne les vues.<br/>
+</p>
 </html>
         </fr>
     </content>
