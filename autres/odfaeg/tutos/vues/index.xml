@@ -7,65 +7,66 @@
     <content>
         <fr>
                 <html>
-                        <h1>Chapitre V : les vues.</h1>
+                        <h1>Chapitre V : les vues.</h1>
 
-               <h2>Orientation des axes et origine des vues.</h2>
+               <h2>Positionnement, orientation par défaut et origine des vues.</h2>
 
 <p>
-Les vues de odfaeg sont différentes des vues SFML, car elle n'imposent pas d'orientation <br/> 
-particulière pour les axes, contrairement à SFML qui impose que l'axe y pointe vers <br/> 
-le bas, c'est à dire que le coin en haut à gauche de la fenêtre a toujours pour <br/> 
-coordonnée 0,0 et le coin en bas à droite à pour coordonnée la largeur et la hauteur de la <br/> 
-fenêtre. <br/>
+Les vues de odfaeg sont différentes des vues SFML, car elles n'ont pas la même origine, c'est à dire que la coordonnée <br/>
+0,0 est le centre de l'écran et non pas le coin supérieur gauche, mais on peut changer cela en la déplaçant comme ceci : <br/>
+view.move(-width*0.5f, height*0.5f, 0);<br/>
+width et height sont la largeur et la hauteur de la vue.
+
+Comme pour SFML, l'axe y de la vue pointe vers le bas (car c'est plus simple de travailler comme cela en 2D) et l'axe x pointe vers la droite.<br/>
+L'axe z quand à lui pointe vers le haut, et contrairement à SFML, zNear et zFar ne sont pas situés entre -1 et 1 mais entre 0 et <br/>
+la hauteur de la vue, ce qui permet de "clippé" toutes les entités qui ne se trouvent pas entre 0 et la hauteur de la vue.<br/>
+En réalité la vue 2D de ODFAEG n'est rien d'autre qu'une vue en 3D mais en vue du dessus, c'est à dire avec le haut de la vue pointe<br/>
+vers l'axe des y positifs, et le z sert à déterminer la hauteur.<br/>
+Pour la vue en 3D, cela est différent, car le haut de la vue pointe vers l'axe des z positif, l'axe y pointe donc vers le haut!<br/>
+La vue par défaut est en 2D et les coodonnées sont situées entre -width*0.5, width*0.5 pour x, -height*0.5, height*0.5 pour y<br/>
+et 0, height pour z.<br/>
+Pour passer en vue 3D il suffit de changer de vue comme ceci : <br/>
+View view(size.x, size.y, 80, 0.1f, 1000); <br/>
+getRenderWindow().setView(view); <br/>
+size est la dimention de la fenêtre, 80 le fovy, 0.1f le plan near et 1000 le plan far.<br/>
+Si vous ne savez pas ce que sont les plans near et far ainsi que le fovy, je vous invite à lire les tutoriels<br/>
+de Kayl sur <a href="http://openclassrooms.com/courses/creez-des-programmes-en-3d-avec-opengl/enfin-de-la-3d-partie-1-2">ce site.</a>
+<br/>
 </p>
 
-<p>
-Odfaeg n'impose pas d'orientation pour les axes et on peut changer l'orientations des axes<br/> 
-comme on le désire, contrairement à SFML, les vues on pour origine le centre de <br/> 
-la fenêtre et non pas le coin supérieur gauche de la fenêtre et le sens des axes est <br/> 
-vers la droite pour l'axe x, vers le haut pour l'axe y et vers vous pour l'axe z.<br/>
-On peut changer facilement l'orientation des axes avec la méthode setScale comme ceci : <br/>
-
-<pre>
-getView().setScale(1, -1, 1);
-getView() permet de récupérer la vue de la fenêtre de rendu dans le l'application.
-</pre>
-</p>
-
-<p>
-Dans ce cas là l'axe des y pointera vers le bas comme pour SFML! <br/>
-Pour changer l'origine il suffit de faire une translation de la vue avant de tout dessiner.<br/>
-
-Les composants possèdent également une vue, par défaut, c'est la même vue que celle de la <br/> 
+Les composants tout comme la fenêtre de rendu possèdent également une vue, par défaut, c'est la même vue que celle de la <br/> 
 fenêtre de rendu de l'application. <br/>
 </p>
-
 <p>
+
+<h2>Jouer avec la vue.</h2>
+
 Pour déplacer la vue il suffit d'appeler la méthode move : <br/>
 
-getView().move(0, 300, 0);<br/>
+getView().move(0, 300, 300);<br/>
 
-Ceci déplace la vue de 300 unités vers le bas ou vers le haut. (Cela dépend de <br/> l'orientation de l'axe y.) <br/>
-Pour faire une rotation, il suffit d'appeler la méthode rotate et de passer l'angle et pour <br/>
-zoomer, il suffit d'appeler la fonction zoom et de passer l'échelle. <br/>
+En 2D, ceci déplace la vue de 300 unités vers le bas, il faut aussi déplacer la vue en z sinon, les entités <br/>
+dans le monde qui ont un y supérieur à celui de la vue ne seront jamais visible, même chose pour les entités <br/>
+qui ont un y négatif. (ODFAEG se sert aussi de l'axe z pour déterminé si une entité est derrière ou bien devant une autre entité.)<br/>
+Généralement la hauteur des entités est le centre de l'entité sur l'axe des y.
+En 3D, le 1er paramètre déplace la vue latéralement, le second en profondeur, et le troisième en hauteur.<br/>
 </p>
-
-<p>Par défault la vue est othographique. (en 2D donc) <br/>
-Avec comme znear, une valeur un peut plus petite que 0 et comme z far une valeur un peu <br/> 
-plus grande que la hauteur de la fenêtre, par conséquent tout ce qui est visible doit <br/> 
-avoir un z compris entre 0 et la hauteur de la fenêtre sinon l'entité ne sera pas <br/> 
-affichée. (Il suffit juste de mettre comme composante z le centre de l'entité 2D et de <br/> 
-déplacer aussi la vue en z avec la même valeur que pour y lorsqu'on se déplace dans le <br/> 
-monde. (avec le clavier ou bien avec la souris par exemple) <br/>
-</p>
-
-<p>
-On peut changer la vue et la passer en perspective (en vue 3D) mais ce ne sera pas <br/> 
-l'objet de se chapitre, nous verrons cela dans le tutoriel consacré à la 3D. <br/>
-On peut également changer le viewport de la vue avec la méthode setViewport. <br/>
-</p>
-
-                </html>
+Pour effectuer une rotation de la vue en 2D, il suffit d'appeler la méthode rotate : <br/>
+getView().rotate(0, 20, 0); <br/>
+Ceci va effectuer une rotation de 20 degrés autout de l'axe y, c'est à dire l'axe vers lequel pointe le haut de la vue. <br/>
+En 3D, le 1er paramètre sert à effectuer une rotation autour de l'axe x et le troisième autour de l'axe z. <br/>
+En 3D, on peut aussi effectuer une rotation en coordonnées polaire comme expliqué dans ce tutoriel : <br/>
+<a href="http://openclassrooms.com/courses/creez-des-programmes-en-3d-avec-opengl/controle-avance-de-la-camera-partie-2-2"></a>
+getView().rotate(teta, phi); <br/>
+Pour éviter de faire des looping il faut imposé une contrainte à la vue, la méthode setConstrains permet de faire cela : <br/>
+view.setConstrains(0, 89); <br/>
+Phi ne peut pas valoir plus que -89 ou que 89 dégré. <br/>
+Pour zoomer, il suffit d'utiliser la méthode setScale : <br/>
+view.setScale(scaleX, scaleY, scaleZ); <br/>
+Et pour changer le viewport c'est à dire la zone sur la fenêtre ou sur le composant de rendu occupé par la vue, il suffit<br/>
+d'appeler la méthode setViewport comme pour SFML.<br/>
+Voila c'est tout en ce qui concerne les vues.<br/>
+</html>
         </fr>
     </content>
 </page>
