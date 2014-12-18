@@ -27,12 +27,12 @@ Méthode à redéfinir si vous avez des ressources externes à charger. <br/>
 <br/>
 onInit()<br/>
 <br/>
-C'est dans cette méthode que vous créerez et initialiserai tout ce qui doit être initialiser.<br/>
-(Les commandes, les entités graphiques, la définition des collisions, etc...)<br/>
+C'est dans cette méthode que vous créerez et initialiserez tout ce qui doit être initialisé.<br/>
+(Les commandes, les entités graphiques, les composants graphiques, la définition des collisions, etc...)<br/>
 <br/>
 onRender(odfaeg::FastRenderComponentManager *frcm) <br/>
 <br/>
-Dans cette méthode vous pouvez définir ce qui devra être dessiné sur la frame courante en le dessinant sur un composant de rendu ODFAEG.<br/>
+Dans cette méthode vous pouvez définir ce qui devra être dessiné sur les composants de rendu de ODFAEG à la frame suivante.<br/>
 <br/>(Le composant de rendu se chargera de rendre vos dessins de la manière la plus optimale suivant les fonctionnalités supportées par votre carte graphique)<br/>
 <br/>
 Si cette méthode n'est pas redéfinie, ou bien que l'application n'est pas une application graphique, rien n'est dessiné.<br/>
@@ -40,15 +40,19 @@ Si cette méthode n'est pas redéfinie, ou bien que l'application n'est pas une 
 onDisplay(odfaeg::RenderWindow *window)<br/>
 <br/>
 Cette méthode est à redéfinir si vous devez dessiner des choses directement sur la fenêtre de rendu.<br/>
-<br/>
+En général ça se limite à pas grand chose. (une texture de lumière, des menus, des overlay, etc...)<br/>
+Vous pouvez également choisir de dessiner les entités directement sur la fenêtre plutôt que sur un <br/>
+Composant de rendu si vous ne voulez pas utilisez de shaders, ou bien si votre PC ne les supporte pas. <br/>
+Mais ceci est bien sûr déconseillé à cause de tout les problèmes que ça peut engendré.<br/>
+Dans ce cas je vous conseillerai donc d'acheter un PC plus récent.<br/>
 onUpdate(sf::Event&amp; event)<br/>
 <br/>
-Dans cette méthode vous pouvez mettre à jour la frame suivante.<br/>
-(Celle-ci sera mise à jour en même temps que le dessin de la frame courante à l'aide d'un thread.)<br/>
+Dans cette méthode vous pouvez mettre à jour la frame suivante. (Déplacer des entités au clavier ou à la souris par exemple)<br/>
 <br/>
-Ce qui rend le processus de rendu plus rapide.<br/>
+<br/>
 (Si l'application n'est pas une application graphique ou si cette méthode n'est pas redéfinie, rien n'est remis à jour) <br/>
 Cette méthode prend un paramètre : le dernière événement SFML généré par l'application.<br/>
+Cette méthode renvoie tout les événements SFML 1 à 1 à chaque tour de boucle.<br/>
 <br/>
 OnExec()<br/>
 <br/>
@@ -58,15 +62,16 @@ serveur, mais elle peut aussi être redéfinie si votre application doit effectu
 <h2>Création de l'application : </h2>
 <p>
 <br/>
-Pour créer une application il suffit d'appeler le constructeur en lui passant les bons paramètres suivant le type d'application  dans le fonction main : <br/>
+Pour créer une application il suffit d'appeler le constructeur en lui passant les bons paramètres suivant le type d'application  dans la fonction main : <br/>
 <br/>
 MyAppli app(sf::VideoMode(800, 600), "Test odfaeg");<br/>
 <br/>
 Le constructeur de la classe odfaeg::application peut prendre des paramètres supplémentaires comme par exemple : <br/>
 <br/>
-un booléen qui indique si l'on veut activer le depthtest d'opengl ou non. (par défaut ce boonéen vaut true) <br/>
+un booléen qui indique si l'on veut utiliser un thread pour la gestion d'événement. (false par défaut.)
+un booléen qui indique si l'on veut activer le depthtest d'opengl ou non. (par défaut ce booléen vaut true.) <br/>
 <br/>
-sf::Style : le style de la fenêtre. <br/>
+sf::Style : le style de la fenêtre, par défaut c'est le style par défaut qui est utilisé. <br/>
 <br/>
 sf::ContextSettings : permet de spécifier des options de rendu opengl plus détaillées.<br/>
 <br/>
@@ -89,13 +94,16 @@ if (event.type == sf::Event::Closed) { <br/>
 } <br/>
 <br/>
 Les classes de rendu graphique 2D d'odfaeg sont les même que celle de sfml à l'exception prêt <br/>
-qu'elles se trouvent dans le namepsace odfaeg et non dans le namespace sf. <br/>
-(Par exemple odfaeg::ConvexShape pour les formes convexe)<br/></p>
+qu'elles se trouvent dans le namepsace odfaeg::gaphic et non dans le namespace sf. <br/>
+odfaeg possède un sous namespace par module, ses sous namespace sont : <br/>
+core (le module core), physic (le module physique), network (le module réseau), sound (le module son)<br/>
+, graphic (le module graphique), graphic::g2d (le module 2D), graphic::g3d (le module 3D)<br/>
+(Par exemple odfaeg::graphic::ConvexShape pour les formes convexe)<br/></p>
 <br/>
 A la différence de SFML, les objets SFML-LIKE de odfaeg peuvent posséder des points en 3D<br/>
 pour rendre des entité en 2.5D. (C'est à dire des plans par exemple.) <br/>
 
-Voilà maintenant vous savez créer des applications odfaeg toutes simple. <br/>
+Voilà maintenant vous savez comment créer des applications odfaeg toute simple! <br/>
                 </html>
         </fr>
     </content>
