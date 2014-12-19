@@ -18,8 +18,8 @@ est, sud, sud ouest, sud est) <br/>
 
 <p>
 Nous devons d'abord hériter de la classe AnimatedEntity car notre entité personnage est <br/> 
-animé, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  
-(pour plus tard lorsque on créera le jeux) : <br/>
+animée, nous allons aussi en profiter pour spécifier des attributs à notre personnage <br/>  
+(pour plus tard lorsque l'on créera l'IA du jeux) : <br/>
 <pre>
 #include &lt;vector&gt;
 #ifndef CARACTER
@@ -120,7 +120,7 @@ pour chaque type de personnage ou armes. <br/>
 </p>
 
 <p>
-Les states et le ultiple dispatch sont donc deux bons moyen d'éviter le bordel lorsque le gameplay de votre jeux <br/>
+Les states et le multiple dispatch sont donc deux bons moyen d'éviter le bordel lorsque le gameplay de votre jeux <br/>
 devient plus compliqué. <br/>
 </p>
 
@@ -372,7 +372,7 @@ Caracter::~Caracter() {
 
 <p>
 Les choses importante à remarqué ici est la redéfinition de la méthode onDraw ou l'on <br/>
-dessine l'entité courante de l'animation courante du personnages, on change aussi <br/> 
+dessine la frame courante de l'animation courante du personnage, on change aussi <br/> 
 l'animation courante en fonction de la direction du personnage. <br/>
 Nous avons aussi les méthodes addChild et setParent lorsque nous ajoutons une animation <br/>
 pour notre personnage. <br/>
@@ -388,25 +388,29 @@ enfants seront transformées par rapport à la transformation de l'entité paren
 Si vous devez remettre des données à jour lorsque le personnage bouge ou bien si vous <br/>
 voulez modifier la transformation vous pouvez redéfinir la méthode onMove en <br/>
 n'oubliant pas d'appelé la méthode move de la classe de base Entity en lui passant la <br/>
-transformation si vous voulez que les transformations se combinent avec celles des entités <br/>
+transformation si vous voulez que les transformations se combinent avec celles de l'entité <br/>
 parent : <br/>
 
 <pre>
 void Caracter::onMove(Vec3f t) {
 	Entity::onMove(t) ;
            //Mise à jour des autres informations. (La physique par exemple)
+        if (getCollisionVolume() != nullptr) {
+		getCollisionVolume()->move(Vec3f(t.x, t.y, 0));
+    	}
 }
 </pre>
 </p>
 
 <p>
-Ici nous avons un vector en 3D, il faut savoir que pour les entités ODFAEG en 2.5D la <br/>
-position en z de l'entité est égale à sa position en y, sa transformation en y sera donc la <br/>
-même que celle en z. <br/>
+Ici nous avons un vector en 3D, il faut savoir que pour les entités ODFAEG en 2D la <br/>
+position en z de l'entité est égale à son centre en y, sa translation en z sera donc la <br/>
+même que celle en y. <br/>
+Par contre pour la physique, pas besoin du z.<br/>
 </p>
 
 <p>
-Si vous ne voulez pas que la translation se combine, vous pouvez laisser cette méthode vide. <br/>
+Si vous ne voulez pas que la translation se combine avec les entités enfants, vous pouvez laisser cette méthode vide. <br/>
 
 Vous pouvez effectuer la même chose pour la rotation et le changement d'échelle en <br/>
 redéfinissant les méthodes onRotate et onScale. <br/>
@@ -430,7 +434,7 @@ Light : pour toutes les entités qui sont des lumières. <br/>
 
 <p>
 Et enfin pour transformer une entité, nous devons appeler la méthode move de la classe <br/> 
-World, ceci aura pour effet de mettre à jour également l'entité dans la grille en fonction <br/> 
+World, ceci aura pour effet de mettre à jour également l'entité dans la grille gu gestionnaire d'entité en fonction <br/> 
 de son rectangle englobant : <br/>
 
 World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/>
