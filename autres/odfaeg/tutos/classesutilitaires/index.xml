@@ -14,11 +14,11 @@
 <p>
 Tout comme boost, odfaeg possède quelque classe utilitaires qui sont utilisées lors du <br/> 
 codage du gameplay et l'application de comportements différents suivant les <br/>
-différents type d'entités. (A la diffence prêt qu'elles utilisent le nouveau standart <br/>
+différents type d'entités. (A la différence prêt qu'elles utilisent le nouveau standart <br/>
 c++14.) <br/>
 
-Voici un exemple de code utilisant un variant qui permet d'appliquer deux comportement <br/>
-différent pour une classe A et B. <br/>
+Voici un exemple de code utilisant un variant qui permet d'appliquer deux comportements <br/>
+différents pour une classe A et B. <br/>
 </p>
 
 <p>
@@ -29,7 +29,7 @@ class Chien {
 class Chat {
 };
 
-struct Attaquer : public odfaeg::Visitor&lt;&lt; {
+struct Attaquer : public odfaeg::core::Visitor&lt;&lt; {
       void operator()(Chat&amp; chat) {
             std::cout&lt;&lt;"griffe!"&lt;&lt;std::endl;
       }
@@ -43,12 +43,12 @@ Et dans le main il suffit juste de faire ceci : <br/>
 int main() {
     Chat chat;
     Chien chien;
-    std::vector&lt;odfaeg::Variant&lt;Chien, Chat&gt;&gt; vector;
+    std::vector&lt;odfaeg::core::Variant&lt;Chien, Chat&gt;&gt; vector;
     vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chat));
     vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chien));
     Attaquer attaquer;
     for (unsigned int i = 0; i &lt; vector.size(); i++) {
-         odfaeg::apply_visitor(attaquer, vector[i]);
+         odfaeg::core::apply_visitor(attaquer, vector[i]);
     }
 }
 </pre>
@@ -64,7 +64,7 @@ struct Chat
 struct Chien
 { };
 struct Attaquer
-        : odfaeg::Visitor&lt;&gt;
+        : odfaeg::core::Visitor&lt;&gt;
 {
         void operator()(const chat&amp;, const chat&amp;) const
         { std::cout &lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
@@ -78,17 +78,18 @@ struct Attaquer
 int main() {
     Chat chat;
     Chien chien;
-    odfaeg::Variant&lt;Chien, Chat&gt; var1(chat);
-    odfaeg::Variant&lt;Chien, Chat&gt; var2(chien);
-    odfaeg::apply_nary_visitor(Attaquer(), var1, var2);
+    odfaeg::core::Variant&lt;Chien, Chat&gt; var1(chat);
+    odfaeg::core::Variant&lt;Chien, Chat&gt; var2(chien);
+    odfaeg::core::apply_nary_visitor(Attaquer(), var1, var2);
 }
 </pre>
 </p>
 
 <p>
-Une autre méthode : <br/>
+<h2>Une autre méthode : </h2>
+<p>
 odfaeg possède une autre méthode permettant de faire cela à l'aide d'une interface <br/>
-pour les diffent type d'entités, et d'appliquer un multiple dispatch dessus comme <br/> 
+pour les différent types d'entités, et d'appliquer un multiple dispatch dessus comme <br/> 
 ceci : <br/>
 
 <pre>
