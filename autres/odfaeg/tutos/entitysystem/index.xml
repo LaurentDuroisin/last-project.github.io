@@ -106,7 +106,8 @@ classe world : en lui passant le type d'entité que l'on veut dessiner, comme ce
 <pre>
 //Dans onInit :
 FastRenderComponent* frc1 = new FastRenderComponent(getRenderWindow(), 0, "E_BIGTILE");
-FastRenderComponent* frc2 = new FastRenderComponent(getRenderWindow(), 1, "E_WALL+E_DECOR+E_ANIMATION+E_CARACTER");
+FastRenderComponent* frc2 = new FastRenderComponent(getRenderWindow(), 1, "E_WALL+E_DECOR+
+E_ANIMATION+E_CARACTER");
 getRenderComponentManager().addRenderComponent(frc1);
 getRenderComponentManager().addRenderComponent(frc2);
 //Et dans onRender :
