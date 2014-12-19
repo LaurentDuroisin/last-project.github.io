@@ -185,6 +185,7 @@ eu = new EntitiesUpdater();
 </pre>
 </p>
 
+<p>
 Et voici un exemple de code qui met une entité à jour :
 <pre>
 if (caracter->isMoving()) {
