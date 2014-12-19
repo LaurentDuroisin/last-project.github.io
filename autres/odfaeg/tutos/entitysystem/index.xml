@@ -137,7 +137,7 @@ Le 4ème paramètre est la zone dans laquelle générer le terrain.<br/>
 Le dernier paramètre indique si il faut générer un terrain en 2D ou bien en 3D. <br/>
 <br/>
 getLightMap et getShadowMap pour récupérer la lightmap et la shadowmap : <br/>
-Entity& shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
+Entity&amp; shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
 Le 1er paramètre est le type des entités pour lesquels générer une ombre.<br/>
 Le seconds est le nombre de composants de rendus.<br/>
 Le troisième est variable, ce sont les ids des composants en intersection avec la lumière.<br/>
@@ -145,7 +145,7 @@ Rien ne sert de générer d'ombres pour le composant qui dessine le sol.<br/>
 getLightMap fonctionne de la même manière.<br/>
 Pour dessiner la shadowmap sur un composant ont peut faire ceci : <br/>
 RenderStates states(sf::BlendMode(sf::BlendMultiply)); <br/>
-Entity& shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
+Entity&amp; shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
 World::drawOnComponents(shadowMap, 0, states); <br/>
 On peut passer des paramètres de rendu différent, par exemple ici j'utilise un blend multiply pour<br/>
 Dessiner la shadow map sur le composant du sol.<br/>
