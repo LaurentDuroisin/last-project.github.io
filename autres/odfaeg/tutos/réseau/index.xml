@@ -27,7 +27,7 @@ très probablement) <br/>
 </p>
 
 <p>
-Pour pouvoir établir la comunication entre le serveur et le client il faut créer un <br/>
+Pour pouvoir établir la communication entre le serveur et le client il faut créer un <br/>
 serveur et le faire écouter sur un port, ceci est possible grace à la classe Network, le <br/>
 moteur réseau de ODFAEG gère 2 protocoles pour la communication : le protocole TCP et <br/>
 le protocole UDP. <br/>
@@ -55,24 +55,24 @@ getLastRequest de la classe network, cette méthode peut prendre en paramètre u
 type user, la classe user contient des informations qui identifie le client sur le<br/> 
 réseau, on peut donc récupérer les informations sur le client qui a envoyé la <br/> 
 requête et renvoyer une réponse au client en appelant les méthode sendTCPPacket et <br/> 
-sendUDPPacket de la classe client. <br/>
+sendUDPPacket de la classe user. <br/>
 </p>
 
 <p>
 La classe user peut être redéfinie si nous avons besoin de stocker d'autre informations <br/> 
-comme par   exemple un mot de passe et un nom d'utilisateur si il doit y avoir un <br/> 
+comme par exemple un mot de passe et un nom d'utilisateur si il doit y avoir un <br/> 
 système d'authentification. <br/>
 </p>
 
 <p>
 La classe Network possède aussi une méthode sendTcpPacket et sendUdpPacket, dans ce cas, <br/>
-le packet sera envoyé a tout les utilisateurs connecté sur le réseau. <br/>
-On peut aussi récupérer le ping d'une utilisateur. <br/>
+le packet sera envoyé a tout les utilisateurs connecté au serveur. <br/>
+On peut aussi récupérer le ping d'un utilisateur. <br/>
 En mode TCP, on peut envoyer deux types de packets, des bêtes paquets de type sf::packet ou <br/>
-bien, des packets chiffrés de type odfaeg::SymEncPacket si le client utilise une <br/>
+bien, des packets chiffrés de type odfaeg::network::SymEncPacket si le client utilise une <br/>
 connection SSL. (pour le savoir il suffit d'appeler la méthode isUsingSecuredConnection de <br/>
-la classe user. <br/>
-Attention : en mode udp les packets ne sont pas chiffrés. <br/>
+la classe user.) <br/>
+Attention : en mode udp les packets ne sont pas chiffrés! <br/>
 </p>
 
 <h2>Le client : </h2>
@@ -85,7 +85,7 @@ Network::startCli(portTCP, portUDP, ipAddress)  <br/>
 </p>
 
 <p>
-Pour récupérer les réponses reçus par le serveur il suffit d'appeler la méthode <br/>
+Pour récupérer les réponses reçue par le serveur il suffit d'appeler la méthode <br/>
 getLastResponse de la classe Network. (ou bien getResponse(« Tag »)) pour récupérer une <br/>
 réponse précise précédée par un tag au choix. <br/>
 
