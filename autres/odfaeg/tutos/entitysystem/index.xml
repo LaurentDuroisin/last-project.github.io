@@ -13,11 +13,11 @@
 
 <p>
 Pour stocker des entités dans le gestionnaire il suffit de créer un objet de type map, <br/>
-les gestionnaires d'entités contiennent une grille et les entités sont stockées dans <br/>
+La classe map est le gestionnaire d'entité par défaut de ODFAEG, mais on peut créer son propre gestionnaire.<br/>
+Le gestionnaire d'entité par défaut contient une grille et les entités sont stockées dans <br/>
 les cellules de cette grille, la grille s'agrandis et se rétréci en fonction de la <br/>
 taille de la map, les cellules de la grille peuvent être définie à l'aide d'une <br/>
-matrice de changement de base ainsi que d'une largeur, d'une hauteur et d'une profondeur <br/> 
-pour la 3D.<br/>
+matrice de changement de base ainsi que d'une largeur et d'une hauteur <br/> 
 </p>
 
 <p>
@@ -33,12 +33,12 @@ que celui utilisé par opengl. <br/>
 Le gestionnaire d'entité va alors changé de repère lors de la création des cellules de <br/> 
 la grille suivant la matrice de changement de base.<br/>
 
-Les entités seront donc placée dans une grille qui est contenue dans un repère en 2D <br/> 
+Les entités seront donc placée dans une grille qui est contenue dans un repère en 3D <br/> 
 isométrique par exemple. (tandit que les entités seront dessinées dans un repère en 2D) <br/>
 
 Par défaut la grille contient la matrice de changement de base en 3D iso mais on peut la <br/>
 changer en créant une instance de BaseChangementMatrix et en la passant au <br/>
-gestionnaire d'entité. <br/>
+gestionnaire d'entités. <br/>
 La scène peut être rendu sur un ou plusieurs composants de rendu, ces composants <br/>
 choisissent la meilleur option de rendu suivant les fonctionnalités supportée par votre <br/>
 carte graphique. (Shaders, etc...) <br/>
@@ -47,14 +47,13 @@ carte graphique. (Shaders, etc...) <br/>
 <p>
 Pour créer un gestionnaire d'entité il suffit d'appeler cette fonction : <br/>
 
-theMap = new Map(&amp;getRenderComponentManager(), "Map test", 100, 50, 0); <br/>
+theMap = new Map(&amp;getRenderComponentManager(), "Map test", 100, 50); <br/>
 
 En lui passant le gestionnaire de composant de rendu utilisé par l'application. <br/>
 
 Le gestionnaire de composant contiendra et dessinera tout composants utilisé par <br/>
-l'application (composants de rendu de la scene, guis (menus, ...), shadowMap, LightMap, <br/>
-etc....) <br/>
-On passe ensuite le nom de la map, ainsi que la largeur, la hauteur et la profondeur des <br/>
+l'application (composants de rendu de la scene et guis) <br/>
+On passe ensuite le nom de la map, ainsi que la largeur et la hauteur des <br/>
 cellules de la grille. <br/>
 </p>
 
@@ -73,9 +72,9 @@ Il a fallut donc trouvé une alternative et la meilleur que j'ai pu trouvée c'e
 </p>
 
 <p>
-Utiliser plusieurs gestionnaires d'entités avec divers tailles pour les cellules de la <br/>
+Utilisez plusieurs gestionnaires d'entités avec divers tailles pour les cellules de la <br/>
 grille si les objects sont vraiment très proche les uns des autres, ou bien si le <br/>
-monde est très grand, et stocker ses gestionnaires d'entités dans une classe "world" ui constitue tout le monde du jeux. <br/>
+monde est très grand, et stocker ses gestionnaires d'entités dans la classe "world" qui constitue tout le monde du jeux. <br/>
 </p>
 
 <p>La classe qui permet de stocker ses gestionnaires d'entités s'appelle world et on peut <br/>
@@ -89,40 +88,90 @@ World::setCurrentEntityManager("Map test");
 
 <p>
 Le monde à l'avantage de pouvoir stocker des gestionnaires d'entités pour les entités en <br/> 
-2D et 2.5D mais aussi plus tard pour les entités en 3D. <br/>
+2D et 2.5D mais pour les entités en 3D. <br/>
 
 Ensuite pour ajouté une entité dans le monde il suffit d'appeler la méthode addEntity de la <br/> 
 classe World : <br/>
 World::addEntity(myEntity); <br/>
 </p>
+Les entités et les gestionnaires d'entités seront automatiquement détruit quand le monde sera détruit c'est à dire,<br/>
+tout à la fin de l'exécution du programme. (Juste après la destruction de la fenêtre)<br/>
 
 <h2>Dessiner des entités : </h2>
 
 <p>
-Pour dessiner des entités ODFAEG il suffit d'appelé la méthode drawOnComponents de la <br/> 
+Pour dessiner des entités ODFAEG il suffit de créer des composants de rendu et d'appeler la méthode drawOnComponents de la <br/> 
 classe world : en lui passant le type d'entité que l'on veut dessiner, comme ceci : <br/>
 
 <pre>
-World::drawOnComponents("E_TILE", 0);// draw everything here...
+//Dans onInit :
+FastRenderComponent* frc1 = new FastRenderComponent(getRenderWindow(), 0, "E_BIGTILE");
+FastRenderComponent* frc2 = new FastRenderComponent(getRenderWindow(), 1, "E_WALL+E_DECOR+E_ANIMATION+E_CARACTER");
+getRenderComponentManager().addRenderComponent(frc1);
+getRenderComponentManager().addRenderComponent(frc2);
+//Et dans onRender :
+World::drawOnComponents("E_BIGTILE", 0);// draw everything here...
 World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
 </pre>
 </p>
 
 <p>
-Le 1er paramètre est le type d'entité à dessiner sur le composant, le second paramètre <br/>
-est la position en z du composant sur lequel on veut dessiner la scène. <br/>
+Lors de la création du composant il faut lui passer la fenêtre de rendu, l'id du composant (c'est l'ordre dans lequel sera dessiner le composant)<br/>
+0 signifie que le composant sera dessiné en 1er.<br/>
+Le 3ème paramètre est le type d'entité à dessiner sur le composant à la frame suivante et le dernier paramètre. <br/>
+qui est facultatif, indique si l'on veut utiliser un thread pour le rendu du composant.
+Ensuite il faut ajouter les composants de rendu dans le gestionnaire de composant avec la méthode addRenderComponent.<br/>
+Dans la méthode onRender il ne faut pas oublier de remettre à jour la framesuivante en indique le type d'entités à dessiné.<br/>
+sur les composants en appelant la méthode drawOnComponents de la classe World! <br/>
+Le 1er paramètre est le type des entités à dessiner, et le second, l'id du composant de rendu.<br/>
 
 0 = le composant du fond. <br/>
 1 = le composant du dessus. <br/>
+
+Le gestionnaire d'entité possède aussi un tas d'autre fonctions très pratiques : <br/>
+World::generate_map pour générer un terrain aléatoirement. <br/>
+Le 1er paramètre sont les tiles du sol utilisées pour générer le terrain.<br/>
+Le second paramètres sont les tiles du mure utilisée pour généré le bord du terrain.<br/>
+Le 3ème paramètre est la taille d'un carré sur le terrain.<br/>
+Le 4ème paramètre est la zone dans laquelle générer le terrain.<br/>
+Le dernier paramètre indique si il faut générer un terrain en 2D ou bien en 3D. <br/>
+<br/>
+getLightMap et getShadowMap pour récupérer la lightmap et la shadowmap : <br/>
+Entity& shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
+Le 1er paramètre est le type des entités pour lesquels générer une ombre.<br/>
+Le seconds est le nombre de composants de rendus.<br/>
+Le troisième est variable, ce sont les ids des composants en intersection avec la lumière.<br/>
+Rien ne sert de générer d'ombres pour le composant qui dessine le sol.<br/>
+getLightMap fonctionne de la même manière.<br/>
+Pour dessiner la shadowmap sur un composant ont peut faire ceci : <br/>
+RenderStates states(sf::BlendMode(sf::BlendMultiply)); <br/>
+Entity& shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
+World::drawOnComponents(shadowMap, 0, states); <br/>
+<br/>
+La fonction getPath permet de récupérer le chemin entre 2 entités, pour l'instant seul un chemin en 2D <br/>
+peut être récupérer mais dans la version suivant on pourra aussi récupérer un chemin en 3D. <br/>
+Par exemple ceci permet de récupérer la chemin entre une entité et la position de la souris :
+Vec2f mouse(mousePos.x, mousePos.y); <br/>
+Vec3f finalPos = getRenderWindow().mapPixelToCoords(Vec3f(mouse.x, mouse.y, 0)); <br/>
+std::vector<Vec2f> path = World::getPath(caracter, finalPos);<br/>
+<br/>
+La fonction collide permet de tester si une entité est en collision avec le monde : <br/>
+World::collide(caracter)<br/>
+<br/>
+Et enfin la fonction update permet de remettre à jour le monde. <br/>
 </p>
 
 <h2>Remettre à jour les entités : </h2>
 
-<p>Pour remettre à jour les entités odfaeg possède 2 classes, une classe EntityUpdater qui <br/>
-remet à jour les entités présente de la vue passée à la fenêtre de rendu, et <br/>
-AnimUpdater pour remettre à jour la frame courante des animations, il suffit de créer ces <br/>
-deux objets et de les ajouter à notre monde pour remettre à jour la frame couante<br/>
-setInterval permet de définir la fréquence avec laquelle le thread va remettre à jour la <br/>
+<p>Pour remettre à jour les entités odfaeg possède 2 types de classes, des workers et des timers<br/>
+Tout les worker héritent de la classe EntitySystem et les timers de la classe Timer<br/>
+La différence entre les deux est que les timers remettent à jour les entités tout les x interval de temp.<br/>
+Et les workers remettent à jour les entités à un temps donné.<br/>
+La classe EntityUpdater qui hérite de la classe EntitySystem est le worker par défaut, celui-ci <br/>
+remet à jour les entités présente dans les vues de la fenêtre de rendu, et des composants de rendu.<br/>
+AnimUpdater est le timer par défaut qui remet à jour la frame courante des animations, il suffit de créer ces <br/>
+deux objets et de les ajouter à notre monde pour remettre à jour les entités de la frame suivante.<br/>
+setInterval permet de définir la fréquence avec laquelle le timer va remettre à jour la <br/>
 frame courante des différentes animations.) <br/>
 
 <pre>
@@ -130,20 +179,9 @@ eu = new EntitiesUpdater();
  World::addEntitiesUpdater(eu);
  au = new AnimUpdater();
  au->setInterval(seconds(0.01f));
+ World::addAnumUpdater(au);
 </pre>
-
-<p>
-Si votre monde possède des lumières, n'oublier pas d'appeler la méthode <br/> 
-computeIntersectionsWithWalls de la classe World , pour rendre les ombres et les lumières,<br/>
-il suffit d'appeler la méthode getShadowMap de la classe World, voici donc <br/>
-par exemple comment tracer une scene dans la méthode onRender : <br/></p>
-<pre>
-odfaeg::World::drawOnComponents("E_BIGTILE", 0); 
-        odfaeg::World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
-odfaeg::RenderStates states(sf::BlendMode(sf::BlendMultiply));
-odfaeg::g2d::Entity&amp; shadowMap = odfaeg::World::getShadowMap&lt;odfaeg::g2d::Entity&gt;();
-odfaeg::World::drawOnComponents(shadowMap, 0, states);
-</pre>
+</p>
 
 Et voici un exemple de code qui met une entité à jour :
 <pre>
@@ -163,8 +201,8 @@ if (caracter->isMoving()) {
 </pre>
 </p>
 <p>Il ne faut pas oublier d'appeler la méthode World::update() pour mettre à jour la frame <br/>
-courante si l'on se déplace dans le monde. 
-Et voilà, ceci clôture ce chapitre.<br/>
+suivante si l'on se déplace dans le monde. 
+Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
 </p>
                 </html>
         </fr>
