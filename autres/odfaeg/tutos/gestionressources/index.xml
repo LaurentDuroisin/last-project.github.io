@@ -16,10 +16,10 @@ Pour charger des ressources externes, odfaeg utilise 2 classes : <br/>
 
 ResourceManager : permet de charger toutes des ressources d'un seul et même type. <br/>
 
-Resource cache : permet de charger des ressources de type différents : <br/>
+Resource cache : permet de charger des ressources de type différent : <br/>
 
 Essayons par exemple de charger un tileset contenant toute des textures d'herbe, pour cela, <br/> 
-il faut d'abord créer un gestionnaire de texture comme ceci : <br/>
+il faut d'abord créer un gestionnaire de textures comme ceci : <br/>
 
 odfaeg::ResourceManager&lt;odfaeg::Texture&gt; tm; <br/>
 </p>
@@ -37,20 +37,21 @@ TextureManager&lt;&gt; tm; <br/>
 
 <p>
 L'identifiant est comme un alias qui pointe vers une ressource, ici par exemple je vais<br/> 
-créer une énumération qui référencera les différentes ressources dans l'application : <br/>
-Il existe aussi des classes particulières pour les gestionnaires de ressources pour les <br/> 
-types de ressources  <br/>
+créer une énumération qui référencera les différentes ressources dans l'application  <br/>
+Il faudra passer le type de l'enum en paramètre template au gestionnaire de ressources <br/>
 
 <pre>
 enum TEXTURES {
         GRASS
 };
+TextureManager&lt;TEXTURES&gt; tm;
 </pre>
 </p>
 
 <p>
 Pour charger la ressource il suffit d'appeler la fonction fromFile du gestionnaitre de <br/> 
-ressource si on veut la changer à partir d'un fichier : <br/>
+ressources si on veut la charger à partir d'un fichier et fromFileWithAlias si on veut <br/>
+qu'un alias référence la ressource. <br/>
 
 tm->fromFile("tilesets/herbe.png", GRASS); <br/>
 
@@ -64,7 +65,7 @@ sont chemin, mais c'est déconseillé de procédé comme ça.) <br/>
 
 <p>
 On peut ajouter les gestionnaires de ressources dans un cache, ceci est pratique si vous <br/> 
-devez charger des ressources externes de différent types. <br/>
+devez charger des ressources externes de différent types dans un même contexte. <br/>
 La classe resource cache prend un paramètre template : le type de l'identifiant qui <br/> 
 référencera le gestionnaire de ressource. (Par défault le type est std::string) <br/>
 ResourceCache&lt;&gt; cache; <br/>
@@ -76,7 +77,7 @@ ainsi que le nom du ressource manager. <br/>
 <p>
 Ensuite vous pouvez récupérer le gestionnaire de ressource comme suit : <br/>
 
-TextureManager&lt;&gt; tm = cache.resourceManager&lt;odfaeg::Texture, TEXTURES&gt;("TextureManager"); <br/>
+TextureManager&lt;TEXTURES&gt;&amp; tm = cache.resourceManager&lt;odfaeg::Texture, TEXTURES&gt;("TextureManager"); <br/>
 
 En précisant le type de gestionnaire de ressources à récupérer dans le cache et le type de <br/>
 l'identifiant utilisé dans le gestionnaire de ressources. <br/>
@@ -100,7 +101,7 @@ de ressources en créant un foncteur comme ceci : <br/>
 
 std::function&lt;bool(Object3DS,std::string&gt; loadFunc(&amp;MyLoader::fromFile); <br/>
 
-Ensuite nous devons passez cette fonction à la fonction load du resource manager : <br/>
+Ensuite nous devons passez ce foncteur à la fonction load du resource manager : <br/>
 
 <pre>
 ResourceManager&lt;Object3DS, OBJECTS3DS&gt; om;
@@ -117,11 +118,11 @@ d'un même type qui ont été chargée. <br/>
 <h2>La destruction des ressources : </h2>
 
 <p>
-La destruction des ressources ce fait automatiquement à la destruction du cache, lors de <br/>
-l'arrêt du programme, cependant, on peut le faire explicitement en appelant les <br/> 
+La destruction des ressources ce fait automatiquement à la destruction du cache ou bien du gestionnaire de ressources<br/>
+, lors de l'arrêt du programme, cependant, on peut le faire explicitement en appelant les <br/> 
 fonctions deleteResouceByAlias ou bien deleteResourceByPath si on en a plus besoin.<br/>
+faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/>
 </p>
-
                 </html>
         </fr>
     </content>
