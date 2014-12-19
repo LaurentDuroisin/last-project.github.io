@@ -147,6 +147,8 @@ Pour dessiner la shadowmap sur un composant ont peut faire ceci : <br/>
 RenderStates states(sf::BlendMode(sf::BlendMultiply)); <br/>
 Entity& shadowMap = World::getShadowMap("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 2, 1); <br/>
 World::drawOnComponents(shadowMap, 0, states); <br/>
+On peut passer des paramètres de rendu différent, par exemple ici j'utilise un blend multiply pour<br/>
+Dessiner la shadow map sur le composant du sol.<br/>
 <br/>
 La fonction getPath permet de récupérer le chemin entre 2 entités, pour l'instant seul un chemin en 2D <br/>
 peut être récupérer mais dans la version suivant on pourra aussi récupérer un chemin en 3D. <br/>
