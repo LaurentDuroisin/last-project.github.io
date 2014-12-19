@@ -94,6 +94,7 @@ autre méthode : la méthode vtserialize. <br/>
 
 Pour serializer un objet odfaeg utilise une classe dont il faut hériter dans la classe de <br/>
 base comme ceci : <br/>
+struct B : public Registered&lt;B&gt; <br/>
 </p>
 
 <p>
@@ -101,7 +102,7 @@ La classe de base doit au moins avoir une méthode virtuelle pour pouvoir être 
 comme une classe polymorphique, car, odfaeg fait le test à l'exécution avec typeid, <br/> 
 et l'héritage doit être pulibque! (Sinon ça ne fonctionnera pas) <br/>
 <pre>
-struct B : public Registered&lt;B&gt; {
+struct B : public Registered&lt;B&gt; {
     B() {
        c = "serialize base";
     }
@@ -124,7 +125,7 @@ B::~B(){}
 <p>
 Registered n'est rien d'autre qu'un objet qui va savoir comment sérialiser l'objet <br/> 
 polymorphique, on doit lui passer en paramètre template la classe de Base.<br/>
-Ensuite il ne faut pas oublié de redéfinir la méthode virtuelle temlplate vtserialize dans <br/>
+Ensuite il ne faut pas oublié de redéfinir la méthode virtuelle template vtserialize dans <br/>
 la classe dérivée. <br/>
 </p>
 
@@ -155,13 +156,13 @@ Mais ce n'est pas tout, odfaeg sait comment sérialiser les objets polymorphique
 Registred héritée par la classe de base qu'il sait qu'il doit aussi sérialiser les attributs de la classe dérivée.<br/>
 
 Mais il ne sait pas quelle fonction de la classe dérivé il doit appeler pour sérialiser les données <br/>
-ni quel allocator utiliser pour allouer les pointeurs sur les types de base pour les objets des classes dérivées<br/>
-, pour lui dire, il faut appeler  la macro EXPORT_CLASS_GUID dans la fonction main et lui passer 3 paramètres! <br/>
+ni quel allocateur utiliser pour allouer les pointeurs sur les types de base pour les objets des classes dérivées<br/>
+, pour lui dire, il faut appeler la macro EXPORT_CLASS_GUID dans la fonction main et lui passer 3 paramètres! <br/>
 </p>
 
 <p>
 Le 1er paramètre est un id qui doit être unique pour chaque exportation, car on peut très bien avoir plusieurs <br/>
-classes dérivées pour une classe de base, ou bien même avoir des classes dérivées qui héritent <br/>
+classes dérivées pour une même classe de base, ou bien même avoir des classes dérivées qui héritent <br/>
 de plusieurs classe de base! (héritage multiple) <br/>
 
 Le second paramètre est le type de la classe de base dont hérite la classe Dérivée. <br/>
