@@ -85,7 +85,6 @@ int main() {
 </pre>
 </p>
 
-<p>
 <h2>Une autre méthode : </h2>
 <p>
 odfaeg possède une autre méthode permettant de faire cela à l'aide d'une interface <br/>
@@ -97,16 +96,16 @@ ceci : <br/>
 struct chat;
 struct chien;
 struct animal
-        : odfaeg::accept_visitor&lt;animal,chat,chien&gt;
+        : odfaeg::core::accept_visitor&lt;animal,chat,chien&gt;
 { };
 struct chat
-        : odfaeg::acceptable&lt;animal,chat&gt;
+        : odfaeg::core::acceptable&lt;animal,chat&gt;
 { };
 struct chien
-        : odfaeg::acceptable&lt;animal,chien&gt;
+        : odfaeg::core::acceptable&lt;animal,chien&gt;
 { };
 struct attaquer
-        : odfaeg::dispatchable&lt;attaquer,animal&gt;
+        : odfaeg::core::dispatchable&lt;attaquer,animal&gt;
 {
         void operator()(const chat&amp;, const chat&amp;) const
         { std::cout&lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
