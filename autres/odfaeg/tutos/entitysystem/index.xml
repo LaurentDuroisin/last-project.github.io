@@ -155,7 +155,7 @@ peut être récupérer mais dans la version suivant on pourra aussi récupérer 
 Par exemple ceci permet de récupérer la chemin entre une entité et la position de la souris :
 Vec2f mouse(mousePos.x, mousePos.y); <br/>
 Vec3f finalPos = getRenderWindow().mapPixelToCoords(Vec3f(mouse.x, mouse.y, 0)); <br/>
-std::vector<Vec2f> path = World::getPath(caracter, finalPos);<br/>
+std::vector&lt;Vec2f&gt; path = World::getPath(caracter, finalPos);<br/>
 <br/>
 La fonction collide permet de tester si une entité est en collision avec le monde : <br/>
 World::collide(caracter)<br/>
