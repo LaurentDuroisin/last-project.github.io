@@ -94,7 +94,8 @@ class Caracter : public odfaeg::g2d::AnimatedEntity {
         virtual ~Caracter();
 
     private :
-        std::string factionName, pseudo, sex, currentMapName, hairColor, eyesColor, skinColor, faceType, classs;
+        std::string factionName, pseudo, sex, currentMapName, hairColor, 
+        eyesColor, skinColor, faceType, classs;
         int level, currentPointIndex, attack, speed, range;
         float attackSpeed, regenHpSpeed;
         bool moving, alive;
@@ -134,7 +135,8 @@ using namespace std;
 using namespace odfaeg;
 using namespace odfaeg::g2d;
 Caracter::Caracter (string factionName, string pseudo, string sex, string currentMapName, string hairColor,
-                  string eyesColor, string skinColor, string faceType, string classs, int level) : AnimatedEntity (Vec2f(-50, -25), Vec2f (100, 50), Vec2f(50, 25), "E_CARACTER") {
+                  string eyesColor, string skinColor, string faceType, string classs, int level)
+    : AnimatedEntity (Vec2f(-50, -25), Vec2f (100, 50), Vec2f(50, 25), "E_CARACTER") {
     currentAnimIndex = 0;
     this->factionName = factionName;
     this->pseudo = pseudo;
