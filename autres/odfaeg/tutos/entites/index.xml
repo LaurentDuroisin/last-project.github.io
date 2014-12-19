@@ -12,14 +12,14 @@
                		<h2>Les entités de haut niveau de ODFAEG : </h2>
 
 <p>
-Les entités SFML-LIKE sont utile dans les petites jeux, mais restent fort limitées dans<br/> 
-les gros jeux ou il y a beaucoup d'entités graphique de type différent.<br/>
+Les entités SFML-LIKE sont utile dans les petits jeux, mais restent fort limitées dans<br/> 
+les gros jeux ou il y a beaucoup d'entités graphiques de type différent.<br/>
 
 ODFAEG permet donc de créer ses propres entités qui sont des entités plus évoluée que les<br/> 
 entités SFML-LIKE qui permettent juste de tracer des formes, les entités ODFAEG se <br/> 
 servent aussi des tableaux de sommets de SFML mais possèdent des attributs <br/> 
 supplémentaires : des états, des volumes de collision, des faces, des matériaux, des <br/> 
-sommets pré-transformé, des entités enfants et une entités parent, et quelque fonction que  <br/> 
+sommets pré-transformé et des VBOs, des entités enfants et une entités parent, et quelques fonction que  <br/> 
 l'on peut redéfinir si nos entités doivent interagir avec d'autres entités afin <br/> 
 d'éviter de devoir faire trop d'héritage) <br/>
 </p>
@@ -32,14 +32,14 @@ couleur. <br/>
 </p>
 
 <p>
-Les entités ODFAEG-LIKE permettent donc de faire des rendus de manière plus optimisé. (tout<br/> 
-comme les commandes qui permettent de gérer des événements SFML de façon plus <br/> 
-optimisée.) <br/>
+Les entités ODFAEG-LIKE permettent donc de faire des rendus de manière plus avancée. (tout<br/> 
+Exactement comme les commandes qui permettent de gérer des événements SFML de façon plus <br/> 
+avancée.) <br/>
 
 ODFAEG possède déjà des entités 2D et 2.5D que j'utilise uniquement dans le but de faire <br/> des tests : <br/>
-Ces entités se situent dans le module g2d du module graphique de ODFAEG. <br/>
+Ces entités se situent dans le module graphique de ODFAEG. <br/>
 
-Chaque entité possède un type qui est en fait une sorte de groupe, qui regroupe un ensemble <br/> 
+Chaque entité possède un type qui est en fait un groupe, qui regroupe un ensemble <br/> 
 d'entité de même type, voici les différents groupe d'entité 2D et 2.5D de ODFAEG : <br/>
 </p>
 
@@ -47,17 +47,17 @@ d'entité de même type, voici les différents groupe d'entité 2D et 2.5D de OD
 odfaeg::Tile : similaire à un sprite à la SFML-Like mais hérite de la classe Entity du <br/> 
 framework. <br/>
 
-Odfaeg::BigTile : un ensemble de tiles qui forment une grand tile. <br/>
+odfaeg::graphic::BigTile : un ensemble de tiles qui forment une grande tile. <br/>
 
-odfaeg::Wall : un mur. (Contient une tile et quelques informations supplémentaires pour la <br/> 
+odfaeg::graphic::g2d::Wall : un mur. (Contient une tile et quelques informations supplémentaires pour la <br/> 
 projection des ombres et les collisions avec la lumière, et un type (un int) qui sert <br/> 
 à générer des cartes de façon aléatoire.) <br/>
 </p>
 
 <p>
-odfaeg::Decor : tout modèle statique. (même chose que ci-dessus excepté le type) <br/>
+odfaeg::graphic::Decor : tout modèle statique. (même chose que ci-dessus excepté le type) <br/>
 
-odfaeg ::Animation : toutes entité qui évolue en fonction du temps, cette classe peut <br/> 
+odfaeg ::graphic::Animation : toute entité qui évolue en fonction du temps, cette classe peut <br/> 
 contenir plusieurs entités mais une seule ne peut être affichée en même temps. <br/>
 Une animation peut contenir d'autres animations et ainsi interagir avec des animations <br/> 
 enfants afin de créer des animations squelettique <br/>
@@ -66,10 +66,10 @@ enfants afin de créer des animations squelettique <br/>
 <p>
 Et chaque entité de l'animation correspond à une frame de l'animation. <br/>
 
-odfaeg::Shadow, elles sont générées automatiquement par le framework donc pas besoin de <br/> 
+odfaeg::graphic::Shadow, elles sont générées automatiquement par le framework donc pas besoin de <br/> 
 s'en soucier. <br/>
 
-odfaeg::PonctualLight : une lumière poncutelle. <br/>
+odfaeg::graphic::PonctualLight : une lumière poncutelle. <br/>
 </p>
 
 <h2>Créer des entités.</h2>
@@ -82,7 +82,7 @@ suivants : <br/>
 <p>
 Pour les tiles : <br/>
 
-Tile(tm.getResourceByAlias(GRASS), Vec2f(0, 0), Vec2f(120, 60),IntRect(0, 0, 100, 50))<br/>
+Tile(tm.getResourceByAlias(GRASS), Vec3f(0, 0, 0), Vec3f(120, 60, 0),IntRect(0, 0, 100, 50))<br/>
 
 On lui passe un pointeur vers une texture, une position, une taille et les coordonnées de<br/> 
 textures. <br/>
@@ -114,7 +114,7 @@ l'ombre du mur. <br/>
 <p>Pour les décors : <br/>
 
 <pre>
- Decor* decor = new Decor(new Tile(tm.getResourceByAlias(HOUSE), Vec2f(0, 200), Vec2f(250, 300),<br/>
+ Decor* decor = new Decor(new Tile(tm.getResourceByAlias(HOUSE), Vec3f(0, 200, 350), Vec2f(250, 300, 0),<br/>
  IntRect(0, 0, 250, 300)), AmbientLight::getAmbientLight());  
 </pre>     
    
