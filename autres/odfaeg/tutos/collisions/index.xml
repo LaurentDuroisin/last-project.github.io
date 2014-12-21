@@ -82,7 +82,7 @@ Les particules utilisent un "texture rect" au hasard sur une texture.<br/>
 <pre>
     billboard = new BillBoard(getView());
     billboard->getParticleSystem().setTexture(*tm.getResourceByAlias("PARTICLE"));
-    for (unsigned int i = 0; i < 10; i++) {
+    for (unsigned int i = 0; i &lt; 10; i++) {
         billboard->getParticleSystem().addTextureRect(sf::IntRect(i*10, 0, 10, 10));
     }
     emitter.setEmissionRate(30);
@@ -97,7 +97,7 @@ Les particules utilisent un "texture rect" au hasard sur une texture.<br/>
 Lors du dessin, il faut récupérer la tile (le billboard) et la dessiner, les billboard portent le tag "E_BILLBOARD" :
 <pre>
 std::vector&lt;Entity*&gt; particles = World::getVisibleEntities("E_BILLBOARD");
-for (unsigned int i = 0; i < particles.size(); i++)
+for (unsigned int i = 0; i &lt; particles.size(); i++)
     window->draw(*particles[i]);
 </pre>
 <p>
