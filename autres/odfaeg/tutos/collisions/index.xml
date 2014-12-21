@@ -69,12 +69,37 @@ annule le déplacement de l'entité. <br/>
 <h2>Le système de particules : </h2>
 
 <p>
-Celui-ci reprendra celui de la thor library donc il suffit de lire les tutoriels de la <br/> 
+Celui-ci est for similaire à celui de la thor library donc vous pouvez dans un premier temps de lire les tutoriels de la <br/> 
 librairie thor : <br/>
 
 <a href="http://www.bromeon.ch/libraries/thor/v2.0/tutorial-particles.html">THOR</a>
-</p>
 
+La seule différence est que les particules sont dessinées sur un billboard, ce n'est rien d'autre qu'un sprite orienté vers la caméra. <br/>
+Voici un exemple de code source qui émet 30 particules par seconde, qui ont une durée de vie de 5 à 7 secondes, <br/>
+Apparaissant aléatoirement dans le rectangle de centre 50, 90, 0 et de demi taille 25, 5, 0, et enfin, ayant -10 de force.<br/>
+Les particules vont donc s'envoler vu que elles ont une force négative.<br/>
+Les particules utilisent un "texture rect" au hasard sur une texture.<br/>
+<pre>
+    billboard = new BillBoard(getView());
+    billboard->getParticleSystem().setTexture(*tm.getResourceByAlias("PARTICLE"));
+    for (unsigned int i = 0; i < 10; i++) {
+        billboard->getParticleSystem().addTextureRect(sf::IntRect(i*10, 0, 10, 10));
+    }
+    emitter.setEmissionRate(30);
+    emitter.setParticleLifetime(Distributions::uniform(sf::seconds(5), sf::seconds(7)));
+    emitter.setParticlePosition(Distributions::rect(Vec3f(50, 90, 0), Vec3f(25, 5, 0)));   // Emit particles in given circle
+    emitter.setParticleVelocity(Distributions::deflect(Vec3f(0, -10, 0),  0)); // Emit towards direction with deviation of 0°
+    emitter.setParticleRotation(Distributions::uniform(0.f, 0.f));
+    emitter.setParticleTextureIndex(Distributions::uniformui(0, 9));
+    emitter.setParticleScale(Distributions::rect(Vec3f(2.1f, 2.1f, 1.f), Vec3f(2.f, 2.f, 2.f)));
+</pre>
+</p>
+Lors du dessin, il faut récupérer la tile (le billboard) et la dessiner, les billboard portent le tag "E_BILLBOARD" :
+<pre>
+std::vector&lt;Entity*&gt; particles = World::getVisibleEntities("E_BILLBOARD");
+for (unsigned int i = 0; i < particles.size(); i++)
+    window->draw(*particles[i]);
+</pre>
 <p>
 Vous trouverez dans les démos plusieurs exemples de code source qui utilise le moteur<br/> 
 jusqu'ici et qui montre déjà ce que le framework propose de faire, mais ce n'est que le<br/> 
