@@ -102,7 +102,7 @@ std::vector&lt;Entity*&gt; particles = World::getVisibleEntities("E_BILLBOARD");
 for (unsigned int i = 0; i &lt; particles.size(); i++)
     window->draw(*particles[i]);
 </pre>
-Pour supprimer un émitteur explicitement, il faut appeler la méthode removeEmmiter de la classe system, même chose pour<br/>
+Une autre différence également : pour supprimer un émitteur explicitement, il faut appeler la méthode removeEmmiter de la classe system, même chose pour<br/>
 les affectors.<br/>
 <p>
 Vous trouverez dans les démos plusieurs exemples de code source qui utilise le moteur<br/> 
