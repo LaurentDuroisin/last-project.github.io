@@ -59,7 +59,7 @@ getView().rotate(0, 20, 0); <br/>
 Ceci va effectuer une rotation de 20 degrés autout de l'axe y, c'est à dire l'axe vers lequel pointe le haut de la vue. <br/>
 En 3D, le 1er paramètre sert à effectuer une rotation autour de l'axe x et le troisième autour de l'axe z. <br/>
 En 3D, on peut aussi effectuer une rotation en coordonnées polaire comme expliqué dans ce tutoriel : <br/>
-<a href="http://openclassrooms.com/courses/creez-des-programmes-en-3d-avec-opengl/controle-avance-de-la-camera-partie-2-2"></a>
+<a href="http://openclassrooms.com/courses/creez-des-programmes-en-3d-avec-opengl/controle-avance-de-la-camera-partie-2-2">Ici</a>
 getView().rotate(teta, phi); <br/>
 Pour éviter de faire des looping il faut imposé une contrainte à la vue, la méthode setConstrains permet de faire cela : <br/>
 view.setConstrains(0, 89); <br/>
