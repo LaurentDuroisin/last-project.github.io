@@ -22,13 +22,16 @@ L'axe z quand à lui pointe vers le haut, et contrairement à SFML, zNear et zFa
 la hauteur de la vue, ce qui permet de "clippé" toutes les entités qui ne se trouvent pas entre 0 et la hauteur de la vue.<br/>
 En réalité la vue 2D de ODFAEG n'est rien d'autre qu'une vue en 3D mais en vue du dessus, c'est à dire avec le haut de la vue pointe<br/>
 vers l'axe des y positifs, et le z sert à déterminer la hauteur.<br/>
-Pour la vue en 3D, cela est différent, car le haut de la vue pointe vers l'axe des z positif, l'axe y pointe donc vers le haut!<br/>
+Pour la vue en 3D, cela est différent, car le haut de la vue pointe vers l'axe des z positif, l'axe y pointe donc vers l'avant!<br/>
 La vue par défaut est en 2D et les coodonnées sont situées entre -width*0.5, width*0.5 pour x, -height*0.5, height*0.5 pour y<br/>
 et 0, height pour z.<br/>
 Pour passer en vue 3D il suffit de changer de vue comme ceci : <br/>
 View view(size.x, size.y, 80, 0.1f, 1000); <br/>
 getRenderWindow().setView(view); <br/>
 size est la dimention de la fenêtre, 80 le fovy, 0.1f le plan near et 1000 le plan far.<br/>
+En vue 3D, les coordonnées sont situées entre -1 et 1 en x et en z (avec ODFAEG) pour un objet situé sur le plan<br/>
+near de la caméra, car en 3D les objets sont plus gros<br/>
+lorsqu'ils sont plus proche de l'observateur.<br/>
 Si vous ne savez pas ce que sont les plans near et far ainsi que le fovy, je vous invite à lire les tutoriels<br/>
 de Kayl sur <a href="http://openclassrooms.com/courses/creez-des-programmes-en-3d-avec-opengl/enfin-de-la-3d-partie-1-2">ce site.</a>
 <br/>
