@@ -65,7 +65,7 @@
                 Sous linux, il suffit de taper la commande apt-get install libssl-dev.<br/>
 
                 Sous windows la meilleure méthode est de télécharger MSYS : <br/>
-                <a href="http://>sourceforge.net/projects/mingw/files/">MSYS</a><br/>
+                <a href="http://sourceforge.net/projects/mingw/files/">MSYS</a><br/>
 
                 Ensuite téléchargez les sources de openssl : <a href="https://www.openssl.org/">OPENSSL</a><br/>
 
