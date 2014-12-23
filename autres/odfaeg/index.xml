@@ -26,7 +26,7 @@
 </html>
 </fr>
 <en>
-<!--<htmlData><![CDATA[--><html>
+<htmlData><![CDATA[<html>
 <h1>Summary : </h1>
 <ul id="sommaire">
 <li><a href='tutos/install/'>Installation of ODFAEG.</a></li>
@@ -44,8 +44,8 @@
 <li><a href='tutos/réseau/'>The network.</a></li>
 </ul>
 </html>
-<!--]]>
-</htmlData>-->
+]]>
+</htmlData>
 </en>
 </content>
 </page>
