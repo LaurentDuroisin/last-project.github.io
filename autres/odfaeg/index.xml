@@ -26,7 +26,11 @@
 </html>
 </fr>
 <en>
-  Summary
+<htmlData><!CDATA[<html>
+<h1>Summary : </h1>
+</html>
+]]>
+</htmlData>
 </en>
 </content>
 </page>
