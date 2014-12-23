@@ -220,6 +220,7 @@
         		     	Next, click on the button configure (above) and specify where your compilater is, under windows they usually are <br/>
         		     	in C:/TDM-GCC-64/bin or C:/TDM-GCC-32/bin, on linux they are probably in /usr/bin. <br/>
         		     </p>
+        		     <p>
 	        		     Therefor CMake display some options, be carefull, for 32 bits plateform you have to specify i386 for the CMAKE_ARCHITECTURE option<br/>
 	        		     or i686 for the 64 bits plateform.<br/>
 	        		     Once it's done, click on the configure button again, and finally click on the generate bouton.<br/>
