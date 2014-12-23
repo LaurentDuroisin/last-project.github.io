@@ -26,8 +26,8 @@
 </html>
 </fr>
 <en>
-<htmlData>&lt;html&gt;
-&lt;h1&gt;Summary : &lt;/h1&gt;
+<html>
+<h1>Summary : </h1>
 <!--<ul id="sommaire">
 <li><a href='tutos/install/'>Installation of ODFAEG.</a></li>
 <li><a href='tutos/appli/'>How to create an ODFAEG application.</a></li>
@@ -43,9 +43,7 @@
 <li><a href='tutos/sauvegarde/'>The backup system.</a></li>
 <li><a href='tutos/réseau/'>The network.</a></li>
 </ul>-->
-&lt;/html&gt;
-<!--]]>-->
-</htmlData>
+</html>
 </en>
 </content>
 </page>
