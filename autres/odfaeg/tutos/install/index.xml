@@ -156,6 +156,60 @@
         <en>
         	<html>
         		<h1>Chapter I : Installation of ODFAEG.</h1>
+        		
+        		     <h2>Prerequies</h2>
+        		     <p>
+        		     Before installing ODFAEG, you'll need to install two others small libraries, a c++ compiler<br/>
+        		     which support the new c++14 standart, (gcc version 4.9.x) and CMake. But don't be afraid, it's very fast <br/>
+        		     and simple to install.<br/>
+        		     </p>
+        		     
+        		     <h2>Installation of the compilation tools.</h2>
+        		     
+        		     <p>
+        		     Under linux, you have to open a terminal with admin priviledges, and to type this command : <br/>
+        		     apt-get install gcc-4.9.1 g++-4.9.1 cmake-gui for 64 bits plateforms or apt-get install gcc-4.9-multilib
+        		      g++-4.9.1-multilib cmake-gui for 32 bits plateforms.<br/>
+        		     
+        		     Maybe you'll need to also install the version 4.8 if you get links errors with some STL functions.<br/>
+        		     
+        		     Under windows you'll need to dowlnload a c++ compiler on this website : <br/>
+        		     <a href="http://tdm-gcc.tdragon.net/">Here</a> and to download the 32 or the 64 bits compiler, depending on <br/>
+        		     the plateform.<br/>
+        		     Then, dowlnload and install cmake-gui <a href="http://www.cmake.org/cmake/resources/software.html">Here</a>
+        		     </p>
+        		     
+        		     <h2>Installation of the SFML library.</h2>
+        		     
+        		     <p>
+        		     To install SFML, everything is explained on the main developer's website : <a href="http://en.sfml-dev.org/">Here</a><br/>
+        		     I don't thing it's necessary to explain more things here so.<br/>
+        		     ODFAEG uses always the last stable version of SFML, be carefull to download the right version.<br/>
+        		     <br/>
+        		     ODFAEG use SFML to make portable applications and to benefit of the abstraction on some small libs (coded in C) used by ODFAEG<br/>
+        		     and SFML. <br/>
+        		     But only the source code of the window, the sound and the network module is identical, the graphic module was <br/>
+        		     entierly modified to use advanced rendering technics and to display 3D drawings.<br/>
+        		     </p>
+        		     
+        		     <h2>Installation of openssl</h2>
+        		     <p>
+        		     Strongly recommanded if you want to make secure applications which can communicate through a network,<br/>
+        		     this lib is used by ODFAEG to encrypt data.<br/>
+        		     
+        		     Under linux you have just to type this command : <br/>
+        		     apt-get install libssl-dev.<br/>
+        		     Under windows, the best solution is to download MSYS :
+        		     <a href="http://sourceforge.net/projects/mingw/files/">MSYS</a><br/>
+        		     Then download openssl here : <a href="https://www.openssl.org/">OPENSSL</a><br/>
+        		     And finally you have just to install perl : <br/>
+        		     <a href="http://www.perl.org/get.html">PERL</a><br/>
+        		     Launch MSYS, and go to the openssl repository, and type this command : perl Configure mingw.<br/>
+        		     Then, go in the MakeFile, and check the word PLATEFORM and replace mingw by TDM-GCC-32 ot TDM-GCC-64<br/>
+        		     for 64 bits plateforms. (Otherwhise, it won't compile) <br/>
+        		     Then type the following commands to install openssl. <br/>
+        		     make and make-install<br/>
+        		     </p>
         	</html>
         </en>
     </content>
