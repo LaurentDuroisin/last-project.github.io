@@ -28,7 +28,7 @@
 <en>
 <html>
 <h1>Summary : </h1>
-<!--<ul id="sommaire">
+<ul id="summary">
 <li><a href='tutos/install/'>Installation of ODFAEG.</a></li>
 <li><a href='tutos/appli/'>How to create an ODFAEG application.</a></li>
 <li><a href='tutos/gestionressources/'>Management of external resources..</a></li>
@@ -42,7 +42,7 @@
 <li><a href='tutos/collisions/'>Collisions and particles.</a></li>
 <li><a href='tutos/sauvegarde/'>The backup system.</a></li>
 <li><a href='tutos/réseau/'>The network.</a></li>
-</ul>-->
+</ul>
 </html>
 </en>
 </content>
