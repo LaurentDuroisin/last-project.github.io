@@ -211,7 +211,7 @@
         		     make and make-install<br/>
         		     </p>
         		     <h2>Installation of ODFAEG</h2>
-        		     	<p>
+        		     <p>
         		     	Once those some tools are installed, you have just to install ODFAEG, his installation <br/>
         		     	is similar to SFML, but ODFAEG doesn't provide pre-compiled librairies, so you have to download the <br/>
         		     	source code on git-hub and to compile it with cmake.<br/>
@@ -229,7 +229,7 @@
 	        		     to the directory when you've build your source (the ODFAEG-build directory for my name example) and type<br/>
 	        		     the following commands : <br/>
 	        		     make and make-install under linux or mingw32-make and mingw32-make install for windows.<br/>
-	        		     And that's all, ODFAEG is installed, now, you can open yours IDE.
+	        		     And that's all, ODFAEG is installed, now, you can open yours IDE.<br/>
         		     </p>
         		     <p>
         		     	In the IDE configuration, you need to link those libraries : <br/>
