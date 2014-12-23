@@ -210,6 +210,40 @@
         		     Then type the following commands to install openssl. <br/>
         		     make and make-install<br/>
         		     </p>
+        		     <h2>Installation of ODFAEG</h2>
+        		     	<p>
+        		     	Once those some tools are installed, you have just to install ODFAEG, his installation <br/>
+        		     	is similar to SFML, but ODFAEG doesn't provide pre-compiled librairies, so you have to download the <br/>
+        		     	source code on git-hub and to compile it with cmake.<br/>
+        		     	In CMake, click on the button "browse source" and specify the folder which ODFAEG is in.<br/>
+        		     	Then, click on browse build, and then create a new dire called "ODFAEG-build" for exemple.<br/>
+        		     	Next, click on the button configure (above) and specify where your compilater is, under windows they usually are <br/>
+        		     	in C:/TDM-GCC-64/bin or C:/TDM-GCC-32/bin, on linux they are probably in /usr/bin. <br/>
+        		     </p>
+        		     </p>
+	        		     Therefor CMake display some options, be carefull, for 32 bits plateform you have to specify i386 for the CMAKE_ARCHITECTURE option<br/>
+	        		     or i686 for the 64 bits plateform.<br/>
+	        		     Once it's done, click on the configure button again, and finally click on the generate bouton.<br/>
+	        		     This'll generate a makefile for mingw to compile.<br/>
+	        		     Finally the only thing which remain is to compile the library, for that, open a terminal and go <br/>
+	        		     to the directory when you've build your source (the ODFAEG-build directory for my name example) and type<br/>
+	        		     the following commands : <br/>
+	        		     make and make-install under linux or mingw32-make and mingw32-make install for windows.<br/>
+	        		     And that's all, ODFAEG is installed, now, you can open yours IDE.
+        		     </p>
+        		     <p>
+        		     	In the IDE configuration, you need to link those libraries : <br/>
+        		     	<ul>
+        		     		<li>GLEW in static.</li>
+        		     		<li>SFML in dynamic.</li>
+        		     		<li>Opengl</li>
+        		     		<li>Openssl and gdi32 under windows or libssl and libcrypto under linux.</li>
+        		     	</ul>
+        		     	Don't forget to define the ODFAEG_STATIC macro if you have compiled the library in static mode.<br/>
+        		     	(So if the option build shared libs was not checked in CMake.)<br/>
+        		     	If it doesn't compile you'll also have to link the pthread library.<br/>
+        		     	If all it's ok, you can move to the next chapter. <br/>
+        		     </p>
         	</html>
         </en>
     </content>
