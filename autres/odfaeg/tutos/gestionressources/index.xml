@@ -125,5 +125,68 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Management of eternal resources.</h1>
+                    To manage external resource, odfaeg use two classes : <br/>
+                    ResourceManager : it allows you to manage resources of one type. <br/>
+                    ResourceCache : it allows you to manage resource of multiple type. <br/>
+                    <h2>How to load and access to external resources.</h2>
+                        <p>
+                            For example, try to load a tileset containing grass textures, for that, <br/>
+                            we need first to create a resource manager for textures, like this :
+                            <pre>
+                                odfaeg::ResourceManager<odfaeg::Texture> tm; 
+                            </pre>
+                            The first template parameter is the resource type and the second is the type of the identifiant<br/>
+                            which'll be used to get the pointer to the holded resource. (std::string by default)<br/>
+                            The pointer to the resource is unique and is destroyed when the resource manager is destroyed.<br/>
+                            So, this is the resource manager which serve as a context for the holded resources.<br/>
+                            odfaeg have also some predefined classes to load odfaeg's external's resource's types : <br/>
+                            TextureManager, SoundManager, FontManager and ShaderManager.<br/>
+                            So you don't need to pass the resource type as first template parameter for those classes.<br/>
+                            To load a resource, just call the loadFromFile method like this (or the loadFormFilewithAlias method<br/>
+                            if you want to use an alias to get resource's pointer.)<br/>
+                            Here is an example which show how to associate enums values to resouces :
+                            <pre>
+                                enum TEXTURES {
+                                    GRASS
+                                };
+                                TextureManager&lt;TEXTURES&gt; tm;
+                                tm->fromFileWithAlias("tilesets/herbe.png", GRASS); 
+                            </pre>
+                            So, the alias GRASS is associated to this texture's location : "tilesets/herbe.png".<br/>
+                            Alias are usefull if you don't want to have to remember about the exact std::string value<br/>
+                            each time you want to get the resource.<br/>
+                            You can access to the resource's pointer by calling this two methods : <br/>
+                            <pre>
+                                Texture* text = tm.getResourceByAlias(GRASS);
+                                text = tm.getResourceByPath("tilesets/herbe.png");
+                            </pre>
+                            If you use the fromFile method, the resource is only accessible with his location<br/>
+                            </p>
+                            <h2>Loading resources of different types into a single context.</h2>
+                            <p>
+                            Sometimes you'll need to load resources of several type in a single context.<br/>
+                            This is the purpose of the class ResourceCache.<br/>
+                            The cache can hold resource manager's of different types, and also use an unique identifiant for each <br/>
+                            resource's managers, the default identifiant's type is std::string but it can be another type.<br/>
+                            To add a resource manager into the cache, you just need to call the addResourceManager method.<br/>
+                            This method takes the resource manager to store as parameter, and the identifiant : <br/>
+                            <pre>
+                                cache.addResourceManager(tm, "TextureManager"); 
+                            </pre>
+                            Then, you can get the resource manager like this :
+                            <pre>
+                                TextureManager&lt;TEXTURES&gt;&amp; tm = cache.resourceManager&lt;odfaeg::Texture, TEXTURES&gt;("TextureManager"); 
+                            </pre>
+                            you need to pass the type of the resource manager to get and the type of the identifiant pointing to the resources.<br/>
+                            as template parameters.<br/>
+                            <p>
+                                
+                            </p>
+                        </p>
+            </html>
+        </en>
     </content>
 </page>
