@@ -125,8 +125,8 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
 </p>
                 </html>
         </fr>
-        <!--<en>
-            <html>
+        <en>
+             <html>
                 <h1>Management of eternal resources.</h1>
                     To manage external resource, odfaeg use two classes : <br/>
                     ResourceManager : it allows you to manage resources of one type. <br/>
@@ -183,7 +183,7 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
                             you need to pass the type of the resource manager to get and the type of the identifiant pointing to the resources.<br/>
                             as template parameters.<br/>
                             </p>
-            </html>
-        </en>-->
+                </html>
+        </en>
     </content>
 </page>
