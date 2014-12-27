@@ -462,7 +462,7 @@ Voilà. :)
 		<br/>
 			And with the placeholders :
 		<br/>
-		<pre>	
+			<pre>	
 			void f (int i, int j, int l) {
 			     std::cout&lt;&lt;"i : "&lt;&lt;i&lt;&lt;" j : "&lt;&lt;j&lt;&lt;" l : "&lt;&lt;l&lt;&lt;std::endl;
 			}
@@ -498,9 +498,11 @@ Voilà. :)
         		    (The first key which was held down)<br/>
         		    If you create four commands with the four actions, the slot'll be called four times if the four keys are held down<br/>
         		    Those actions must be mapped to a command before connecting them to the event's context, <br/>
-        		    This is made by creating a command object, the class Command have 3 constructors : </br>
+        		    This is made by creating a command object, the class Command have 3 constructors : </p>
+        		    <p>
         		    The first constructor takes an action and a slot as parameter, so, the slot is called when the<br/>
         		    action is triggered.<br/>
+        		    
         		    The second constructor takes a signal and a slot, so, the slot is called when the signal is emitted.<br/>
         		    The thirst constructor takes an action, a signal and a slot, so, the slot is called when the action is triggered and when<br/>
         		    the signal is emmited.<br/>
