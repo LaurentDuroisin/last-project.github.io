@@ -507,15 +507,15 @@ Voilà. :)
         		    Here is an example of source code which illustrates each possible cases : <br/>
         		    
         		    <pre>
-        		    	Command moveCommand1(combined, FastDelegate<void>(&amp;MyAppli::keyHeldDown, this,
+        		    	Command moveCommand1(combined, FastDelegate&lt;void&gt;(&amp;MyAppli::keyHeldDown, this,
 				sf::Keyboard::Key::Unknown, realTime.restart())); 
-				Command moveCommand2(a1, FastDelegate<void>((&amp;::keyHeldDown, this,
+				Command moveCommand2(a1, FastDelegate&lt;void&gt;((&amp;::keyHeldDown, this,
 				sf::Keyboard::Key::Unknown, realTime.restart())); 
-				Command moveCommand3(a2, FastDelegate<void>((&amp;::keyHeldDown, this,
+				Command moveCommand3(a2, FastDelegate&lt;void&gt;((&amp;::keyHeldDown, this,
 				sf::Keyboard::Key::Unknown, realTime.restart())); 
-				Command moveCommand4(a3, FastDelegate<void>((&amp;::keyHeldDown, this,
+				Command moveCommand4(a3, FastDelegate&lt;void&gt;((&amp;::keyHeldDown, this,
 				sf::Keyboard::Key::Unknown, realTime.restart())); 
-				Command moveCommand5(a4, FastDelegate<void>((&amp;::keyHeldDown, this,
+				Command moveCommand5(a4, FastDelegate&lt;void&gt;((&amp;::keyHeldDown, this,
 				sf::Keyboard::Key::Unknown, realTime.restart())); 
 				Command mouseInside(FastDelegate&lt;bool&gt;(&amp;MyAppli::isMouseInside,this,sf::Vector2f(-1, -1)),
 				FastDelegate&lt;void&gt;(&amp;MyAppli::isMouseInside,this,sf::Vector2f(-1, -1)));
@@ -531,7 +531,6 @@ Voilà. :)
         		    if it's the case, false otherwhise.<br/>
         		    I passed the special values sf::Keyboard::Key::Unknown when creating the command, and -1, -1 for the mouse positions <br/>
 				but a placeholder is also welcome of course.<br/>
-        		    </p>
         		    </p>
         		    <!--<h2>Connecting commands to event's contexts and changing command's parameter values.</h2>
         		    <p>
