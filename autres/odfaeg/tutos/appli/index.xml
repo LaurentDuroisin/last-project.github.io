@@ -108,7 +108,7 @@ Voilà maintenant vous savez comment créer des applications odfaeg toute simple
         </fr>
         <html>
         <en>
-            <h2>Chapter II : How to create an ODFAEG application.</h2>
+            <h1>Chapter II : How to create an ODFAEG application.</h1>
             <p>
             To create an "odfaeg-like" application, you just have to inherit from the odfaeg::core::Application <br/>
             class.
