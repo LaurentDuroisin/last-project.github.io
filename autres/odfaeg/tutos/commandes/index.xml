@@ -475,7 +475,7 @@ Voilà. :)
         		All c++ functions types are supported, even lambda expressions.
         		To pass parameters as references we need to use std::ref.
         	</p>
-        	<!--	<h2>Create commands and actions.</h2>
+        		<h2>Create commands and actions.</h2>
         		    <p>
         		    Now that we know how to create delegates (or callabck functions) and to pass parameters to them, we can create our commands.<br/>
         		    A command needs to be linked to a slot and to a signal or an action, a slot and signal are just delegates, and an action is one or<br/>
@@ -532,7 +532,7 @@ Voilà. :)
         		    I passed the special values sf::Keyboard::Key::Unknown when creating the command, and -1, -1 for the mouse positions <br/>
 				but a placeholder is also welcome of course.<br/>
         		    </p>
-        		    <h2>Connecting commands to event's contexts and changing command's parameter values.</h2>
+        		    <!--<h2>Connecting commands to event's contexts and changing command's parameter values.</h2>
         		    <p>
         		    	Now that we know how to create signals and slot with delegates (or callback functions), actions, and commands.<br/>
         		    	We just have to connect the command to the event context, the application class have an event context, this is <br/>
