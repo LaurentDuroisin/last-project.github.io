@@ -493,8 +493,7 @@ Voilà. :)
 				Action combined (a1 || a2 || a3 || a4);
 				Action a5 (Action::EVENT_TYPE::MOUSE_PRESSED_ONCE, sf::Mouse::Left);
         		    </pre>
-        		    </p>
-        		    <p>
+        		    
         		    If you pass the combined action to the command, the slot'll be called one time if one of the key is held down.<br/>
         		    (The first key which was held down)<br/>
         		    If you create four commands with the four actions, the slot'll be called four times if the four keys are held down<br/>
