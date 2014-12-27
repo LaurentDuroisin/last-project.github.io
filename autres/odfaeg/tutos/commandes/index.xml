@@ -475,7 +475,7 @@ Voilà. :)
         		All c++ functions types are supported, even lambda expressions.
         		To pass parameters as references we need to use std::ref.
         	</p>
-        		<h2>Create commands and actions.</h2>
+        	<!--	<h2>Create commands and actions.</h2>
         		    <p>
         		    Now that we know how to create delegates (or callabck functions) and to pass parameters to them, we can create our commands.<br/>
         		    A command needs to be linked to a slot and to a signal or an action, a slot and signal are just delegates, and an action is one or<br/>
@@ -557,7 +557,7 @@ Voilà. :)
 				So we get the event context and we pass the name of the connexion ans the parameters values.
 				And that's it! This is how the powerfull event management system of ODFAEG works!
 				And it allows you to do a lot of things, exactly like every ODFAEG functionnalities. :)
-        		    </p>
+        		    </p>-->
         	</html>
         </en>
     </content>
