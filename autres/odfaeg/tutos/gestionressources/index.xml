@@ -183,6 +183,31 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
                             you need to pass the type of the resource manager to get and the type of the identifiant pointing to the resources.<br/>
                             as template parameters.<br/>
                             </p>
+                            <h2>Loading with your own resource loader.</h2>
+                            <p>
+                                Suppose now that you want to load resources but odfaeg dosn't have a loader to load<br/>
+                                this kind of resource.<br/>
+                                For that you have to create a custom resource loader. (by example a .3ds file loader)
+                                And then, you need to pass a functor to the function which load the resource to the resource manager.<br/>
+                                By example, like this : <br/>
+                                <pre>
+                                    std::function&lt;bool(Object3DS,std::string)&gt; loadFunc(&MyLoader::fromFile);
+                                </pre>
+                                Then, you have just to pass the functor to the resource manager when you want to load a resource. <br/>
+                                <pre>
+                                    ResourceManager&lt;Object3DS, OBJECTS3DS&gt; om;
+                                    om.load(loadFunc, «resource location»);
+                                </pre>
+                                And that's all, resource management with odfaeg is not compicated, and the resource managers<br/>
+                                have a lots of utility methods to get the paths of each loaded resourcs for example.<br/>
+                                
+                            </p>
+                            <h2>resource destruction</h2>
+                            <p>
+                                Resources are automatically destroyed when their resource manager or cache is destroyed, <br/>
+                                however, you can delete it explicitly, with the method deleteResourceByPath and deleteResourceByAlias.<br/>
+                                But, I don't recommand it, do it only if you have no other choise!<br/>
+                            </p>
                 </html>
         </en>
     </content>
