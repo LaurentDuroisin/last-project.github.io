@@ -317,5 +317,247 @@ Voilà. :)
 </p>
                 </html>
         </fr>
+        <en>
+        	<html>
+		<h1>The command system of ODFAEG</h1>
+        	<h2>Create callback's function with ODFAEG</h2>
+        	The commands are linked to sf::events, slots and signals which are connected to a context. <br/>
+        	Each context manage events of a gui type, and ODFAEG call the slots when the related event<br/>
+                or signal is emitted.<br/>
+        	ODFAEG needs to have a special class to store slots and signals parameters before calling them.<br/>
+        	This is the purpose of the FastDelegate class, this class is able to store functors with variadic parameters,<br/>
+        	and call the functor in another class, a delegate is just nothing less, nothing more than a callback function.<br/>
+        	It delegates the responsability to call the functor with the given parameters to another object.<br/>
+        	ODFAEG also allows you to change the parameters of the delegate before calling the callback function,<br/>
+        	so, you can use the same delegate to call the function with different parameters values.<br/>
+        	The only constrainst is that the return type of the slot must always be void, because in c++ we can't store<br/>
+        	functor's which different return types in the same array.<br/>
+        	The return type of the delegate must be specified as a template parameter.<br/>
+        	Here is an example of source code with create several delegates, and which call them by passing different <br/>
+        	parameters, placeholders are also supported.<br/>
+        	<pre>
+        		#include&lt;iostream&gt;
+			#include&lt;string&gt;
+			#include &lt;fstream&gt;
+			#include &lt;functional&gt;
+			#include "odfaeg/Core/fastDelegate.h"
+			#include "odfaeg/Core/serialization.impl"
+			using namespace std::literals;
+			using namespace std::placeholders;
+			void foo(int i, int j)
+			{ std::cout &lt;&lt; i &lt;&lt; j; }
+			struct A {
+			A() {
+			var = 10;
+			}
+			        void foo(int i)
+			        { std::cout &lt;&lt; i; }
+			        template &lt;typename A&gt;
+			        void serialize (A &amp; ar) {
+			        ar(var);
+			        }
+			        int var;
+			};
+			struct B {
+			B() {
+			 c = "serialize base";
+			}
+			virtual void foo()
+			{ std::cout &lt;&lt; 1; }
+			virtual void print() {
+			   std::cout&lt;&lt;c&lt;&lt;std::endl;
+			}       
+			virtual ~B();
+			        std::string c;  
+			};
+			B::~B(){}
+			struct C,: B {
+			 C () {
+			 c = "serialize derived";
+			 }
+			 void foo();
+			 void print () {
+			 B::print();
+			std::cout&lt;&lt;c&lt;&lt;std::endl;
+			} 
+			std::string c;
+			};
+			void C::foo(){ std::cout &lt;&lt; 2; }
+			
+			int main (int argv, char* argc[]) {
+			void(*f)(int, int) = &amp;foo;
+			odfaeg::FastDelegate&lt;void&gt; f1(f, 3, 4);
+			f1.setParams(5, 6);
+			        f1();
+			        std::cout &lt;&lt; std::endl;
+			        odfaeg::FastDelegate&lt;void&gt; f2(
+			                [](int i, int j){ std::cout &lt;&lt; i &lt;&lt; j; },
+			                7,8
+			        );
+			        f2();
+			        f2.setParams(9,10);
+			        f2();
+			        std::cout &lt;&lt; std::endl;
+			        int i = 11;
+			        odfaeg::FastDelegate&lt;void&gt; f3(
+			                [i](int j){ std::cout &lt;&lt; i &lt;&lt; j; },
+			                12
+			        );
+			        f3();
+			        f3.setParams(13);
+			        f3();
+			        std::cout &lt;&lt; std::endl;
+			        A a;
+			        odfaeg::FastDelegate&lt;void&gt; f4(&amp;A::foo,&amp;,14);
+			        f4();
+			        f4.setParams(&amp;,15);
+			        f4();
+			        std::cout &lt;&lt; std::endl;
+			        odfaeg::FastDelegate&lt;void&gt; f5 = f1;
+			        f5();
+			        f5=f3;
+			        f5();
+			        std::cout &lt;&lt; std::endl;
+			        C c;
+			        B* b = &amp;;
+			        odfaeg::FastDelegate&lt;void&gt; f6(&amp;::foo,&amp;);
+			        f6();
+			        f6.setParams(b);
+			        f6();
+			        std::cout &lt;&lt; std::endl;
+			        odfaeg::FastDelegate&lt;void&gt; f7(D(),16);
+			        f7();
+			        f7.setParams(17);
+			        f7();
+			        std::cout &lt;&lt; std::endl;
+			        odfaeg::FastDelegate&lt;void&gt; f8(bar,"ab"s);
+			        f8();
+			        f8.setParams("abc"s);
+			        f8();
+			        std::cout &lt;&lt; std::endl;
+			        int pi = 1;
+			        odfaeg::FastDelegate&lt;void&gt; f9(foo, &amp;pi);
+			        f9();
+			        std::cout &lt;&lt; std::endl;
+			        pi=2;
+			        f9();
+			        std::cout &lt;&lt; std::endl;
+			        odfaeg::FastDelegate&lt;int&gt; f10(goo,18);
+			        std::cout &lt;&lt; f10();
+			        f10.setParams(19);
+			        std::cout &lt;&lt; f10();
+			        std::cout &lt;&lt; std::endl;
+			        void(*fu)(int&amp;) = &amp;foo;
+			        int vi=1;
+			        odfaeg::FastDelegate&lt;void&gt; f11(fu, std::ref(vi));
+			        f11();
+			        std::cout&lt;&lt;std::endl;
+			        vi=2;
+			        f11();
+			        std::cout&lt;&lt;std::endl;
+			        return 0;
+			}
+			</pre>
+		<br/>
+			And with the placeholders :
+		<br/>
+		<pre>
+			void f (int i, int j, int l) {
+			     std::cout&lt;&lt;"i : "&lt;&lt;i&lt;&lt;" j : "&lt;&lt;j&lt;&lt;" l : "&lt;&lt;l&lt;&lt;std::endl;
+			}
+			int main (int argv, char* argc[]) {
+				odfaeg::FastDelegate&lt;void&gt; fd(&amp;f, 1, 2, odfaeg::ph&lt;0,int&gt;());
+				fd.bind(3);
+				fd();
+			}	
+        	</pre>
+        		All c++ functions types are supported, even lambda expressions.
+        		To pass parameters as references we need to use std::ref.
+        		<h2>Create commands and actions.</h2>
+        		<p>
+        		    Now that we know how to create delegates (or callabck functions) and to pass parameters to them, we can create our commands.<br/>
+        		    A command needs to be linked to a slot and to a signal or an action, a slot and signal are just delegates, and an action is one or<br/>
+        		    more sf::Event.<br/>
+        		    The number of time that the slot is called when the corresponding events or signals are emmited depend on how you define the actions.<br/>
+        		    Actions can be combined together with the c++ logical operators. (||, &&, | and !)<br/>
+        		    If you create four actions with four sf::Event, the slot'll be called four times.<br/>
+        		    If you create a combined action with four sf::Event, the slot'll be called one time.<br/>
+        		    Here is an example which show you the difference :
+        		    <pre>
+        		    	Action a1 (Action::EVENT_TYPE::KEY_HELD_DOWN, sf::Keyboard::Key::Z);
+				Action a2 (Action::EVENT_TYPE::KEY_HELD_DOWN, sf::Keyboard::Key::Q);
+				Action a3 (Action::EVENT_TYPE::KEY_HELD_DOWN, sf::Keyboard::Key::S);
+				Action a4 (Action::EVENT_TYPE::KEY_HELD_DOWN, sf::Keyboard::Key::D);
+				Action combined (a1 || a2 || a3 || a4);
+				Action a5 (Action::EVENT_TYPE::MOUSE_PRESSED_ONCE, sf::Mouse::Left);
+        		    </pre>
+        		    </p>
+        		    <p>
+        		    If you pass the combined action to the command, the slot'll be called one time if one of the key is held down.<br/>
+        		    (The first key which was held down)<br/>
+        		    If you create four commands with the four actions, the slot'll be called four times if the four keys are held down<br/>
+        		    Those actions must be mapped to a command before connecting them to the event's context, <br/>
+        		    This is made by creating a command object, the class Command have 3 constructors : </br>
+        		    The first constructor takes an action and a slot as parameter, so, the slot is called when the<br/>
+        		    action is triggered.<br/>
+        		    The second constructor takes a signal and a slot, so, the slot is called when the signal is emitted.<br/>
+        		    The thirst constructor takes an action, a signal and a slot, so, the slot is called when the action is triggered and when<br/>
+        		    the signal is emmited.<br/>
+        		    Here is an example of source code which illustrates each possible cases : <br/>
+        		    
+        		    <pre>
+        		    	Command moveCommand1(combined, FastDelegate<void>(&amp;MyAppli::keyHeldDown, this,
+				sf::Keyboard::Key::Unknown, realTime.restart())); 
+				Command moveCommand2(a1, FastDelegate<void>((&amp;::keyHeldDown, this,
+				sf::Keyboard::Key::Unknown, realTime.restart())); 
+				Command moveCommand3(a2, FastDelegate<void>((&amp;::keyHeldDown, this,
+				sf::Keyboard::Key::Unknown, realTime.restart())); 
+				Command moveCommand4(a3, FastDelegate<void>((&amp;::keyHeldDown, this,
+				sf::Keyboard::Key::Unknown, realTime.restart())); 
+				Command moveCommand5(a4, FastDelegate<void>((&amp;::keyHeldDown, this,
+				sf::Keyboard::Key::Unknown, realTime.restart())); 
+				Command mouseInside(FastDelegate&lt;bool&gt;(&amp;MyAppli::isMouseInside,this,sf::Vector2f(-1, -1)),
+				FastDelegate&lt;void&gt;(&amp;MyAppli::isMouseInside,this,sf::Vector2f(-1, -1)));
+					Command mousePressedInside(a5,FastDelegate&lt;bool&gt;(&amp;MyAppli::isMouseInside,this,sf::Vector2f(-1, -1)),
+				FastDelegate&lt;void&gt;(&amp;MyAppli::isMouseInside,this,sf::Vector2f(-1, -1)));
+        		    </pre>
+        		    In the first case we call the slot if one of the passed keys is held down.<br/>
+        		    In the second case we call the slot when the corresponding key is held down.<br/>
+        		    If two or more keys are held down, the slot is called several times.<br/>
+        		    In the thirst case (with the signal) we call the slot if the mouse is inside a rectangle.<br/>
+        		    In the last case, we call the slot if the left mouse button is pressed once and if the<br/>
+        		    the mouse is inside a rectangle, the signal check if the mouse is in the rectangle and return true<br/>
+        		    if it's the case, false otherwhise.<br/>
+        		    I passed the special values sf::Keyboard::Key::Unknown when creating the command, and -1, -1 for the mouse positions <br/>
+				but a placeholder is also welcome of course.<br/>
+        		    </p>
+        		    <h2>Connecting commands to event's contexts and changing command's parameter values.</h2>
+        		    <p>
+        		    	Now that we know how to create signals and slot with delegates (or callback functions), actions, and commands.<br/>
+        		    	We just have to connect the command to the event context, the application class have an event context, this is <br/>
+        		    	the event context of the render window.<br/>
+        		    	But each components have also an event context.<br/>
+        		    	So, we just need to get the context by calling the getListener method of the application class<br/>
+        		    	and then, connecting the command with a name for the connection.<br/>
+        		    	getListener().connect("MoveConnexion", moveCommand1);  <br/>
+        		    	The name is an unique std::string value which identify the connection.<br/>
+        		    	The context'll check for each command is the corresponding events are generated and will also<br/>
+        		    	call the callback's signal function of the commands and the slot if the actions or the signals related to the command<br/>
+        		    	are emitted.<br/>
+        		    	If we need to change the parameter's values of a slot or a signal, we can call the functions<br/>
+        		    	setSlotParams, setSigParams,<br/>
+				bindSlotParams et bindSigParams<br/>
+				The firsts one are for basic parameters and the second ones for placeholders.<br/>
+				The onUpdate function is called each time an SFML event is generated so we can use it to pass<br/>
+				the mouse position to our command.<br/>
+				<pre>
+					getListener().setCommandSlotParams("MoveConnexion", this, event.key.code);
+				</pre>
+				So we get the event context and we pass the name of the connexion ans the parameters values.
+				And that's it! This is how the powerfull event management system of ODFAEG works!
+				And it allows you to do a lot of things, exactly like every ODFAEG functionnalities. :)
+        		    </p>
+        	</html>
+        </en>
     </content>
 </page>
