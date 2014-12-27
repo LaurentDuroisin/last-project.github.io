@@ -150,13 +150,13 @@ Voilà maintenant vous savez comment créer des applications odfaeg toute simple
                         }
                     </pre>
                     Each classes of odfaeg are in the namespace odfaeg and there is a sub namespace per module : <br/>
-                    core : the main module.
-                    physic : the physic module.
-                    network : the networking module.
-                    sound : the audio module.
-                    graphic : the graphic module.
-                    graphic::g2d : the 2d module.
-                    graphic::g3d : the 3d module.
+                    core : the main module.  <br/>
+                    physic : the physic module.  <br/>
+                    network : the networking module.  <br/>
+                    sound : the audio module.  <br/>
+                    graphic : the graphic module.  <br/>
+                    graphic::g2d : the 2d module.  <br/>
+                    graphic::g3d : the 3d module.  <br/>
                     The odfaeg and the sfml classes are very similar, the only difference is that odfaeg entities <br/>
                     have a z coordinate for the 3D and implements some advanced features like VBO, vertex indexes, etc...<br/>
             </p>
