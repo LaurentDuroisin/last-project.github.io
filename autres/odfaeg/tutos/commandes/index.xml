@@ -532,6 +532,7 @@ Voilà. :)
         		    I passed the special values sf::Keyboard::Key::Unknown when creating the command, and -1, -1 for the mouse positions <br/>
 				but a placeholder is also welcome of course.<br/>
         		    </p>
+        		    </p>
         		    <!--<h2>Connecting commands to event's contexts and changing command's parameter values.</h2>
         		    <p>
         		    	Now that we know how to create signals and slot with delegates (or callback functions), actions, and commands.<br/>
