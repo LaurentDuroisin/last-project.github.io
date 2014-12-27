@@ -321,6 +321,7 @@ Voilà. :)
         	<html>
 		<h1>The command system of ODFAEG</h1>
         	<h2>Create callback's function with ODFAEG</h2>
+        	<p>
         	The commands are linked to sf::events, slots and signals which are connected to a context. <br/>
         	Each context manage events of a gui type, and ODFAEG call the slots when the related event<br/>
                 or signal is emitted.<br/>
@@ -473,8 +474,9 @@ Voilà. :)
         	</pre>
         		All c++ functions types are supported, even lambda expressions.
         		To pass parameters as references we need to use std::ref.
+        	</p>
         		<h2>Create commands and actions.</h2>
-        		<p>
+        		    <p>
         		    Now that we know how to create delegates (or callabck functions) and to pass parameters to them, we can create our commands.<br/>
         		    A command needs to be linked to a slot and to a signal or an action, a slot and signal are just delegates, and an action is one or<br/>
         		    more sf::Event.<br/>
@@ -482,7 +484,7 @@ Voilà. :)
         		    Actions can be combined together with the c++ logical operators. (||, &amp;&amp;, | and !)<br/>
         		    If you create four actions with four sf::Event, the slot'll be called four times.<br/>
         		    If you create a combined action with four sf::Event, the slot'll be called one time.<br/>
-        		    Here is an example which show you the difference :
+        		    Here is an example which show you the difference : <br/>
         		    <pre>
         		    	Action a1 (Action::EVENT_TYPE::KEY_HELD_DOWN, sf::Keyboard::Key::Z);
 				Action a2 (Action::EVENT_TYPE::KEY_HELD_DOWN, sf::Keyboard::Key::Q);
