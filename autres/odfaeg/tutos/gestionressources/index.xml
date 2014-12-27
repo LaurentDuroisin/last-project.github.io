@@ -182,10 +182,7 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
                             </pre>
                             you need to pass the type of the resource manager to get and the type of the identifiant pointing to the resources.<br/>
                             as template parameters.<br/>
-                            <p>
-                                
                             </p>
-                        </p>
             </html>
         </en>
     </content>
