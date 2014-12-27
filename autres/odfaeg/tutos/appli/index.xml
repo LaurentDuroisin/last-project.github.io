@@ -106,5 +106,60 @@ pour rendre des entité en 2.5D. (C'est à dire des plans par exemple.) <br/>
 Voilà maintenant vous savez comment créer des applications odfaeg toute simple! <br/>
                 </html>
         </fr>
+        <en>
+            <h2>Chapter II : How to create an ODFAEG application.</h2>
+            <p>
+            To create an "odfaeg-like" application, you just have to inherit from the odfaeg::core::Application <br/>
+            class.
+            If your application is not a gui application, call the default constructor of the class, otherwise,<br/>
+            call the constructor with this parameters : the video mode and window's the title.<br/>
+            Some additionnal parameters can be passed : <br/>
+            Then you can redefine the followings methods : <br/>
+            onLoad() : method to redefine if you have to loard external resources used by the application.<br/>
+            onInit() : method to redefine to initialise everything which should be initialised before the game start.<br/>
+            onRender(odfaeg::graphic::FastRenderComponentManger* frcm) : method to redefine to draw everything on components initialized before.<br/>
+            onDisplay(odfaeg::RenderWindow *window) : This method is to redefine to draw everything on the window.<br/>
+            onUpdate(sf::Event event) : Method to redefine if you have to update things.<br/>
+            onExec() : method to redefine for all toher treatment. (Getting informations from the network, update the game logic, etc...)
+            </p>
+            <h2>Create the application.</h2>
+            <p>
+            Now that we now how to define the application, we need to create it, for that, the application<br/>
+            have to be create into the main function, which is the start point of every c++ program.<br/>
+            There are just to line of code to create an application :
+            <pre>
+            MyAppli app(sf::VideoMode(800, 600), "Test odfaeg");
+            return app.exec();
+            </pre>
+            </p>
+            <p>
+                The constructor of the odfaeg::core::application class can take some additional parameters :<br/>
+                A booléan which indicate if we want to use a thread to manage events. (false by default) <br/>
+                Another boolean if we want to activate the depthtest. (true by default) <br/>
+                The style of the window. (the default style is used by default) <br/>
+                sf::ContextSettings. (Some advanced options for opengl <br/>
+                (the opengl version we want to use, the anti aliasing level, etc...))<br/>
+                Finally the method exec'll launch the application, this method return an error code : <br/>
+                0 if everything is fine, -1 if an error has occured. <br/>
+                <h2>How to stop the application.</h2>
+                    To stop the application you just need to call the stop() method, by example<br/>
+                    if you want to stop the application when the window is closed, wirte this code : <br/>
+                    <pre>
+                        if (event.type == sf::Event::Closed) {
+                            stop();
+                        }
+                    </pre>
+                    Each classes of odfaeg are in the namespace odfaeg and there is a sub namespace per module : <br/>
+                    core : the main module.
+                    physic : the physic module.
+                    network : the networking module.
+                    sound : the audio module.
+                    graphic : the graphic module.
+                    graphic::g2d : the 2d module.
+                    graphic::g3d : the 3d module.
+                    The odfaeg and the sfml classes are very similar, the only difference is that odfaeg entities <br/>
+                    have a z coordinate for the 3D and implements some advanced features like VBO, vertex indexes, etc...<br/>
+            </p>
+        </en>
     </content>
 </page>
