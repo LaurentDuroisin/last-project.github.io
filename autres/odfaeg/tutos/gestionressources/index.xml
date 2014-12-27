@@ -136,7 +136,7 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
                             For example, try to load a tileset containing grass textures, for that, <br/>
                             we need first to create a resource manager for textures, like this :
                             <pre>
-                                odfaeg::ResourceManager<odfaeg::Texture> tm; 
+                                odfaeg::ResourceManager&lt;odfaeg::Texture&gt; tm; 
                             </pre>
                             The first template parameter is the resource type and the second is the type of the identifiant<br/>
                             which'll be used to get the pointer to the holded resource. (std::string by default)<br/>
