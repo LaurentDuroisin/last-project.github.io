@@ -479,7 +479,7 @@ Voilà. :)
         		    A command needs to be linked to a slot and to a signal or an action, a slot and signal are just delegates, and an action is one or<br/>
         		    more sf::Event.<br/>
         		    The number of time that the slot is called when the corresponding events or signals are emmited depend on how you define the actions.<br/>
-        		    Actions can be combined together with the c++ logical operators. (||, &&, | and !)<br/>
+        		    Actions can be combined together with the c++ logical operators. (||, &amp;&amp;, | and !)<br/>
         		    If you create four actions with four sf::Event, the slot'll be called four times.<br/>
         		    If you create a combined action with four sf::Event, the slot'll be called one time.<br/>
         		    Here is an example which show you the difference :
