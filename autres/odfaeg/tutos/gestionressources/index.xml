@@ -191,7 +191,7 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
                                 And then, you need to pass a functor to the function which load the resource to the resource manager.<br/>
                                 By example, like this : <br/>
                                 <pre>
-                                    std::function&lt;bool(Object3DS,std::string)&gt; loadFunc(&MyLoader::fromFile);
+                                    std::function&lt;bool(Object3DS,std::string)&gt; loadFunc(&amp;MyLoader::fromFile);
                                 </pre>
                                 Then, you have just to pass the functor to the resource manager when you want to load a resource. <br/>
                                 <pre>
