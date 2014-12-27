@@ -21,7 +21,7 @@
 <li><a href='tutos/entitespersos/'>Créer des entités personnalisées.</a></li>
 <li><a href='tutos/collisions/'>Gestion des collisions, de la physique et des particules.</a></li>
 <li><a href='tutos/sauvegarde/'>Le système de sauvegarde</a></li>
-<li><a href='tutos/réseau/'>Le réseau.</a></li>
+<li><a href='tutos/reseau/'>Le réseau.</a></li>
 </ul>
 </html>
 </fr>
@@ -41,7 +41,7 @@
 <li><a href='tutos/entitespersos/'>How to create custom entities.</a></li>
 <li><a href='tutos/collisions/'>Collisions and particles.</a></li>
 <li><a href='tutos/sauvegarde/'>The backup system.</a></li>
-<li><a href='tutos/réseau/'>The network.</a></li>
+<li><a href='tutos/reseau/'>The network.</a></li>
 </ul>
 </html>
 </en>
