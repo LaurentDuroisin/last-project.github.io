@@ -505,6 +505,7 @@ Voilà. :)
         		    The thirst constructor takes an action, a signal and a slot, so, the slot is called when the action is triggered and when<br/>
         		    the signal is emmited.<br/>
         		    Here is an example of source code which illustrates each possible cases : <br/>
+        		    </p>
         		    
         		    <!--<pre>
         		    	Command moveCommand1(combined, FastDelegate&lt;void&gt;(&amp;MyAppli::keyHeldDown, this,
