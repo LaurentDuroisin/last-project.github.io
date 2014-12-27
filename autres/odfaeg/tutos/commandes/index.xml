@@ -509,7 +509,7 @@ Voilà. :)
         		    Here is an example of source code which illustrates each possible cases : <br/>
         		    
         		    
-        		    <!--<pre>
+        		    <pre>
         		    	Command moveCommand1(combined, FastDelegate&lt;void&gt;(&amp;MyAppli::keyHeldDown, this,
 				sf::Keyboard::Key::Unknown, realTime.restart())); 
 				Command moveCommand2(a1, FastDelegate&lt;void&gt;((&amp;::keyHeldDown, this,
@@ -559,7 +559,7 @@ Voilà. :)
 				</pre>
 				So we get the event context and we pass the name of the connexion ans the parameters values.
 				And that's it! This is how the powerfull event management system of ODFAEG works!
-				And it allows you to do a lot of things, exactly like every ODFAEG functionnalities. :)-->
+				And it allows you to do a lot of things, exactly like every ODFAEG functionnalities. :)
         		    </p>
         	</html>
         </en>
