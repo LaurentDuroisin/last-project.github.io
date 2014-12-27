@@ -125,7 +125,7 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
 </p>
                 </html>
         </fr>
-        <en>
+        <!--<en>
             <html>
                 <h1>Management of eternal resources.</h1>
                     To manage external resource, odfaeg use two classes : <br/>
@@ -184,6 +184,6 @@ faîtes attention qu'un autre thread n'utilise pas la ressource dans ce cas.<br/
                             as template parameters.<br/>
                             </p>
             </html>
-        </en>
+        </en>-->
     </content>
 </page>
