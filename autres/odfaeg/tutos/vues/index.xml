@@ -72,5 +72,70 @@ Voila c'est tout en ce qui concerne les vues.<br/>
 </p>
 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Chaper V : views</h1>
+                <h2>Positionning, orientation and defautl origin of odfaeg's views.</h2>
+                    <p>
+                    odfaeg's views are different from the SFML ones, they have not the same origin.<br/>
+                    It means that the 0, 0 coordinates is the center of the screen, and not the top left corner.
+                    So the coordinate of the top left corner is located at -width*0.5f and -height * 0.5f.<br/>
+                    But,we can change that by moving the view like this : <br/>
+                    view.move(-width*0.5f, height*0.5f, 0); <br/>
+                    Where width and height are de dimention of the view. <br/>
+                    Like SFML, the y axis of the view point to the bottom, it's easier to work like that,
+                    and the x axis point to the right.<br/>
+                    The z axis point to the top, but, unlike SFML, the position of the zNear and the zFar planes are <br/>
+                    between 0 and the height of the view, and not between -1 and 1, this is because ODFAEG use the <br/>
+                    z coordinate to know if an entity is before or behind another one.<br/>
+                    So, in 2D, you can use the z coordinate to define the y center of the entity, this is very<br/>
+                    usefull and simplier to work like this.<br/>
+                    But don't forget that all entities which are not between 0 and the height of the view are clipped.<br/>
+                    The 2D view is nothing more, nothing less than a 3D view but viewed from above.<br/>
+                    So the top of the view point to positive y values.<br/>
+                    For the 3D view it's a bit different, because, the top of the view point to the positive z values.<br/>
+                    To pass from a 2D view to a 3D view you can change the view like this : <br/>
+                    View view(size.x, size.y, 80, 0.1f, 1000); <br/>
+                    getRenderWindow().setView(view); <br/>
+                    Size is the dimention of the view, 80 is the fovy, 0.1f is the near plane position <br/>
+                    and 1000 is the far plane position.<br/>
+                    In 3D view, the coordinate of the top left corner is located at -1, 1 if the z is on the near plane.<br/>
+                    This is because of the perspective projection : more the objects are near the view, more they seem to be bigger.<br/>
+                    So if the z is on the zfar, the coordinate of the top lef corner is located at -width*0.5f, height*0.5f.<br/>
+                    If you really don't know what a z plane, a near plane and a projection are, I recommand you to read this article. <br/>
+                    The projection matrix of odfaeg are exactly the same.<br/>
+                    <a href="http://www.songho.ca/opengl/gl_projectionmatrix.html">Here.</a>
+                    ODFAEG have also render components and rendertargets, both can have a view.<br/>
+                    </p>
+                    <h2>Playing with the views : </h2>
+                    <p>
+                    You can move the view by calling the move method, for 2D view don't forget to also move the z of the view.<br/>
+                    getView().move(0, 300, 300);<br/>
+                    If you don't move the z, the entities'll be clipped by the near and the far plane.<br/>
+                    In 2D this'll move the view with 300 unities bottom.<br/>
+                    For the 3D, the first parameter move the view from vertically, the second deeply, and<br/>
+                    the last horizontally.<br/>
+                    To apply a rotation, we can use the rotate method, there are two versions : <br/>
+                    The first version rotate the camera between the x, y and z axis.<br/>
+                    getView().rotate(0, 20, 0); 
+                    So in 2D it'll rotate the view of 20° : <br/>
+                    The second version perform a rotation with polar coordinates. (very usefull in a 3D world)<br/>
+                    getView().rotate(teta, phi); 
+                    Sometimes it's needed to lock the camera, this is the case of FPS cameras, you can add <br/>
+                    a constrainst to lock the camera in height for example like this.<br/>
+                    view.setConstrains(0, 89); <br/>
+                    You can also make the camera looked at a position in the world :
+                    view.lookAt(target.x, target.y, target.z);
+                    You can also of course, zoom, by calling the setScale function : <br/>
+                    view.setScale(scaleX, scaleY, scaleZ); 
+                    And you can also change the viewport of the view, the viewport is the area where the world'll be displayed<br/>
+                    Into the window : <br/>
+                    view.getViewport(left, top, width, height);<br/>
+                    You can convert screen coordinate to world woordinate and world coordinate to screen coordinate<br/>
+                    by calling the same method than SFML. (mapPixelToCoords and mapCoordsToPixel)<br/>
+                    And that's it! This is how the powerfull views of ODFAEG works, and they offer a lot of possibilities!<br/>
+                    </p>
+            </html>
+        </en>
     </content>
 </page>
