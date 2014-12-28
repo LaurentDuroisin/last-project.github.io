@@ -75,7 +75,7 @@ Voila c'est tout en ce qui concerne les vues.<br/>
         <en>
             <html>
                 <h1>Chaper V : views</h1>
-                <h2>Positionning, orientation and defautl origin of odfaeg's views.</h2>
+                <h2>Position, orientation and default origin of odfaeg's views.</h2>
                     <p>
                     odfaeg's views are different from the SFML ones, they have not the same origin.<br/>
                     It means that the 0, 0 coordinates is the center of the screen, and not the top left corner.
