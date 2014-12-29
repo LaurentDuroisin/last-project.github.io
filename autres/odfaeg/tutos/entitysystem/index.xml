@@ -324,7 +324,7 @@ Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
 			<pre>
 			Vec2f mouse(mousePos.x, mousePos.y);
 			Vec3f finalPos = getRenderWindow().mapPixelToCoords(Vec3f(mouse.x, mouse.y, 0));
-			std::vector<Vec2f> path = World::getPath(caracter, finalPos);
+			std::vector&lt;Vec2f&gt; path = World::getPath(caracter, finalPos);
 			</pre>
 			The function collide allow you to check if an entity is in collision which the world at this place. <br/>
 			And finally, the update function allow you the update the entities.<br/>
