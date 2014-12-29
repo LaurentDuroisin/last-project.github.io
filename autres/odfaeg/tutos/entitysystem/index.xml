@@ -275,6 +275,7 @@ Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
 			getRenderComponentManager().addRenderComponent(frc2);
 			</pre>
 			</p>
+			<p>
 			Than you need to defines which entities to render at each frame, this is done by calling the<br/>
 			drawOnComponents method of the world class : <br/>
 			The first parameter are the group of entities to draw, the second is the id of the component on which we want to draw the entities.<br/>
@@ -305,6 +306,8 @@ Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
 			Because in reality the terrain is flat, the z must not be used to check collision for the terrain with the light.<br/>
 			This is also not necessary to compute lighting with the normals because the terrain is flat so each normals are<br/>
 			pointing in the up direction!<br/>
+			</p>
+			<p>
 			So you need to tell to odfaeg to don't check the interections and to don't compute the normals with the light<br/>
 			for the component which draw the ground.<br/>
 			So, we pass 1 because this is the only component which draw entities that can intersects whith the lighmap!<br/>
@@ -327,7 +330,49 @@ Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
 			std::vector&lt;Vec2f&gt; path = World::getPath(caracter, finalPos);
 			</pre>
 			The function collide allow you to check if an entity is in collision which the world at this place. <br/>
-			And finally, the update function allow you the update the entities.<br/>
+			And finally, the update function which update the scene, by example, when the view has changed.<br/>
+			</p>
+			<h2>Update the entities.</h2>
+			<p>
+			To update the entities, odfaeg have two types of classes, workers and timers.<br/>
+			Every workers inherits from the EntitySystem class and every timer from the timer class.<br/>
+			The difference between both are that the timers set the entities up to date at each interval of<br/>
+			time, but, workers perform a tast only at a precise moment. (By example, when view has changed)<br/>
+			The class EntityUpdater is an entity system, this is the default worker of ODFAEG, and it<br/>
+			check every entities which are in the field of the views. (for each render components)<br/>
+			The AnimUpdater class is the default class of the animation updaters.<br/>
+			To update the entities you need to create an entity system and a timer to update animations<br/>
+			and then, add them to the world.<br/>
+			<pre>
+			eu = new EntitiesUpdater();       
+			World::addEntitiesUpdater(eu);
+			au = new AnimUpdater();
+			au->setInterval(seconds(0.01f));
+			World::addAnumUpdater(au);
+			</pre>
+			Here is an example of source code which update an entity.<br/>
+			<pre>
+				if (caracter->isMoving()) {
+			            if (caracter->isMovingFromKeyboard()) {
+			                odfaeg::World::moveEntity(caracter, caracter->getDir().x * t * caracter->getSpeed(), 
+			                caracter->getDir().y * t * caracter->getSpeed(),caracter->getDir().y * t * 
+			                caracter->getSpeed());
+			                if (odfaeg::World::collide(caracter)) {
+			                    odfaeg::World::moveEntity(caracter, -caracter->getDir().x * t * caracter->getSpeed(), 
+			                    -caracter->getDir().y * t * caracter->getSpeed(),-caracter->getDir().y * t *
+			                    caracter->getSpeed());
+			                }
+			                odfaeg::Vec3f d = caracter->getCenter() - getView().getPosition();
+			                getView().move(d.x, d.y, d.y);
+			            }
+			        }
+        			odfaeg::World::update();
+			</pre>
+			The method world::update() call the worker which updates entities which are of the field of view <br/>
+			of the camera.<br/>
+			And that's it! 
+			This is how the powerfull entity system of ODFAEG works!
+			</p>
         	</html>
         </en>
     </content>
