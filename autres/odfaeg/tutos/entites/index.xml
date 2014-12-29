@@ -131,5 +131,98 @@ Anim* fire = new Anim(0.1f); <br/>
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Chapter VI : the entities.</h1>
+                <h2>The high level entities of ODFAEG.</h2>
+                <p>
+                The SFML-LIKE entities are usefull in small games but too limited in bigger games<br/>
+                where you may want to display a lot of differents entities.<br/>
+                ODFAEG allows you to use entities of the framework or to create your own.<br/>
+                The entities of ODFAEG use vertex arrays with VBO to draw the entities, but, the entities can<br/>
+                have more things than just a transform like the SFML entities.<br/>
+                The ODFAEG also have : <br/>
+                Informations used for collision detection.<br/>
+                Custom attibutes. (States) <br/>
+                </p>
+                <p>
+                You can define a custom functor to change the states of the entities.<br/>
+                They have also materials and faces, and shaders are applied each time a face is drawn.<br/>
+                It avoid to have glitch effects with opacity because the vertices are drawn in any ordre with the driver.<br/>
+                ODFAEG entities are scene node, it means that they can have children entities and a parent entity.<br/>
+                So the transform of the children are combined with the transform of their parent.<br/>
+                It allows you to create bones animations for example.<br/>
+                ODFAEG entities offers you a lot of possibilities so and avoid you to implement that with SFML.<br/>
+                Most of all, states avoid you to have to make to much inheritance, and so, to have a proper code <br/>
+                with a more complex gameplay! <br/>
+                </p>
+                <p>
+                Faces can have one or more materials (textures, specular intensity, specular power, ...) and they <br/>
+                can also have a vertex array.<br/>
+                ODFAEG use faces to make sprite batching by regrouping each faces using the same materials.<br/>
+                This technique is called, instanced rendering.<br/>
+                Each entities can also have a tag, this is just an std::string which identify a group of entities.<br/>
+                The odfaeg::graphic::Tile class, is the minimum drawable ODFAEG entity, it's like a sprite but with <br/>
+                many other informations mentionned above, every entities of ODFAEG use tiles to be drawn.<br/>
+                They particularity is that they have only one face (A square) and tiles haven't children entities.<br/>
+                ODFAEG have some internal entities which can be used, but you can also create your on entities, we'll see that in<br/>
+                the next chapter.<br/>
+                </p>
+                <p>
+                The default entities are : <br/>
+                odfaeg::graphic::BigTile : this is just a big tile which can contains many other tiles.<br/>
+                This is used by odfaeg to generate heightmaps for example.<br/>
+                odfaeg::graphic::g2d::Wall : just a 2D wall, this entity can project a shadow, and, each wall can have an id.<br/>
+                By example the id 0 correspond to the top wall, this'll be used later by the framework to generate labyrinthes.<br/>
+                odfaeg::graphic::Animation : all entities which can evoluate throught the time, animations can have <br/>
+                more entities (called frames) but only one entity can be displayed at the same time.<br/>
+                The displayed entity can be changed which a timer by the entity system.<br/>
+                Later odfaeg'll implement an interpolation system to interpolate the entities positions between frames.<br/>
+                odfaeg::graphic::g2d::Decor : a model, can be anything (a tree, a house, etc...) this entities can project a shadow.<br/>
+                odfaeg::graphic::g2d::PonctualLight : a ponctual light.<br/>
+                </p>
+                <h2>Create entities.</h2>
+                <p>
+                To create entities, you just have to create one, and, add it to the world, as you can see, <br/>
+                odfaeg use static classes to communcate between the different modules.<br/>
+                When creating a tile, here are the parameters to pass : <br/>
+                You should create entities in the init method, and not in the game loop for performance purposes.<br/>
+                ODFAEG use pointers to store entities in the world, and the entities are destroyed at the end of the application.<br/>
+                Like the World, entities can be destroyed explicitly by called the World::removeEntity method but this<br/>
+                is not recommanded, so do it if you have no other choise.<br/>
+                To create a tile, you need to call the constructor of the tile classe.<br/>
+                This one take for parameters : a pointer to a texture, the tile's position, the tile's size and the sf::IntRect.<br/>
+                Tile(tm.getResourceByAlias(GRASS), Vec3f(0, 0, 0), Vec3f(120, 60, 0),IntRect(0, 0, 100, 50))<br/>
+                For the wall, we need to pass those parameters : a type (the type of the wall), a tile (the tile of the wall),<br/>
+                and a light. (used to generate a shadow) <br/> 
+                w = new Wall(3, t,AmbientLight::getAmbientLight());<br/>
+                For the types : <br/>
+                0 = left wall.<br/>
+                1 = right wall.<br/>
+                2 = bottom right wall.<br/>
+                3 = top left wall.<br/>
+                4 = top right wall.<br/>
+                5 = bottom left wall.<br/>
+                But there'll be more wall type in the next version. (For T walls and the X wall (this is wall which cross together))
+                Later the int values'll be replaced by a enum.
+                For the decor, same parameters but without the wall type of course.<br/>
+                Decor* decor = new Decor(new Tile(tm.getResourceByAlias(HOUSE), Vec3f(0, 200, 350), Vec2f(250, 300, 0),
+
+                IntRect(0, 0, 250, 300)), AmbientLight::getAmbientLight());<br/>
+                For the animation, we just need to define the framerate and add animations like this : <br/>
+                Anim* fire = new Anim(0.1f); <br/>
+                fire->addEntity(frame1); <br/>
+                For the big tile it's the same but without the framerate, We pass the initial position of the big tile instead : <br/>
+                bigTile bt(Vec3f(0, 0, 0)); <br/>
+                bt.addEntity(tile1); <br/>
+                For the ponctual light, you need to pass those parameters : <br/>
+                The light center, the x, y and z radius,  (-1 means no radius), the intensity, the color and the quality.<br/>
+                light2 = new g2d::PonctualLight(Vec3f(50, 160, 160), 100, 50, -1, 255, sf::Color::Yellow, 16);<br/>
+                To add it to the world, you just need to call the addEntity method of the World call : <br/>
+                World::addEntity(light2);<br/>
+                And that's it, this is how powerfull ODFAEG entities works!<br/>
+                </p>
+            </html>
+        </en>
     </content>
 </page>
