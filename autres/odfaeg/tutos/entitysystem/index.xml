@@ -210,5 +210,125 @@ Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
 </p>
                 </html>
         </fr>
+        <en>
+        	<html>
+        		<h1>Chapter VII : the 2D entity management system and the components.</h1>
+        		<h2>Storing entities in the manager.</h2>
+        		<p>
+        		To store entities in the entity manager, you just have to create an object of type map.<br/>
+        		The map class if the default entity manager of ODFAEG, but, you can also create <br/>
+        		your own entity manager if the default one doesn't feed your needs.<br/>
+        		For that, you just have to inherit from the entity manager class and redefines <br/>
+        		some methods.<br/>
+        		The default entity manager store every entities into a grid, and the grid is auto-resized <br/>
+        		depending on the map size, coordinate system of the grid can be changed with a base changement matrix.<br/>
+        		You can also specify the width and the height of the grid, the depth is not needed, because, <br/>
+        		opengl performs already a clipping between the znear and zfar plane.<br/>
+        		ODFAEG use also a base changement matrix to change the world coordinates landmark.<br/>
+        		The base changement matrix allow you to defines entities coordinates in another landmark <br/>
+        		than the one used by odfaeg to render the scene.<br/>
+        		<br/>
+        		</p>
+        		<p>
+        		The more popular case is the case of 3D isometric games.<br/>
+        		The word coordinates are in a 3D isometric landmark but the view coordinates are in a <br/>
+        		2D landmark.<br/>
+        		To change the base changement matrix, create a BaseChangementMatrix and pass it to the entity manager.<br/>
+        		The scene can be rendered to one or more render components, or on the render window.<br/>
+        		The first parameter to pass if the render component manager, the entity manager need it.<br/>
+        		to render the scene on the components.<br/>
+        		The second parameter is an identifiant of the entity manager, ODFAEG can store several entity managers.<br/>
+        		This is very usefull for games with a big world, you can generate several terrains; add them <br/>
+        		to the components, and draw the scene of each visible terrains.<br/>
+        		theMap = new Map(&getRenderComponentManager(), "Map test", 100, 50); <br/>
+        		width and height are the dimentions of the cells of the grid for the map.<br/>
+        		</p>
+        		<p>
+        		For performance purpose, odfaeg don't provide a quadtree or a bsp-tree structure to store entities.<br/>
+        		You can use several entity managers (so it'll create several grids) if the entities are very close to other ones.<br/>
+        		It avoids to have to reconstruct all the tree everytime that an entity has moved.<br/>
+        		To add and change current active entity manager, you can use those functions : <br/>
+        		<pre>
+        		World::addEntityManager(theMap);
+			World::setCurrentEntityManager("Map");
+			</pre>
+			The world have the big advantage to allow you to store several entity managers, to add entities to them<br/>
+			and to render entities from different entity managers into the components.
+			</p>
+			<h2>Drawing entities : </h2>
+			<p>
+			To draw entities with ODFAEG, you'll need to create render components, and to call the drawOnComponents<br/>
+			method of the World class.<br/>
+			The constructor of the render component attempts three parameters.<br/>
+			The first is the render window.<br/>
+			The second is the id of the components, it'll also define the order in which components'll be drawn.<br/>
+			The last parameters is the group of entities to draw at the next frame.<br/>
+			There is also a last default parameter which indicates if we want to use a thread to render the entities on the component<br/>
+			or not.<br/>
+			By default this parameter is set to false.<br/>
+			Then you need to add the component into the component manager : <br/>
+			<pre>
+			FastRenderComponent* frc1 = new FastRenderComponent(getRenderWindow(), 0, "E_BIGTILE");
+			FastRenderComponent* frc2 = new FastRenderComponent(getRenderWindow(), 1, "E_WALL+E_DECOR+
+			E_ANIMATION+E_CARACTER");
+			getRenderComponentManager().addRenderComponent(frc1);
+			getRenderComponentManager().addRenderComponent(frc2);
+			</pre>
+			</p>
+			Than you need to defines which entities to render at each frame, this is done by calling the<br/>
+			drawOnComponents method of the world class : <br/>
+			The first parameter are the group of entities to draw, the second is the id of the component on which we want to draw the entities.<br/>
+			<pre>
+			World::drawOnComponents("E_BIGTILE", 0);// draw everything here...
+			World::drawOnComponents("E_WALL+E_DECOR+E_ANIMATION+E_CARACTER", 1);
+			</pre>
+			The + means that we want to render more than one groupe of entities.<br/>
+			So here we want to render the group E_BIGTILE on the component 0 and E_WALL, E_DECOR, E_ANIMATION and E_CARACTER <br/>
+			on the first components.<br/>
+			The entity manager have also a lot of usefull methods : <br/>
+			World::generate_map to generate a random terrain : <br/>
+			The first parameter is the tiles of the ground used to generate the terrain.<br/>
+			The second parameter is a set of tiles used if we want to set walls arount the terrain.<br/>
+			The thirst parameter is the size of a square of the terrain.<br/>
+			The fourth parameter is the zone where we want to generate the terrain.<br/>
+			And the last parameter indicates if we want to generate a 2D or a 3D terrain.<br/>
+			getLightMap to get the lightmap.<br/>
+			The lightmap is where every lights are rendered, and then there are rendered with<br/>
+			the sf::BlendMultiply mode over the window.<br/>
+			The first parameter is the group of lights to render on the lightmap.<br/>
+			The second parameter is the number of render components used to render the lightmap.<br/>
+			And the last one is a variadic parameter which are the ids of components which are in intersection with the light.<br/>
+			By example, the component drawing the terrain doen't intersect with the light.<br/>
+			Remember that odfaeg use the z component of each tiles to know if a tile is before or behind another one, and to clip the entities so<br/>
+			if the z component of the terrain's fragment is greater than the z component of the fragment's light, <br/>
+			the light fragment won't be displayed and it'll give bad results.<br/>
+			Because in reality the terrain is flat, the z must not be used to check collision for the terrain with the light.<br/>
+			This is also not necessary to compute lighting with the normals because the terrain is flat so each normals are<br/>
+			pointing in the up direction!<br/>
+			So you need to tell to odfaeg to don't check the interections and to don't compute the normals with the light<br/>
+			for the component which draw the ground.<br/>
+			So, we pass 1 because this is the only component which draw entities that can intersects whith the lighmap!<br/>
+			getShadowMap to get the shadow map.
+			The first parameter is the group of entities for which we want to generate shadows.
+			The second parameters and the last parameter are the same meanins than the lightmap, this is not<br/>
+			necessary to generate shadows for the tiles of the terrain.<br/>
+			Only models can generate a shadow. (so, each entities which inherits from the model class)<br/>
+			The view is placed to the lights position, and them, the stencil buffer is used to check where <br/>
+			the shadows fragment have to be generated, but those shadows may not be correctly centered.<br/>
+			The models have a shadow matrix to transform the generate shadows which are rendered onto the sahdow map.<br/>
+			This matrix can be modified to center the shadows for example by calling the setShadowCenter method.<br/>
+			This'll perform a translation of the shadows on the ground to center them.<br/>
+			The getPath function allow you to get the path between two entities of the world.<br/>
+			In the next version, you'll be able to also get 3D paths.<br/>
+			By example, this'll get the path from an entity to the mouse position : <br/>
+			<pre>
+			Vec2f mouse(mousePos.x, mousePos.y);
+			Vec3f finalPos = getRenderWindow().mapPixelToCoords(Vec3f(mouse.x, mouse.y, 0));
+			std::vector<Vec2f> path = World::getPath(caracter, finalPos);
+			</pre>
+			The function collide allow you to check if an entity is in collision which the world at this place. <br/>
+			And finally, the update function allow you the update the entities.<br/>
+        	</html>
+        </en>
     </content>
 </page>
