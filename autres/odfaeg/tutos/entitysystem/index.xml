@@ -240,7 +240,7 @@ Et voilà, ceci clôture ce chapitre plutôt long mais très important.<br/>
         		The second parameter is an identifiant of the entity manager, ODFAEG can store several entity managers.<br/>
         		This is very usefull for games with a big world, you can generate several terrains; add them <br/>
         		to the components, and draw the scene of each visible terrains.<br/>
-        		theMap = new Map(&getRenderComponentManager(), "Map test", 100, 50); <br/>
+        		theMap = new Map(&amp;getRenderComponentManager(), "Map test", 100, 50); <br/>
         		width and height are the dimentions of the cells of the grid for the map.<br/>
         		</p>
         		<p>
