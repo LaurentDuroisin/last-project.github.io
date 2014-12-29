@@ -188,7 +188,7 @@ Anim* fire = new Anim(0.1f); <br/>
                 When creating a tile, here are the parameters to pass : <br/>
                 You should create entities in the init method, and not in the game loop for performance purposes.<br/>
                 ODFAEG use pointers to store entities in the world, and the entities are destroyed at the end of the application.<br/>
-                Like the World, entities can be destroyed explicitly by called the World::removeEntity method but this<br/>
+                Like the resources, entities can be destroyed explicitly by called the World::removeEntity method but this<br/>
                 is not recommanded, so do it if you have no other choise.<br/>
                 To create a tile, you need to call the constructor of the tile classe.<br/>
                 This one take for parameters : a pointer to a texture, the tile's position, the tile's size and the sf::IntRect.<br/>
