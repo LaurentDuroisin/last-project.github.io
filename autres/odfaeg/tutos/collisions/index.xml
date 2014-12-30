@@ -111,5 +111,90 @@ commancement car je suis encore assez loin comparé à d'autres projets déjà e
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Management of collisions.</h1>
+                <h2>The simple method.</h2>
+                <p>
+                The simple method consist of getting the cell of the grid at a place, set up.<br/>
+                a booleen to false, so, the caracter'll not be able to pass throught this cell.<br/>
+                </p>
+                <h2>A more accurate method.</h2>
+                <p>
+                Setting the collisions on the grid cell's may not be very accurate, odfaeg also allow you<br/>
+                to associate to each entity, a bounding volume.<br/>
+                bounding volumes can also have children like entities.<br/>
+                The collision test happen in two phase, the narrow phase, and the broad phase :
+                <br>The broad phase : it checks every entities of the grid cells which are located into the</br>
+                entity's position.<br/>
+                <br>The narrow phase : it check if the bouding volumes of the entity, and of the entities around are</br>
+                in collision.<br/>
+                <pre>
+                    odfaeg::physic::BoundingVolume *bb = new odfaeg::BoundingBox(decor->getGlobalBounds().getPosition().x, 
+                    decor->getGlobalBounds().getPosition().y + decor->getGlobalBounds().getSize().y * 0.4f, 0,
+                    decor->getGlobalBounds().getSize().x, decor->getGlobalBounds().getSize().y * 0.25f, 0);
+                    decor->setCollisionVolume(bb);
+                </pre>
+                Here I set 0 for the z position because we are in 2D.<br/>
+                odfaeg have actually 5 types of bounding volumes which can be imbricked.<br/>
+                BoundingBox = an axis aligned bounding box.<br/>
+                OrientedBoundingBox = an oriented axis bounding box. (can be oriented with the model)<br/>
+                BoundingSphere = a bounding sphere.<br/>
+                BoundingEllipsoid = a bounding ellpsoid. (can be oriented with the model)<br/>
+                BoundingPolyhedron = a bounding convex polyhedron.(can be oriented with the model) <br/>
+                <pre>
+                    //If there is a collision, we go back.
+                    if (World::collide(caracter)) {
+                            World::moveEntity(caracter, -caracter->getDir().x * t, -caracter->getDir().y * t);
+                            getView().move(-caracter->getDir().x * t, -caracter->getDir().y * t, 0);
+                    }
+                </pre>
+                </p>
+                <h2>The particule system.</h2>
+                <p>
+                    This oe is very similar to the one of the thor library, so, I recommand you <br/>
+                    to read the tutorials of this library : <a href="http://www.bromeon.ch/libraries/thor/v2.0/tutorial-particles.html">THOR</a><br/>
+                    The only difference if that the particles are drawn on a billboard, it's nothing less, nothing more<br/>
+                    than a sprite which is oriented with the camera.<br/>
+                    Here is an example which emit 30 particles per seconds, and have a lifetime of five to seven seconds.<br/>
+                    They appear randomly into the rectangle centred at 50, 90, 0 with half-dimentions 25, 5, 0.<br/>
+                    They have a velocity of -10, the particles goes above because of the negative force.<br/>
+                    The particles here use a random texture rect.
+                    <pre>
+                        ParticleSystem ps;
+                        ps.setTexture(*tm.getResourceByAlias("PARTICLE"));
+                        for (unsigned int i = 0; i < 10; i++) {
+                            ps.addTextureRect(sf::IntRect(i*10, 0, 10, 10));
+                        }
+                        UniversalEmitter emitter;
+                        emitter.setEmissionRate(30);
+                        emitter.setParticleLifetime(Distributions::uniform(sf::seconds(5), sf::seconds(7)));
+                        emitter.setParticlePosition(Distributions::rect(Vec3f(50, 90, 0), Vec3f(25, 5, 0)));   
+                        // Emit particles in given circle
+                        emitter.setParticleVelocity(Distributions::deflect(Vec3f(0, -10, 0),  0)); 
+                        // Emit towards direction with deviation of 0°
+                        emitter.setParticleRotation(Distributions::uniform(0.f, 0.f));
+                        emitter.setParticleTextureIndex(Distributions::uniformui(0, 9));
+                        emitter.setParticleScale(Distributions::rect(Vec3f(2.1f, 2.1f, 1.f), Vec3f(2.f, 2.f, 2.f)));
+                        ps.addEmitter(emitter);
+                    </pre>
+                    There is one difference with the thor library, the first is that to remove an emitter you<br/>
+                    have to use the removeEmitter method.<br/>
+                </p>
+                <h2>Billboard</h2>
+                <p>
+                    In 3D, by default, the particles are drawn at the ground. (this is usefull if you want<br/>
+                    to generate particles on the ground.)<br/>
+                    But it may not be what you want by example if you want to render smoke, fire, or something like that.<br/>
+                    The particle won't face the view, and'll not be correctly rendered.<br/>
+                    To correct, that, you can use a billboard, this is just a special entity which'll orient the particles with the view.<br/>
+                    You just have a to daw the particule system on the billboard first, and then, draw the billboard<br/>
+                    To the render component.<br/>
+                    billboard = new BillBoard(view, ps); <br/>
+                    Don't forget to update the view and to center the billboad at the <br/>
+                    position of the particle system.<br/>
+                </p>
+            </html>
+        </en>
     </content>
 </page>
