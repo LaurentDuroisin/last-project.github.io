@@ -443,5 +443,388 @@ World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);
 </p>
                 </html>
         </fr>
+        <en>
+        	<html>
+        		<h1>Chapter V : creation of custom entities : </h1>
+        		<h2>Creation of a 2D animated caracter.</h2>
+        		<p>
+        		Here, you'll learn how to create a 2D caracters with ODFAEG.<br/>
+        		This entity contains 8 animations of a caracter walking at those directions : <br/>
+        		(North, north-west, north-east, south, south-west, south-east, west and east)
+        		First, we must inherit from the class animated entity, because or caracter.<br/>
+        		I'll also create attributes which'll be usefull later for the articifial intelligence.<br/>
+        		<pre>
+        			#include &lt;vector&gt;
+				#ifndef CARACTER
+				#define CARACTER
+				#include "odfaeg/Math/vec2f.h"
+				#include "odfaeg/Graphics/2D/anim.h"
+				#include &lt;string&gt;
+				#include &lt;SFML/Graphics.hpp&gt;
+				
+				class Caracter : public odfaeg::g2d::AnimatedEntity {
+				    public :
+				        Caracter (std::string factionName, std::string pseudo, std::string sex, 
+				        	 std::string currentMapName, std::string hairColor, std::string eyesColor,
+				        	 std::string skinColor, std::string faceType, std::string classs, int level);
+				        bool isMovable() const {
+				            return true;
+				        }
+				        bool selectable() const {
+				            return false;
+				        }
+				        bool operator== (Entity&amp; other);
+				        void addAnimation (odfaeg::g2d::Anim *anim);
+				        odfaeg::Vec2f getPosition ();
+				        odfaeg::g2d::Tile&amp; getCurrentTile();
+				        void setMoving(bool b);
+				        bool isMoving ();
+				        void setDir(odfaeg::Vec2f dir);
+				        odfaeg::Vec2f getDir();
+				        void setPath(std::vector&lt;odfaeg::Vec2f&gt; path);
+				        std::vector&lt;odfaeg::Vec2f&gt; getPath();
+				        int getSpeed();
+				        void setSpeed(int speed);
+				        odfaeg::g2d::Anim* getAnimation(unsigned int index);
+				        unsigned int getCurrentPathIndex ();
+				        void setCurrentPathIndex (unsigned int index);
+				        bool isMonster() {
+				            return false;
+				        }
+				        void setRange(int range);
+				        int getRange();
+				        void setLife(int life);
+				        void setMaxLife(int life);
+				        int getLife ();
+				        int getMaxLife();
+				        int getLevel();
+				        std::string getClass();
+				        int getAttack();
+				        void setAttack(int attack);
+				        void setAttackSpeed(float attackSpeed);
+				        float getAttackSpeed();
+				        void setFightingMode(bool b);
+				        bool isInFightingMode();
+				        bool isAttacking ();
+				        void setAlive(bool b);
+				        bool isAlive();
+				        void setAttacking(bool b);
+				        void setCurrentXp(int xp);
+				        void setXpReqForNextLevel(int xpReqForNextLevel);
+				        void setLevel (int level);
+				        sf::Time getTimeOfLastAttack();
+				        sf::Time getTimeOfLastHpRegen();
+				        void attackFocusedMonster();
+				        void up (int xp);
+				        int getCurrentXp ();
+				        int getXpReqForNextLevel ();
+				        float getRegenHpSpeed();
+				        void setRegenHpSpeed(float regenHpSpeed);
+				        int getRegenHpAmount();
+				        void setRegenHpAmount(int regenHpAmount);
+				        Entity* getCurrentEntity() const;
+				        void onDraw(odfaeg::RenderTarget&amp;, odfaeg::RenderStates) const;
+				        virtual ~Caracter();
+				
+				    private :
+				        std::string factionName, pseudo, sex, currentMapName, hairColor, 
+				        eyesColor, skinColor, faceType, classs;
+				        int level, currentPointIndex, attack, speed, range;
+				        float attackSpeed, regenHpSpeed;
+				        bool moving, alive;
+				        odfaeg::Vec2f dir;
+				        std::vector&lt;odfaeg::Vec2f&gt; path;
+				        std::vector&lt;odfaeg::g2d::Anim*&gt; anims;
+				        int currentAnimIndex;
+				        int life, maxLife, xp, xpReqForNextLevel, regenHpAmount;
+				        bool attacking, fightingMode;
+				        sf::Clock clockAtkSpeed, clockRegenHp;
+				};
+				#endif
+        		</pre>
+        		</p>
+        		If the attributes are common for every caracters types, then, we are not forced to use states.<br/>
+        		But it's strongly recommanded to use states and multiple dispatch when the gameplay is complexe, and you have <br/>
+        		many different classes, with many different weapons and armors.
+        		Let's look to the .cpp file.<br/>
+        		<pre>
+        			#include "caracter.h"
+				#include &lt;iostream&gt;
+				using namespace std;
+				
+				using namespace odfaeg;
+				using namespace odfaeg::g2d;
+				Caracter::Caracter (string factionName, string pseudo, string sex, string currentMapName, string hairColor,
+				                  string eyesColor, string skinColor, string faceType, string classs, int level)
+				    : AnimatedEntity (Vec2f(-50, -25), Vec2f (100, 50), Vec2f(50, 25), "E_CARACTER") {
+				    currentAnimIndex = 0;
+				    this->factionName = factionName;
+				    this->pseudo = pseudo;
+				    this->sex = sex;
+				    this->currentMapName = currentMapName;
+				    this->hairColor = hairColor;
+				    this->eyesColor = eyesColor;
+				    this->faceType = faceType;
+				    this->skinColor = skinColor;
+				    this->classs = classs;
+				    this->level = level;
+				    currentPointIndex = 0;
+				    speed = 100;
+				    moving = false;
+				    dir = Vec2f(0, 1);
+				    this->life = 100;
+				    this->maxLife = 100;
+				    range = 50;
+				    attackSpeed = 1.f;
+				    attack = 10;
+				    fightingMode = attacking = false;
+				    alive = true;
+				    xp = 0;
+				    xpReqForNextLevel = 1500;
+				    regenHpSpeed = 1.f;
+				    regenHpAmount = 1;
+				}
+				float Caracter::getRegenHpSpeed () {
+				    return regenHpSpeed;
+				}
+				void Caracter::setRegenHpSpeed(float regenHpSpeed) {
+				    this->regenHpSpeed = regenHpSpeed;
+				}
+				sf::Time Caracter::getTimeOfLastHpRegen() {
+				    return clockRegenHp.getElapsedTime();
+				}
+				void Caracter::setLevel(int level) {
+				    this->level = level;
+				}
+				void Caracter::setCurrentXp(int xp) {
+				    this->xp = xp;
+				}
+				void Caracter::setXpReqForNextLevel(int xpReqForNextLevel) {
+				    this->xpReqForNextLevel = xpReqForNextLevel;
+				}
+				void Caracter::up (int xp) {
+				    this->xp += xp;
+				    if (this->xp &gt;= xpReqForNextLevel) {
+				        level++;
+				        this->xp = this->xp - xpReqForNextLevel;
+				        xpReqForNextLevel *= 2;
+				    }
+				}
+				int Caracter::getCurrentXp () {
+				    return xp;
+				}
+				int Caracter::getXpReqForNextLevel () {
+				    return xpReqForNextLevel;
+				}
+				void Caracter::setSpeed(int speed) {
+				    this->speed = speed;
+				}
+				int Caracter::getSpeed() {
+				    return speed;
+				}
+				int Caracter::getRegenHpAmount() {
+				    return regenHpAmount;
+				}
+				void Caracter::setRegenHpAmount(int regenHpAmount) {
+				    this->regenHpAmount = regenHpAmount;
+				}
+				void Caracter::setLife(int life) {
+				    this->life = life;
+				    clockRegenHp.restart();
+				}
+				int Caracter::getLife() {
+				    return life;
+				}
+				void Caracter::setRange(int range) {
+				    this->range = range;
+				}
+				int Caracter::getRange() {
+				    return range;
+				}
+				void Caracter::setAttackSpeed (float attackSpeed) {
+				    this->attackSpeed = attackSpeed;
+				}
+				float Caracter::getAttackSpeed () {
+				    return attackSpeed;
+				}
+				void Caracter::setAttacking(bool b) {
+				
+				    this->attacking = b;
+				}
+				void Caracter::setAlive(bool b) {
+				    alive = b;
+				}
+				bool Caracter::isAlive () {
+				    return alive;
+				}
+				bool Caracter::isAttacking() {
+				    return attacking;
+				}
+				void Caracter::setFightingMode(bool b) {
+				    this->fightingMode = b;
+				}
+				bool Caracter::operator== (Entity &amp;other) {
+				    if (getType() != other.getType())
+				        return false;
+				    Caracter&amp; caracter = static_cast&lt;Caracter&amp;&gt;(other);
+				    if (anims.size() != caracter.anims.size())
+				        return false;
+				    for (unsigned int i = 0; i &lt; anims.size(); i++) {
+				        if (anims[i] != caracter.anims[i])
+				            return false;
+				    }
+				    return true;
+				}
+				bool Caracter::isInFightingMode() {
+				    return fightingMode;
+				}
+				void Caracter::setAttack(int attack) {
+				    this->attack = attack;
+				}
+				int Caracter::getAttack() {
+				    return attack;
+				}
+				
+				sf::Time Caracter::getTimeOfLastAttack() {
+				    return clockAtkSpeed.getElapsedTime();
+				}
+				
+				void Caracter::setDir (Vec2f dir) {
+				
+				    anims[currentAnimIndex]->setCurrentTile(0);
+				    float angleRadians = const_cast&lt;Vec2f&amp;&gt;(Vec2f::yAxis).getAngleBetween(dir);
+				    int angle = Math::toDegrees(angleRadians);
+				    //Sud
+				    if (angle &gt;= -10 &amp;&amp; angle &lt;= 10)
+				        currentAnimIndex = 0;
+				    //Sud ouest
+				    else if (angle &gt; -80 &amp;&amp; angle &lt; -10)
+				        currentAnimIndex = 3;
+				    //Ouest
+				    else if (angle &gt;= -100 &amp;&amp; angle &lt;= -80)
+				        currentAnimIndex = 6;
+				    //Nord ouest
+				    else if (angle &gt; -170 &amp;&amp; angle &lt; -100)
+				        currentAnimIndex = 1;
+				    //Nors est
+				    else if (angle &gt; 100 &amp;&amp; angle &lt; 170)
+				        currentAnimIndex = 7;
+				    //Est
+				    else if (angle &gt;= 80 &amp;&amp; angle &lt;= 100)
+				        currentAnimIndex = 2;
+				    //Sud est
+				    else if (angle &gt; 10 &amp;&amp; angle &lt; 80)
+				        currentAnimIndex = 5;
+				    else
+				        currentAnimIndex = 4;
+				
+				    if (attacking)
+				        currentAnimIndex += 8;
+				    this->dir = dir;
+				}
+				
+				Vec2f Caracter::getDir () {
+				    return dir;
+				}
+				void Caracter::setMoving (bool b) {
+				    this->moving = b;
+				    if (moving) {
+				        anims[currentAnimIndex]->play(true);
+				    } else {
+				        anims[currentAnimIndex]->stop();
+				        anims[currentAnimIndex]->setCurrentTile(0);
+				    }
+				
+				}
+				bool Caracter::isMoving () {
+				    return moving;
+				}
+				
+				Vec2f Caracter::getPosition () {
+				    return Vec2f(anims[currentAnimIndex]->getPosition().x, anims[currentAnimIndex]->getPosition().y);
+				}
+				
+				void Caracter::setPath(vector&lt;Vec2f&gt; path) {
+				    this->path = path;
+				}
+				vector&lt;Vec2f&gt; Caracter::getPath() {
+				    return path;
+				}
+				void Caracter::addAnimation (Anim *anim) {
+				    addChild(anim);
+				    anim->setParent(this);
+				    anims.push_back(anim);
+				}
+				Anim* Caracter::getAnimation(unsigned int index) {
+				    if (index &gt;= 0 &amp;&amp; index &lt; anims.size())
+				        return anims[index];
+				    return NULL;
+				}
+				unsigned int Caracter::getCurrentPathIndex() {
+				    return currentPointIndex;
+				}
+				void Caracter::setCurrentPathIndex (unsigned int currentPointIndex) {
+				    this->currentPointIndex = currentPointIndex;
+				}
+				
+				void Caracter::setMaxLife(int life) {
+				    this->maxLife = maxLife;
+				}
+				
+				int Caracter::getMaxLife() {
+				    return maxLife;
+				}
+				int Caracter::getLevel() {
+				    return level;
+				}
+				string Caracter::getClass () {
+				    return classs;
+				}
+				void Caracter::onDraw(RenderTarget &amp;target, RenderStates states) const {
+				    target.draw(*getCurrentEntity(), states);
+				}
+				Entity* Caracter::getCurrentEntity() const {
+				    return anims[currentAnimIndex]->getCurrentEntity();
+				}
+				Caracter::~Caracter() {
+				
+				}
+        		</pre>
+        		The important things here to notice, is the redefinition of the draw function<br/>
+        		We draw the current frame of the current anaimation.<br/>
+        		The current animation is changed depending on the caracter direction.<br/>
+        		But when the current animation is changed, every entities of every animations<br/>
+        		are moving, this is because animations are children of caracter entity.<br/>
+        		And frames of animations are children of the animations.<br/>
+        		The method addChild of the entity class is called each time that we add an animation.<br/>
+        		to the caracter, and, the method setParent is called to set the parent of the animations.<br/>
+        		The parent's entity of animations is the caracter.<br/>
+        		And the children of the caracter are the animations.<br/>
+        		If you have to update datas (by example, the bounding volume of the entity) you can redefine this method.<br/>
+        		<pre>
+			void Caracter::onMove(Vec3f t) {
+				Entity::onMove(t) ;
+			           //Mise à jour des autres informations. (La physique par exemple)
+			        if (getCollisionVolume() != nullptr) {
+					getCollisionVolume()->move(Vec3f(t.x, t.y, 0));
+			    	}
+			}
+        		</pre>
+        		You must call the onMove method of the base class (the class Entity) otherwise the transformations<br/>
+        		won't be combined.<br/>
+        		The parameter if the translation of the entity.<br/>
+        		Here, I set 0 for the z translation of the bouding volume because in 2D physics<br/>
+        		we don't use the z coordinates, it's only usefull to ODFAEG for rendering.<br/>
+        		You can also redefines the methode onScale and onRotate.<br/>
+        		There are several classes that we can inherits from, depending on the type of entity : <br/>
+        		AnimatedEntity for animated entities.<br/>
+        		Shadow : if you don't want to use a shader to generate shadows.<br/>
+        		Light : if you want to create you own light type.<br/>
+        		Model : for every entities which can project a shadow.<br/>
+        		To transfom entities, you have the call the move method of the World class, this'll.<br/>
+        		Update everything, and it'll also update the entity in the world's grid.<br/>
+        		World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/>
+        	</html>
+        </en>
     </content>
 </page>
