@@ -73,7 +73,7 @@ executor qui va modifier le state de l'entité. <br/>
                     undoState(State);<br/>
                     These methods take a parameter : the current state.<br/>
                     Next, you can add parameters to your state, and get parameters like this : <br/>
-                    MyState state(« The state », &myStateExecutor); <br/>
+                    MyState state(« The state », &amp;myStateExecutor); <br/>
                     state.addParameter(«ParamName», paramValue); <br/>
                     The value can be of any type, you must pass the type as template parameter, <br/>
                     state.getParameter(«ParamName»).getValue&lt;ParamType&gt;
