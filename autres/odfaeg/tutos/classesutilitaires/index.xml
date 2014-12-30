@@ -130,5 +130,126 @@ int main() {
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Chapter IX : the utility classes of ODFAEG.</h1>
+                <h2>The variants.</h2>
+                <p>
+                Like boost, ODFAEG have some classes which are very usefull in the gameplay for <br/>
+                multiple visitation.<br/>
+                It allows you to defines different behaviour for different kinds of entities.<br/>
+                The difference with boost is that the variants use the c++14.<br/>
+                To illustrate that, let's look to this piece of code : <br/>
+                <pre>
+                    class Chien {
+                    };
+                    
+                    class Chat {
+                    };
+                    
+                    struct Attaquer : public odfaeg::core::Visitor&lt;&lt; {
+                          void operator()(Chat&amp; chat) {
+                                std::cout&lt;&lt;"griffe!"&lt;&lt;std::endl;
+                          }
+                          void operator()(Chien&amp; chien) {
+                                std::cout&lt;&lt;"mort!"&lt;&lt;std::endl;
+                          } 
+                    };
+                </pre>
+                We have two classes, and a functor which apply different behaviours depending of <br/>
+                the type of the class.<br/>
+                In the main, this looks like this : <br/>
+                <pre>
+                int main() {
+                    Chat chat;
+                    Chien chien;
+                    std::vector&lt;odfaeg::core::Variant&lt;Chien, Chat&gt;&gt; vector;
+                    vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chat));
+                    vector.push_back(odfaeg::Variant&lt;Chien, Chat&gt;(chien));
+                    Attaquer attaquer;
+                    for (unsigned int i = 0; i &lt; vector.size(); i++) {
+                         odfaeg::core::apply_visitor(attaquer, vector[i]);
+                    }
+                }
+                </pre>
+                </p>
+                <h2>Using an n-ary vistor.</h2>
+                    <p>
+                    The source code is not very different, we must call the method apply_nary_visitor instead<br/>
+                    of apply_visitor<br/>
+                    <pre>
+                    struct Chat
+                    { };
+                    struct Chien
+                    { };
+                    struct Attaquer
+                            : odfaeg::core::Visitor&lt;&gt;
+                    {
+                            void operator()(const chat&amp;, const chat&amp;) const
+                            { std::cout &lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
+                            void operator()(const chat&amp;, const chien&amp;) const
+                            { std::cout &lt;&lt;"griffe - mord"&lt;&lt;std::endl;}
+                            void operator()(const chien&amp;, const chat&amp;) const
+                            { std::cout &lt;&lt;"mord - griffe"&lt;&lt;std::endl;}
+                            void operator()(const chien&amp;, const chien&amp;) const
+                            { std::cout &lt;&lt;"mord - mord"&lt;&lt;std::endl;}
+                    };
+                    int main() {
+                        Chat chat;
+                        Chien chien;
+                        odfaeg::core::Variant&lt;Chien, Chat&gt; var1(chat);
+                        odfaeg::core::Variant&lt;Chien, Chat&gt; var2(chien);
+                        odfaeg::core::apply_nary_visitor(Attaquer(), var1, var2);
+                    }
+                    </pre>
+                    </p>
+                    <h2>Another method : </h2>
+                    <p>
+                    ODFAEG have another method allowing you to do that with an interface.<br/>
+                    The interest is that you can use a common type to store them into an STL container.<br/>
+                    The interface must inherit from accept_visitor and take the type of the interface<br/>
+                    and the sub-classes as template parameters.<br/>
+                    The subclasses must inherits from acceptable, and take the type of the interface and the <br/>
+                    subclass as template parameter.<br/>
+                    And the functor must inherit from the dispatchable class and take the name of the functor and the animal<br/>
+                    as template parameter.<br/>
+                    <pre>
+                        struct chat;
+                        struct chien;
+                        struct animal
+                                : odfaeg::core::accept_visitor&lt;animal,chat,chien&gt;
+                        { };
+                        struct chat
+                                : odfaeg::core::acceptable&lt;animal,chat&gt;
+                        { };
+                        struct chien
+                                : odfaeg::core::acceptable&lt;animal,chien&gt;
+                        { };
+                        struct attaquer
+                                : odfaeg::core::dispatchable&lt;attaquer,animal&gt;
+                        {
+                                void operator()(const chat&amp;, const chat&amp;) const
+                                { std::cout&lt;&lt;"griffe - griffe"&lt;&lt;std::endl;}
+                                void operator()(const chat&amp;, const chien&amp;) const
+                                { std::cout&lt;&lt;"griffe - mord"&lt;&lt;std::endl;}
+                                void operator()(const chien&amp;, const chat&amp;) const
+                                { std::cout&lt;&lt;"mord - griffe"&lt;&lt;std::endl;}
+                                void operator()(const chien&amp;, const chien&amp;) const
+                                { std::cout&lt;&lt;"mord - mord"&lt;&lt;std::endl;}
+                        };
+                        int main() {
+                            chat c1;
+                            chien c2; 
+                            animal&amp; a1 =c1;
+                            animal&amp; a2 =c2; 
+                            attaquer().apply(a1,a1);
+                            attaquer().apply(a1,a2);
+                            attaquer().apply(a2,a1);
+                            attaquer().apply(a2,a2);
+                        }
+                    </pre>
+                    </p>
+            </html>
+        </en>
     </content>
 </page>
