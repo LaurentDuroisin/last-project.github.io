@@ -223,5 +223,177 @@ int main() {    
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>The backup system of ODFAEG</h1>
+                <h2>How to register simple entities.</h2>
+                <p>
+                To serialize entities, you need to have two things : <br/>
+                An archive : (This one'll contains the text which'll be registered into a stream)<br/>
+                The stream itself : this is just an archive containing the stream.<br/>
+                At the moment, odfaeg manage two types of archives : <br/>
+                OTextArchive for the writing, and ITextArchive for the reading.<br/>
+                But later, this is possible that I implement others archives formats.<br/>
+                Then, you have juste to pass the object to serialise to the archive by calling the functor : <br/>
+                <pre>
+                    ofstream ofs("thefile");
+                    OTextArchive oa (ofs);
+                    
+                    std::string text="blablabla";
+                        std::string text2;
+                        std::ofstream ofs("FichierDeSerialisation");
+                        {
+                            odfaeg::OTextArchive oa(text);
+                            oa(text);
+                        }
+                        ofs.close();
+                </pre>
+                </p>
+                <p>
+                For the reading, the code is similar, you just need to use the classes ifstream and ITextArchive.<br/>
+                <pre>
+                    std::ifstream ifs("FichierDeSerialisation");
+                    {
+                        odfaeg::ITextArchive ia(ifs);
+                        ia(text2); 
+                    }
+                    std::cout&lt;&lt;text2&lt;&lt;std::endl;
+                    ifs.close();
+                </pre>
+                To serialize your personal objects, you just need to redefine the serialize method, <br/>
+                this method take a parameter : the archive.<br/>
+                <pre>
+                    struct A {
+                        A() {
+                            var = 10;
+                        }
+                            void foo(int i)
+                            { std::cout&lt;&lt;i; }
+                            template &lt;typename A&gt;
+                            void serialize (A &amp; ar) {
+                               ar(var);
+                            }
+                            int var;
+                    };
+                </pre>
+                </p>
+                <p>
+                Because this is this method that ODFAEG'll research to serialize the data of your object into<br/>
+                the stream of the archive.<br/>
+                The code to serialize the object onto the main is just the same than the code above which serialize a std::string<br/>
+                This way of doing is simple, but not sufficient for polymorphic objets.<br/>
+                by default odfaeg'll serialize only the data of the base class, but, maybe you'll need to <br/>
+                also serialize the data of the subclass, or of both.<br/>
+                To serialize data of the derived class, you'll need to redefine a new method : the method vtserialize.<br/>
+                The base class must always have a virtual method to be considered as a polymorphic class.<br/>
+                Because odfaeg perform a test with typeid at the execution.<br/>
+                And the inheritence must be public!<br/>
+                <pre>
+                    struct B : public Registered&lt;B&gt; {
+                        B() {
+                           c = "serialize base";
+                        }
+                        virtual void foo()
+                        { std::cout&lt;&lt;1; }
+                        virtual void print() {
+                          std::cout&lt;&lt;c&lt;&lt;std::endl;
+                        }
+                        template &lt;typename A&gt;
+                        void vtserialize (A &amp; ar) {
+                           ar(c);
+                        }
+                        virtual ~B();
+                        std::string c;  
+                    };
+                    B::~B(){}
+                </pre>
+                Registered is nothing else than an object which know how to serialize the polymorphic objects.<br/>
+                It attempts a template parameter : the base object type.<br/>
+                The method template vtserialize, have to be redefined in a subclass.<br/>
+                
+                </p>
+                <p>
+                <pre>
+            struct C : B {
+                C () {
+                    c = "serialize derived";
+                }
+                void foo();
+                void print () {
+                    B::print();
+                    std::cout&lt;&lt;c&lt;&lt;std::endl;
+                }
+                template &lt;typename A&gt;
+                    void vtserialize (A &amp; ar) {
+                       B::vtserialize(ar);
+                       ar(c);
+                    }
+                    std::string c;
+            };
+            
+            void C::foo(){ std::cout &lt;&lt; 2; }
+            </pre>
+            But that's not all, odfaeg knows that he must serialize the data of your polymoprhic object, but<br/>
+            doesn't know how which method to use to register them.<br/>
+            To do that, you just have to call the EXPORT_CLASS_GUI macro, which attempts three parameters :
+            The first one is the name of the relation.<br/>
+            The second is the name of the base class.<br/>
+            And the last one is the name of the subclass.<br/>
+            Here is the complete code so to serialize our object.<br/>
+            <pre>
+                struct B : public odfaeg::Registered&lt;B&gt; {
+                    B() {
+                        c = "serialize base";
+                    }
+                    virtual void foo()
+                    { std::coutlt;&lt;1; }
+                    virtual void print() {
+                    std::cout&lt;&lt;c&lt;&lt;std::endl;
+                    }
+                    template &lt;typename A&gt;
+                    void vtserialize (A &amp; ar) {
+                    ar(c);
+                    }
+                    virtual ~B();
+                    std::string c;      
+                };
+                 
+                B::~B(){}
+                 
+                struct C : B {
+                    C () {
+                        c = "serialize derived";
+                    }
+                    void foo();
+                    void print () {
+                        B::print();
+                        std::cout&lt;&lt;c&lt;&lt;std::endl;
+                    }
+                    template &lt;typename A&gt;
+                        void vtserialize (A * ar) {
+                        B::vtserialize(ar);
+                        ar(c);
+                        }
+                        std::string c;
+                };
+                void C::foo(){ std::cout&lt;&lt;2; }
+                int main() {    
+                    EXPORT_CLASS_GUID(BC, B, C)
+                    C c;
+                    B* b = &amp;c;
+                    B* b2;
+                    std::ofstream ofs("FichierDeSerialisation");
+                    odfaeg::OTextArchive oa(ofs);
+                    oa(b);
+                    std::ifstream ifs("FichierDeSerialisation");
+                    odfaeg::ITextArchive ia(ifs);
+                    ia(b2);
+                    b2->print();
+                }
+            </pre>
+            </p>
+            and that's it, this is how the powerfull backup system of odfaeg works!<br/>
+            </html>
+        </en>
     </content>
 </page>
