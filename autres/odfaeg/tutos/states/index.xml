@@ -61,5 +61,32 @@ executor qui va modifier le state de l'entité. <br/>
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Chapter VIII : the states system.</h1>
+                <h2>Create a state</h2>
+                    Before creating a states, you have to redefine two functions : <br/>
+                    One which'll apply the state and the other which'll unapply the states.<br/>
+                    For that, you need to inherits from the class StateExecutor and redefines those <br/>
+                    methods : <br/>
+                    doState(State);<br/>
+                    undoState(State);<br/>
+                    These methods take a parameter : the current state.<br/>
+                    Next, you can add parameters to your state, and get parameters like this : <br/>
+                    MyState state(« The state », &myStateExecutor); <br/>
+                    state.addParameter(«ParamName», paramValue); <br/>
+                    The value can be of any type, you must pass the type as template parameter, <br/>
+                    state.getParameter(«ParamName»).getValue&lt;ParamType&gt;
+                    You can add states to a group of states, and then, you can add groups<br/>
+                    to the stack, so, you can apply and unapply the states which were applied.<br/>
+                    Each odfaeg's entities have a state, and, this state can take several custom parameters.<br/>
+                    It avoid to have to do too much inheritance.<br/>
+                    The methods to add attributes to entities are called addAttribute, getAttribute and <br/>
+                    removeAttribute, and changeAtribute, they work exactly like the addParameter,<br/>
+                    getParameter, removeParamete and changeParameter.<br/>
+                    To apply or cancel a state, you can call the methode interract and uninterract, <br/>
+                    by passing a pointer to a state executor object, which'll modify the state of the entity.<br/>
+            </html>
+        </en>
     </content>
 </page>
