@@ -163,7 +163,7 @@ commancement car je suis encore assez loin comparé à d'autres projets déjà e
                     <pre>
                         ParticleSystem ps;
                         ps.setTexture(*tm.getResourceByAlias("PARTICLE"));
-                        for (unsigned int i = 0; i < 10; i++) {
+                        for (unsigned int i = 0; i &lt; 10; i++) {
                             ps.addTextureRect(sf::IntRect(i*10, 0, 10, 10));
                         }
                         UniversalEmitter emitter;
