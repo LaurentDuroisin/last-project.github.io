@@ -543,6 +543,7 @@ World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);
 				#endif
         		</pre>
         		</p>
+        		<p>
         		If the attributes are common for every caracters types, then, we are not forced to use states.<br/>
         		But it's strongly recommanded to use states and multiple dispatch when the gameplay is complexe, and you have <br/>
         		many different classes, with many different weapons and armors.
@@ -824,6 +825,7 @@ World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);
         		To transfom entities, you have the call the move method of the World class, this'll.<br/>
         		Update everything, and it'll also update the entity in the world's grid.<br/>
         		World::moveEntity(caracter, caracter->getDir().x * t, caracter->getDir().y * t);<br/>
+        		</p>
         	</html>
         </en>
     </content>
