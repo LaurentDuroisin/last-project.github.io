@@ -97,5 +97,49 @@ startCli. <br/>
 </p>
                 </html>
         </fr>
+        <en>
+            <html>
+                <h1>Chapter III : The network</h1>
+                <h2>The server : </h2>
+                    To create a server application, you just have to make a classe which inherits, <br/>
+                    from the application class, like in the chapter II. <br/>
+                    You can then redefine the methods onExec(), onInit() and onLoad().<br/>
+                    onLoad allows you to load external resource in a file or in a database.<br/>
+                    ODFAEG doesn't have SQL drivers for the moment, this is for a later version.<br/>
+                    To establish a communication between the client and a server, ODFAEG have a static class : <br/>
+                    The Network class.<br/>
+                    ODFAEG manage two protocols : TCP and UDP.<br/>
+                    To launch the server, you just need to call this function : <br/>
+                    Network::startSrv(portTCP, portUDP); <br/>
+                    This function starts the server, and then gives the hand.<br/>
+                    So, you can instanciate the application : <br/>
+                    <pre>
+                    Application app ;
+                    Network::startSrv(portTCP, portUDP) ;
+                    return app.exec() ;
+                    </pre>
+                    <h2>Get a request send by the client.</h2>
+                    To get a request, you just have to class the getLastRequest method of the Network<br/>
+                    class.
+                    This method can take an object of the user class, the user contains just<br/>
+                    informations of the client which have send the request.<br/>
+                    You can send a response by callind the sendTCPPacket and sndUDPPacket of the class user. </b>
+                    The user class can be redefined if you need to store other informations sush a password or a login.<br/>
+                    The class network have also sendTCPPacket and sendUDPPacket methods, in this case, every <br/>
+                    packet'll be send to each clients connected to the network.<br/>
+                    You can send both type of packet, with the TCP protocol, crypted packet or uncrypted packet.<br/>
+                    To know if the user is using an SSL connexion, you can call the method isUsingSecuredConnection of the user<br/>
+                    class.<br/>
+                    Be carefull, because with the UDP protocol, the packets are not crypted!<br/>
+                    <h2>The client : </h2>
+                    To connect a client to a server, you just need to call the same method of the network class.<br/>
+                    You have to pass more parameters : <br/>
+                    The first and the second are the TCP and the UDP port used.<br/>
+                    The last is the IpAddress of the server.<br/>
+                    We can add a fourth parameter, by default this parameter is true and indicate if you want<br/>
+                    to use a securised connexion.<br/>
+                    But if you don't want to use a crypted connexion, set this parameter to false.<br/>
+            </html>
+        </en>
     </content>
 </page>
