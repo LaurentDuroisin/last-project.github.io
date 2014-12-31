@@ -123,7 +123,7 @@ startCli. <br/>
                     class.
                     This method can take an object of the user class, the user contains just<br/>
                     informations of the client which have send the request.<br/>
-                    You can send a response by callind the sendTCPPacket and sndUDPPacket of the class user. </b>
+                    You can send a response by callind the sendTCPPacket and sndUDPPacket of the class user. <br/>
                     The user class can be redefined if you need to store other informations sush a password or a login.<br/>
                     The class network have also sendTCPPacket and sendUDPPacket methods, in this case, every <br/>
                     packet'll be send to each clients connected to the network.<br/>
