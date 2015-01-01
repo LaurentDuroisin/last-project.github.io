@@ -22,7 +22,7 @@
           Il suffit de lui passer une instance de cette classe pour charger le son dans le player.<br/>
           Voici un example qui charge un effet sonore et le passe au player.<br/>
           <pre>
-          SoundBufferManager<> sm;
+          SoundBufferManager&lt;&gt; sm;
           sm.fromFileWithAlias("sounds/walk_crop.wav", "step foot");
           Stream* stream = new Stream();
           stream->load(*sm.getResourceByAlias("step foot"));
