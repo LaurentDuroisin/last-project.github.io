@@ -10,7 +10,7 @@
   <h1>Chapitre XV : Le son. </h1>
       Voici le dernier gros chapitre avant d'entamer les tutoriels illustratifs.<br/>
       qui seront des example de petits jeux opensource codé avec le moteur.<br/>
-      <h2>Chargé un son avec ODFAEG.<h2>
+      <h2>Chargé un son avec ODFAEG.</h2>
           <p>
           Pour rappel, pour charger un son il y a deux manière de le faire, avec SFML il y a deux classes qui permettent de le faire : <br/>
           sf::SoundBuffer pour charger des effets sonores.<br/>
@@ -42,6 +42,7 @@
             La méthode stop pour stopper un son.<br/>
             La méthode isPlaying pour savoir si un son est actuellement joué ou bien stoppé.<br/>
             </p>
+            <p>
             Voici un example de code source qui montre comment lancé et arrêté un son.<br/>
             <pre>
                 if (!player.isPlaying()) 
@@ -53,9 +54,11 @@
             </pre>
             </p>
             <h2>La spacialisation du son.</h2>
+            <p>
                 Comme le module audio de ODFAEG utilise SFML, il est également possible d'utiliser la spacialisation<br/>
                 du sont en se servant des classes SFML prévue à cet effet, je ne détaillerai donc pas ce point là ici<br/>
-        </fr>
+            </p>
+       </fr>
     </html>
   </content>
               
