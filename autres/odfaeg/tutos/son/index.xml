@@ -80,7 +80,7 @@
         ODFAEG also provides two ways to load sounds, but ODFAEG use a custom stream to pass the sounds to the player. (ths odfaeg::audio::Stream class)<br/>
         So you need to load the sound with the SFML classe, and pass it to the player like this : <br/>
         <pre>
-           SoundBufferManager<> sm;
+           SoundBufferManager&lt;&gt; sm;
            sm.fromFileWithAlias("sounds/walk_crop.wav", "step foot");
            Stream* stream = new Stream();
            stream->load(*sm.getResourceByAlias("step foot"));
