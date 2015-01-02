@@ -50,7 +50,7 @@
             <pre>
                 if (!player.isPlaying()) 
                   player.play(true);
-            </pre
+            </pre>
             La méthode play prend un booléen, qui indique si le son doit être joué en boucle ou bien pas.<br/>
             Par défaut, ce booléen vaut false.<br/>
             <pre>
