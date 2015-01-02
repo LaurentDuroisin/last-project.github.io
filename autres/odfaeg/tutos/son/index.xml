@@ -65,5 +65,54 @@
             </p>
     </html>
     </fr>
+    <en>
+      <html>
+        <h1>Chapter XIV : the sound.</h1>
+        This is the last chapter before the opensource game examples tutorials!<br/>
+        Until now ODFAEG just provides some executables to show you how the engine works in a global way.<br/>
+        But it doesn't show you how to create a game from A to Z.<br/>
+        Of course, I won't create the last revolutionnary mmorpg, this is just not possible for a single and poor developper like me.<br/>
+        And even if you do so, it'll takes a lot of years!<br/>
+        So I'll just show you how to create simple games, and it'll be up to you to innovate.<br/>
+        <h2>Loading a sound.</h2>
+        If you remember well, there are two ways to load a sound, with SFML, the first is with the sf::Music<br/>
+        class and the second is the sf::SoundBuffer class.<br/>
+        ODFAEG also provides two ways to load sounds, but ODFAEG use a custom stream to pass the sounds to the player. (ths odfaeg::audio::Stream class)<br/>
+        So you need to load the sound with the SFML classe, and pass it to the player like this : <br/>
+        <pre>
+           SoundBufferManager<> sm;
+           sm.fromFileWithAlias("sounds/walk_crop.wav", "step foot");
+           Stream* stream = new Stream();
+           stream->load(*sm.getResourceByAlias("step foot"));
+           player.setAudioStream(stream);
+           cache.addResourceManager(sm, "SoundManager");
+        </pre>
+        To play a music, just use the openFromFile method of the stream class.<br/>
+        Remember that musics are not loaded directly, but while they are playing.<br/>
+        The class player have a bunch of methods, which are very similar to the methods<br/>
+        of the sf::SoundBuffer class and of the sf::Music class.<br/>
+        The only different is that ODFAEG use a single class to play sounds.<br/>
+        Because I find that this way of doing is much simplier.<br/>
+        The method play allow you to play a sound.<br/>
+        The method pause allow you to set the sound in pause.<br/>
+        The method isPlaying allow you to know if a sound is currently played.<br/>
+        The method setPitch change the speed which the sound is played.<br/>
+        The method setVolume change the volume of the sound.<br/>
+        The method stereo allows you to know if the sound is stereo.<br/>
+        This can be usefull for sound's saptialization, where the sound haven't to be stereo.<br/>
+        And there are also every method for sound spatialization.<br/>
+        <pre>
+           if (!player.isPlaying()) 
+               player.play(true);
+        </pre>
+        The play method take a parameter, a boolean, which indicates if the sound must be playing in loop<br/>
+        or not.<br/>
+        <h2>The spacialization of the sound.</h2>
+        The audio module of ODFAEG use the SFML module of ODFAEG, so, <br/>
+        you can also use the sf::Listener class to set up the spatialisation of the sound.<br/>
+        And to set up the sound source, you can use the methods of the player class which are <br/>
+        the same than the method of the sf::Music and sf::SoundBuffer class.<br/>
+      </html>
+    </en>
   </content>
   </page>
