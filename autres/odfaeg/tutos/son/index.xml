@@ -35,12 +35,15 @@
           <h2>Jouer un son.</h2>
             <p>
             La classe player contient plusieurs méthodes pour pouvoir jouer un son, le mettre en pause, ou encore, le stopper.<br/>
-            Cette classe n'offre pas tellement de possibilité pour l'instant mais, ça sera rajouté pour la version future.<br/>
             Les méthodes actuelles sont : <br/>
             La méthode play pour joueur un son.<br/>
             La méthode pause pour mettre un son en pause.<br/>
             La méthode stop pour stopper un son.<br/>
             La méthode isPlaying pour savoir si un son est actuellement joué ou bien stoppé.<br/>
+            La méthode setPitch pour modifier la vitesse avec laquelle le son est joué.<br/>
+            La méthode setVolume pour modifier le volume du son.<br/>
+            La méthode stero pour savoir si le son est mono ou bien stéréo.<br/>
+            Et pleins d'autres méthode utilisée pour la spatialisation du son.<br/>
             </p>
             <p>
             Voici un example de code source qui montre comment lancé et arrêté un son.<br/>
@@ -58,7 +61,7 @@
             <h2>La spacialisation du son.</h2>
             <p>
                 Comme le module audio de ODFAEG utilise SFML, il est également possible d'utiliser la spacialisation<br/>
-                du sont en se servant des classes SFML prévue à cet effet, je ne détaillerai donc pas ce point là ici<br/>
+                du son en se servant des méthodes et des classes SFML prévue à cet effet, je ne détaillerai donc pas ce point là ici<br/>
             </p>
     </html>
     </fr>
