@@ -74,16 +74,15 @@ librairie thor : <br/>
 
 <a href="http://www.bromeon.ch/libraries/thor/v2.0/tutorial-particles.html">THOR</a>
 
-La seule différence est que les particules sont dessinées sur un billboard, ce n'est rien d'autre qu'un sprite orienté vers la caméra. <br/>
 Voici un exemple de code source qui émet 30 particules par seconde, qui ont une durée de vie de 5 à 7 secondes, <br/>
 Apparaissant aléatoirement dans le rectangle de centre 50, 90, 0 et de demi taille 25, 5, 0, et enfin, ayant -10 de force.<br/>
-Les particules vont donc s'envoler vu que elles ont une force négative.<br/>
+Les particules vont donc s'envoler vu qu'elles ont une force négative.<br/>
 Les particules utilisent un "texture rect" au hasard sur une texture.<br/>
 <pre>
-    billboard = new BillBoard(getView());
-    billboard->getParticleSystem().setTexture(*tm.getResourceByAlias("PARTICLE"));
+    ParticleSystem ps;
+    ps.setTexture(*tm.getResourceByAlias("PARTICLE"));
     for (unsigned int i = 0; i &lt; 10; i++) {
-        billboard->getParticleSystem().addTextureRect(sf::IntRect(i*10, 0, 10, 10));
+       ps.addTextureRect(sf::IntRect(i*10, 0, 10, 10));
     }
     emitter.setEmissionRate(30);
     emitter.setParticleLifetime(Distributions::uniform(sf::seconds(5), sf::seconds(7)));
@@ -96,14 +95,28 @@ Les particules utilisent un "texture rect" au hasard sur une texture.<br/>
     emitter.setParticleScale(Distributions::rect(Vec3f(2.1f, 2.1f, 1.f), Vec3f(2.f, 2.f, 2.f)));
 </pre>
 </p>
-Lors du dessin, il faut récupérer la tile (le billboard) et la dessiner, les billboard portent le tag "E_BILLBOARD" :
+<p>
+Lors du dessin, il suffit de dessiner le système de particule, pour des raisons de performances, les particules<br/>
+ne sont pas des entités, et donc ne sont pas ajouté dans le monde, il y donc juste un test de fait pour savoir si<br/>
+le système de particule est visible ou non avant le dessin.<br/>
+Pour des raisons de performance toujours, <br/>
+les particules sont sensée s'affichée par dessus la scène et n'ont pas de volume de collision contrairement<br/>
+aux autres entités, cependant vous pouvez ajouter des affecteurs qui vont modifier les propriétés des particules.<br/>
 <pre>
-std::vector&lt;Entity*&gt; particles = World::getVisibleEntities("E_BILLBOARD");
-for (unsigned int i = 0; i &lt; particles.size(); i++)
-    window->draw(*particles[i]);
+window->draw(ps);
 </pre>
-Une autre différence également : pour supprimer un émitteur explicitement, il faut appeler la méthode removeEmmiter de la classe system, même chose pour<br/>
-les affectors.<br/>
+Une différence par rapport à la librairie thor : pour supprimer un émitteur explicitement, il faut appeler la méthode removeEmmiter de la classe system.<br/>
+</p>
+<h2>Le billboarding.</h2>
+<p>
+    Par défaut les particules sont toujours dessinées au sol, ce qui suffit pour faire de la 2D.<br/>
+    Mais, en 3D, si vous devez dessiner des particules de feu ou de fumées, celles-ci seront rendue<br/>
+    au mauvaise endroit car elles ne doivent pas être rendus sur le sol, mais, face à la caméra.<br/>
+    Pour être rendues face à la caméra, les particules doivent être orientée face à la caméra, ODFAEG<br/>
+    possède un objet pour faire cela : l'objet billboard!<br/>
+    Pour rendre les particules face à la caméra, il suffit de créer un objet de type billboard et de dessiner<br/>
+    les particules sur le billboard.<br/> 
+</p>
 <p>
 Vous trouverez dans les démos plusieurs exemples de code source qui utilise le moteur<br/> 
 jusqu'ici et qui montre déjà ce que le framework propose de faire, mais ce n'est que le<br/> 
