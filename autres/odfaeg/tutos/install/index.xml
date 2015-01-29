@@ -94,6 +94,8 @@
                 fournis pas de librairies pré-compilée, vous devez donc télécharger le code source, ouvrir<br/>
                 Cmake et la compiler à la main.<br/>
                 </p>
+                
+                Le code source est disponible ici : <a href="https://github.com/Lolilolight/ODFAEG/archive/master.zip">Ici</a>
 
                 <p>
                 Dans CMake, cliquez sur browse source et spécifier le dossier ou vous avez télécharger ODFAEG.<br/>
