@@ -21,10 +21,8 @@
 			<fr dest="/"> Contacts     </fr>
                 </item>
                 <item>
-                	<!--<fr dest="/">Forum </fr>-->
-                	 <xlink:extended role="xlink:external-linkset">
-			 <xlink:locator href="http://odfaeg.yourboardpro.com/index.php"/>
-			 </xlink:extended>
+                	 <fr href="http://odfaeg.yourboardpro.com/index.php">Forum </fr>
+                	
 			
                 </item>
 	</menu>
