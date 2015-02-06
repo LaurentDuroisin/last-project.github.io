@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+&lt;!ENTITY forum SYSTEM "http://www2.ed.gov/" NDATA HTML &gt;
 <module>
 	<menu>
 		<item>
