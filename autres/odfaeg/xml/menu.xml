@@ -24,7 +24,9 @@
                 	<content>
                 	<fr dest="/">
                 	<html>
+                	<head>
                 	<a href="http://odfaeg.yourboardpro.com/index.php">forum</a>
+                	</head>
                 	</html>
                 	 </fr>
                 	</content>
