@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/xsl/menu.xsl"?>
+<document xmlns="http://example.org/xmlns/2002/document" xmlns:xlink="http://www.w3.org/1999/xlink">
+
 <module>
 	<menu>
 		<item>
@@ -25,3 +27,4 @@
                 </item>
 	</menu>
 </module>
+</document>
