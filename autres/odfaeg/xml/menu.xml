@@ -22,9 +22,7 @@
 			<fr dest="/"> Contacts     </fr>
                 </item>
                 <item>
-                	<fr dest="/">Forum 
-                	<xref doc="forum" n="lolilolight.github.io/autres/odfaeg/xml/menu.xml" type="url" rend="_blank">external link: http://odfaeg.yourboardpro.com/index.php</xref>
-                	</fr>
+                	<fr dest="http://odfaeg.yourboardpro.com/index.php" prefix=false>Forum</fr>
                 </item>
 	</menu>
 </module>
