@@ -22,12 +22,13 @@
                 </item>
                 <item>
                 	<content>
-                	<fr>
+                	<fr dest="/">
                         FORUM
+                        </fr>
                 	<html>
                 	<a href="http://odfaeg.yourboardpro.com/index.php">forum</a>
                 	</html>
-                	</fr>
+                	
                 	</content>
                 </item>
 	</menu>
