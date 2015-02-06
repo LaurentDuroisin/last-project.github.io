@@ -20,5 +20,8 @@
                 <item>
 			<fr dest="/"> Contacts     </fr>
                 </item>
+                <item>
+                	<fr dest="/autres/odfaeg/forum">Forum </fr>
+                </item>
 	</menu>
 </module>
