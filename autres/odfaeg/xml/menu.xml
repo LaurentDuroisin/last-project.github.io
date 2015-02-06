@@ -24,8 +24,9 @@
                 </item>
                 <item>
                 	<fr>
-                	<anchor xlink:type="simple" xlink:href="http://odfaeg.yourboardpro.com/index.php">forum</anchor>
-                	FORUM
+                	<html>
+                	<a href="http://odfaeg.yourboardpro.com/index.php">forum</a>
+                	</html>
                 	</fr>
                 </item>
 	</menu>
