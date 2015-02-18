@@ -156,10 +156,10 @@
                 
                 L'installation peut paraître compliquée pour des débutants, j'ai donc fait quelques vidéos à propos de l'installation : 
                 </p>
-                <video width="640"  height="360" src="https://www.youtube.com/watch?v=ev2dGmKeQWo" controls autobuffer></video>
-                <video width="640"  height="360" src="https://www.youtube.com/watch?v=0AHvOreDu4o" controls autobuffer></video>
-                <video width="640"  height="360" src="https://www.youtube.com/watch?v=-yAOwMao89k" controls autobuffer></video>
-                <video width="640"  height="360" src="https://www.youtube.com/watch?v=Ij_aov8Rlm8" controls autobuffer></video>
+                <video width="640"  height="360" src="https://www.youtube.com/watch?v=ev2dGmKeQWo" controls></video>
+                <video width="640"  height="360" src="https://www.youtube.com/watch?v=0AHvOreDu4o" controls></video>
+                <video width="640"  height="360" src="https://www.youtube.com/watch?v=-yAOwMao89k" controls></video>
+                <video width="640"  height="360" src="https://www.youtube.com/watch?v=Ij_aov8Rlm8" controls></video>
                 </html>
         </fr>
         <en>
